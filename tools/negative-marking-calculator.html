@@ -1,0 +1,798 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+   <meta charset="utf-8">
+   <meta http-equiv="x-ua-compatible" content="ie=edge">
+   <title>Negative Marking Calculator | Predict Your Exam Net Score</title>
+   <meta name="description" content="Use this free Negative Marking Calculator to accurately predict your net score, accuracy, and break-even points for UPSC, SSC, NEET, JEE, and Banking exams.">
+   <meta name="keywords" content="negative marking calculator, exam score calculator, UPSC calculator, NEET negative marking, SSC calculator, Bagchi tools">
+   <meta name="author" content="Soumadeep Bagchi">
+   <meta name="robots" content="index, follow">
+   <meta property="og:title" content="Negative Marking Calculator | Predict Your Exam Net Score">
+   <meta property="og:description" content="Use this free Negative Marking Calculator to accurately predict your net score, accuracy, and break-even points for competitive exams.">
+   <meta property="og:type" content="website">
+   <meta property="og:url" content="https://bagchi.in/tools/negative-marking-calculator">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="canonical" href="https://bagchi.in/tools/negative-marking-calculator">
+
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Kufam:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+   <!-- Pulling assets directly from your live server -->
+   <link rel="shortcut icon" type="image/x-icon" href="https://bagchi.in/assets/img/logo/favicon.png">
+
+   <link rel="stylesheet" href="https://bagchi.in/assets/css/bootstrap.css">
+   <link rel="stylesheet" href="https://bagchi.in/assets/css/animate.css">
+   <link rel="stylesheet" href="https://bagchi.in/assets/css/custom-animation.css">
+   <link rel="stylesheet" href="https://bagchi.in/assets/css/swiper-bundle.css">
+   <link rel="stylesheet" href="https://bagchi.in/assets/css/slick.css">
+   <link rel="stylesheet" href="https://bagchi.in/assets/css/nice-select.css">
+   <link rel="stylesheet" href="https://bagchi.in/assets/css/magnific-popup.css">
+   <link rel="stylesheet" href="https://bagchi.in/assets/css/font-awesome-pro.css">
+   <link rel="stylesheet" href="https://bagchi.in/assets/css/spacing.css">
+   <link rel="stylesheet" href="https://bagchi.in/assets/css/main.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+   
+   <style>
+      /* --- Custom Baked Theme Settings for Injected Content --- */
+      body, .bagchi-injected-content, h1, h2, h3, h4, h5, h6 {
+          font-family: 'Kufam', sans-serif !important;
+      }
+      
+      .bagchi-injected-content {
+          --bg-base: transparent;
+          --bg-surface: #1a1a1a;
+          --bg-card: #4A4A68; 
+          --border-light: rgba(255, 255, 255, 0.08);
+          --border-focus: rgba(255, 192, 90, 0.4);
+          --text-main: #ffffff;
+          --text-muted: #e2e2e2;
+          --text-dim: #b0b0b0;
+          
+          /* Theme Yellow Accents */
+          --accent-primary: #FFC05A;   
+          --accent-secondary: #e5a845; 
+          --accent-success: #10b981;   
+          
+          --gradient-primary: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+          --gradient-text: linear-gradient(to right, var(--accent-primary) 0%, #ffffff 100%);
+          --gradient-glow: conic-gradient(from 180deg at 50% 50%, var(--accent-primary) 0%, transparent 180deg, var(--accent-primary) 360deg);
+          
+          --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+          --shadow-md: 0 10px 24px rgba(0, 0, 0, 0.4);
+          --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.5);
+          --shadow-glow: 0 0 30px rgba(255, 192, 90, 0.1);
+          
+          --radius-sm: 12px;
+          --radius-md: 20px;
+          --radius-lg: 35px;
+          --radius-pill: 9999px;
+          
+          --transition-fast: 0.2s ease;
+          --transition-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+          
+          position: relative;
+          z-index: 1;
+          color: var(--text-muted);
+      }
+
+      .bagchi-injected-content section { padding: 80px 0; position: relative; } 
+      .bagchi-injected-content .text-center { text-align: center; }
+
+      /* Sweeping Ambient Backgrounds */
+      .bagchi-injected-content .ambient-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -3; overflow: hidden; pointer-events: none; }
+      .bagchi-injected-content .ambient-shape-1 { position: absolute; top: 5%; left: -10%; width: 50vw; height: 50vw; background: radial-gradient(circle, rgba(255, 192, 90, 0.05) 0%, transparent 60%); border-radius: 50%; filter: blur(60px); }
+      .bagchi-injected-content .ambient-shape-2 { position: absolute; bottom: 5%; right: -10%; width: 40vw; height: 40vw; background: radial-gradient(circle, rgba(255, 255, 255, 0.02) 0%, transparent 60%); border-radius: 50%; filter: blur(60px); }
+      .bagchi-injected-content .bg-grid { position: absolute; inset: 0; background-image: radial-gradient(circle, rgba(255, 255, 255, 0.05) 1px, transparent 1px); background-size: 32px 32px; z-index: -2; opacity: 0.8; pointer-events: none; mask-image: linear-gradient(to bottom, black 20%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, black 20%, transparent 100%); }
+
+      /* Typography */
+      .bagchi-injected-content h1, .bagchi-injected-content h2, .bagchi-injected-content h3, .bagchi-injected-content h4 { color: var(--text-main); font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; margin-top: 0; }
+      .bagchi-injected-content p { color: var(--text-muted); margin-bottom: 1rem; line-height: 1.6;}
+      .bagchi-injected-content .text-gradient { background: var(--gradient-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; display: inline-block; }
+      .bagchi-injected-content .text-accent { color: var(--accent-primary); }
+
+      /* UI Components (Badges) */
+      .bagchi-injected-content .badge-ref { display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; border-radius: var(--radius-pill); font-size: 0.8rem; font-weight: 600; background: var(--bg-surface); border: 1px solid var(--border-light); color: var(--text-main); box-shadow: var(--shadow-sm); width: max-content; }
+      .bagchi-injected-content .badge-ref .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent-success); }
+      .bagchi-injected-content .badge-purple { color: var(--accent-primary); border-color: var(--border-focus); background: rgba(255, 192, 90, 0.05); }
+      .bagchi-injected-content .badge-purple .dot { background: var(--accent-primary); }
+
+      /* Layout */
+      .bagchi-injected-content .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 5%; box-sizing: border-box;}
+      .bagchi-injected-content .section-header { text-align: center; margin-bottom: 40px; max-width: 700px; margin-inline: auto; padding: 0 20px;}
+      .bagchi-injected-content .section-header h2 { font-size: clamp(2rem, 4vw, 2.8rem); margin: 16px 0; }
+      .bagchi-injected-content .section-header p { font-size: 1.1rem; }
+
+      /* Responsive Constraints */
+      @media (max-width: 768px) {
+          .bagchi-injected-content .container { width: 90% !important; max-width: 90% !important; padding: 0 !important; margin: 0 auto; }
+          .bagchi-injected-content section { padding: 60px 0; }
+      }
+
+      /* --- CALCULATOR SPECIFIC STYLES --- */
+      .calc-wrapper {
+          --grad-start: #FFC05A;
+          --grad-end: #ffffff;
+          --box-bg: rgba(255, 255, 255, 0.05);
+          --box-border: rgba(255, 255, 255, 0.15);
+          --accent: #FFC05A;
+          max-width: 1000px;
+          margin: 0 auto;
+      }
+
+      .calculator-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 2rem;
+          margin-bottom: 2rem;
+      }
+
+      @media (max-width: 768px) {
+          .calculator-grid {
+              grid-template-columns: 1fr;
+          }
+      }
+
+      .glass-box {
+          background: var(--box-bg);
+          border: 1px solid var(--box-border);
+          border-radius: 16px;
+          padding: 2rem;
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+      }
+
+      .exam-tags {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0.5rem;
+          margin-bottom: 1.5rem;
+          justify-content: center;
+      }
+
+      .tag-btn {
+          background: rgba(255, 255, 255, 0.05);
+          border: 1px solid var(--box-border);
+          color: #ffffff;
+          padding: 0.4rem 0.8rem;
+          border-radius: 20px;
+          font-size: 0.85rem;
+          cursor: pointer;
+          transition: all 0.3s ease;
+      }
+
+      .tag-btn:hover {
+          background: rgba(255, 255, 255, 0.15);
+          border-color: var(--accent);
+      }
+
+      .tag-hint {
+          text-align: center;
+          font-size: 0.8rem;
+          color: rgba(255, 255, 255, 0.6);
+          margin-bottom: 2rem;
+      }
+
+      .input-group {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 1.2rem;
+      }
+
+      .input-group label {
+          font-size: 0.95rem;
+          font-weight: 500;
+          color: #ffffff;
+      }
+
+      .calc-wrapper input[type="number"], .calc-wrapper select {
+          background: rgba(20, 20, 35, 0.4);
+          border: 1px solid var(--box-border);
+          color: #ffffff;
+          padding: 0.6rem 1rem;
+          border-radius: 8px;
+          width: 140px;
+          font-size: 1rem;
+          outline: none;
+          transition: border 0.3s ease;
+      }
+
+      .calc-wrapper input[type="number"]:focus, .calc-wrapper select:focus {
+          border-color: var(--accent);
+          background: rgba(20, 20, 35, 0.7);
+      }
+
+      .calc-wrapper select option {
+          background-color: #25243e;
+          color: #ffffff;
+      }
+
+      .btn-primary-calc {
+          background: var(--accent);
+          color: #000;
+          border: none;
+          width: 100%;
+          padding: 1rem;
+          border-radius: 8px;
+          font-size: 1rem;
+          font-weight: bold;
+          cursor: pointer;
+          margin-top: 1rem;
+          transition: opacity 0.3s ease, transform 0.2s ease;
+          box-shadow: 0 4px 15px rgba(255, 192, 90, 0.2);
+      }
+
+      .btn-primary-calc:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 8px 20px rgba(255, 192, 90, 0.3);
+      }
+
+      .action-btns {
+          display: flex;
+          gap: 1rem;
+          margin-top: 1rem;
+      }
+
+      .btn-secondary-calc {
+          flex: 1;
+          background: transparent;
+          border: 1px solid var(--box-border);
+          color: #ffffff;
+          padding: 0.8rem;
+          border-radius: 8px;
+          cursor: pointer;
+          transition: all 0.3s ease;
+      }
+
+      .btn-secondary-calc:hover {
+          background: rgba(255, 255, 255, 0.1);
+          border-color: var(--accent);
+          color: var(--accent);
+      }
+
+      /* Results Panel Styling */
+      .results-panel {
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
+      }
+
+      .net-score-box {
+          padding: 2rem;
+          display: flex;
+          flex-direction: column;
+      }
+
+      .net-score-box span {
+          font-size: 0.9rem;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          color: rgba(255, 255, 255, 0.7);
+      }
+
+      .net-score-value {
+          font-size: 3rem;
+          font-weight: bold;
+          margin-top: 0.5rem;
+          color: var(--grad-start);
+      }
+
+      .calc-bento-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 1rem;
+      }
+
+      .stat-box {
+          padding: 1.2rem;
+          display: flex;
+          flex-direction: column;
+          gap: 0.5rem;
+      }
+
+      .stat-box .label {
+          font-size: 0.85rem;
+          color: rgba(255, 255, 255, 0.7);
+      }
+
+      .stat-box .value {
+          font-size: 1.5rem;
+          font-weight: 600;
+          color: #ffffff;
+      }
+
+      .article-section {
+          margin-top: 3rem;
+          background: var(--box-bg);
+          border: 1px solid var(--box-border);
+          border-radius: 16px;
+          padding: 2rem;
+          line-height: 1.8;
+          color: rgba(255, 255, 255, 0.85);
+      }
+      
+      .article-section h3 {
+          font-size: 1.5rem;
+          color: var(--accent-primary);
+          margin-bottom: 15px;
+      }
+
+      /* Select fix for Nice Select overrides if they trigger */
+      .calc-wrapper .nice-select { display: none; }
+      .calc-wrapper select { display: block !important; }
+
+   </style>
+</head>
+
+<body id="body" class="tp-magic-cursor">
+   <div id="loading">
+      <div id="loading-center">
+         <div id="loading-center-absolute">
+            <div class="preloader__content text-center">
+               <div class="preloader__top-text d-flex align-items-center justify-content-between">
+                  <p class="preloader__loading text-start">Loading</p>
+                  <h2 id="tp-loading-number" class="text-end">100</h2>
+               </div>
+               <div id="tp-loading-bar" class="preloader__bar">
+                  <div id="tp-loading-line" class="preloader__bar-inner"></div>
+               </div>
+            </div>
+         </div>
+      </div>  
+   </div>
+   <div id="magic-cursor">
+      <div id="ball"></div>
+   </div>
+   <div class="back-to-top-wrapper">
+      <button id="back_to_top" type="button" class="back-to-top-btn">
+         <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M11 6L6 1L1 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+         </svg>
+      </button>
+   </div>
+   <div class="tp-offcanvas-area">
+      <div class="tp-offcanvas-bg is-left"></div>
+      <div class="tp-offcanvas-bg is-right d-none d-md-block">
+         <div class="tp-offcanvas-shape">
+            <img class="tp-offcanvas-shape-1" src="https://bagchi.in/assets/img/offcanvas/bg-shape-2.png" alt="">
+         </div>
+      </div>
+      <div class="tp-offcanvas-wrapper-2">
+         <div class="tp-offcanvas-left">
+            <div class="tp-offcanvas-left-wrap d-flex justify-content-between align-items-center">
+               <div class="tpoffcanvas__logo">
+                  <img class="logo-white" src="https://bagchi.in/assets/img/logo/logo.png" alt="">
+                  <img class="logo-black" src="https://bagchi.in/assets/img/logo/logo-black.png" alt="">
+               </div>
+               <div class="tp-offcanvas-close d-md-none text-end">
+                  <button class="tp-offcanvas-close-btn tp-offcanvas-close-btn">
+                     <span class="text">
+                        <span>close</span>
+                     </span>
+                     <span class="d-inline-block">
+                        <span>
+                           <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M9.80859 9.80762L28.1934 28.1924" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                              <path d="M9.80859 28.1924L28.1934 9.80761" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                           </svg>
+                        </span>
+                     </span>
+                  </button>
+               </div>
+            </div>
+            <div class="tp-main-menu-mobile menu-hover-active counter-row">
+               <nav></nav>
+            </div>
+         </div>
+         <div class="tp-offcanvas-right d-none d-md-block">
+            <div class="tp-offcanvas-close text-end">
+               <button class="tp-offcanvas-close-btn tp-offcanvas-close-btn">
+                  <span class="text">
+                     <span>close</span>
+                  </span>
+                  <span class="d-inline-block">
+                     <span>
+                        <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                           <path d="M9.80859 9.80762L28.1934 28.1924" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                           <path d="M9.80859 28.1924L28.1934 9.80761" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                     </span>
+                  </span>
+               </button>
+            </div>
+            <div class="tp-offcanvas-right-inner d-flex flex-column justify-content-between h-100">
+               <div class="tpoffcanvas__right-info">
+                  <div class="tpoffcanvas__tel">
+                     <a href="tel:+919874239816">+91 9874239816</a>
+                  </div>
+                  <div class="tpoffcanvas__mail">
+                     <a href="mailto:hello@bagchi.in">hello@bagchi.in</a>
+                  </div>
+                  <div class="tpoffcanvas__text">
+                     <p>If in doubt. reach out.</p>
+                  </div>
+               </div>
+               <div class="tpoffcanvas__social-link">
+                  <ul>
+                     <li><a href="#"><i class="fab fa-linkedin-in"></i> Linkedin</a></li>
+                     <li><a href="#"><i class="fab fa-behance"></i> Behance</a></li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <header>
+      <div class="tp-header-4__area tp-header-transparent tp-header-4__mob-ptb tp-header-4__plr header">
+         <div class="container-fluid">
+            <div class="tp-header-box p-relative">
+               <div class="row align-items-center">
+                  <div class="col-xl-2 col-lg-6 col-md-6 col-6">
+                     <div class="tp-header-3__logo">
+                        <a class="logo-white" href="https://bagchi.in/index.html"><img src="https://bagchi.in/assets/img/logo/logo.png" alt=""></a>
+                        <a class="logo-black" href="https://bagchi.in/index.html"><img src="https://bagchi.in/assets/img/logo/logo-black.png" alt=""></a>
+                     </div>
+                  </div>
+                  <div class="col-xl-7 d-none d-xl-block">
+                     <div class="tp-header-4__menu text-center">
+                        <nav>
+                           <ul>
+                              <li><a href="https://bagchi.in/index.html">Home</a></li>
+                              <li><a href="https://bagchi.in/about-me.html">About Me</a></li>
+                              <li><a href="https://bagchi.in/service.html">Services</a></li>
+                              <li><a href="https://bagchi.in/portfolio.html">Portfolio</a></li>
+                              <li><a href="https://bagchi.in/contact.html">Contact</a></li>
+                           </ul>
+                        </nav>
+                        <div class="offcanvas-menu-style d-none">
+                           <nav class="tp-main-menu-content">
+                              <ul>
+                                 <li><a href="https://bagchi.in/index.html">Home</a></li>
+                                 <li><a href="https://bagchi.in/about-me.html">About Me</a></li>
+                                 <li><a href="https://bagchi.in/service.html">Services</a></li>
+                                 <li><a href="https://bagchi.in/portfolio.html">Portfolio</a></li>
+                                 <li><a href="https://bagchi.in/contact.html">Contact</a></li>
+                              </ul>
+                           </nav>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-xl-3 col-lg-6 col-md-6 col-6">
+                     <div class="tp-header-3__right-action d-flex align-items-center justify-content-end">
+                        <div class="tp-theme-toggle-single">
+                           <label class="tp-theme-toggle-main themepure-theme-toggle">
+                              <span class="dark">
+                                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M14 7.63063C13.8774 8.95738 13.3795 10.2218 12.5645 11.2759C11.7495 12.33 10.6512 13.1301 9.39801 13.5828C8.14485 14.0354 6.78869 14.1218 5.48822 13.8319C4.18775 13.5419 2.99676 12.8875 2.05461 11.9454C1.11246 11.0032 0.458115 9.81225 0.168141 8.51178C-0.121832 7.21131 -0.0354396 5.85515 0.41721 4.60199C0.86986 3.34883 1.67005 2.2505 2.72413 1.43552C3.77822 0.620536 5.04262 0.122609 6.36937 0C5.5926 1.05088 5.21881 2.34566 5.31599 3.64884C5.41317 4.95202 5.97487 6.17704 6.89892 7.10109C7.82296 8.02513 9.04798 8.58683 10.3512 8.68401C11.6543 8.78119 12.9491 8.4074 14 7.63063Z" fill="white" />
+                                 </svg>
+                              </span>
+                              <input type="checkbox" class="themepure-theme-toggle-input">
+                              <span class="light">
+                                 <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M10.0581 14.2166C12.3522 14.2166 14.212 12.3569 14.212 10.0628C14.212 7.7687 12.3522 5.90897 10.0581 5.90897C7.76403 5.90897 5.9043 7.7687 5.9043 10.0628C5.9043 12.3569 7.76403 14.2166 10.0581 14.2166Z" fill="#FFC05A" />
+                                    <path d="M10 1V2.63636" stroke="#FFC05A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M10 17.3637V19.0001" stroke="#FFC05A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M3.63477 3.63455L4.79658 4.79637" stroke="#FFC05A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M15.2031 15.2036L16.3649 16.3654" stroke="#FFC05A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M1 10.0001H2.63636" stroke="#FFC05A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M17.3652 10.0001H19.0016" stroke="#FFC05A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M3.63477 16.3654L4.79658 15.2036" stroke="#FFC05A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M15.2031 4.79637L16.3649 3.63455" stroke="#FFC05A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                 </svg>
+                              </span>
+                           </label>
+                        </div>
+                        <div class="tp-header-3__btn d-none d-md-block">
+                           <a class="tp-btn-white" href="https://bagchi.in/contact.html">
+                              Let’s Talk
+                              <span>
+                                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M4.9297 10.3651C5.12061 10.2162 5.29376 10.043 5.64006 9.69671L9.95722 5.37954C10.0616 5.27517 10.0138 5.0954 9.87438 5.04702C9.36479 4.87022 8.70189 4.53829 8.0818 3.9182C7.46171 3.29811 7.12978 2.63521 6.95299 2.12562C6.9046 1.98617 6.72483 1.9384 6.62046 2.04278L2.30329 6.35994L2.30328 6.35995C1.95699 6.70624 1.78385 6.87939 1.63494 7.0703C1.45928 7.29551 1.30868 7.53919 1.18581 7.79701C1.08164 8.01558 1.00421 8.24789 0.849336 8.71249L0.649225 9.31283L0.331026 10.2674L0.0326691 11.1625C-0.0435433 11.3911 0.0159628 11.6432 0.186379 11.8136C0.356795 11.984 0.608868 12.0435 0.837505 11.9673L1.73258 11.669L2.68717 11.3508L3.28751 11.1507C3.75211 10.9958 3.98442 10.9184 4.20299 10.8142C4.46082 10.6913 4.70449 10.5407 4.9297 10.3651Z" fill="currentcolor" />
+                                    <path d="M11.3089 4.02783C12.2304 3.10641 12.2304 1.61249 11.3089 0.691067C10.3875 -0.230356 8.89359 -0.230356 7.97217 0.691067L7.83337 0.82986C7.69944 0.963792 7.63876 1.15087 7.67222 1.3373C7.69327 1.45458 7.73229 1.62603 7.80327 1.83063C7.94522 2.23979 8.21329 2.77689 8.7182 3.2818C9.22311 3.78671 9.76021 4.05478 10.1694 4.19673C10.374 4.26772 10.5454 4.30673 10.6627 4.32778C10.8491 4.36124 11.0362 4.30056 11.1701 4.16663L11.3089 4.02783Z" fill="currentcolor" />
+                                 </svg>
+                              </span>
+                           </a>
+                        </div>
+                        <div class="tp-header-3__bar">
+                           <button class=" tp-menu-bar tp-offcanvas-open-btn">
+                              <svg width="32" height="10" viewBox="0 0 32 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                 <path d="M31 1H1" stroke="currentcolor" stroke-width="2" stroke-linecap="round" />
+                                 <path d="M31 9H1" stroke="currentcolor" stroke-width="2" stroke-linecap="round" />
+                              </svg>
+                           </button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </header>
+
+   <div id="smooth-wrapper" class="black-bg-3">
+      <div id="smooth-content">
+
+         <main>
+            <div class="bagchi-injected-content pt-120 pb-120">
+               <div class="ambient-bg">
+                  <div class="ambient-shape-1"></div>
+                  <div class="ambient-shape-2"></div>
+               </div>
+               <div class="bg-grid"></div>
+
+               <!-- CALCULATOR SECTION -->
+               <div class="container calc-wrapper">
+                   
+                   <div class="section-header text-center" style="margin-bottom: 50px;">
+                       <div class="badge-ref badge-purple" style="margin-bottom: 16px;">
+                           <div class="dot"></div> EXAM TOOL
+                       </div>
+                       <h2>Negative Marking <span class="text-gradient">Calculator</span></h2>
+                       <p>Calculate your net score, accuracy, and break-even points instantly.</p>
+                   </div>
+
+                   <div class="calculator-grid">
+                       <div class="glass-box">
+                           <div class="exam-tags">
+                               <button class="tag-btn" onclick="setRatio(0.333333)">UPSC</button>
+                               <button class="tag-btn" onclick="setRatio(0.333333)">RRB</button>
+                               <button class="tag-btn" onclick="setRatio(0.25)">NEET</button>
+                               <button class="tag-btn" onclick="setRatio(0.25)">SSC</button>
+                               <button class="tag-btn" onclick="setRatio(0.25)">Banking</button>
+                               <button class="tag-btn" onclick="setRatio(0.333333)">State PSC</button>
+                               <button class="tag-btn" onclick="setRatio(0.25)">JEE</button>
+                           </div>
+                           <div class="tag-hint">Tap an exam to auto-fill the ratio</div>
+           
+                           <div class="input-group">
+                               <label>Total Questions</label>
+                               <input type="number" id="totalQ" placeholder="e.g. 100">
+                           </div>
+                           <div class="input-group">
+                               <label>Maximum Marks</label>
+                               <input type="number" id="maxMarks" placeholder="e.g. 200">
+                           </div>
+                           <div class="input-group">
+                               <label>Questions Attempted</label>
+                               <input type="number" id="attemptedQ" placeholder="e.g. 85">
+                           </div>
+                           <div class="input-group">
+                               <label>Wrong Answers</label>
+                               <input type="number" id="wrongQ" placeholder="e.g. 20">
+                           </div>
+                           <div class="input-group">
+                               <label>Negative Marking Ratio</label>
+                               <select id="ratioSelect">
+                                   <option value="" disabled selected>Select Ratio</option>
+                                   <option value="1">1/1 (Full mark)</option>
+                                   <option value="0.5">1/2</option>
+                                   <option value="0.333333">1/3 (UPSC, CDS)</option>
+                                   <option value="0.25">1/4 (SSC, Bank, NEET)</option>
+                                   <option value="0.2">1/5</option>
+                                   <option value="0.166667">1/6</option>
+                                   <option value="0">No Negative Marking</option>
+                               </select>
+                           </div>
+           
+                           <button class="btn-primary-calc" onclick="calculateScore()">Calculate My Score</button>
+                           
+                           <div class="action-btns">
+                               <button class="btn-secondary-calc" onclick="clearInputs()">Clear Inputs</button>
+                           </div>
+                       </div>
+           
+                       <div class="results-panel">
+                           <div class="glass-box net-score-box">
+                               <span>Net Score</span>
+                               <div class="net-score-value" id="res-net-score">—</div>
+                           </div>
+           
+                           <div class="calc-bento-grid">
+                               <div class="glass-box stat-box">
+                                   <div class="label">Correct</div>
+                                   <div class="value" id="res-correct">—</div>
+                               </div>
+                               <div class="glass-box stat-box">
+                                   <div class="label">Wrong</div>
+                                   <div class="value" id="res-wrong">—</div>
+                               </div>
+                               <div class="glass-box stat-box">
+                                   <div class="label">Unattempted</div>
+                                   <div class="value" id="res-unattempted">—</div>
+                               </div>
+                               <div class="glass-box stat-box">
+                                   <div class="label">Accuracy</div>
+                                   <div class="value" id="res-accuracy">—</div>
+                               </div>
+                               <div class="glass-box stat-box">
+                                   <div class="label">Break-Even Accuracy</div>
+                                   <div class="value" id="res-breakeven">—</div>
+                               </div>
+                               <div class="glass-box stat-box">
+                                   <div class="label">Marks per Attempt</div>
+                                   <div class="value" id="res-marks-attempt">—</div>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+           
+                   <div class="article-section">
+                       <h3>Why use a Negative Marking Calculator?</h3>
+                       Understanding negative marking is crucial for competitive exams like UPSC, SSC, NEET, and JEE. A negative marking calculator helps students accurately predict their final scores by accounting for penalized wrong answers. By inputting your total questions, maximum marks, attempted questions, and wrong answers, you can instantly determine your net score, accuracy percentage, and break-even accuracy. This tool uses standard negative marking ratios (such as 1/3 or 1/4) to calculate precise deductions. Monitoring these metrics allows you to optimize your guessing strategy, improve exam time management, and maximize your marks per attempt. Plan your approach smartly to conquer competitive exams.
+                   </div>
+               </div>
+            </div>
+         </main>
+
+         <footer class="cursor-style">
+            <div class="tp-footer-4__main-wrapper black-bg-2 p-relative z-index-1 fix"
+               data-background="https://bagchi.in/assets/img/footer/overly-bg.png">
+               <div class="tp-footer-4__area pt-80 pb-60">
+                  <div class="tp-footer-4__shape">
+                     <img src="https://bagchi.in/assets/img/footer/footer-shape-2.png" alt="">
+                  </div>
+                  <div class="container" style="width: 100% !important; max-width: 1200px !important;">
+                     <div class="row align-items-start">
+                        <div class="col-xl-4 col-lg-4 col-md-8 mb-40">
+                           <div class="tp-footer-4__widget footer-col-4-1">
+                              <div class="tp-footer-4__logo">
+                                 <a href="https://bagchi.in/index.html"><img src="https://bagchi.in/assets/img/logo/logo.png" alt=""></a>
+                              </div>
+                              <div class="tp-footer-4__content">
+                                 <p>Feel free to reach out with questions <br> or inquiries.</p>
+                              </div>
+                              <div class="tp-footer-4__social socials">
+                                 <a href="#"><i class="fab fa-behance"></i></a>
+                                 <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-4 mb-40">
+                           <div class="tp-footer-4__widget footer-col-4-2">
+                              <h4 class="tp-footer-4__widget-title">Explore</h4>
+                              <ul>
+                                 <li><a href="https://bagchi.in/index.html"><i class="fa-regular fa-arrow-right"></i> Home</a></li>
+                                 <li><a href="https://bagchi.in/about-me.html"><i class="fa-regular fa-arrow-right"></i> About</a></li>
+                                 <li><a href="https://bagchi.in/service.html"><i class="fa-regular fa-arrow-right"></i> Services</a></li>
+                                 <li><a href="https://bagchi.in/portfolio.html"><i class="fa-regular fa-arrow-right"></i> Portfolio</a></li>
+                                 <li><a href="https://bagchi.in/contact.html"><i class="fa-regular fa-arrow-right"></i> Contact</a></li>
+                              </ul>
+                           </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-md-8 mb-40">
+                           <div class="tp-footer-4__widget footer-col-4-3">
+                              <h4 class="tp-footer-4__widget-title">Address</h4>
+                              <div class="tp-footer-4__widget-address">
+                                 <a href="https://share.google/1gy7YBN420RfrzHwC" target="_blank">
+                                    Sodepur, Kolkata, Westbengal, India. Kolkata 700111.
+                                 </a>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-md-4 mb-40">
+                           <div class="tp-footer-4__widget footer-col-4-4">
+                              <h4 class="tp-footer-4__widget-title">Say Hello</h4>
+                              <div class="tp-footer-4__widget-mail">
+                                 <a href="mailto:hello@bagchi.in">hello@bagchi.in</a>
+                              </div>
+                              <div class="tp-footer-4__widget-mail">
+                                 <a href="tel:+919874239816">+919874239816</a>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="tp-copyright-4__area tp-copyright-4__bdr-top pt-20 pb-20">
+                  <div class="container">
+                     <div class="row">
+                        <div class="col-xl-12">
+                           <div class="tp-copyright-4__text text-center">
+                              <span>Soumadeep Bagchi @ 2026. All Rights Reserved.</span>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </footer>
+
+      </div>
+   </div>
+
+   <script src="https://bagchi.in/assets/js/vendor/jquery.js"></script>
+   <script src="https://bagchi.in/assets/js/bootstrap-bundle.js"></script>
+   <script src="https://bagchi.in/assets/js/three.js"></script>
+   <script src="https://bagchi.in/assets/js/gsap.js"></script>
+   <script src="https://bagchi.in/assets/js/gsap-scroll-smoother.js"></script>
+   <script src="https://bagchi.in/assets/js/gsap-scroll-trigger.js"></script>
+   <script src="https://bagchi.in/assets/js/gsap-scroll-to-plugin.js"></script>
+   <script src="https://bagchi.in/assets/js/gsap-split-text.js"></script>
+   <script src="https://bagchi.in/assets/js/webgl.js"></script>
+   <script src="https://bagchi.in/assets/js/swiper-bundle.js"></script>
+   <script src="https://bagchi.in/assets/js/slick.js"></script>
+   <script src="https://bagchi.in/assets/js/wow.js"></script>
+   <script src="https://bagchi.in/assets/js/pagepiling.js"></script>
+   <script src="https://bagchi.in/assets/js/headroom.min.js"></script>
+   <script src="https://bagchi.in/assets/js/magnific-popup.js"></script>
+   <script src="https://bagchi.in/assets/js/nice-select.js"></script>
+   <script src="https://bagchi.in/assets/js/purecounter.js"></script>
+   <script src="https://bagchi.in/assets/js/hammer.js"></script>
+   <script src="https://bagchi.in/assets/js/matter.js"></script>
+   <script src="https://bagchi.in/assets/js/throwable.js"></script>
+   <script src="https://bagchi.in/assets/js/isotope-pkgd.js"></script>
+   <script src="https://bagchi.in/assets/js/imagesloaded-pkgd.js"></script>
+   <script src="https://bagchi.in/assets/js/ajax-form.js"></script>
+   <script src="https://bagchi.in/assets/js/theme-settings.js"></script>
+   <script src="https://bagchi.in/assets/js/animated-headline.js"></script>
+   <script src="https://bagchi.in/assets/js/main.js"></script>
+   <script src="https://bagchi.in/assets/js/tp-cursor.js"></script>
+   
+   <!-- Calculator Logic Script -->
+   <script>
+        function setRatio(val) {
+            const select = document.getElementById('ratioSelect');
+            for (let i = 0; i < select.options.length; i++) {
+                if (Math.abs(parseFloat(select.options[i].value) - val) < 0.01) {
+                    select.selectedIndex = i;
+                    break;
+                }
+            }
+        }
+
+        function clearInputs() {
+            document.getElementById('totalQ').value = '';
+            document.getElementById('maxMarks').value = '';
+            document.getElementById('attemptedQ').value = '';
+            document.getElementById('wrongQ').value = '';
+            document.getElementById('ratioSelect').selectedIndex = 0;
+            
+            document.getElementById('res-net-score').innerText = '—';
+            document.getElementById('res-correct').innerText = '—';
+            document.getElementById('res-wrong').innerText = '—';
+            document.getElementById('res-unattempted').innerText = '—';
+            document.getElementById('res-accuracy').innerText = '—';
+            document.getElementById('res-breakeven').innerText = '—';
+            document.getElementById('res-marks-attempt').innerText = '—';
+        }
+
+        function calculateScore() {
+            const totalQ = parseFloat(document.getElementById('totalQ').value);
+            const maxMarks = parseFloat(document.getElementById('maxMarks').value);
+            const attemptedQ = parseFloat(document.getElementById('attemptedQ').value);
+            const wrongQ = parseFloat(document.getElementById('wrongQ').value);
+            const ratio = parseFloat(document.getElementById('ratioSelect').value);
+
+            if (isNaN(totalQ) || isNaN(maxMarks) || isNaN(attemptedQ) || isNaN(wrongQ) || isNaN(ratio)) {
+                alert("Please fill in all inputs and select a ratio.");
+                return;
+            }
+
+            if (attemptedQ > totalQ || wrongQ > attemptedQ) {
+                alert("Invalid input: Attempted questions cannot exceed total questions, and wrong answers cannot exceed attempted questions.");
+                return;
+            }
+
+            const marksPerQ = maxMarks / totalQ;
+            const correctQ = attemptedQ - wrongQ;
+            const unattemptedQ = totalQ - attemptedQ;
+            
+            const netScore = (correctQ * marksPerQ) - (wrongQ * marksPerQ * ratio);
+            const accuracy = attemptedQ > 0 ? (correctQ / attemptedQ) * 100 : 0;
+            const breakEvenAccuracy = (1 / (1 + ratio)) * 100;
+            const marksPerAttempt = attemptedQ > 0 ? netScore / attemptedQ : 0;
+
+            document.getElementById('res-net-score').innerText = parseFloat(netScore.toFixed(2));
+            document.getElementById('res-correct').innerText = correctQ;
+            document.getElementById('res-wrong').innerText = wrongQ;
+            document.getElementById('res-unattempted').innerText = unattemptedQ;
+            document.getElementById('res-accuracy').innerText = parseFloat(accuracy.toFixed(2)) + '%';
+            document.getElementById('res-breakeven').innerText = parseFloat(breakEvenAccuracy.toFixed(2)) + '%';
+            document.getElementById('res-marks-attempt').innerText = parseFloat(marksPerAttempt.toFixed(2));
+        }
+   </script>
+</body>
+</html>

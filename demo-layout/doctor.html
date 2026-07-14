@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Doctor Website Demos - Showcase</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+--primary-color:#96004E;
+--secondary-color:#f8fafc;
+--text-dark:#1e293b;
+--text-muted:#64748b;
+--card-radius:20px;
+--transition:all .4s cubic-bezier(.4,0,.2,1);
+}
+
+*{box-sizing:border-box;}
+
+body{
+font-family:'Poppins',sans-serif;
+margin:0;
+background:var(--secondary-color);
+color:var(--text-dark);
+}
+
+/* HEADER */
+
+.header{
+background:var(--primary-color);
+padding:15px 20px;
+text-align:center;
+color:#fff;
+}
+
+.header h1{
+margin:0;
+font-size:22px;
+font-weight:600;
+}
+
+/* CONTAINER */
+
+.container{
+max-width:1400px;
+margin:auto;
+padding:50px 20px;
+}
+
+.options{
+display:grid;
+grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+gap:35px;
+}
+
+/* CARD */
+
+.card{
+position:relative;
+height:450px;
+border-radius:var(--card-radius);
+overflow:hidden;
+cursor:pointer;
+background:#fff;
+border:1px solid rgba(0,0,0,.05);
+transition:var(--transition);
+box-shadow:0 10px 25px rgba(0,0,0,.05);
+}
+
+.card:hover{
+transform:translateY(-12px);
+box-shadow:0 25px 40px rgba(150,0,78,.15);
+}
+
+.card-image{
+width:100%;
+height:100%;
+background-size:cover;
+background-position:top center;
+transition:background-position 5s ease;
+}
+
+.card:hover .card-image{
+background-position:bottom center;
+}
+
+.demo-badge{
+position:absolute;
+top:20px;
+right:20px;
+background:var(--primary-color);
+color:#fff;
+padding:6px 18px;
+border-radius:50px;
+font-size:12px;
+font-weight:600;
+z-index:5;
+}
+
+.card-overlay{
+position:absolute;
+inset:0;
+background:linear-gradient(to top,rgba(0,0,0,.8),transparent 60%);
+display:flex;
+align-items:flex-end;
+justify-content:center;
+padding-bottom:40px;
+opacity:0;
+transition:.3s;
+}
+
+.card:hover .card-overlay{
+opacity:1;
+}
+
+.view-btn{
+background:#fff;
+color:var(--primary-color);
+padding:12px 24px;
+border-radius:50px;
+font-weight:600;
+font-size:14px;
+transform:translateY(20px);
+transition:var(--transition);
+}
+
+.card:hover .view-btn{
+transform:translateY(0);
+}
+
+/* PREVIEW */
+
+.iframe-container{
+display:none;
+position:fixed;
+inset:0;
+background:#e2e8f0;
+z-index:9999;
+}
+
+.iframe-wrapper{
+width:100%;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:0;
+}
+
+iframe{
+height:100%;
+border:none;
+background:#fff;
+box-shadow:0 30px 60px rgba(0,0,0,.3);
+transition:.4s;
+border-radius:0;
+}
+
+/* SIDEBARS */
+
+.left-sidebar,.right-sidebar{
+position:fixed;
+top:50%;
+transform:translateY(-50%);
+z-index:10000;
+display:flex;
+flex-direction:column;
+gap:12px;
+}
+
+.left-sidebar{left:0;}
+.right-sidebar{right:0;}
+
+.device-btn,.back-btn{
+background:#fff;
+border:1px solid rgba(0,0,0,.1);
+cursor:pointer;
+display:flex;
+align-items:center;
+justify-content:center;
+box-shadow:0 4px 6px rgba(0,0,0,.05);
+transition:.2s;
+}
+
+.device-btn{
+width:56px;
+height:56px;
+border-radius:0 12px 12px 0;
+}
+
+.device-btn svg{fill:#64748b;}
+
+.device-btn.active{
+background:var(--primary-color);
+border-color:var(--primary-color);
+}
+
+.device-btn.active svg{fill:#fff;}
+
+.back-btn{
+padding:25px 12px;
+writing-mode:vertical-rl;
+border-radius:12px 0 0 12px;
+font-weight:600;
+font-size:13px;
+color:var(--primary-color);
+text-transform:uppercase;
+}
+
+/* LOADER */
+
+.loader-box{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+text-align:center;
+width:280px;
+z-index:10;
+}
+
+.loader-box h2{
+font-size:48px;
+margin:0;
+color:var(--primary-color);
+}
+
+.progress-bar{
+height:8px;
+background:rgba(0,0,0,.05);
+border-radius:10px;
+overflow:hidden;
+margin-top:15px;
+}
+
+.progress-fill{
+height:100%;
+width:0%;
+background:var(--primary-color);
+transition:.3s;
+}
+
+/* FOOTER */
+
+.footer{
+background:#fff;
+text-align:center;
+padding:30px;
+color:var(--text-muted);
+font-size:14px;
+border-top:1px solid rgba(0,0,0,.05);
+}
+
+.footer span{
+color:var(--primary-color);
+font-weight:600;
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="homePage">
+
+<div class="header">
+<h1>Doctor Website Demos</h1>
+</div>
+
+<div class="container">
+
+<div class="options">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="card" onclick="openDemo('https://show.moxcreative.com/mydoctor/template-kit/homepage/')">
+<div class="demo-badge">Demo 1</div>
+<div class="card-image" style="background-image:url('https://elements-resized.envatousercontent.com/elements-template-kits-preview-images/files/369360891/homepage.jpg?w=1370&cf_fit=scale-down&q=85&format=auto&s=c62f571b7c2794adf2ebd3610202c1a6c38932b836aba9a0f2dbc0b2b272b16c');"></div>
+<div class="card-overlay"><div class="view-btn">Launch Live Experience</div></div>
+</div>
+
+<div class="card" onclick="openDemo('https://hrkit.rometheme.pro/zenadol/')">
+<div class="demo-badge">Demo 2</div>
+<div class="card-image" style="background-image:url('https://elements-resized.envatousercontent.com/elements-template-kits-preview-images/files/545395687/Zaramex%20-%20Preview%20Image%20Set/homepage.jpg?w=1370&cf_fit=scale-down&q=85&format=auto&s=be497a0949ebbcf28c520501a06ca1a2f5a9ceeeec6eb73c8e4757bf4987c21d');"></div>
+<div class="card-overlay"><div class="view-btn">Launch Live Experience</div></div>
+</div>
+
+<div class="card" onclick="openDemo('https://template-kit.evonicmedia.com/layout41/')">
+<div class="demo-badge">Demo 3</div>
+<div class="card-image" style="background-image:url('https://elements-resized.envatousercontent.com/elements-template-kits-preview-images/files/463448750/doctor%20ss/Home.jpg?w=1370&cf_fit=scale-down&q=85&format=auto&s=5ac7869d0bf3ea903d3a66170e4bcba927cd40ec24fd5756c80a1a194ecb7f66');"></div>
+<div class="card-overlay"><div class="view-btn">Launch Live Experience</div></div>
+</div>
+
+<div class="card" onclick="openDemo('https://kreativ.space/lander')">
+<div class="demo-badge">Demo 4</div>
+<div class="card-image" style="background-image:url('https://elements-resized.envatousercontent.com/elements-template-kits-preview-images/files/356238790/SS/1.Home.jpg?w=1370&cf_fit=scale-down&q=85&format=auto&s=b18b7958122c21b2165523a3d54aa4f86c9a2c0344a4d61f42d3dab910d94dfc');"></div>
+<div class="card-overlay"><div class="view-btn">Launch Live Experience</div></div>
+</div>
+
+<div class="card" onclick="openDemo('https://kit.nirmanavisual.com/sehat/template-kit/home/')">
+<div class="demo-badge">Demo 5</div>
+<div class="card-image" style="background-image:url('https://elements-resized.envatousercontent.com/elements-template-kits-preview-images/files/471286256/Preview%20Screenshots%20-%20Sehat/Home.png?w=1370&cf_fit=scale-down&q=85&format=auto&s=393be0516f8c7958f54c094fa0eddf8f3861b440cfb9231676a594f2eeb82f0e');"></div>
+<div class="card-overlay"><div class="view-btn">Launch Live Experience</div></div>
+</div>
+
+<div class="card" onclick="openDemo('https://puzzlerbox.com/templatekits-pro/doctor-on-demand-app/')">
+<div class="demo-badge">Demo 6</div>
+<div class="card-image" style="background-image:url('https://elements-resized.envatousercontent.com/elements-template-kits-preview-images/files/299815381/01_preview1.jpg?w=1370&cf_fit=scale-down&q=85&format=auto&s=aa9bdd066a66a3b2a9f8cd7d7a9956b3d4a007d17d9cec2c4cb2b5e212f9d709');"></div>
+<div class="card-overlay"><div class="view-btn">Launch Live Experience</div></div>
+</div>
+
+<div class="card" onclick="openDemo('https://templatekit.jegtheme.com/holadoc/')">
+<div class="demo-badge">Demo 7</div>
+<div class="card-image" style="background-image:url('https://elements-resized.envatousercontent.com/elements-template-kits-preview-images/files/366552402/home.png?w=1370&cf_fit=scale-down&q=85&format=auto&s=54ea1a9fa12dac4d3edf7af9681603734e795d79ecc77ef47f6efaa51d077f5f');"></div>
+<div class="card-overlay"><div class="view-btn">Launch Live Experience</div></div>
+</div>
+
+<div class="card" onclick="openDemo('https://kinforce.net/mediq/')">
+<div class="demo-badge">Demo 8</div>
+<div class="card-image" style="background-image:url('https://elements-resized.envatousercontent.com/elements-template-kits-preview-images/files/334645215/01_Home.jpg?w=1370&cf_fit=scale-down&q=85&format=auto&s=67b7385fd2d8978720c3ab3f42e0afdd7a012d757f54e600e10c4b0c875bf073');"></div>
+<div class="card-overlay"><div class="view-btn">Launch Live Experience</div></div>
+</div>
+
+<div class="card" onclick="openDemo('https://templates.sparklethings.com/medivue/')">
+<div class="demo-badge">Demo 9</div>
+<div class="card-image" style="background-image:url('https://elements-resized.envatousercontent.com/elements-template-kits-preview-images/files/730980380/Home.jpg?w=1370&cf_fit=scale-down&q=85&format=auto&s=97d20c5db8d958e9c42cfae101c914c2c3859ca866934e21c4cfc3072a14381a');"></div>
+<div class="card-overlay"><div class="view-btn">Launch Live Experience</div></div>
+</div>
+
+<div class="card" onclick="openDemo('https://kit.envalab-demos.com/mediku/')">
+<div class="demo-badge">Demo 10</div>
+<div class="card-image" style="background-image:url('https://elements-resized.envatousercontent.com/elements-template-kits-preview-images/files/348710413/Mediku-Preview-Images/01-Mediku-Home_Page.jpg?w=1370&cf_fit=scale-down&q=85&format=auto&s=cd51bd9f892743472f24c2dc1defbad12499462c8312270bb8e2343e41a4b53a');"></div>
+<div class="card-overlay"><div class="view-btn">Launch Live Experience</div></div>
+</div>
+
+<div class="card" onclick="openDemo('https://kits.kitmama.top/medialfa/')">
+<div class="demo-badge">Demo 11</div>
+<div class="card-image" style="background-image:url('https://elements-resized.envatousercontent.com/elements-template-kits-preview-images/files/645162588/screenshots/home.png?w=1370&cf_fit=scale-down&q=85&format=auto&s=a490f39e6571bb3d3ff5aaf4ae33789f79a734a648c1e6810a18f6427a81bac6');"></div>
+<div class="card-overlay"><div class="view-btn">Launch Live Experience</div></div>
+</div>
+
+<div class="card" onclick="openDemo('https://kits.roxthemes.com/medirox')">
+<div class="demo-badge">Demo 12</div>
+<div class="card-image" style="background-image:url('https://elements-resized.envatousercontent.com/elements-template-kits-preview-images/files/548429567/Screenshots/01_Home.jpg?w=1370&cf_fit=scale-down&q=85&format=auto&s=59aa82b100e8778bfbd106e9293d9521f74fece60088b4e55fd92d0be330199f');"></div>
+<div class="card-overlay"><div class="view-btn">Launch Live Experience</div></div>
+</div>
+
+<div class="card" onclick="openDemo('https://agro.foxcreation.net/avida')">
+<div class="demo-badge">Demo 13</div>
+<div class="card-image" style="background-image:url('https://elements-resized.envatousercontent.com/elements-template-kits-preview-images/files/523583758/Preview/Home.jpg?w=1370&cf_fit=scale-down&q=85&format=auto&s=21a2756a90358893e712950b7889cbae26bc5f7b6122343a9c939e57b0dbff72');"></div>
+<div class="card-overlay"><div class="view-btn">Launch Live Experience</div></div>
+</div>
+
+<div class="card" onclick="openDemo('https://templatekits.themewarrior.com/medicate/')">
+<div class="demo-badge">Demo 14</div>
+<div class="card-image" style="background-image:url('https://i.snipboard.io/uaRjT0.jpg');"></div>
+<div class="card-overlay"><div class="view-btn">Launch Live Experience</div></div>
+</div>
+
+<div class="card" onclick="openDemo('https://elementorkits.nathatype.com/bootamins')">
+<div class="demo-badge">Demo 15</div>
+<div class="card-image" style="background-image:url('https://elements-resized.envatousercontent.com/elements-template-kits-preview-images/files/493319302/Home.jpg?w=1370&cf_fit=scale-down&q=85&format=auto&s=2243148c4e5b7075ce416afebf25df3fbb59028248d963a20d28a3994ac420d7');"></div>
+<div class="card-overlay"><div class="view-btn">Launch Live Experience</div></div>
+</div>
+
+<div class="card" onclick="openDemo('https://kit.pndrnt.com/medific/')">
+<div class="demo-badge">Demo 16</div>
+<div class="card-image" style="background-image:url('https://elements-resized.envatousercontent.com/elements-template-kits-preview-images/files/309513492/Medific-Home.jpg?w=1370&cf_fit=scale-down&q=85&format=auto&s=97e7c40f61ef7fb76a2570a22c307532baa3f7953a5265e51abf5957c573d698');"></div>
+<div class="card-overlay"><div class="view-btn">Launch Live Experience</div></div>
+</div>
+
+<div class="card" onclick="openDemo('https://askit.dextheme.net/medizin/')">
+<div class="demo-badge">Demo 17</div>
+<div class="card-image" style="background-image:url('https://elements-resized.envatousercontent.com/elements-template-kits-preview-images/files/658647574/Medizin%20Screenshoot/1-Home.jpg?w=1370&cf_fit=scale-down&q=85&format=auto&s=f2435a7518b6a569f5c652e27de0fc23c14a8d1ba89848ff489ac05a6fa2f4e2');"></div>
+<div class="card-overlay"><div class="view-btn">Launch Live Experience</div></div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+</div>
+
+<div class="footer">
+© 2026 <span>Doctor Website Demos</span>. Soumadeep Bagchi.
+</div>
+
+</div>
+
+<div class="iframe-container" id="previewLayer">
+
+<div class="left-sidebar">
+
+<button class="device-btn active" id="btnDesktop" onclick="setDevice('desktop')">
+<svg viewBox="0 0 24 24" width="24"><path d="M21 2H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h7l-2 3v1h8v-1l-2-3h7c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 12H3V4h18v10z"/></svg>
+</button>
+
+<button class="device-btn" id="btnTablet" onclick="setDevice('tablet')">
+<svg viewBox="0 0 24 24" width="24"><path d="M19 4H5c-1.11 0-2 .9-2 2v12c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.89-2-2-2zm-7 14c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm7-4H5V6h14v8z"/></svg>
+</button>
+
+<button class="device-btn" id="btnMobile" onclick="setDevice('mobile')">
+<svg viewBox="0 0 24 24" width="24"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg>
+</button>
+
+</div>
+
+<div class="right-sidebar">
+<button class="back-btn" onclick="goHome()">Back to Selection</button>
+</div>
+
+<div class="loader-box" id="loaderBox">
+<h2 id="percentText">0%</h2>
+
+<div class="progress-bar">
+<div class="progress-fill" id="progressFill"></div>
+</div>
+
+<p style="color:#64748b;margin-top:10px;font-size:13px;">Optimizing experience...</p>
+</div>
+
+<div class="iframe-wrapper">
+<iframe id="demoFrame"></iframe>
+</div>
+
+</div>
+
+<script>
+
+const previewLayer=document.getElementById("previewLayer");
+const homePage=document.getElementById("homePage");
+const demoFrame=document.getElementById("demoFrame");
+const percentText=document.getElementById("percentText");
+const progressFill=document.getElementById("progressFill");
+const loaderBox=document.getElementById("loaderBox");
+
+function openDemo(url){
+
+window.scrollTo(0,0);
+
+homePage.style.display="none";
+previewLayer.style.display="block";
+
+loaderBox.style.display="block";
+demoFrame.style.display="none";
+
+let progress=0;
+
+setDevice("desktop");
+
+let interval=setInterval(()=>{
+
+progress+=Math.random()*20;
+
+if(progress>92){
+progress=92;
+clearInterval(interval);
+}
+
+percentText.innerText=Math.floor(progress)+"%";
+progressFill.style.width=progress+"%";
+
+},150);
+
+demoFrame.src=url;
+
+demoFrame.onload=()=>{
+
+clearInterval(interval);
+
+percentText.innerText="100%";
+progressFill.style.width="100%";
+
+setTimeout(()=>{
+
+loaderBox.style.display="none";
+demoFrame.style.display="block";
+
+},400);
+
+};
+
+}
+
+function setDevice(mode){
+
+document.querySelectorAll(".device-btn").forEach(btn=>btn.classList.remove("active"));
+
+if(mode==="desktop"){
+demoFrame.style.width="100%";
+document.getElementById("btnDesktop").classList.add("active");
+}
+
+if(mode==="tablet"){
+demoFrame.style.width="768px";
+document.getElementById("btnTablet").classList.add("active");
+}
+
+if(mode==="mobile"){
+demoFrame.style.width="390px";
+document.getElementById("btnMobile").classList.add("active");
+}
+
+}
+
+function goHome(){
+
+previewLayer.style.display="none";
+homePage.style.display="block";
+
+demoFrame.src="";
+demoFrame.style.display="none";
+
+percentText.innerText="0%";
+progressFill.style.width="0%";
+
+window.scrollTo(0,0);
+
+}
+
+</script>
+
+</body>
+</html>

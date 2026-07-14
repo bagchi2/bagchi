@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Creative agency website Demo - Showcase</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+--primary-color:#96004E;
+--secondary-color:#f8fafc;
+--text-dark:#1e293b;
+--text-muted:#64748b;
+--card-radius:20px;
+--transition:all .4s cubic-bezier(.4,0,.2,1);
+}
+
+*{box-sizing:border-box;}
+
+body{
+font-family:'Poppins',sans-serif;
+margin:0;
+background:var(--secondary-color);
+color:var(--text-dark);
+}
+
+/* HEADER */
+
+.header{
+background:var(--primary-color);
+padding:15px 20px;
+text-align:center;
+color:#fff;
+}
+
+.header h1{
+margin:0;
+font-size:22px;
+font-weight:600;
+}
+
+/* CONTAINER & HEADINGS */
+
+.container{
+max-width:1400px;
+margin:auto;
+padding:40px 20px 80px 20px;
+}
+
+.section-title {
+font-size: 26px;
+font-weight: 600;
+color: var(--primary-color);
+margin-top: 20px;
+margin-bottom: 30px;
+border-bottom: 2px solid rgba(150, 0, 78, 0.1);
+padding-bottom: 10px;
+}
+
+.options{
+display:grid;
+grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+gap:35px;
+margin-bottom: 60px;
+}
+
+/* CARD */
+
+.card{
+position:relative;
+height:450px;
+border-radius:var(--card-radius);
+overflow:hidden;
+cursor:pointer;
+background:#fff;
+border:1px solid rgba(0,0,0,.05);
+transition:var(--transition);
+box-shadow:0 10px 25px rgba(0,0,0,.05);
+}
+
+.card:hover{
+transform:translateY(-12px);
+box-shadow:0 25px 40px rgba(150,0,78,.15);
+}
+
+.card-image{
+width:100%;
+height:100%;
+background-size:cover;
+background-position:top center;
+transition:background-position 5s ease;
+}
+
+.card:hover .card-image{
+background-position:bottom center;
+}
+
+.demo-badge{
+position:absolute;
+top:20px;
+right:20px;
+background:var(--primary-color);
+color:#fff;
+padding:6px 18px;
+border-radius:50px;
+font-size:12px;
+font-weight:600;
+z-index:5;
+}
+
+.card-overlay{
+position:absolute;
+inset:0;
+background:linear-gradient(to top,rgba(0,0,0,.8),transparent 60%);
+display:flex;
+align-items:flex-end;
+justify-content:center;
+padding-bottom:40px;
+opacity:0;
+transition:.3s;
+}
+
+.card:hover .card-overlay{
+opacity:1;
+}
+
+.view-btn{
+background:#fff;
+color:var(--primary-color);
+padding:12px 24px;
+border-radius:50px;
+font-weight:600;
+font-size:14px;
+transform:translateY(20px);
+transition:var(--transition);
+}
+
+.card:hover .view-btn{
+transform:translateY(0);
+}
+
+/* PREVIEW */
+
+.iframe-container{
+display:none;
+position:fixed;
+inset:0;
+background:#e2e8f0;
+z-index:9999;
+}
+
+.iframe-wrapper{
+width:100%;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:0;
+}
+
+iframe{
+height:100%;
+border:none;
+background:#fff;
+box-shadow:0 30px 60px rgba(0,0,0,.3);
+transition:.4s;
+border-radius:0;
+}
+
+/* SIDEBARS */
+
+.left-sidebar,.right-sidebar{
+position:fixed;
+top:50%;
+transform:translateY(-50%);
+z-index:10000;
+display:flex;
+flex-direction:column;
+gap:12px;
+}
+
+.left-sidebar{left:0;}
+.right-sidebar{right:0;}
+
+.device-btn,.back-btn{
+background:#fff;
+border:1px solid rgba(0,0,0,.1);
+cursor:pointer;
+display:flex;
+align-items:center;
+justify-content:center;
+box-shadow:0 4px 6px rgba(0,0,0,.05);
+transition:.2s;
+}
+
+.device-btn{
+width:56px;
+height:56px;
+border-radius:0 12px 12px 0;
+}
+
+.device-btn svg{fill:#64748b;}
+
+.device-btn.active{
+background:var(--primary-color);
+border-color:var(--primary-color);
+}
+
+.device-btn.active svg{fill:#fff;}
+
+.back-btn{
+padding:25px 12px;
+writing-mode:vertical-rl;
+border-radius:12px 0 0 12px;
+font-weight:600;
+font-size:13px;
+color:var(--primary-color);
+text-transform:uppercase;
+}
+
+/* LOADER */
+
+.loader-box{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+text-align:center;
+width:280px;
+z-index:10;
+}
+
+.loader-box h2{
+font-size:48px;
+margin:0;
+color:var(--primary-color);
+}
+
+.progress-bar{
+height:8px;
+background:rgba(0,0,0,.05);
+border-radius:10px;
+overflow:hidden;
+margin-top:15px;
+}
+
+.progress-fill{
+height:100%;
+width:0%;
+background:var(--primary-color);
+transition:.3s;
+}
+
+/* FOOTER */
+
+.footer{
+background:#fff;
+text-align:center;
+padding:30px;
+color:var(--text-muted);
+font-size:14px;
+border-top:1px solid rgba(0,0,0,.05);
+}
+
+.footer span{
+color:var(--primary-color);
+font-weight:600;
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="homePage">
+
+<div class="header">
+<h1>Creative agency website Demo</h1>
+</div>
+
+<div class="container">
+
+<h2 class="section-title">Free Design</h2>
+
+<div class="options">
+    <div class="card" onclick="openDemo('https://template-kits.designtone.xyz/agenko/index.php/template-kit/digital-agency/')">
+    <div class="demo-badge">Free Demo 1</div>
+    <div class="card-image" style="background-image:url('https://placehold.co/800x1200/e2e8f0/64748b?font=montserrat&text=1');"></div>
+    <div class="card-overlay"><div class="view-btn">Launch Live Experience</div></div>
+    </div>
+
+    <div class="card" onclick="openDemo('https://template-kits.designtone.xyz/agenko/index.php/template-kit/marketing-agency/')">
+    <div class="demo-badge">Free Demo 2</div>
+    <div class="card-image" style="background-image:url('https://placehold.co/800x1200/e2e8f0/64748b?font=montserrat&text=2');"></div>
+    <div class="card-overlay"><div class="view-btn">Launch Live Experience</div></div>
+    </div>
+
+    <div class="card" onclick="openDemo('https://wp.favdevs.net/renev/?storefront=envato-elements')">
+    <div class="demo-badge">Free Demo 3</div>
+    <div class="card-image" style="background-image:url('https://placehold.co/800x1200/e2e8f0/64748b?font=montserrat&text=3');"></div>
+    <div class="card-overlay"><div class="view-btn">Launch Live Experience</div></div>
+    </div>
+
+    <div class="card" onclick="openDemo('https://nva.nirmanavisual.com/revolix/template-kit/home/?storefront=envato-elements')">
+    <div class="demo-badge">Free Demo 4</div>
+    <div class="card-image" style="background-image:url('https://placehold.co/800x1200/e2e8f0/64748b?font=montserrat&text=4');"></div>
+    <div class="card-overlay"><div class="view-btn">Launch Live Experience</div></div>
+    </div>
+
+    <div class="card" onclick="openDemo('https://elementorpress.com/nuvia/?storefront=envato-elements')">
+    <div class="demo-badge">Free Demo 5</div>
+    <div class="card-image" style="background-image:url('https://placehold.co/800x1200/e2e8f0/64748b?font=montserrat&text=5');"></div>
+    <div class="card-overlay"><div class="view-btn">Launch Live Experience</div></div>
+    </div>
+</div>
+
+
+<h2 class="section-title">Paid theme</h2>
+
+<div class="options">
+    <div class="card" onclick="openDemo('https://creaox.rstheme.com/dark/')">
+    <div class="demo-badge">Paid Demo 1</div>
+    <div class="card-image" style="background-image:url('https://placehold.co/800x1200/f1f5f9/96004E?font=montserrat&text=1');"></div>
+    <div class="card-overlay"><div class="view-btn">Launch Live Experience</div></div>
+    </div>
+
+    <div class="card" onclick="openDemo('https://creaox.rstheme.com/dark/startup-agency/')">
+    <div class="demo-badge">Paid Demo 2</div>
+    <div class="card-image" style="background-image:url('https://placehold.co/800x1200/f1f5f9/96004E?font=montserrat&text=2');"></div>
+    <div class="card-overlay"><div class="view-btn">Launch Live Experience</div></div>
+    </div>
+
+    <div class="card" onclick="openDemo('https://creaox.rstheme.com/dark/marketing-agency/')">
+    <div class="demo-badge">Paid Demo 3</div>
+    <div class="card-image" style="background-image:url('https://placehold.co/800x1200/f1f5f9/96004E?font=montserrat&text=3');"></div>
+    <div class="card-overlay"><div class="view-btn">Launch Live Experience</div></div>
+    </div>
+
+    <div class="card" onclick="openDemo('https://bracketweb.com/pikizwp/home-three/')">
+    <div class="demo-badge">Paid Demo 4</div>
+    <div class="card-image" style="background-image:url('https://placehold.co/800x1200/f1f5f9/96004E?font=montserrat&text=4');"></div>
+    <div class="card-overlay"><div class="view-btn">Launch Live Experience</div></div>
+    </div>
+
+    <div class="card" onclick="openDemo('https://wp.ravextheme.com/redox-dark/')">
+    <div class="demo-badge">Paid Demo 5</div>
+    <div class="card-image" style="background-image:url('https://placehold.co/800x1200/f1f5f9/96004E?font=montserrat&text=5');"></div>
+    <div class="card-overlay"><div class="view-btn">Launch Live Experience</div></div>
+    </div>
+
+    <div class="card" onclick="openDemo('https://wp.ravextheme.com/redox/creative-agency/')">
+    <div class="demo-badge">Paid Demo 6</div>
+    <div class="card-image" style="background-image:url('https://placehold.co/800x1200/f1f5f9/96004E?font=montserrat&text=6');"></div>
+    <div class="card-overlay"><div class="view-btn">Launch Live Experience</div></div>
+    </div>
+
+    <div class="card" onclick="openDemo('https://wp.ravextheme.com/redox/modern-agency-2/')">
+    <div class="demo-badge">Paid Demo 7</div>
+    <div class="card-image" style="background-image:url('https://placehold.co/800x1200/f1f5f9/96004E?font=montserrat&text=7');"></div>
+    <div class="card-overlay"><div class="view-btn">Launch Live Experience</div></div>
+    </div>
+
+    <div class="card" onclick="openDemo('https://themexriver.com/wp/xriver/home-02/')">
+    <div class="demo-badge">Paid Demo 8</div>
+    <div class="card-image" style="background-image:url('https://placehold.co/800x1200/f1f5f9/96004E?font=montserrat&text=8');"></div>
+    <div class="card-overlay"><div class="view-btn">Launch Live Experience</div></div>
+    </div>
+</div>
+
+</div>
+
+<div class="footer">
+© 2026 <span>Creative agency website Demo</span>. Soumadeep Bagchi.
+</div>
+
+</div>
+
+<div class="iframe-container" id="previewLayer">
+
+<div class="left-sidebar">
+
+<button class="device-btn active" id="btnDesktop" onclick="setDevice('desktop')">
+<svg viewBox="0 0 24 24" width="24"><path d="M21 2H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h7l-2 3v1h8v-1l-2-3h7c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 12H3V4h18v10z"/></svg>
+</button>
+
+<button class="device-btn" id="btnTablet" onclick="setDevice('tablet')">
+<svg viewBox="0 0 24 24" width="24"><path d="M19 4H5c-1.11 0-2 .9-2 2v12c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.89-2-2-2zm-7 14c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm7-4H5V6h14v8z"/></svg>
+</button>
+
+<button class="device-btn" id="btnMobile" onclick="setDevice('mobile')">
+<svg viewBox="0 0 24 24" width="24"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg>
+</button>
+
+</div>
+
+<div class="right-sidebar">
+<button class="back-btn" onclick="goHome()">Back to Selection</button>
+</div>
+
+<div class="loader-box" id="loaderBox">
+<h2 id="percentText">0%</h2>
+
+<div class="progress-bar">
+<div class="progress-fill" id="progressFill"></div>
+</div>
+
+<p style="color:#64748b;margin-top:10px;font-size:13px;">Optimizing experience...</p>
+</div>
+
+<div class="iframe-wrapper">
+<iframe id="demoFrame"></iframe>
+</div>
+
+</div>
+
+<script>
+
+const previewLayer=document.getElementById("previewLayer");
+const homePage=document.getElementById("homePage");
+const demoFrame=document.getElementById("demoFrame");
+const percentText=document.getElementById("percentText");
+const progressFill=document.getElementById("progressFill");
+const loaderBox=document.getElementById("loaderBox");
+
+function openDemo(url){
+
+window.scrollTo(0,0);
+
+homePage.style.display="none";
+previewLayer.style.display="block";
+
+loaderBox.style.display="block";
+demoFrame.style.display="none";
+
+let progress=0;
+
+setDevice("desktop");
+
+let interval=setInterval(()=>{
+
+progress+=Math.random()*20;
+
+if(progress>92){
+progress=92;
+clearInterval(interval);
+}
+
+percentText.innerText=Math.floor(progress)+"%";
+progressFill.style.width=progress+"%";
+
+},150);
+
+demoFrame.src=url;
+
+demoFrame.onload=()=>{
+
+clearInterval(interval);
+
+percentText.innerText="100%";
+progressFill.style.width="100%";
+
+setTimeout(()=>{
+
+loaderBox.style.display="none";
+demoFrame.style.display="block";
+
+},400);
+
+};
+
+}
+
+function setDevice(mode){
+
+document.querySelectorAll(".device-btn").forEach(btn=>btn.classList.remove("active"));
+
+if(mode==="desktop"){
+demoFrame.style.width="100%";
+document.getElementById("btnDesktop").classList.add("active");
+}
+
+if(mode==="tablet"){
+demoFrame.style.width="768px";
+document.getElementById("btnTablet").classList.add("active");
+}
+
+if(mode==="mobile"){
+demoFrame.style.width="390px";
+document.getElementById("btnMobile").classList.add("active");
+}
+
+}
+
+function goHome(){
+
+previewLayer.style.display="none";
+homePage.style.display="block";
+
+demoFrame.src="";
+demoFrame.style.display="none";
+
+percentText.innerText="0%";
+progressFill.style.width="0%";
+
+window.scrollTo(0,0);
+
+}
+
+</script>
+
+</body>
+</html>
