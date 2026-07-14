@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Durga Puja Countdown</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+  
+  * { 
+    box-sizing: border-box; 
+    margin: 0; 
+    padding: 0; 
+  }
+  
+  body {
+    font-family: 'Poppins', sans-serif;
+    /* Soft, solid festive light background - no gradients */
+    background-color: #fdfbf7; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #333;
+  }
+
+  /* Modern Glassmorphism Container */
+  .glass-container {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: 24px;
+    padding: 40px;
+    width: 90%;
+    max-width: 550px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.04);
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 2rem;
+    color: #e63946;
+    margin-bottom: 25px;
+    font-weight: 700;
+  }
+
+  .dropdown-wrapper {
+    margin-bottom: 35px;
+  }
+
+  select {
+    appearance: none;
+    background: #fff;
+    border: 2px solid #eaeaea;
+    padding: 12px 40px 12px 24px;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    color: #333;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+    /* Custom arrow for dropdown */
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23333%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+    background-repeat: no-repeat;
+    background-position: right 15px top 50%;
+    background-size: 12px auto;
+  }
+
+  select:focus {
+    border-color: #e63946;
+  }
+
+  /* Bento Grid Layout for Timer */
+  .countdown-bento {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin-top: 10px;
+  }
+
+  .bento-box {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 20px 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(0,0,0,0.03);
+    transition: transform 0.2s ease;
+  }
+
+  .bento-box:hover {
+    transform: translateY(-3px);
+  }
+
+  .time-val {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #1d3557;
+    line-height: 1.1;
+  }
+
+  .time-label {
+    font-size: 0.8rem;
+    color: #777;
+    margin-top: 6px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+  }
+
+  /* Completed Message Styling */
+  #message-box {
+    display: none;
+    margin-top: 20px;
+    padding: 20px;
+    background: #fff0f0;
+    color: #c92a2a;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 1.2rem;
+    border: 1px solid #ffc9c9;
+  }
+
+  /* Responsive styling */
+  @media (max-width: 480px) {
+    .countdown-bento {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+    .glass-container {
+      padding: 30px 20px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="glass-container">
+  <h1>Durga Puja Countdown</h1>
+  
+  <div class="dropdown-wrapper">
+    <select id="yearSelect">
+      <option value="2025">2025</option>
+      <option value="2026" selected>2026</option>
+      <option value="2027">2027</option>
+      <option value="2028">2028</option>
+      <option value="2029">2029</option>
+      <option value="2030">2030</option>
+    </select>
+  </div>
+
+  <div id="countdown-wrapper" class="countdown-bento">
+    <div class="bento-box">
+      <span class="time-val" id="days">00</span>
+      <span class="time-label">Days</span>
+    </div>
+    <div class="bento-box">
+      <span class="time-val" id="hours">00</span>
+      <span class="time-label">Hours</span>
+    </div>
+    <div class="bento-box">
+      <span class="time-val" id="mins">00</span>
+      <span class="time-label">Mins</span>
+    </div>
+    <div class="bento-box">
+      <span class="time-val" id="secs">00</span>
+      <span class="time-label">Secs</span>
+    </div>
+  </div>
+
+  <div id="message-box">
+    2025 Durga Puja has been Completed.
+  </div>
+</div>
+
+<script>
+  // Approximate Dates for upcoming Durga Pujas (Maha Saptami/Shashthi)
+  const pujaDates = {
+    "2026": new Date("Oct 17, 2026 00:00:00").getTime(),
+    "2027": new Date("Oct 6, 2027 00:00:00").getTime(),
+    "2028": new Date("Sep 24, 2028 00:00:00").getTime(),
+    "2029": new Date("Oct 13, 2029 00:00:00").getTime(),
+    "2030": new Date("Oct 3, 2030 00:00:00").getTime()
+  };
+
+  // DOM Elements
+  const yearSelect = document.getElementById("yearSelect");
+  const countdownWrapper = document.getElementById("countdown-wrapper");
+  const messageBox = document.getElementById("message-box");
+
+  const elDays = document.getElementById("days");
+  const elHours = document.getElementById("hours");
+  const elMins = document.getElementById("mins");
+  const elSecs = document.getElementById("secs");
+
+  let timerInterval;
+
+  // Core update function
+  function updateCountdown() {
+    const selectedYear = yearSelect.value;
+
+    // Logic for 2025 explicitly handled as requested
+    if (selectedYear === "2025") {
+      clearInterval(timerInterval);
+      countdownWrapper.style.display = "none";
+      messageBox.style.display = "block";
+      return;
+    }
+
+    // Reset layout for active countdowns
+    countdownWrapper.style.display = "grid";
+    messageBox.style.display = "none";
+
+    const targetDate = pujaDates[selectedYear];
+    
+    // Clear previous interval when switching years
+    clearInterval(timerInterval);
+    
+    // Start live calculation
+    timerInterval = setInterval(() => {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+
+      // Failsafe if the date has passed
+      if (distance < 0) {
+        clearInterval(timerInterval);
+        elDays.innerHTML = "00";
+        elHours.innerHTML = "00";
+        elMins.innerHTML = "00";
+        elSecs.innerHTML = "00";
+        return;
+      }
+
+      // Time calculations
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      // Formatting with leading zeros
+      elDays.innerHTML = days < 10 ? "0" + days : days;
+      elHours.innerHTML = hours < 10 ? "0" + hours : hours;
+      elMins.innerHTML = minutes < 10 ? "0" + minutes : minutes;
+      elSecs.innerHTML = seconds < 10 ? "0" + seconds : seconds;
+
+    }, 1000);
+  }
+
+  // Bind event listener to dropdown
+  yearSelect.addEventListener("change", updateCountdown);
+  
+  // Initialize on page load
+  updateCountdown();
+</script>
+</body>
+</html>
