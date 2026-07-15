@@ -1,0 +1,1 @@
+sass --watch D:\pranta-dropbox\Dropbox\pranto\HTML\diego-prev\diego\assets\scss\main.scss:D:\pranta-dropbox\Dropbox\pranto\HTML\diego-prev\diego\assets\css\main.css
