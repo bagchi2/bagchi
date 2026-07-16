@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<!--
+==========================================================
+Affiliate Redirect System
+Version: 1.1
+Redirect Type: 307 Temporary Redirect (Browser Redirect)
+
+Website:
+https://bagchi.in
+
+==========================================================
+
+HOW TO USE
+
+https://bagchi.in/go.html?id=ultahost
+https://bagchi.in/go.html?id=fastcomet
+https://bagchi.in/go.html?id=chemicloud
+https://bagchi.in/go.html?id=milesweb
+https://bagchi.in/go.html?id=spaceship
+https://bagchi.in/go.html?id=namecheap
+https://bagchi.in/go.html?id=inmotionhosting
+https://bagchi.in/go.html?id=hostarmada
+https://bagchi.in/go.html?id=digitalocean
+https://bagchi.in/go.html?id=wpx
+https://bagchi.in/go.html?id=cloudways
+https://bagchi.in/go.html?id=bigrock
+https://bagchi.in/go.html?id=hostinger
+
+==========================================================
+
+HOW TO ADD A NEW AFFILIATE LINK
+
+1. Add a new line inside the links object.
+
+Example:
+
+newhost: "https://example.com/your-affiliate-link",
+
+2. Open it like:
+
+https://bagchi.in/go.html?id=newhost
+
+==========================================================
+
+NOTE
+
+This is a CLIENT-SIDE redirect.
+
+If you require a true HTTP 307 status code, it must be
+performed by the server (Cloudflare Worker, Apache,
+Nginx, etc.). JavaScript cannot send an HTTP 307 response.
+
+==========================================================
+-->
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Redirecting...</title>
+
+<meta name="robots" content="noindex,nofollow">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+    background:#f5f7fb;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+}
+
+.card{
+    width:92%;
+    max-width:500px;
+    background:#fff;
+    padding:40px;
+    border-radius:14px;
+    box-shadow:0 15px 40px rgba(0,0,0,.08);
+    text-align:center;
+}
+
+.loader{
+    width:70px;
+    height:70px;
+    margin:auto;
+    border-radius:50%;
+    border:6px solid #e8e8e8;
+    border-top:6px solid #0d6efd;
+    animation:spin 1s linear infinite;
+    margin-bottom:25px;
+}
+
+@keyframes spin{
+    100%{
+        transform:rotate(360deg);
+    }
+}
+
+h1{
+    font-size:28px;
+    margin-bottom:12px;
+}
+
+p{
+    color:#666;
+    line-height:1.7;
+}
+
+small{
+    display:block;
+    margin-top:20px;
+    color:#888;
+}
+
+.error{
+    color:#dc3545;
+    font-weight:bold;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="card">
+
+<div class="loader" id="loader"></div>
+
+<h1 id="title">Redirecting...</h1>
+
+<p id="message">
+Please wait while we securely redirect you.
+</p>
+
+<small id="status">
+Loading...
+</small>
+
+</div>
+
+<script>
+
+/* ==========================================================
+   AFFILIATE LINKS
+   ========================================================== */
+
+const links = {
+
+    ultahost: "https://ultahost.com/#bagchi",
+
+    fastcomet: "https://affiliate.fastcomet.com/scripts/2wc9ym?a_aid=5fd04f6edea6c",
+
+    chemicloud: "https://chemicloud.com/#6995c57eba54d",
+
+    milesweb: "https://my.milesweb.com/aff.php?aff=3338",
+
+    spaceship: "https://spaceship.sjv.io/DyMDjo",
+
+    namecheap: "https://namecheap.pxf.io/x9b1rO",
+
+    inmotionhosting: "https://partners.inmotionhosting.com/Ag059K",
+
+    hostarmada: "https://affiliates.hostarmada.com/scripts/q1yoac4x8oq?a_aid=Bagchi",
+
+    digitalocean: "https://m.do.co/c/90a9058c6b40",
+
+    wpx: "https://wpx.net/?affid=12370",
+
+    cloudways: "https://www.cloudways.com/en/?id=571649",
+
+    bigrock: "https://bigrock-in.sjv.io/9mD9W",
+
+    hostinger: "https://www.hostg.xyz/SHEtR"
+
+};
+
+/* ==========================================================
+   REDIRECT
+   ========================================================== */
+
+const params = new URLSearchParams(window.location.search);
+
+const id = params.get("id");
+
+if (id && links[id]) {
+
+    document.getElementById("status").textContent = "Opening: " + id;
+
+    setTimeout(function () {
+
+        // Client-side redirect
+        window.location.replace(links[id]);
+
+    }, 1000);
+
+} else {
+
+    document.getElementById("loader").style.display = "none";
+
+    document.getElementById("title").textContent = "404";
+
+    document.getElementById("message").textContent = "Affiliate link not found.";
+
+    document.getElementById("status").innerHTML =
+        '<span class="error">Invalid or missing affiliate ID.</span>';
+
+}
+
+</script>
+
+</body>
+</html>
