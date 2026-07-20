@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Split-Screen Bold Text Generator</title>
+    <style>
+        :root {
+            --primary: #3B82F6;
+            --primary-hover: #2563EB;
+            --primary-glow: rgba(59, 130, 246, 0.4);
+            --bg: #F3F4F8;
+            --surface: #FFFFFF;
+            --text-dark: #1E293B;
+            --text-light: #64748B;
+            --border: #E2E8F0;
+            --tab-bg: #F1F5F9;
+            --tab-hover: #E2E8F0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg);
+            background-image: radial-gradient(circle at top right, #E0E7FF 0%, transparent 40%), 
+                              radial-gradient(circle at bottom left, #F3E8FF 0%, transparent 40%);
+            color: var(--text-dark);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 1.2rem 2rem;
+            border-bottom: 1px solid var(--border);
+            text-align: center;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02);
+            position: relative;
+            z-index: 10;
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #2563EB, #8B5CF6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.5px;
+        }
+
+        .workspace {
+            display: flex;
+            flex: 1;
+            padding: 2.5rem;
+            gap: 2.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+            height: calc(100vh - 75px);
+        }
+
+        .left-panel, .right-panel {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background: var(--surface);
+            border-radius: 16px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.03);
+            border: 1px solid rgba(255,255,255,0.5);
+            overflow: hidden;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .left-panel:hover, .right-panel:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+        }
+
+        .panel-header {
+            padding: 1.25rem 1.5rem;
+            background: #F8FAFC;
+            border-bottom: 1px solid var(--border);
+            font-weight: 700;
+            color: var(--text-dark);
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        textarea {
+            flex: 1;
+            width: 100%;
+            padding: 1.5rem;
+            border: none;
+            resize: none;
+            font-size: 1.15rem;
+            outline: none;
+            color: var(--text-dark);
+            line-height: 1.7;
+            background-color: transparent;
+            transition: background-color 0.3s ease;
+        }
+
+        textarea:focus {
+            background-color: #F8FAFC;
+        }
+
+        .tabs {
+            display: flex;
+            background: #F8FAFC;
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 1.25rem;
+            gap: 0.75rem;
+            overflow-x: auto;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 0.75rem 1rem;
+            background: var(--tab-bg);
+            border: 1px solid transparent;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-light);
+            cursor: pointer;
+            transition: all 0.25s ease;
+            white-space: nowrap;
+        }
+
+        .tab-btn:hover:not(.active) {
+            background: var(--tab-hover);
+            color: var(--text-dark);
+            transform: translateY(-2px);
+        }
+
+        .tab-btn.active {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 4px 12px var(--primary-glow);
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .output-body {
+            flex: 1;
+            padding: 1.5rem;
+            overflow-y: auto;
+            font-size: 1.2rem;
+            line-height: 1.7;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            color: var(--text-dark);
+            position: relative;
+        }
+
+        .output-body::selection {
+            background: rgba(59, 130, 246, 0.2); /* Soft blue selection */
+        }
+
+        .output-body:empty::before {
+            content: 'Your converted text will magically appear here...';
+            color: #94A3B8;
+            font-style: italic;
+            font-size: 1.1rem;
+        }
+
+        .output-footer {
+            padding: 1.25rem 1.5rem;
+            border-top: 1px solid var(--border);
+            background: #F8FAFC;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .copy-btn {
+            background: var(--text-dark);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.75rem;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .copy-btn:hover {
+            background: var(--primary);
+            box-shadow: 0 8px 15px var(--primary-glow);
+            transform: translateY(-2px);
+        }
+
+        .copy-btn.copied {
+            background: #10B981; 
+            box-shadow: 0 8px 15px rgba(16, 185, 129, 0.3);
+        }
+
+        /* --- NEW: FLOATING SELECTION POPUP --- */
+        .selection-tooltip {
+            position: fixed;
+            background: #1E293B;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            z-index: 1000;
+            
+            /* Animation properties */
+            opacity: 0;
+            pointer-events: none;
+            transform: translate(-50%, 10px) scale(0.9);
+            transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        /* Tooltip Arrow */
+        .selection-tooltip::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 5px 5px 0;
+            border-style: solid;
+            border-color: #1E293B transparent transparent transparent;
+            transition: border-color 0.2s;
+        }
+
+        /* Tooltip Visible State */
+        .selection-tooltip.show {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translate(-50%, 0) scale(1);
+        }
+
+        /* Tooltip Success State */
+        .selection-tooltip.success {
+            background: #10B981;
+        }
+        .selection-tooltip.success::after {
+            border-top-color: #10B981;
+        }
+
+        /* Custom Scrollbars */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94A3B8; }
+
+        @media (max-width: 960px) {
+            .workspace { flex-direction: column; height: auto; padding: 1.5rem; }
+            .left-panel, .right-panel { height: 50vh; min-height: 400px; flex: none; }
+            .left-panel:hover, .right-panel:hover { transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Bold Text Generator</h1>
+    </header>
+
+    <div class="workspace">
+        <div class="left-panel">
+            <div class="panel-header">
+                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg>
+                Type or Paste Text
+            </div>
+            <textarea id="sourceText" placeholder="Start typing..."></textarea>
+        </div>
+
+        <div class="right-panel">
+            <div class="tabs">
+                <button class="tab-btn active" data-style="bold-serif">Bold (Serif)</button>
+                <button class="tab-btn" data-style="bold-sans">Bold (Sans)</button>
+                <button class="tab-btn" data-style="italic-bold-serif">Italic Bold (Serif)</button>
+                <button class="tab-btn" data-style="italic-bold-sans">Italic Bold (Sans)</button>
+            </div>
+            
+            <div class="output-body" id="outputText"></div>
+
+            <div class="output-footer">
+                <button class="copy-btn" id="copyBtn">
+                    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                    <span>Copy All Text</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Popup Button -->
+    <button id="selectionPopup" class="selection-tooltip">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+        <span>Copy Section</span>
+    </button>
+
+    <script>
+        const charMaps = {
+            'bold-serif': { A: 0x1D400, a: 0x1D41A, 0: 0x1D7CE },
+            'bold-sans': { A: 0x1D5D4, a: 0x1D5EE, 0: 0x1D7EC },
+            'italic-bold-serif': { A: 0x1D468, a: 0x1D482, 0: 0x1D7CE },
+            'italic-bold-sans': { A: 0x1D608, a: 0x1D622, 0: 0x1D7EC }
+        };
+
+        let currentText = '';
+        let currentStyle = 'bold-serif';
+
+        const sourceInput = document.getElementById('sourceText');
+        const outputDisplay = document.getElementById('outputText');
+        const tabButtons = document.querySelectorAll('.tab-btn');
+        const copyBtn = document.getElementById('copyBtn');
+        const selectionPopup = document.getElementById('selectionPopup');
+
+        function convertText(text, styleId) {
+            if (!text) return '';
+            const map = charMaps[styleId];
+            let result = '';
+
+            for (const char of text) {
+                const code = char.codePointAt(0);
+                if (code >= 65 && code <= 90) result += String.fromCodePoint(code - 65 + map.A);
+                else if (code >= 97 && code <= 122) result += String.fromCodePoint(code - 97 + map.a);
+                else if (code >= 48 && code <= 57) result += String.fromCodePoint(code - 48 + map['0']);
+                else result += char;
+            }
+            return result;
+        }
+
+        function updateUI() {
+            outputDisplay.textContent = convertText(currentText, currentStyle);
+        }
+
+        sourceInput.addEventListener('input', (e) => {
+            currentText = e.target.value;
+            updateUI();
+        });
+
+        tabButtons.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                tabButtons.forEach(t => t.classList.remove('active'));
+                e.target.classList.add('active');
+                currentStyle = e.target.dataset.style;
+                updateUI();
+            });
+        });
+
+        // Copy All Data
+        copyBtn.addEventListener('click', () => {
+            const textToCopy = outputDisplay.textContent;
+            if (!textToCopy) return;
+
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                const btnText = copyBtn.querySelector('span');
+                const originalText = btnText.innerText;
+                const iconSVG = copyBtn.querySelector('svg');
+                
+                copyBtn.classList.add('copied');
+                btnText.innerText = 'Copied!';
+                iconSVG.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>';
+                
+                setTimeout(() => {
+                    copyBtn.classList.remove('copied');
+                    btnText.innerText = originalText;
+                    iconSVG.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>';
+                }, 2000);
+            });
+        });
+
+        // --- NEW: Floating Popup Logic ---
+
+        // Hide popup instantly if user clicks elsewhere and clears selection
+        document.addEventListener('selectionchange', () => {
+            if (!window.getSelection().toString().trim()) {
+                selectionPopup.classList.remove('show');
+            }
+        });
+
+        // Listen for mouse/touch release inside the output box to detect selection
+        outputDisplay.addEventListener('mouseup', handleSelection);
+        outputDisplay.addEventListener('touchend', handleSelection);
+        outputDisplay.addEventListener('keyup', handleSelection);
+
+        function handleSelection() {
+            // Slight delay ensures the browser has finished painting the selection bounds
+            setTimeout(() => {
+                const selection = window.getSelection();
+                const text = selection.toString().trim();
+
+                if (text.length > 0) {
+                    const range = selection.getRangeAt(0);
+                    const rect = range.getBoundingClientRect();
+                    
+                    // Position popup horizontally centered above the highlighted text
+                    selectionPopup.style.left = `${rect.left + (rect.width / 2)}px`;
+                    // Position popup vertically 10px above the highlight
+                    selectionPopup.style.top = `${rect.top - selectionPopup.offsetHeight - 10}px`;
+                    
+                    selectionPopup.classList.add('show');
+                } else {
+                    selectionPopup.classList.remove('show');
+                }
+            }, 10);
+        }
+
+        // Hide popup when user scrolls inside the output text area (native behavior)
+        outputDisplay.addEventListener('scroll', () => {
+            selectionPopup.classList.remove('show');
+        });
+
+        // Copy functionality for the Floating Popup
+        selectionPopup.addEventListener('click', () => {
+            const textToCopy = window.getSelection().toString().trim();
+            if (!textToCopy) return;
+
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                const btnText = selectionPopup.querySelector('span');
+                const iconSVG = selectionPopup.querySelector('svg');
+                
+                selectionPopup.classList.add('success');
+                btnText.innerText = 'Copied!';
+                iconSVG.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>';
+                
+                setTimeout(() => {
+                    selectionPopup.classList.remove('show'); // Hide it
+                    selectionPopup.classList.remove('success'); // Reset style
+                    btnText.innerText = 'Copy Section';
+                    iconSVG.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>';
+                    window.getSelection().removeAllRanges(); // Clear the text highlight after copying
+                }, 1200);
+            });
+        });
+    </script>
+</body>
+</html>
