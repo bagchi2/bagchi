@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://bagchi.in/sitemap.xml
