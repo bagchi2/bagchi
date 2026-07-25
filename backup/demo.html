@@ -207,13 +207,13 @@
     }
     </script>
 
-    <!-- Fonts & Icons from File 2 -->
+    <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kufam:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="shortcut icon" type="image/x-icon" href="/assets/img/logo/favicon.png">
 
-    <!-- Style Dependencies from File 2 -->
+    <!-- Style Dependencies -->
     <link rel="stylesheet" href="/assets/css/bootstrap.css">
     <link rel="stylesheet" href="/assets/css/animate.css">
     <link rel="stylesheet" href="/assets/css/custom-animation.css">
@@ -228,7 +228,7 @@
     
     <style>
         :root {
-            /* Restyled Theme Palette from File 2 */
+            /* Restyled Theme Palette */
             --bg-dark: #000000;
             --bg-card: #25243e;
             --bg-surface: #1a1a1a;
@@ -547,15 +547,15 @@
         .feature-item { color: #ffffff; display: flex; align-items: center; gap: 12px; font-size: 1rem; font-weight: 500; }
         .feature-item i.fa-check-circle { color: #10b981; font-size: 1.1rem; }
         
-        .feature-item .fa-info-circle { color: var(--green-accent); font-size: 0.8rem; cursor: pointer; }
-        
         /* Custom Tooltip CSS */
         .custom-tooltip {
             position: relative;
             display: inline-flex;
             align-items: center;
             cursor: pointer;
+            margin-left: 5px;
         }
+        .custom-tooltip .fa-info-circle { color: #f59e0b; font-size: 1rem; }
         .custom-tooltip::after {
             content: attr(data-tooltip);
             position: absolute;
@@ -575,6 +575,7 @@
             z-index: 100;
             box-shadow: 0 5px 15px rgba(0,0,0,0.5);
             pointer-events: none;
+            border: 1px solid var(--border-color);
         }
         .custom-tooltip::before {
             content: '';
@@ -690,7 +691,7 @@
 </head>
 <body id="body" class="tp-magic-cursor">
 
-    <!-- Preloader from File 2 -->
+    <!-- Preloader -->
     <div id="loading">
         <div id="loading-center">
             <div id="loading-center-absolute">
@@ -707,12 +708,12 @@
         </div>  
     </div>
 
-    <!-- Magic Cursor from File 2 -->
+    <!-- Magic Cursor -->
     <div id="magic-cursor">
         <div id="ball"></div>
     </div>
 
-    <!-- Back To Top Button from File 2 -->
+    <!-- Back To Top Button -->
     <div class="back-to-top-wrapper">
         <button id="back_to_top" type="button" class="back-to-top-btn">
             <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -721,7 +722,7 @@
         </button>
     </div>
 
-    <!-- Mobile Menu / Offcanvas Area from File 2 -->
+    <!-- Mobile Menu / Offcanvas Area -->
     <div class="tp-offcanvas-area">
         <div class="tp-offcanvas-bg is-left"></div>
         <div class="tp-offcanvas-bg is-right d-none d-md-block">
@@ -791,7 +792,7 @@
         </div>
     </div>
 
-    <!-- Header / Navbar from File 2 -->
+    <!-- Header / Navbar -->
     <header>
         <div class="tp-header-4__area tp-header-transparent tp-header-4__mob-ptb tp-header-4__plr header">
             <div class="container-fluid">
@@ -879,7 +880,7 @@
         </div>
     </header>
 
-    <!-- Sticky Header Clone from File 2 -->
+    <!-- Sticky Header Clone -->
     <header>
         <div class="tp-header-4__area tp-header-transparent tp-header-4__mob-ptb tp-header-4__plr tp-int-menu tp-header-sticky-cloned">
             <div class="container-fluid">
@@ -969,7 +970,7 @@
         <div id="smooth-content">
             <main>
 
-                <!-- Hero Section (Content from File 1, Themed) -->
+                <!-- Hero Section -->
                 <section class="hero">
                     <div class="hero-content">
                         <div class="hero-text">
@@ -1410,7 +1411,7 @@
 
             </main>
 
-            <!-- Footer from File 2 -->
+            <!-- Footer -->
             <footer class="cursor-style">
                 <div class="tp-footer-4__main-wrapper black-bg-2 p-relative z-index-1 fix" data-background="/assets/img/footer/overly-bg.png">
                     <div class="tp-footer-4__area pt-80 pb-60">
@@ -1491,7 +1492,7 @@
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <!-- Scripts from File 2 -->
+    <!-- Scripts -->
     <script src="/assets/js/vendor/jquery.js"></script>
     <script src="/assets/js/bootstrap-bundle.js"></script>
     <script src="/assets/js/three.js"></script>
@@ -1533,10 +1534,8 @@
 
             const targetWhatsAppNumber = "919874239816"; 
 
-            let whatsappText = `*New Quote Request*%0A%0A*Name:* ${name}%0A*Email:* ${email}%0A*Phone:* ${phone}%0A*Service:* ${service}`;
-            if(message) {
-                whatsappText += `%0A*Message:* ${message}`;
-            }
+            // Exact formatting as requested
+            let whatsappText = `Name: ${name}%0AEmail: ${email}%0APhone: ${phone}%0AService: ${service}%0AMessage: ${message}`;
 
             const whatsappUrl = `https://wa.me/${targetWhatsAppNumber}?text=${whatsappText}`;
             window.open(whatsappUrl, '_blank');
