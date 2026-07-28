@@ -708,6 +708,16 @@
             .trust-grid { grid-template-columns: 1fr; }
             .price-amount { font-size: 3rem; }
         }
+		
+		
+		/* Mobile Table Visibility Fix */
+@media (max-width: 850px) {
+    .compare-table {
+        display: block !important;
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+    }
+}
     </style>
 </head>
 <body id="body" class="tp-magic-cursor">
