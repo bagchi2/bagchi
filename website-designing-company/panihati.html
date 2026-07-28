@@ -690,7 +690,13 @@
             .trust-grid { grid-template-columns: repeat(2, 1fr); }
             .section-header h2 { font-size: 2rem; }
         }
-
+/* Mobile Table Visibility Fix */
+@media (max-width: 850px) {
+    .comparison-card {
+        width: max-content !important;
+        min-width: 100% !important;
+    }
+}
         @media (max-width: 600px) {
             .services-grid { grid-template-columns: 1fr; }
             .industry-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
@@ -710,14 +716,7 @@
         }
 		
 		
-		/* Mobile Table Visibility Fix */
-@media (max-width: 850px) {
-    .compare-table {
-        display: block !important;
-        overflow-x: auto !important;
-        -webkit-overflow-scrolling: touch !important;
-    }
-}
+
     </style>
 </head>
 <body id="body" class="tp-magic-cursor">
