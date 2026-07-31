@@ -120,8 +120,28 @@
    <link rel="stylesheet" href="assets/css/spacing.css">
    <link rel="stylesheet" href="assets/css/main.css">
 
-   <!-- Custom Scrollbars & Desktop Arrow Fix -->
+   <!-- Custom Scrollbars, Desktop Arrow Fix & Text Wrap Fix -->
    <style>
+      /* Fix for Hero Title Word Wrapping */
+      .ab-hero__title {
+         word-break: normal !important;
+         overflow-wrap: normal !important;
+         hyphens: none !important;
+      }
+      
+      @media (max-width: 1199px) {
+         .ab-hero__title {
+            font-size: clamp(40px, 6vw, 80px) !important;
+            line-height: 1.1 !important;
+         }
+      }
+
+      @media (max-width: 767px) {
+         .ab-hero__title {
+            font-size: clamp(32px, 8vw, 50px) !important;
+         }
+      }
+
       /* Services Scrollbar */
       #accordionExample {
          max-height: 55vh;
@@ -728,34 +748,31 @@
                                  </div>
                                  <div class="tp-services-capsule-item-wrapper">
                                     <p data-tp-throwable-el="">
-                                       <span class="tp-services-capsule-item" data-bg-color="#00CC97">Frontend</span>
+                                       <span class="tp-services-capsule-item" data-bg-color="#00CC97">Social Media Creative Design</span>
                                     </p>
                                     <p data-tp-throwable-el="">
-                                       <span class="tp-services-capsule-item" data-bg-color="#FF759C">Phototyping</span>
-                                    </p>
-                                    <p data-tp-throwable-el="">
-                                       <span class="tp-services-capsule-item" data-bg-color="#FFDB59"
-                                          data-text-color="#121212">Design solutions</span>
+                                       <span class="tp-services-capsule-item" data-bg-color="#FF759C">Social Media Video Editing</span>
                                     </p>
                                     <p data-tp-throwable-el="">
                                        <span class="tp-services-capsule-item" data-bg-color="#FFDB59"
-                                          data-text-color="#121212">Consulting</span>
-                                    </p>
-                                    <p data-tp-throwable-el="">
-                                       <span class="tp-services-capsule-item" data-bg-color="#00CC97">Brand
-                                          strategy</span>
+                                          data-text-color="#121212">Printing Design</span>
                                     </p>
                                     <p data-tp-throwable-el="">
                                        <span class="tp-services-capsule-item" data-bg-color="#FFDB59"
-                                          data-text-color="#121212">Consulting</span>
+                                          data-text-color="#121212">WordPress Design</span>
                                     </p>
                                     <p data-tp-throwable-el="">
-                                       <span class="tp-services-capsule-item" data-bg-color="#00CC97">Brand
-                                          strategy</span>
+                                       <span class="tp-services-capsule-item" data-bg-color="#00CC97">Website Security</span>
                                     </p>
                                     <p data-tp-throwable-el="">
-                                       <span class="tp-services-capsule-item" data-bg-color="#19B3F1">UI/UX
-                                          Design</span>
+                                       <span class="tp-services-capsule-item" data-bg-color="#FFDB59"
+                                          data-text-color="#121212">Website Error Fixing</span>
+                                    </p>
+                                    <p data-tp-throwable-el="">
+                                       <span class="tp-services-capsule-item" data-bg-color="#00CC97">cPanel & Server Setup</span>
+                                    </p>
+                                    <p data-tp-throwable-el="">
+                                       <span class="tp-services-capsule-item" data-bg-color="#19B3F1">Business Email Setup</span>
                                     </p>
                                     <p data-tp-throwable-el="">
                                        <span class="">
