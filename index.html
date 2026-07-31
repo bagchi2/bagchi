@@ -126,8 +126,9 @@
    <link rel="stylesheet" href="assets/css/spacing.css">
    <link rel="stylesheet" href="assets/css/main.css">
 
-   <!-- Custom Scrollbar for Services Accordion to fix pagePiling overflow -->
+   <!-- Custom Scrollbars & Desktop Arrow Fix -->
    <style>
+      /* Services Scrollbar */
       #accordionExample {
          max-height: 55vh;
          overflow-y: auto;
@@ -146,6 +147,89 @@
       }
       #accordionExample::-webkit-scrollbar-thumb:hover {
          background: rgba(255, 255, 255, 0.5);
+      }
+
+      /* Experience/Skills Scrollbar */
+      #experience-scroll {
+         max-height: 65vh;
+         overflow-y: auto;
+         padding-right: 15px;
+      }
+      #experience-scroll::-webkit-scrollbar {
+         width: 4px;
+      }
+      #experience-scroll::-webkit-scrollbar-track {
+         background: rgba(255, 255, 255, 0.05);
+         border-radius: 10px;
+      }
+      #experience-scroll::-webkit-scrollbar-thumb {
+         background: rgba(255, 255, 255, 0.3);
+         border-radius: 10px;
+      }
+      #experience-scroll::-webkit-scrollbar-thumb:hover {
+         background: rgba(255, 255, 255, 0.5);
+      }
+
+      /* About Section Scrollbar (Fixes Client visibility) */
+      #about-scroll {
+         max-height: 75vh;
+         overflow-y: auto;
+         padding-right: 15px;
+      }
+      #about-scroll::-webkit-scrollbar {
+         width: 4px;
+      }
+      #about-scroll::-webkit-scrollbar-track {
+         background: rgba(255, 255, 255, 0.05);
+         border-radius: 10px;
+      }
+      #about-scroll::-webkit-scrollbar-thumb {
+         background: rgba(255, 255, 255, 0.3);
+         border-radius: 10px;
+      }
+      #about-scroll::-webkit-scrollbar-thumb:hover {
+         background: rgba(255, 255, 255, 0.5);
+      }
+
+      /* Force Project Slider Arrows on Desktop */
+      @media (min-width: 992px) {
+         .tp-3d-slide-container {
+            position: relative !important;
+            width: 100% !important; /* Ensure it takes full width so arrows go to edges */
+         }
+         .tp-3d-slide-arrow {
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+            z-index: 9999 !important;
+            position: absolute !important;
+            top: 50% !important;
+            transform: translateY(-50%) !important;
+            width: 60px !important;
+            height: 60px !important;
+            background: rgba(255, 255, 255, 0.1) !important;
+            border-radius: 50% !important;
+            color: #ffffff !important;
+            cursor: pointer !important;
+            pointer-events: auto !important;
+            transition: all 0.3s ease !important;
+         }
+         .tp-3d-slide-arrow:hover {
+            background: rgba(255, 87, 70, 0.9) !important;
+         }
+         .tp-3d-slide-arrow-left {
+            left: 20px !important;
+         }
+         .tp-3d-slide-arrow-right {
+            left: auto !important; /* Reset left positioning */
+            right: 20px !important; /* Force to right side */
+         }
+         .tp-3d-slide-arrow svg {
+            width: 20px !important;
+            height: 20px !important;
+         }
       }
    </style>
 </head>
@@ -460,87 +544,88 @@
                   <span></span>
                </div>
                <div class="container">
-                  <div class="tp-hero-2__exp-thumb-main p-relative">
-                     <div class="tp-hero-2__circle-img-wrap">
-                        <div class="tp-hero-2__circle-img p-relative">
-                           <img class="img-1" src="assets/img/hero/hero-circle-2.png" alt="">
-                           <div class="tp-hero-2__circle-img-2">
-                              <img src="assets/img/hero/hero-circle-1.png" alt="">
-                           </div>
-                        </div>
-                     </div>
-                     <div class="row align-items-center z-index-5">
-                        <div class="col-xl-4 col-lg-4 col-md-4">
-                           <div class="tp-hero-2__exp-thumb-wrap p-relative text-end">
-                              <div class="tp-hero-2__exp-thumb-bg">
-                                 <img src="assets/img/hero/hero-2.1-img.png" alt="">
-                              </div>
-                              <div class="tp-hero-2__exp-thumb-text">
-                                 <span>8+</span>
-                                 <p>Years <br> Of Working <br>Experience</p>
+                  <div id="about-scroll">
+                     <div class="tp-hero-2__exp-thumb-main p-relative">
+                        <div class="tp-hero-2__circle-img-wrap">
+                           <div class="tp-hero-2__circle-img p-relative">
+                              <img class="img-1" src="assets/img/hero/hero-circle-2.png" alt="">
+                              <div class="tp-hero-2__circle-img-2">
+                                 <img src="assets/img/hero/hero-circle-1.png" alt="">
                               </div>
                            </div>
                         </div>
-                        <div class="col-xl-8 col-lg-8 col-md-8">
-                           <div class="tp-hero-2__exp-info">
-                              <span class="tp-hero-2__exp-subtitle"> <b><img class="tp-ring-effect"
-                                       src="assets/img/hero/hero-hand.png" alt=""></b> Hello
-                                 There!</span>
-                              <h4 class="tp-hero-2__exp-title">I’m Bagchi</h4>
-                              <p class="child-1 ">I am a Website & Graphic Designer crafting visually compelling and user-friendly digital experiences for modern brands.</p>
-                              <p class="child-2 ">I’m Soumadeep Bagchi, a passionate Graphic & Web Designer with 8+ years of experience leading creative
-teams and delivering high-impact design solutions. I specialize in WordPress (Elementor, Divi), eCommerce, video editing, branding, print media, SEO, and server/email maintenance, google adsense. I’ve successfully led graphic and web teams, managing end-to-end projects with precision and creativity. Proficient in Photoshop, Illustrator, filmora, and Google Workspace, I blend aesthetics with strategy to craft websites that convert and visuals that
-resonate. Whether you're launching a brand or scaling it, I’m here to elevate your digital presence..</p>
-                              <a class="tp-hero-2__exp-link" href="contact.html">
-                                 NEED THIS? LETS TALK
-                                 <svg width="22" height="10" viewBox="0 0 22 10" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M1 5.00012H20.1997" stroke="currentcolor" stroke-width="1.5"
-                                       stroke-linecap="round" stroke-linejoin="round" />
-                                    <path d="M17 1L20.9999 4.99993L17 8.99987" stroke="currentcolor" stroke-width="1.5"
-                                       stroke-linecap="round" stroke-linejoin="round" />
-                                 </svg>
-                              </a>
+                        <div class="row align-items-center z-index-5">
+                           <div class="col-xl-4 col-lg-4 col-md-4">
+                              <div class="tp-hero-2__exp-thumb-wrap p-relative text-end">
+                                 <div class="tp-hero-2__exp-thumb-bg">
+                                    <img src="assets/img/hero/hero-2.1-img.png" alt="">
+                                 </div>
+                                 <div class="tp-hero-2__exp-thumb-text">
+                                    <span>8+</span>
+                                    <p>Years <br> Of Working <br>Experience</p>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="col-xl-8 col-lg-8 col-md-8">
+                              <div class="tp-hero-2__exp-info">
+                                 <span class="tp-hero-2__exp-subtitle"> <b><img class="tp-ring-effect"
+                                          src="assets/img/hero/hero-hand.png" alt=""></b> Hello
+                                    There!</span>
+                                 <h4 class="tp-hero-2__exp-title">I’m Bagchi</h4>
+                                 <p class="child-1 ">I am a Website & Graphic Designer crafting visually compelling and user-friendly digital experiences for modern brands.</p>
+                                 <p class="child-2 ">I’m Soumadeep Bagchi, a passionate Graphic & Web Designer with 8+ years of experience leading creative
+   teams and delivering high-impact design solutions. I specialize in WordPress (Elementor, Divi), eCommerce, video editing, branding, print media, SEO, and server/email maintenance, google adsense. I’ve successfully led graphic and web teams, managing end-to-end projects with precision and creativity. Proficient in Photoshop, Illustrator, filmora, and Google Workspace, I blend aesthetics with strategy to craft websites that convert and visuals that
+   resonate. Whether you're launching a brand or scaling it, I’m here to elevate your digital presence..</p>
+                                 <a class="tp-hero-2__exp-link" href="contact.html">
+                                    NEED THIS? LETS TALK
+                                    <svg width="22" height="10" viewBox="0 0 22 10" fill="none"
+                                       xmlns="http://www.w3.org/2000/svg">
+                                       <path d="M1 5.00012H20.1997" stroke="currentcolor" stroke-width="1.5"
+                                          stroke-linecap="round" stroke-linejoin="round" />
+                                       <path d="M17 1L20.9999 4.99993L17 8.99987" stroke="currentcolor" stroke-width="1.5"
+                                          stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                 </a>
+                              </div>
                            </div>
                         </div>
                      </div>
-                  </div>
-                  <div class="tp-hero-2__exp-brand-wrap">
-                     <span class="tp-hero-2__exp-brand-title">
-                        <b>
-                           <img class="tp-zoom-in-out" src="assets/img/hero/hero-star.png" alt="">
-                        </b>
+                     <div class="tp-hero-2__exp-brand-wrap">
+                        <span class="tp-hero-2__exp-brand-title">
+                           <b>
+                              <img class="tp-zoom-in-out" src="assets/img/hero/hero-star.png" alt="">
+                           </b>
 
-                        Clients
-                     </span>
-                     <div class="row row-cols-lg-4 row-cols-md-2 ">
-                        <div class="col-xl mb-10">
-                           <div class="tp-hero-2__exp-brand">
-                              <img src="assets/img/brand/logo2-1.svg" alt="">
+                           Clients
+                        </span>
+                        <div class="row row-cols-lg-4 row-cols-md-2 ">
+                           <div class="col-xl mb-10">
+                              <div class="tp-hero-2__exp-brand">
+                                 <img src="assets/img/brand/logo2-1.svg" alt="">
+                              </div>
                            </div>
-                        </div>
-                        <div class="col-xl mb-10">
-                           <div class="tp-hero-2__exp-brand">
-                              <img src="assets/img/brand/logo2-2.svg" alt="">
+                           <div class="col-xl mb-10">
+                              <div class="tp-hero-2__exp-brand">
+                                 <img src="assets/img/brand/logo2-2.svg" alt="">
+                              </div>
                            </div>
-                        </div>
-                        <div class="col-xl mb-10">
-                           <div class="tp-hero-2__exp-brand">
-                              <img src="assets/img/brand/logo2-3.svg" alt="">
+                           <div class="col-xl mb-10">
+                              <div class="tp-hero-2__exp-brand">
+                                 <img src="assets/img/brand/logo2-3.svg" alt="">
+                              </div>
                            </div>
-                        </div>
-                        <div class="col-xl mb-10">
-                           <div class="tp-hero-2__exp-brand">
-                              <img src="assets/img/brand/logo2-4.svg" alt="">
+                           <div class="col-xl mb-10">
+                              <div class="tp-hero-2__exp-brand">
+                                 <img src="assets/img/brand/logo2-4.svg" alt="">
+                              </div>
                            </div>
-                        </div>
-                        <div class="col-xl mb-10">
-                           <div class="tp-hero-2__exp-brand">
-                              <img src="assets/img/brand/logo2-5.svg" alt="">
+                           <div class="col-xl mb-10">
+                              <div class="tp-hero-2__exp-brand">
+                                 <img src="assets/img/brand/logo2-5.svg" alt="">
+                              </div>
                            </div>
                         </div>
                      </div>
-
                   </div>
                </div>
             </div>
@@ -566,7 +651,7 @@ resonate. Whether you're launching a brand or scaling it, I’m here to elevate 
                                  src="assets/img/services/shape/services-shape-3.png" alt=""> MY SERVICES</span>
                            <div class="accordion" id="accordionExample">
                               
-                              <div class="accordion-items tp-hero-2__accordion-item tp-hover-reveal-item active">
+                              <div class="accordion-items tp-hero-2__accordion-item active">
                                  <h2 class="accordion-header">
                                     <button class="accordion-buttons" type="button" data-bs-toggle="collapse"
                                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
@@ -582,7 +667,6 @@ resonate. Whether you're launching a brand or scaling it, I’m here to elevate 
                                        </span>
                                     </button>
                                  </h2>
-                                 <div class="tp-hover-reveal-bg" data-background="assets/img/faq/faq-4.jpg"></div>
                                  <div id="collapseOne" class="accordion-collapse collapse show"
                                     data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
@@ -591,7 +675,7 @@ resonate. Whether you're launching a brand or scaling it, I’m here to elevate 
                                  </div>
                               </div>
                               
-                              <div class="accordion-items tp-hero-2__accordion-item tp-hover-reveal-item active"
+                              <div class="accordion-items tp-hero-2__accordion-item active"
                                  data-fx="3">
                                  <h2 class="accordion-header">
                                     <button class="accordion-buttons collapsed" type="button" data-bs-toggle="collapse"
@@ -608,7 +692,6 @@ resonate. Whether you're launching a brand or scaling it, I’m here to elevate 
                                        </span>
                                     </button>
                                  </h2>
-                                 <div class="tp-hover-reveal-bg" data-background="assets/img/faq/faq-1.jpg"></div>
                                  <div id="collapseTwo" class="accordion-collapse collapse"
                                     data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
@@ -617,7 +700,7 @@ resonate. Whether you're launching a brand or scaling it, I’m here to elevate 
                                  </div>
                               </div>
                               
-                              <div class="accordion-items tp-hero-2__accordion-item  tp-hover-reveal-item active"
+                              <div class="accordion-items tp-hero-2__accordion-item active"
                                  data-fx="3">
                                  <h2 class="accordion-header">
                                     <button class="accordion-buttons collapsed" type="button" data-bs-toggle="collapse"
@@ -635,7 +718,6 @@ resonate. Whether you're launching a brand or scaling it, I’m here to elevate 
                                        </span>
                                     </button>
                                  </h2>
-                                 <div class="tp-hover-reveal-bg" data-background="assets/img/faq/faq-2.jpg"></div>
                                  <div id="collapseThree" class="accordion-collapse collapse"
                                     data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
@@ -644,7 +726,7 @@ resonate. Whether you're launching a brand or scaling it, I’m here to elevate 
                                  </div>
                               </div>
                               
-                              <div class="accordion-items tp-hero-2__accordion-item tp-hover-reveal-item active"
+                              <div class="accordion-items tp-hero-2__accordion-item active"
                                  data-fx="3">
                                  <h2 class="accordion-header">
                                     <button class="accordion-buttons collapsed" type="button" data-bs-toggle="collapse"
@@ -662,7 +744,6 @@ resonate. Whether you're launching a brand or scaling it, I’m here to elevate 
                                        </span>
                                     </button>
                                  </h2>
-                                 <div class="tp-hover-reveal-bg" data-background="assets/img/faq/faq-3.jpg"></div>
                                  <div id="collapseFour" class="accordion-collapse collapse"
                                     data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
@@ -671,7 +752,7 @@ resonate. Whether you're launching a brand or scaling it, I’m here to elevate 
                                  </div>
                               </div>
 
-                              <div class="accordion-items tp-hero-2__accordion-item tp-hover-reveal-item active"
+                              <div class="accordion-items tp-hero-2__accordion-item active"
                                  data-fx="3">
                                  <h2 class="accordion-header">
                                     <button class="accordion-buttons collapsed" type="button" data-bs-toggle="collapse"
@@ -689,7 +770,6 @@ resonate. Whether you're launching a brand or scaling it, I’m here to elevate 
                                        </span>
                                     </button>
                                  </h2>
-                                 <div class="tp-hover-reveal-bg" data-background="assets/img/faq/faq-4.jpg"></div>
                                  <div id="collapseFive" class="accordion-collapse collapse"
                                     data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
@@ -698,7 +778,7 @@ resonate. Whether you're launching a brand or scaling it, I’m here to elevate 
                                  </div>
                               </div>
 
-                              <div class="accordion-items tp-hero-2__accordion-item tp-hover-reveal-item active"
+                              <div class="accordion-items tp-hero-2__accordion-item active"
                                  data-fx="3">
                                  <h2 class="accordion-header">
                                     <button class="accordion-buttons collapsed" type="button" data-bs-toggle="collapse"
@@ -716,7 +796,6 @@ resonate. Whether you're launching a brand or scaling it, I’m here to elevate 
                                        </span>
                                     </button>
                                  </h2>
-                                 <div class="tp-hover-reveal-bg" data-background="assets/img/faq/faq-1.jpg"></div>
                                  <div id="collapseSix" class="accordion-collapse collapse"
                                     data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
@@ -725,7 +804,7 @@ resonate. Whether you're launching a brand or scaling it, I’m here to elevate 
                                  </div>
                               </div>
 
-                              <div class="accordion-items tp-hero-2__accordion-item tp-hover-reveal-item active"
+                              <div class="accordion-items tp-hero-2__accordion-item active"
                                  data-fx="3">
                                  <h2 class="accordion-header">
                                     <button class="accordion-buttons collapsed" type="button" data-bs-toggle="collapse"
@@ -743,7 +822,6 @@ resonate. Whether you're launching a brand or scaling it, I’m here to elevate 
                                        </span>
                                     </button>
                                  </h2>
-                                 <div class="tp-hover-reveal-bg" data-background="assets/img/faq/faq-2.jpg"></div>
                                  <div id="collapseSeven" class="accordion-collapse collapse"
                                     data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
@@ -752,7 +830,7 @@ resonate. Whether you're launching a brand or scaling it, I’m here to elevate 
                                  </div>
                               </div>
 
-                              <div class="accordion-items tp-hero-2__accordion-item tp-hover-reveal-item active"
+                              <div class="accordion-items tp-hero-2__accordion-item active"
                                  data-fx="3">
                                  <h2 class="accordion-header">
                                     <button class="accordion-buttons collapsed" type="button" data-bs-toggle="collapse"
@@ -770,7 +848,6 @@ resonate. Whether you're launching a brand or scaling it, I’m here to elevate 
                                        </span>
                                     </button>
                                  </h2>
-                                 <div class="tp-hover-reveal-bg" data-background="assets/img/faq/faq-3.jpg"></div>
                                  <div id="collapseEight" class="accordion-collapse collapse"
                                     data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
@@ -800,7 +877,7 @@ resonate. Whether you're launching a brand or scaling it, I’m here to elevate 
                      <div class="col-xl-12">
                         <div class="tp-3d-slide-container">
 
-                           <span class="tp-3d-slide-arrow tp-3d-slide-arrow-left z-index-9">
+                           <span class="tp-3d-slide-arrow tp-3d-slide-arrow-left">
                               <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">
                                  <path d="M15 8H1" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -810,7 +887,7 @@ resonate. Whether you're launching a brand or scaling it, I’m here to elevate 
                               </svg>
                            </span>
 
-                           <span class="tp-3d-slide-arrow tp-3d-slide-arrow-right z-index-9">
+                           <span class="tp-3d-slide-arrow tp-3d-slide-arrow-right">
                               <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">
                                  <path d="M1 8H15" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -996,7 +1073,7 @@ resonate. Whether you're launching a brand or scaling it, I’m here to elevate 
                </div>
                <div class="container">
                   <div class="row">
-                     <div class="col-xl-12">
+                     <div class="col-xl-12" id="experience-scroll">
                         <div class="tp-hero-2__design-exp-wrap">
                            <div class="tp-hero-2__design-exp-top-title">
                               <span><img class="tp-zoom-in-out" src="assets/img/services/shape/services-shape-3.png"
@@ -1007,11 +1084,11 @@ resonate. Whether you're launching a brand or scaling it, I’m here to elevate 
                                  <div
                                     class="tp-hero-2__design-exp-item d-flex align-items-center justify-content-between">
                                     <div class="tp-hero-2__design-exp-meta d-flex align-items-center">
-                                       <span>Oct 2022 - Present</span>
-                                       <h4 class="tp-hero-2__design-exp-title">UI/UX Lead Designer</h4>
+                                       <span>Oct 2023 - Present</span>
+                                       <h4 class="tp-hero-2__design-exp-title">Website Designer</h4>
                                     </div>
                                     <div class="tp-hero-2__design-exp-company">
-                                       <span>Amazon INC</span>
+                                       <span>RT Network Solutions Pvt. Ltd.</span>
                                     </div>
                                  </div>
                               </li>
@@ -1019,11 +1096,11 @@ resonate. Whether you're launching a brand or scaling it, I’m here to elevate 
                                  <div
                                     class="tp-hero-2__design-exp-item d-flex align-items-center justify-content-between">
                                     <div class="tp-hero-2__design-exp-meta d-flex align-items-center">
-                                       <span>Oct 2021- Oct 2022</span>
-                                       <h4 class="tp-hero-2__design-exp-title">Product Lead Designer</h4>
+                                       <span>Oct 2018 - Oct 2023</span>
+                                       <h4 class="tp-hero-2__design-exp-title">Website Designer</h4>
                                     </div>
                                     <div class="tp-hero-2__design-exp-company">
-                                       <span>Fourmeta Agency</span>
+                                       <span>Revolucion</span>
                                     </div>
                                  </div>
                               </li>
@@ -1031,23 +1108,11 @@ resonate. Whether you're launching a brand or scaling it, I’m here to elevate 
                                  <div
                                     class="tp-hero-2__design-exp-item d-flex align-items-center justify-content-between">
                                     <div class="tp-hero-2__design-exp-meta d-flex align-items-center">
-                                       <span>Apr 2020 - Oct 2021</span>
-                                       <h4 class="tp-hero-2__design-exp-title">UI/UX Designer</h4>
+                                       <span>2018 - Present</span>
+                                       <h4 class="tp-hero-2__design-exp-title">Freelance Website Designer</h4>
                                     </div>
                                     <div class="tp-hero-2__design-exp-company">
-                                       <span>Apr 2020 - Oct 2021</span>
-                                    </div>
-                                 </div>
-                              </li>
-                              <li>
-                                 <div
-                                    class="tp-hero-2__design-exp-item d-flex align-items-center justify-content-between">
-                                    <div class="tp-hero-2__design-exp-meta d-flex align-items-center">
-                                       <span>Feb 2015 - Apr 2020</span>
-                                       <h4 class="tp-hero-2__design-exp-title">Intership Graphic Designer</h4>
-                                    </div>
-                                    <div class="tp-hero-2__design-exp-company">
-                                       <span>Feb 2015 - Apr 2020</span>
+                                       <span>Self-Employed</span>
                                     </div>
                                  </div>
                               </li>
@@ -1059,66 +1124,220 @@ resonate. Whether you're launching a brand or scaling it, I’m here to elevate 
                                     alt=""> Experience</span>
                            </div>
                            <div class="row row-cols-xl-5 row-cols-md-3">
+                              
                               <div class="col-xl">
-                                 <div
-                                    class="mb-20 tp-hero-2__design-exp-skill-item justify-content-center bg-1 d-flex align-items-center">
+                                 <div class="mb-20 tp-hero-2__design-exp-skill-item justify-content-center d-flex align-items-center" style="background-color: rgba(49, 168, 255, 0.1);">
                                     <div class="tp-hero-2__design-exp-skill-icon">
-                                       <img src="assets/img/skill/figma-sm.png" alt="">
+                                       <img src="https://img.icons8.com/color/48/adobe-photoshop--v1.png" alt="Photoshop" style="width: 30px; height: 30px; object-fit: contain;">
                                     </div>
                                     <div class="tp-hero-2__design-exp-skill-info">
-                                       <span>94%</span>
-                                       <i>Figma</i>
-                                    </div>
-                                 </div>
-                              </div>
-                              <div class="col-xl">
-                                 <div
-                                    class="mb-20 tp-hero-2__design-exp-skill-item justify-content-center bg-2 d-flex align-items-center">
-                                    <div class="tp-hero-2__design-exp-skill-icon">
-                                       <img src="assets/img/skill/photoshop-sm.png" alt="">
-                                    </div>
-                                    <div class="tp-hero-2__design-exp-skill-info">
-                                       <span>98%</span>
+                                       <span>90%</span>
                                        <i>Photoshop</i>
                                     </div>
                                  </div>
                               </div>
                               <div class="col-xl">
-                                 <div
-                                    class="mb-20 tp-hero-2__design-exp-skill-item justify-content-center bg-3 d-flex align-items-center">
+                                 <div class="mb-20 tp-hero-2__design-exp-skill-item justify-content-center d-flex align-items-center" style="background-color: rgba(255, 154, 0, 0.1);">
                                     <div class="tp-hero-2__design-exp-skill-icon">
-                                       <img src="assets/img/skill/xd-sm.png" alt="">
+                                       <img src="https://img.icons8.com/color/48/adobe-illustrator--v1.png" alt="Illustrator" style="width: 30px; height: 30px; object-fit: contain;">
                                     </div>
                                     <div class="tp-hero-2__design-exp-skill-info">
-                                       <span>82%</span>
-                                       <i>Adobe XD</i>
+                                       <span>90%</span>
+                                       <i>Illustrator</i>
                                     </div>
                                  </div>
                               </div>
                               <div class="col-xl">
-                                 <div
-                                    class="mb-20 tp-hero-2__design-exp-skill-item justify-content-center bg-4 d-flex align-items-center">
+                                 <div class="mb-20 tp-hero-2__design-exp-skill-item justify-content-center d-flex align-items-center" style="background-color: rgba(39, 161, 223, 0.1);">
                                     <div class="tp-hero-2__design-exp-skill-icon">
-                                       <img src="assets/img/skill/sketch-sm.png" alt="">
+                                       <img src="https://img.icons8.com/color/48/coreldraw.png" alt="CorelDRAW" style="width: 30px; height: 30px; object-fit: contain;">
                                     </div>
                                     <div class="tp-hero-2__design-exp-skill-info">
-                                       <span>93%</span>
-                                       <i>Sketch</i>
+                                       <span>70%</span>
+                                       <i>CorelDRAW</i>
                                     </div>
                                  </div>
                               </div>
                               <div class="col-xl">
-                                 <div
-                                    class="mb-20 tp-hero-2__design-exp-skill-item justify-content-center bg-5 d-flex align-items-center">
+                                 <div class="mb-20 tp-hero-2__design-exp-skill-item justify-content-center d-flex align-items-center" style="background-color: rgba(0, 226, 255, 0.1);">
                                     <div class="tp-hero-2__design-exp-skill-icon">
-                                       <img src="assets/img/skill/in-sm.png" alt="">
+                                       <img src="https://img.icons8.com/color/48/video-editing.png" alt="Filmora" style="width: 30px; height: 30px; object-fit: contain;">
                                     </div>
                                     <div class="tp-hero-2__design-exp-skill-info">
-                                       <span>76%</span>
-                                       <i>Invision</i>
+                                       <span>90%</span>
+                                       <i>Filmora</i>
                                     </div>
                                  </div>
                               </div>
+                              <div class="col-xl">
+                                 <div class="mb-20 tp-hero-2__design-exp-skill-item justify-content-center d-flex align-items-center" style="background-color: rgba(0, 196, 204, 0.1);">
+                                    <div class="tp-hero-2__design-exp-skill-icon">
+                                       <img src="https://img.icons8.com/color/48/canva.png" alt="Canva" style="width: 30px; height: 30px; object-fit: contain;">
+                                    </div>
+                                    <div class="tp-hero-2__design-exp-skill-info">
+                                       <span>90%</span>
+                                       <i>Canva</i>
+                                    </div>
+                                 </div>
+                              </div>
+                              
+                              <div class="col-xl">
+                                 <div class="mb-20 tp-hero-2__design-exp-skill-item justify-content-center d-flex align-items-center" style="background-color: rgba(33, 117, 155, 0.1);">
+                                    <div class="tp-hero-2__design-exp-skill-icon">
+                                       <img src="https://img.icons8.com/color/48/wordpress.png" alt="WordPress" style="width: 30px; height: 30px; object-fit: contain;">
+                                    </div>
+                                    <div class="tp-hero-2__design-exp-skill-info">
+                                       <span>90%</span>
+                                       <i>WordPress</i>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="col-xl">
+                                 <div class="mb-20 tp-hero-2__design-exp-skill-item justify-content-center d-flex align-items-center" style="background-color: rgba(146, 0, 59, 0.15);">
+                                    <div class="tp-hero-2__design-exp-skill-icon">
+                                       <img src="https://img.icons8.com/color/48/elementor.png" alt="Elementor" style="width: 30px; height: 30px; object-fit: contain;">
+                                    </div>
+                                    <div class="tp-hero-2__design-exp-skill-info">
+                                       <span>90%</span>
+                                       <i>Elementor</i>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="col-xl">
+                                 <div class="mb-20 tp-hero-2__design-exp-skill-item justify-content-center d-flex align-items-center" style="background-color: rgba(255, 74, 111, 0.1);">
+                                    <div class="tp-hero-2__design-exp-skill-icon">
+                                       <img src="https://img.icons8.com/color/48/web-design.png" alt="Divi" style="width: 30px; height: 30px; object-fit: contain;">
+                                    </div>
+                                    <div class="tp-hero-2__design-exp-skill-info">
+                                       <span>90%</span>
+                                       <i>Divi</i>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="col-xl">
+                                 <div class="mb-20 tp-hero-2__design-exp-skill-item justify-content-center d-flex align-items-center" style="background-color: rgba(255, 108, 44, 0.1);">
+                                    <div class="tp-hero-2__design-exp-skill-icon">
+                                       <img src="https://img.icons8.com/color/48/cpanel.png" alt="cPanel" style="width: 30px; height: 30px; object-fit: contain;">
+                                    </div>
+                                    <div class="tp-hero-2__design-exp-skill-info">
+                                       <span>90%</span>
+                                       <i>cPanel</i>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="col-xl">
+                                 <div class="mb-20 tp-hero-2__design-exp-skill-item justify-content-center d-flex align-items-center" style="background-color: rgba(66, 133, 244, 0.1);">
+                                    <div class="tp-hero-2__design-exp-skill-icon">
+                                       <img src="https://img.icons8.com/color/48/google-logo.png" alt="Google Workspace" style="width: 30px; height: 30px; object-fit: contain;">
+                                    </div>
+                                    <div class="tp-hero-2__design-exp-skill-info">
+                                       <span>90%</span>
+                                       <i>Google Workspace</i>
+                                    </div>
+                                 </div>
+                              </div>
+                              
+                              <div class="col-xl">
+                                 <div class="mb-20 tp-hero-2__design-exp-skill-item justify-content-center d-flex align-items-center" style="background-color: rgba(235, 60, 0, 0.1);">
+                                    <div class="tp-hero-2__design-exp-skill-icon">
+                                       <img src="https://img.icons8.com/color/48/microsoft-office-2019.png" alt="Microsoft 365" style="width: 30px; height: 30px; object-fit: contain;">
+                                    </div>
+                                    <div class="tp-hero-2__design-exp-skill-info">
+                                       <span>90%</span>
+                                       <i>Microsoft 365</i>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="col-xl">
+                                 <div class="mb-20 tp-hero-2__design-exp-skill-item justify-content-center d-flex align-items-center" style="background-color: rgba(66, 133, 244, 0.15);">
+                                    <div class="tp-hero-2__design-exp-skill-icon">
+                                       <img src="https://img.icons8.com/color/48/google-maps.png" alt="Google My Business" style="width: 30px; height: 30px; object-fit: contain;">
+                                    </div>
+                                    <div class="tp-hero-2__design-exp-skill-info">
+                                       <span>90%</span>
+                                       <i>Google My Business</i>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="col-xl">
+                                 <div class="mb-20 tp-hero-2__design-exp-skill-item justify-content-center d-flex align-items-center" style="background-color: rgba(74, 153, 233, 0.1);">
+                                    <div class="tp-hero-2__design-exp-skill-icon">
+                                       <img src="https://img.icons8.com/color/48/google-web-search.png" alt="Google Search Console" style="width: 30px; height: 30px; object-fit: contain;">
+                                    </div>
+                                    <div class="tp-hero-2__design-exp-skill-info">
+                                       <span>90%</span>
+                                       <i>Google Search Console</i>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="col-xl">
+                                 <div class="mb-20 tp-hero-2__design-exp-skill-item justify-content-center d-flex align-items-center" style="background-color: rgba(249, 171, 0, 0.1);">
+                                    <div class="tp-hero-2__design-exp-skill-icon">
+                                       <img src="https://img.icons8.com/color/48/google-analytics.png" alt="Google Analytics 4" style="width: 30px; height: 30px; object-fit: contain;">
+                                    </div>
+                                    <div class="tp-hero-2__design-exp-skill-info">
+                                       <span>90%</span>
+                                       <i>Google Analytics 4</i>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="col-xl">
+                                 <div class="mb-20 tp-hero-2__design-exp-skill-item justify-content-center d-flex align-items-center" style="background-color: rgba(36, 104, 255, 0.1);">
+                                    <div class="tp-hero-2__design-exp-skill-icon">
+                                       <img src="https://img.icons8.com/color/48/price-tag.png" alt="Google Tag Manager" style="width: 30px; height: 30px; object-fit: contain;">
+                                    </div>
+                                    <div class="tp-hero-2__design-exp-skill-info">
+                                       <span>70%</span>
+                                       <i>Google Tag Manager</i>
+                                    </div>
+                                 </div>
+                              </div>
+
+                              <div class="col-xl">
+                                 <div class="mb-20 tp-hero-2__design-exp-skill-item justify-content-center d-flex align-items-center" style="background-color: rgba(43, 87, 154, 0.1);">
+                                    <div class="tp-hero-2__design-exp-skill-icon">
+                                       <img src="https://img.icons8.com/color/48/microsoft-word-2019.png" alt="Word" style="width: 30px; height: 30px; object-fit: contain;">
+                                    </div>
+                                    <div class="tp-hero-2__design-exp-skill-info">
+                                       <span>90%</span>
+                                       <i>Word</i>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="col-xl">
+                                 <div class="mb-20 tp-hero-2__design-exp-skill-item justify-content-center d-flex align-items-center" style="background-color: rgba(33, 115, 70, 0.1);">
+                                    <div class="tp-hero-2__design-exp-skill-icon">
+                                       <img src="https://img.icons8.com/color/48/microsoft-excel-2019.png" alt="Excel" style="width: 30px; height: 30px; object-fit: contain;">
+                                    </div>
+                                    <div class="tp-hero-2__design-exp-skill-info">
+                                       <span>90%</span>
+                                       <i>Excel</i>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="col-xl">
+                                 <div class="mb-20 tp-hero-2__design-exp-skill-item justify-content-center d-flex align-items-center" style="background-color: rgba(183, 71, 42, 0.1);">
+                                    <div class="tp-hero-2__design-exp-skill-icon">
+                                       <img src="https://img.icons8.com/color/48/microsoft-powerpoint-2019.png" alt="PowerPoint" style="width: 30px; height: 30px; object-fit: contain;">
+                                    </div>
+                                    <div class="tp-hero-2__design-exp-skill-info">
+                                       <span>90%</span>
+                                       <i>PowerPoint</i>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="col-xl">
+                                 <div class="mb-20 tp-hero-2__design-exp-skill-item justify-content-center d-flex align-items-center" style="background-color: rgba(0, 114, 198, 0.1);">
+                                    <div class="tp-hero-2__design-exp-skill-icon">
+                                       <img src="https://img.icons8.com/color/48/microsoft-outlook-2019.png" alt="Outlook" style="width: 30px; height: 30px; object-fit: contain;">
+                                    </div>
+                                    <div class="tp-hero-2__design-exp-skill-info">
+                                       <span>90%</span>
+                                       <i>Outlook</i>
+                                    </div>
+                                 </div>
+                              </div>
+
                            </div>
                         </div>
                      </div>
@@ -1144,7 +1363,7 @@ resonate. Whether you're launching a brand or scaling it, I’m here to elevate 
                   <div class="row">
                      <div class="col-xl-12">
                         <div class="tp-contact-2__title-box text-center">
-                           <h4 class="tp-contact-2__title">Take a coffee & chat with me</h4>
+                           <h4 class="tp-contact-2__title">Connect with me</h4>
                         </div>
                         <div class="tp-contact-2__top-info mb-80 d-flex align-items-center justify-content-center">
                            <div class="parallax-wrap">
@@ -1329,19 +1548,39 @@ resonate. Whether you're launching a brand or scaling it, I’m here to elevate 
    <script src="assets/js/tp-cursor.js"></script>
    <script src="assets/js/main.js"></script>
 
-   <!-- Fix for pagePiling scrolling issue on services -->
+   <!-- Fix for pagePiling scrolling issue on services and experience overflow -->
    <script>
       document.addEventListener("DOMContentLoaded", function() {
+         var stopPageScroll = function(e) {
+            // Stop event bubbling to prevent pagepiling from changing sections when scrolling inner containers
+            e.stopPropagation();
+         };
+
+         // About Section Scroll Fix
+         var aboutScroll = document.getElementById('about-scroll');
+         if(aboutScroll) {
+            aboutScroll.addEventListener('wheel', stopPageScroll, { passive: false });
+            aboutScroll.addEventListener('mousewheel', stopPageScroll, { passive: false });
+            aboutScroll.addEventListener('DOMMouseScroll', stopPageScroll, { passive: false });
+            aboutScroll.addEventListener('touchmove', stopPageScroll, { passive: false });
+         }
+
+         // Services Scroll Fix
          var accordion = document.getElementById('accordionExample');
          if(accordion) {
-            var stopPageScroll = function(e) {
-               // Stop event bubbling to prevent pagepiling from changing sections when scrolling over services
-               e.stopPropagation();
-            };
             accordion.addEventListener('wheel', stopPageScroll, { passive: false });
             accordion.addEventListener('mousewheel', stopPageScroll, { passive: false });
             accordion.addEventListener('DOMMouseScroll', stopPageScroll, { passive: false });
             accordion.addEventListener('touchmove', stopPageScroll, { passive: false });
+         }
+
+         // Experience Scroll Fix
+         var expScroll = document.getElementById('experience-scroll');
+         if(expScroll) {
+            expScroll.addEventListener('wheel', stopPageScroll, { passive: false });
+            expScroll.addEventListener('mousewheel', stopPageScroll, { passive: false });
+            expScroll.addEventListener('DOMMouseScroll', stopPageScroll, { passive: false });
+            expScroll.addEventListener('touchmove', stopPageScroll, { passive: false });
          }
       });
    </script>
