@@ -38,79 +38,80 @@
    <!-- Favicon -->
    <link rel="shortcut icon" type="image/x-icon" href="assets/img/logo/favicon.png">
 
-   <!-- Advanced Complete SEO Schema -->
+   <!-- Digital Service Schema -->
    <script type="application/ld+json">
    {
       "@context": "https://schema.org",
-      "@graph": [
-         {
-            "@type": "WebSite",
-            "@id": "https://bagchi.in/#website",
-            "url": "https://bagchi.in/",
-            "name": "Bagchi Digital",
-            "description": "Professional website and graphic design services in West Bengal.",
-            "publisher": {
-               "@id": "https://bagchi.in/#organization"
-            },
-            "inLanguage": "en-US"
-         },
-         {
-            "@type": ["LocalBusiness", "ProfessionalService"],
-            "@id": "https://bagchi.in/#organization",
-            "name": "Bagchi Digital",
-            "url": "https://bagchi.in/",
-            "logo": {
-               "@type": "ImageObject",
-               "url": "https://bagchi.in/assets/img/logo/logo.png"
-            },
-            "image": "https://bagchi.in/assets/img/logo/logo.png",
-            "description": "Professional website and graphic design services including WordPress development, UI/UX design, branding, SEO-friendly websites, and digital creative solutions.",
-            "telephone": "+91-9874239816",
-            "email": "hello@bagchi.in",
-            "address": {
-               "@type": "PostalAddress",
-               "addressLocality": "Kolkata",
-               "addressRegion": "West Bengal",
-               "addressCountry": "IN"
-            },
-            "geo": {
-               "@type": "GeoCoordinates",
-               "latitude": "22.5726",
-               "longitude": "88.3639"
-            },
-            "founder": {
-               "@type": "Person",
-               "name": "Soumadeep Bagchi",
-               "jobTitle": "Website & Graphic Designer"
-            },
-            "sameAs": [
-               "https://www.linkedin.com/",
-               "https://www.facebook.com/"
-            ],
-            "openingHoursSpecification": {
-               "@type": "OpeningHoursSpecification",
-               "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-               "opens": "10:00",
-               "closes": "19:00"
-            },
-            "hasOfferCatalog": {
-               "@type": "OfferCatalog",
-               "name": "Web and Graphic Design Services",
-               "itemListElement": [
-                  { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Social Media Creative Design" } },
-                  { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Social Media Video Editing" } },
-                  { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Printing Design (Banner, flex, flyer, visiting card, brochure)" } },
-                  { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "WordPress Website Design and Development (Elementor, Divi, Gutenberg)" } },
-                  { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "WordPress Website Security" } },
-                  { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "WordPress Website Error Fixing" } },
-                  { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "cPanel and Server Setup and Maintenance" } },
-                  { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Business Email Setup and Migration (Google Workspace, Microsoft 365, Outlook)" } }
-               ]
-            }
-         }
-      ]
+      "@type": "ProfessionalService",
+      "name": "Bagchi",
+      "image": "https://bagchi.in/assets/img/logo/logo.png",
+      "url": "https://bagchi.in",
+      "telephone": "+91-9874239816",
+      "email": " hello@bagchi.in",
+      "description": "Professional website and graphic design services including WordPress development, UI/UX design, branding, SEO-friendly websites, and digital creative solutions.",
+      "address": {
+         "@type": "PostalAddress",
+         "addressCountry": "IN"
+      },
+      "founder": {
+         "@type": "Person",
+         "name": "Soumadeep Bagchi"
+      },
+      "sameAs": [
+         "https://www.linkedin.com/",
+         "https://www.facebook.com/"
+      ],
+      "serviceType": [
+         "Website Design",
+         "Graphic Design",
+         "UI UX Design",
+         "WordPress Development",
+         "Brand Identity Design",
+         "SEO Services"
+      ],
+      "areaServed": {
+         "@type": "Country",
+         "name": "India"
+      }
    }
    </script>
+
+   <!-- Local Business Schema -->
+   <script type="application/ld+json">
+   {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Bagchi",
+      "image": "https://bagchi.in/assets/img/logo/logo.png",
+      "url": "https://bagchi.in",
+      "telephone": "+91-9874239816",
+      "email": " hello@bagchi.in",
+      "priceRange": "$$",
+      "address": {
+         "@type": "PostalAddress",
+         "addressCountry": "IN"
+      },
+      "geo": {
+         "@type": "GeoCoordinates",
+         "latitude": "",
+         "longitude": ""
+      },
+      "openingHoursSpecification": {
+         "@type": "OpeningHoursSpecification",
+         "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday"
+         ],
+         "opens": "10:00",
+         "closes": "19:00"
+      }
+   }
+   </script>
+
 
    <!-- CSS here -->
    <link rel="stylesheet" href="assets/css/bootstrap.css">
@@ -125,29 +126,6 @@
    <link rel="stylesheet" href="assets/css/font-awesome-pro.css">
    <link rel="stylesheet" href="assets/css/spacing.css">
    <link rel="stylesheet" href="assets/css/main.css">
-
-   <!-- Custom Scrollbar for Services Accordion to fix pagePiling overflow -->
-   <style>
-      #accordionExample {
-         max-height: 55vh;
-         overflow-y: auto;
-         padding-right: 15px;
-      }
-      #accordionExample::-webkit-scrollbar {
-         width: 4px;
-      }
-      #accordionExample::-webkit-scrollbar-track {
-         background: rgba(255, 255, 255, 0.05);
-         border-radius: 10px;
-      }
-      #accordionExample::-webkit-scrollbar-thumb {
-         background: rgba(255, 255, 255, 0.3);
-         border-radius: 10px;
-      }
-      #accordionExample::-webkit-scrollbar-thumb:hover {
-         background: rgba(255, 255, 255, 0.5);
-      }
-   </style>
 </head>
 
 <body class="tp-magic-cursor">
@@ -353,7 +331,7 @@
                               <a href="#projects">Projects</a>
                            </li>
                            <li data-menuanchor="skills">
-                              <a href="#skills">Experience</a>
+                              <a href="#skills">Skills</a>
                            </li>
                             <li data-menuanchor="contact">
                               <a href="#contact">Contact</a>
@@ -563,9 +541,8 @@ resonate. Whether you're launching a brand or scaling it, I’m here to elevate 
                      <div class="col-xl-12">
                         <div class="tp-hero-2__service-accordion">
                            <span class="tp-hero-2__service-title"> <img class="tp-zoom-in-out"
-                                 src="assets/img/services/shape/services-shape-3.png" alt=""> MY SERVICES</span>
+                                 src="assets/img/services/shape/services-shape-3.png" alt=""> OUR SERVICES</span>
                            <div class="accordion" id="accordionExample">
-                              
                               <div class="accordion-items tp-hero-2__accordion-item tp-hover-reveal-item active">
                                  <h2 class="accordion-header">
                                     <button class="accordion-buttons" type="button" data-bs-toggle="collapse"
@@ -576,7 +553,7 @@ resonate. Whether you're launching a brand or scaling it, I’m here to elevate 
                                              d="M16.8242 7.1633L18 8.35684L16.8246 9.55154L9.77214 16.7144L8.59672 15.5204L14.9017 9.11602H1.66227H0.831241H0V0H1.66227V7.42755H14.7336L8.59675 1.19401L9.77216 7.00782e-05L16.8242 7.1633Z"
                                              fill="white" fill-opacity="0.9" />
                                        </svg>
-                                       Social Media Creative Design<span>01</span>
+                                       Visual design<span>01</span>
                                        <span class="accordion-btn-wrap">
                                           <span class="accordion-btn"></span>
                                        </span>
@@ -586,11 +563,17 @@ resonate. Whether you're launching a brand or scaling it, I’m here to elevate 
                                  <div id="collapseOne" class="accordion-collapse collapse show"
                                     data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
-                                       <p>Elevate your brand presence with visually stunning and highly engaging social media creatives. We design custom posts, stories, and ad graphics tailored to your target audience, ensuring maximum reach and brand consistency across platforms like Instagram, Facebook, and LinkedIn.</p>
+                                       <p>Crafting well designed digital products is our superpower and we’re not afraid
+                                          to
+                                          use it! The product design phase is where your business ideas and our creative
+                                          vision come to life.
+                                          Crafting well designed digital products is our superpower and we’re not afraid
+                                          to
+                                          use it! The product design phase.
+                                       </p>
                                     </div>
                                  </div>
                               </div>
-                              
                               <div class="accordion-items tp-hero-2__accordion-item tp-hover-reveal-item active"
                                  data-fx="3">
                                  <h2 class="accordion-header">
@@ -602,7 +585,7 @@ resonate. Whether you're launching a brand or scaling it, I’m here to elevate 
                                              d="M16.8242 7.1633L18 8.35684L16.8246 9.55154L9.77214 16.7144L8.59672 15.5204L14.9017 9.11602H1.66227H0.831241H0V0H1.66227V7.42755H14.7336L8.59675 1.19401L9.77216 7.00782e-05L16.8242 7.1633Z"
                                              fill="white" fill-opacity="0.9" />
                                        </svg>
-                                       Social Media Video Editing<span>02</span>
+                                       Product design<span>02</span>
                                        <span class="accordion-btn-wrap">
                                           <span class="accordion-btn"></span>
                                        </span>
@@ -612,11 +595,17 @@ resonate. Whether you're launching a brand or scaling it, I’m here to elevate 
                                  <div id="collapseTwo" class="accordion-collapse collapse"
                                     data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
-                                       <p>Capture attention instantly with dynamic and professional social media video editing. From engaging reels and TikToks to promotional brand videos, we craft compelling visual stories with seamless transitions, captivating captions, and trending audio to boost your digital engagement.</p>
+                                       <p>Crafting well designed digital products is our superpower and we’re not afraid
+                                          to
+                                          use it! The product design phase is where your business ideas and our creative
+                                          vision come to life.
+                                          Crafting well designed digital products is our superpower and we’re not afraid
+                                          to
+                                          use it! The product design phase.
+                                       </p>
                                     </div>
                                  </div>
                               </div>
-                              
                               <div class="accordion-items tp-hero-2__accordion-item  tp-hover-reveal-item active"
                                  data-fx="3">
                                  <h2 class="accordion-header">
@@ -629,7 +618,7 @@ resonate. Whether you're launching a brand or scaling it, I’m here to elevate 
                                              d="M16.8242 7.1633L18 8.35684L16.8246 9.55154L9.77214 16.7144L8.59672 15.5204L14.9017 9.11602H1.66227H0.831241H0V0H1.66227V7.42755H14.7336L8.59675 1.19401L9.77216 7.00782e-05L16.8242 7.1633Z"
                                              fill="white" fill-opacity="0.9" />
                                        </svg>
-                                       Printing Design<span>03</span>
+                                       UI kits / Design systems<span>03</span>
                                        <span class="accordion-btn-wrap">
                                           <span class="accordion-btn"></span>
                                        </span>
@@ -639,146 +628,50 @@ resonate. Whether you're launching a brand or scaling it, I’m here to elevate 
                                  <div id="collapseThree" class="accordion-collapse collapse"
                                     data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
-                                       <p>Leave a lasting physical impression with our premium printing design services. We specialize in creating high-resolution, print-ready materials including striking banners, flex boards, professional flyers, visiting cards, brochures, and corporate stationery that perfectly reflect your brand identity.</p>
+                                       <p>Crafting well designed digital products is our superpower and we’re not afraid
+                                          to
+                                          use it! The product design phase is where your business ideas and our creative
+                                          vision come to life.
+                                          Crafting well designed digital products is our superpower and we’re not afraid
+                                          to
+                                          use it! The product design phase.
+                                       </p>
                                     </div>
                                  </div>
                               </div>
-                              
                               <div class="accordion-items tp-hero-2__accordion-item tp-hover-reveal-item active"
                                  data-fx="3">
                                  <h2 class="accordion-header">
                                     <button class="accordion-buttons collapsed" type="button" data-bs-toggle="collapse"
-                                       data-bs-target="#collapseFour" aria-expanded="false"
-                                       aria-controls="collapseFour">
+                                       data-bs-target="#collapsefour" aria-expanded="false"
+                                       aria-controls="collapsefour">
                                        <svg width="18" height="17" viewBox="0 0 18 17" fill="none"
                                           xmlns="http://www.w3.org/2000/svg">
                                           <path fill-rule="evenodd" clip-rule="evenodd"
                                              d="M16.8242 7.1633L18 8.35684L16.8246 9.55154L9.77214 16.7144L8.59672 15.5204L14.9017 9.11602H1.66227H0.831241H0V0H1.66227V7.42755H14.7336L8.59675 1.19401L9.77216 7.00782e-05L16.8242 7.1633Z"
                                              fill="white" fill-opacity="0.9" />
                                        </svg>
-                                       WordPress Website Design & Development<span>04</span>
+                                       Strategy<span>04</span>
                                        <span class="accordion-btn-wrap">
                                           <span class="accordion-btn"></span>
                                        </span>
                                     </button>
                                  </h2>
                                  <div class="tp-hover-reveal-bg" data-background="assets/img/faq/faq-3.jpg"></div>
-                                 <div id="collapseFour" class="accordion-collapse collapse"
+                                 <div id="collapsefour" class="accordion-collapse collapse"
                                     data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
-                                       <p>Build a powerful, SEO-optimized, and fully responsive online presence. Our comprehensive WordPress website design and development services utilize industry-leading builders like Elementor, Divi, and Gutenberg to deliver custom, high-converting websites tailored specifically to your unique business goals.</p>
+                                       <p>Crafting well designed digital products is our superpower and we’re not afraid
+                                          to
+                                          use it! The product design phase is where your business ideas and our creative
+                                          vision come to life.
+                                          Crafting well designed digital products is our superpower and we’re not afraid
+                                          to
+                                          use it! The product design phase.
+                                       </p>
                                     </div>
                                  </div>
                               </div>
-
-                              <div class="accordion-items tp-hero-2__accordion-item tp-hover-reveal-item active"
-                                 data-fx="3">
-                                 <h2 class="accordion-header">
-                                    <button class="accordion-buttons collapsed" type="button" data-bs-toggle="collapse"
-                                       data-bs-target="#collapseFive" aria-expanded="false"
-                                       aria-controls="collapseFive">
-                                       <svg width="18" height="17" viewBox="0 0 18 17" fill="none"
-                                          xmlns="http://www.w3.org/2000/svg">
-                                          <path fill-rule="evenodd" clip-rule="evenodd"
-                                             d="M16.8242 7.1633L18 8.35684L16.8246 9.55154L9.77214 16.7144L8.59672 15.5204L14.9017 9.11602H1.66227H0.831241H0V0H1.66227V7.42755H14.7336L8.59675 1.19401L9.77216 7.00782e-05L16.8242 7.1633Z"
-                                             fill="white" fill-opacity="0.9" />
-                                       </svg>
-                                       WordPress Website Security<span>05</span>
-                                       <span class="accordion-btn-wrap">
-                                          <span class="accordion-btn"></span>
-                                       </span>
-                                    </button>
-                                 </h2>
-                                 <div class="tp-hover-reveal-bg" data-background="assets/img/faq/faq-4.jpg"></div>
-                                 <div id="collapseFive" class="accordion-collapse collapse"
-                                    data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
-                                       <p>Protect your digital assets with robust WordPress website security solutions. We implement comprehensive malware scanning, firewall configuration, SSL setups, hardening techniques, and vulnerability patching to keep your website safe from hackers, spam, and malicious cyber threats.</p>
-                                    </div>
-                                 </div>
-                              </div>
-
-                              <div class="accordion-items tp-hero-2__accordion-item tp-hover-reveal-item active"
-                                 data-fx="3">
-                                 <h2 class="accordion-header">
-                                    <button class="accordion-buttons collapsed" type="button" data-bs-toggle="collapse"
-                                       data-bs-target="#collapseSix" aria-expanded="false"
-                                       aria-controls="collapseSix">
-                                       <svg width="18" height="17" viewBox="0 0 18 17" fill="none"
-                                          xmlns="http://www.w3.org/2000/svg">
-                                          <path fill-rule="evenodd" clip-rule="evenodd"
-                                             d="M16.8242 7.1633L18 8.35684L16.8246 9.55154L9.77214 16.7144L8.59672 15.5204L14.9017 9.11602H1.66227H0.831241H0V0H1.66227V7.42755H14.7336L8.59675 1.19401L9.77216 7.00782e-05L16.8242 7.1633Z"
-                                             fill="white" fill-opacity="0.9" />
-                                       </svg>
-                                       WordPress Website Error Fixing<span>06</span>
-                                       <span class="accordion-btn-wrap">
-                                          <span class="accordion-btn"></span>
-                                       </span>
-                                    </button>
-                                 </h2>
-                                 <div class="tp-hover-reveal-bg" data-background="assets/img/faq/faq-1.jpg"></div>
-                                 <div id="collapseSix" class="accordion-collapse collapse"
-                                    data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
-                                       <p>Minimize downtime and ensure a flawless user experience for your visitors. Our expert WordPress website error fixing service quickly diagnoses and resolves plugin conflicts, database connection errors, the dreaded White Screen of Death (WSoD), layout breakages, and overall performance bottlenecks.</p>
-                                    </div>
-                                 </div>
-                              </div>
-
-                              <div class="accordion-items tp-hero-2__accordion-item tp-hover-reveal-item active"
-                                 data-fx="3">
-                                 <h2 class="accordion-header">
-                                    <button class="accordion-buttons collapsed" type="button" data-bs-toggle="collapse"
-                                       data-bs-target="#collapseSeven" aria-expanded="false"
-                                       aria-controls="collapseSeven">
-                                       <svg width="18" height="17" viewBox="0 0 18 17" fill="none"
-                                          xmlns="http://www.w3.org/2000/svg">
-                                          <path fill-rule="evenodd" clip-rule="evenodd"
-                                             d="M16.8242 7.1633L18 8.35684L16.8246 9.55154L9.77214 16.7144L8.59672 15.5204L14.9017 9.11602H1.66227H0.831241H0V0H1.66227V7.42755H14.7336L8.59675 1.19401L9.77216 7.00782e-05L16.8242 7.1633Z"
-                                             fill="white" fill-opacity="0.9" />
-                                       </svg>
-                                       cPanel & Server Setup & Maintenance<span>07</span>
-                                       <span class="accordion-btn-wrap">
-                                          <span class="accordion-btn"></span>
-                                       </span>
-                                    </button>
-                                 </h2>
-                                 <div class="tp-hover-reveal-bg" data-background="assets/img/faq/faq-2.jpg"></div>
-                                 <div id="collapseSeven" class="accordion-collapse collapse"
-                                    data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
-                                       <p>Ensure smooth, fast, and reliable web hosting performance with our professional cPanel and server setup and maintenance services. We manage essential backend tasks including server configuration, DNS zone management, database optimization, routine scheduled backups, and 24/7 uptime monitoring.</p>
-                                    </div>
-                                 </div>
-                              </div>
-
-                              <div class="accordion-items tp-hero-2__accordion-item tp-hover-reveal-item active"
-                                 data-fx="3">
-                                 <h2 class="accordion-header">
-                                    <button class="accordion-buttons collapsed" type="button" data-bs-toggle="collapse"
-                                       data-bs-target="#collapseEight" aria-expanded="false"
-                                       aria-controls="collapseEight">
-                                       <svg width="18" height="17" viewBox="0 0 18 17" fill="none"
-                                          xmlns="http://www.w3.org/2000/svg">
-                                          <path fill-rule="evenodd" clip-rule="evenodd"
-                                             d="M16.8242 7.1633L18 8.35684L16.8246 9.55154L9.77214 16.7144L8.59672 15.5204L14.9017 9.11602H1.66227H0.831241H0V0H1.66227V7.42755H14.7336L8.59675 1.19401L9.77216 7.00782e-05L16.8242 7.1633Z"
-                                             fill="white" fill-opacity="0.9" />
-                                       </svg>
-                                       Business Email Setup & Migration<span>08</span>
-                                       <span class="accordion-btn-wrap">
-                                          <span class="accordion-btn"></span>
-                                       </span>
-                                    </button>
-                                 </h2>
-                                 <div class="tp-hover-reveal-bg" data-background="assets/img/faq/faq-3.jpg"></div>
-                                 <div id="collapseEight" class="accordion-collapse collapse"
-                                    data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
-                                       <p>Elevate your corporate communication with secure, branded business email setup and smooth data migration. We flawlessly integrate your company infrastructure using industry-standard enterprise solutions like Google Workspace, Microsoft 365, and Outlook, ensuring zero downtime and complete data retention.</p>
-                                    </div>
-                                 </div>
-                              </div>
-
                            </div>
                         </div>
                      </div>
@@ -1000,7 +893,7 @@ resonate. Whether you're launching a brand or scaling it, I’m here to elevate 
                         <div class="tp-hero-2__design-exp-wrap">
                            <div class="tp-hero-2__design-exp-top-title">
                               <span><img class="tp-zoom-in-out" src="assets/img/services/shape/services-shape-3.png"
-                                    alt=""> INDUSTRY EXPERIENCE</span>
+                                    alt=""> DESIGN EXPERIENCE</span>
                            </div>
                            <ul>
                               <li>
@@ -1056,7 +949,7 @@ resonate. Whether you're launching a brand or scaling it, I’m here to elevate 
                         <div class="tp-hero-2__design-exp-skill-wrap">
                            <div class="tp-hero-2__design-exp-top-title mb-30">
                               <span><img class="tp-zoom-in-out" src="assets/img/services/shape/services-shape-3.png"
-                                    alt=""> Experience</span>
+                                    alt=""> Skills</span>
                            </div>
                            <div class="row row-cols-xl-5 row-cols-md-3">
                               <div class="col-xl">
@@ -1329,22 +1222,6 @@ resonate. Whether you're launching a brand or scaling it, I’m here to elevate 
    <script src="assets/js/tp-cursor.js"></script>
    <script src="assets/js/main.js"></script>
 
-   <!-- Fix for pagePiling scrolling issue on services -->
-   <script>
-      document.addEventListener("DOMContentLoaded", function() {
-         var accordion = document.getElementById('accordionExample');
-         if(accordion) {
-            var stopPageScroll = function(e) {
-               // Stop event bubbling to prevent pagepiling from changing sections when scrolling over services
-               e.stopPropagation();
-            };
-            accordion.addEventListener('wheel', stopPageScroll, { passive: false });
-            accordion.addEventListener('mousewheel', stopPageScroll, { passive: false });
-            accordion.addEventListener('DOMMouseScroll', stopPageScroll, { passive: false });
-            accordion.addEventListener('touchmove', stopPageScroll, { passive: false });
-         }
-      });
-   </script>
 </body>
 
 </html>
