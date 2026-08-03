@@ -1,0 +1,8 @@
+# Coupon Code Redirects
+
+/coupon-code/hostinger-coupon-code     /coupon-code/hostinger     301
+/coupon-code/bigrock-coupon-code       /coupon-code/bigrock       301
+/coupon-code/spaceship-coupon-code     /coupon-code/spaceship     301
+/coupon-code/bewakoof-coupon-code      /coupon-code/bewakoof      301
+/coupon-code/bella-vita-coupon-code    /coupon-code/bella         301
+/coupon-code/porkbun-coupon-code       /coupon-code/porkbun       301
