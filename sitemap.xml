@@ -1,34 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
-    <sitemap>
-        <loc>https://bagchi.in/sitemap-home.xml</loc>
-        <lastmod>2026-07-20</lastmod>
-    </sitemap>
+<sitemapindex xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
 
     <sitemap>
         <loc>https://bagchi.in/coupon-code.xml</loc>
-        <lastmod>2026-07-20</lastmod>
-    </sitemap>
-
-    <sitemap>
-        <loc>https://bagchi.in/digital-product.xml</loc>
-        <lastmod>2026-07-20</lastmod>
+        <lastmod>2026-08-06T00:00:00+05:30</lastmod>
     </sitemap>
 
     <sitemap>
         <loc>https://bagchi.in/domain-offer.xml</loc>
-        <lastmod>2026-07-20</lastmod>
-    </sitemap>
-
-    <sitemap>
-        <loc>https://bagchi.in/tools.xml</loc>
-        <lastmod>2026-07-20</lastmod>
+        <lastmod>2026-08-06T00:00:00+05:30</lastmod>
     </sitemap>
 
     <sitemap>
         <loc>https://bagchi.in/website-designing-company.xml</loc>
-        <lastmod>2026-07-20</lastmod>
+        <lastmod>2026-08-06T00:00:00+05:30</lastmod>
+    </sitemap>
+
+    <sitemap>
+        <loc>https://bagchi.in/digital-product.xml</loc>
+        <lastmod>2026-08-06T00:00:00+05:30</lastmod>
     </sitemap>
 
 </sitemapindex>

@@ -6,38 +6,38 @@
     http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
     <url>
-        <loc>https://bagchi.in/</loc>
-        <lastmod>2026-07-20</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>1.0</priority>
-    </url>
+    <loc>https://bagchi.in/digital-product/adobe</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+</url>
 
-    <url>
-        <loc>https://bagchi.in/about.html</loc>
-        <lastmod>2026-07-20</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.9</priority>
-    </url>
+<url>
+    <loc>https://bagchi.in/digital-product/canva</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+</url>
 
-    <url>
-        <loc>https://bagchi.in/services.html</loc>
-        <lastmod>2026-07-20</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.9</priority>
-    </url>
+<url>
+    <loc>https://bagchi.in/digital-product/filmora</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+</url>
 
-    <url>
-        <loc>https://bagchi.in/portfolio.html</loc>
-        <lastmod>2026-07-20</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
-    </url>
+<url>
+    <loc>https://bagchi.in/digital-product/gemini</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+</url>
 
-    <url>
-        <loc>https://bagchi.in/contact.html</loc>
-        <lastmod>2026-07-20</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
+<url>
+    <loc>https://bagchi.in/digital-product/ms-office</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+</url>
 
 </urlset>

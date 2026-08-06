@@ -2,3 +2,7 @@ User-agent: *
 Allow: /
 
 Sitemap: https://bagchi.in/sitemap.xml
+Sitemap: https://bagchi.in/website-designing-company.xml
+Sitemap: https://bagchi.in/domain-offer.xml
+Sitemap: https://bagchi.in/coupon-code.xml
+Sitemap: https://bagchi.in/digital-product.xml
