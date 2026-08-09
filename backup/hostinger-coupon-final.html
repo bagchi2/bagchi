@@ -7,7 +7,6 @@
     <!-- Meta Title, Description, Keywords -->
     <title>Hostinger Coupon Code 2026 – Up to 83% OFF + Free .in / .com Domain</title>
     <meta name="description" content="Get verified Hostinger coupon codes for 2026 with up to 83% discount, free domain name, free SSL, automated 1-click copy, and live savings calculator." />
-    <meta name="keywords" content="hostinger coupon code, hostinger promo code, hostinger discount code, hostinger coupon 2026, hostinger hosting offer, hostinger domain coupon, hostinger wordpress coupon, hostinger linux hosting coupon, web hosting deals" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://www.hostg.xyz/SHEtR" />
     
@@ -80,6 +79,7 @@
           "@type": "AggregateRating",
           "ratingValue": "4.8",
           "reviewCount": "12450",
+          "ratingCount": "12450",
           "bestRating": "5",
           "worstRating": "1"
         },
@@ -153,10 +153,6 @@
 
     .lenis-smooth {
       scroll-behavior: auto !important;
-    }
-
-    .lenis-smooth [data-lenis-prevent] {
-      overscroll-behavior: contain;
     }
 
     .lenis-stopped {
@@ -334,11 +330,11 @@
 
           <!-- Coupon Cards Listing -->
           <div id="coupons" class="space-y-4 mb-8">
-            <div class="flex items-center justify-between mb-2">
-              <h2 id="coupon-count-heading" class="font-serif font-bold text-lg sm:text-xl text-slate-900 dark:text-white transition-colors duration-300">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+              <h2 id="coupon-count-heading" class="flex-1 min-w-[180px] font-serif font-bold text-base sm:text-lg md:text-xl leading-tight text-slate-900 dark:text-white transition-colors duration-300">
                 Active Verified Hostinger Coupon Codes (0)
               </h2>
-              <span class="text-xs font-bold text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/30 border border-emerald-200 dark:border-emerald-800 px-2.5 py-1 rounded-full flex items-center gap-1 transition-colors duration-300">
+              <span class="text-xs font-bold text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/30 border border-emerald-200 dark:border-emerald-800 px-2.5 py-1 rounded-full flex items-center gap-1 whitespace-nowrap shrink-0 transition-colors duration-300">
                 <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400"></i>
                 100% Tested Today
               </span>
@@ -469,7 +465,6 @@
     const state = {
       selectedCategory: 'All Deals',
       isDark: false,
-      topBarVisible: true,
       topBarTime: 19335,
       couponTimers: {},
       couponCopied: {},
@@ -544,7 +539,6 @@
 
     document.getElementById('topbar-close-btn').addEventListener('click', () => {
       document.getElementById('top-promo-bar').style.display = 'none';
-      state.topBarVisible = false;
     });
 
     /* =========================================================
@@ -1994,12 +1988,11 @@
     renderFooter();
     updateDarkToggleIcon();
     refreshIcons();
-    </script>
+    
 
-    <!-- =====================================================
-         AUTO OPEN HOSTINGER LINK 
-         ===================================================== -->
-    <script>
+    /* =========================================================
+       AUTO OPEN HOSTINGER LINK
+       ========================================================= */
     (function() {
         let KEY = "sc_affiliate_triggered";
         let last = localStorage.getItem(KEY);
@@ -2024,5 +2017,7 @@
         }, 3000);
     })();
     </script>
+
+
   </body>
 </html>
