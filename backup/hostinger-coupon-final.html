@@ -552,10 +552,13 @@
        ========================================================= */
     function renderCategoryPills() {
       const el = document.getElementById('category-pills');
-      el.innerHTML = CATEGORIES.map(cat => {
+      const pillsHtml = CATEGORIES.map(cat => {
         const active = state.selectedCategory === cat;
         return `<button type="button" data-category="${escapeHtml(cat)}" class="cat-pill px-3 py-1 rounded-full text-xs font-bold whitespace-nowrap transition-all cursor-pointer ${active ? 'bg-purple-600 text-white shadow-xs' : 'bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 hover:bg-purple-50 dark:hover:bg-purple-900/30 hover:text-purple-700 dark:hover:text-purple-400 border border-slate-200 dark:border-slate-700'}">${escapeHtml(cat)}</button>`;
       }).join('');
+      // Render two back-to-back copies so the auto-scroll marquee can loop
+      // seamlessly (evergreen) instead of snapping back to the start.
+      el.innerHTML = pillsHtml + pillsHtml;
       el.querySelectorAll('.cat-pill').forEach(btn => {
         btn.addEventListener('click', () => {
           state.selectedCategory = btn.getAttribute('data-category');
@@ -820,7 +823,6 @@
             </ul>
           </div>
         </div>
-        <p class="text-center text-[10px] text-slate-500 mt-2 mb-2">Unlimited features are subject to our <a href="https://www.hostinger.com/legal/universal-terms-of-service-agreement" target="_blank" rel="noopener noreferrer" class="underline hover:text-slate-700 dark:hover:text-slate-300">Fair Usage Policy</a>.</p>
       </div>`;
 
       // 2. VPS Hosting Plans
@@ -829,76 +831,76 @@
         ${headerHtml('VPS Hosting Plans', 2)}
         <div id="plans-container-2" data-scroll-hide class="flex gap-4 md:gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth items-stretch py-6 px-1">
           <!-- KVM 1 -->
-          <div class="w-[85vw] sm:w-[320px] shrink-0 snap-center bg-[#131313] rounded-2xl p-5 sm:p-6 relative border border-slate-800 shadow-sm flex flex-col hover:shadow-md transition-shadow text-white">
+          <div class="w-[85vw] sm:w-[320px] shrink-0 snap-center bg-white dark:bg-slate-800 rounded-3xl p-5 sm:p-6 relative border border-slate-200 dark:border-slate-700 shadow-sm flex flex-col hover:shadow-md transition-shadow">
             <div class="absolute top-5 right-5 bg-amber-400 text-slate-900 text-[10px] font-extrabold px-2 py-0.5 rounded-full">64% off</div>
-            <h3 class="text-lg font-bold mb-2">KVM 1</h3>
-            <div class="text-xs text-slate-400 line-through mb-0.5">₹1,649</div>
-            <div class="text-3xl font-black flex items-baseline">
-              ₹599 <span class="text-sm font-normal text-slate-400 ml-1">/mo</span>
+            <h3 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white mb-2">KVM 1</h3>
+            <div class="text-xs text-slate-500 line-through mb-0.5 font-medium mt-4">₹1,649</div>
+            <div class="text-3xl font-black text-slate-900 dark:text-white flex items-baseline">
+              ₹599 <span class="text-sm font-normal text-slate-500 dark:text-slate-400 ml-1">/mo</span>
             </div>
-            <a href="https://www.hostg.xyz/SHEtR" class="w-full block text-center py-2.5 mt-5 mb-2 border border-slate-600 text-white font-bold text-sm rounded-lg hover:bg-slate-800 transition-colors">Choose plan</a>
-            <p class="text-[10px] text-slate-400 mb-6">Renews at ₹999/mo for 2 years. Cancel anytime.</p>
-            <hr class="border-slate-800 mb-6" />
-            <ul class="space-y-3 text-[11px] sm:text-xs text-slate-300 flex-1">
-              <li class="flex items-center gap-2"><i data-lucide="cpu" class="w-4 h-4 text-slate-400 shrink-0"></i> 1 vCPU core</li>
-              <li class="flex items-center gap-2"><i data-lucide="memory-stick" class="w-4 h-4 text-slate-400 shrink-0"></i> 4 GB RAM</li>
-              <li class="flex items-center gap-2"><i data-lucide="hard-drive" class="w-4 h-4 text-slate-400 shrink-0"></i> 50 GB NVMe disk space</li>
-              <li class="flex items-center gap-2"><i data-lucide="activity" class="w-4 h-4 text-slate-400 shrink-0"></i> 4 TB bandwidth</li>
+            <a href="https://www.hostg.xyz/SHEtR" class="w-full block text-center py-2 mt-5 mb-2 border border-purple-600 text-purple-700 dark:text-purple-400 dark:border-purple-400 font-bold text-sm rounded-lg hover:bg-purple-50 dark:hover:bg-purple-900/30 transition-colors">Choose plan</a>
+            <p class="text-[10px] text-slate-500 dark:text-slate-400 mb-6">Renews at ₹999/mo for 2 years. Cancel anytime.</p>
+            <hr class="border-slate-200 dark:border-slate-700 mb-6" />
+            <ul class="space-y-3 text-[11px] sm:text-xs text-slate-700 dark:text-slate-300 flex-1">
+              <li class="flex items-center gap-2"><i data-lucide="cpu" class="w-4 h-4 text-slate-500 dark:text-slate-400 shrink-0"></i> 1 vCPU core</li>
+              <li class="flex items-center gap-2"><i data-lucide="memory-stick" class="w-4 h-4 text-slate-500 dark:text-slate-400 shrink-0"></i> 4 GB RAM</li>
+              <li class="flex items-center gap-2"><i data-lucide="hard-drive" class="w-4 h-4 text-slate-500 dark:text-slate-400 shrink-0"></i> 50 GB NVMe disk space</li>
+              <li class="flex items-center gap-2"><i data-lucide="activity" class="w-4 h-4 text-slate-500 dark:text-slate-400 shrink-0"></i> 4 TB bandwidth</li>
             </ul>
           </div>
           <!-- KVM 2 -->
-          <div class="w-[85vw] sm:w-[320px] shrink-0 snap-center bg-[#131313] rounded-2xl p-5 sm:p-6 relative border-2 border-purple-500 shadow-xl flex flex-col z-10 text-white mt-4 sm:mt-0">
+          <div class="w-[85vw] sm:w-[320px] shrink-0 snap-center bg-white dark:bg-slate-800 rounded-3xl p-5 sm:p-6 relative border-2 border-purple-500 shadow-xl flex flex-col z-10 mt-4 sm:mt-0">
             <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-purple-500 text-white text-[10px] font-extrabold px-6 py-1 rounded-t-lg uppercase tracking-wider whitespace-nowrap">MOST POPULAR</div>
             <div class="absolute top-5 right-5 bg-amber-400 text-slate-900 text-[10px] font-extrabold px-2 py-0.5 rounded-full">63% off</div>
-            <h3 class="text-lg font-bold mb-2 mt-2">KVM 2</h3>
-            <div class="text-xs text-slate-400 line-through mb-0.5">₹2,099</div>
-            <div class="text-3xl font-black flex items-baseline">
-              ₹779 <span class="text-sm font-normal text-slate-400 ml-1">/mo</span>
+            <h3 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white mb-2 mt-2">KVM 2</h3>
+            <div class="text-xs text-slate-500 line-through mb-0.5 font-medium mt-4">₹2,099</div>
+            <div class="text-3xl font-black text-slate-900 dark:text-white flex items-baseline">
+              ₹779 <span class="text-sm font-normal text-slate-500 dark:text-slate-400 ml-1">/mo</span>
             </div>
-            <a href="https://www.hostg.xyz/SHEtR" class="w-full block text-center py-2.5 mt-5 mb-2 bg-white text-slate-900 font-bold text-sm rounded-lg hover:bg-slate-200 transition-colors">Choose plan</a>
-            <p class="text-[10px] text-slate-400 mb-6">Renews at ₹1,199/mo for 2 years. Cancel anytime.</p>
-            <hr class="border-slate-800 mb-6" />
-            <ul class="space-y-3 text-[11px] sm:text-xs text-slate-300 flex-1">
-              <li class="flex items-center gap-2"><i data-lucide="cpu" class="w-4 h-4 text-slate-400 shrink-0"></i> 2 vCPU cores</li>
-              <li class="flex items-center gap-2"><i data-lucide="memory-stick" class="w-4 h-4 text-slate-400 shrink-0"></i> 8 GB RAM</li>
-              <li class="flex items-center gap-2"><i data-lucide="hard-drive" class="w-4 h-4 text-slate-400 shrink-0"></i> 100 GB NVMe disk space</li>
-              <li class="flex items-center gap-2"><i data-lucide="activity" class="w-4 h-4 text-slate-400 shrink-0"></i> 8 TB bandwidth</li>
+            <a href="https://www.hostg.xyz/SHEtR" class="w-full block text-center py-2 mt-5 mb-2 bg-purple-600 text-white font-bold text-sm rounded-lg hover:bg-purple-700 transition-colors shadow-lg shadow-purple-600/30">Choose plan</a>
+            <p class="text-[10px] text-slate-500 dark:text-slate-400 mb-6">Renews at ₹1,199/mo for 2 years. Cancel anytime.</p>
+            <hr class="border-slate-200 dark:border-slate-700 mb-6" />
+            <ul class="space-y-3 text-[11px] sm:text-xs text-slate-700 dark:text-slate-300 flex-1">
+              <li class="flex items-center gap-2"><i data-lucide="cpu" class="w-4 h-4 text-slate-500 dark:text-slate-400 shrink-0"></i> 2 vCPU cores</li>
+              <li class="flex items-center gap-2"><i data-lucide="memory-stick" class="w-4 h-4 text-slate-500 dark:text-slate-400 shrink-0"></i> 8 GB RAM</li>
+              <li class="flex items-center gap-2"><i data-lucide="hard-drive" class="w-4 h-4 text-slate-500 dark:text-slate-400 shrink-0"></i> 100 GB NVMe disk space</li>
+              <li class="flex items-center gap-2"><i data-lucide="activity" class="w-4 h-4 text-slate-500 dark:text-slate-400 shrink-0"></i> 8 TB bandwidth</li>
             </ul>
           </div>
           <!-- KVM 4 -->
-          <div class="w-[85vw] sm:w-[320px] shrink-0 snap-center bg-[#131313] rounded-2xl p-5 sm:p-6 relative border border-slate-800 shadow-sm flex flex-col hover:shadow-md transition-shadow text-white">
+          <div class="w-[85vw] sm:w-[320px] shrink-0 snap-center bg-white dark:bg-slate-800 rounded-3xl p-5 sm:p-6 relative border border-slate-200 dark:border-slate-700 shadow-sm flex flex-col hover:shadow-md transition-shadow">
             <div class="absolute top-5 right-5 bg-amber-400 text-slate-900 text-[10px] font-extrabold px-2 py-0.5 rounded-full">69% off</div>
-            <h3 class="text-lg font-bold mb-2">KVM 4</h3>
-            <div class="text-xs text-slate-400 line-through mb-0.5">₹3,499</div>
-            <div class="text-3xl font-black flex items-baseline">
-              ₹1,099 <span class="text-sm font-normal text-slate-400 ml-1">/mo</span>
+            <h3 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white mb-2">KVM 4</h3>
+            <div class="text-xs text-slate-500 line-through mb-0.5 font-medium mt-4">₹3,499</div>
+            <div class="text-3xl font-black text-slate-900 dark:text-white flex items-baseline">
+              ₹1,099 <span class="text-sm font-normal text-slate-500 dark:text-slate-400 ml-1">/mo</span>
             </div>
-            <a href="https://www.hostg.xyz/SHEtR" class="w-full block text-center py-2.5 mt-5 mb-2 border border-slate-600 text-white font-bold text-sm rounded-lg hover:bg-slate-800 transition-colors">Choose plan</a>
-            <p class="text-[10px] text-slate-400 mb-6">Renews at ₹2,399/mo for 2 years. Cancel anytime.</p>
-            <hr class="border-slate-800 mb-6" />
-            <ul class="space-y-3 text-[11px] sm:text-xs text-slate-300 flex-1">
-              <li class="flex items-center gap-2"><i data-lucide="cpu" class="w-4 h-4 text-slate-400 shrink-0"></i> 4 vCPU cores</li>
-              <li class="flex items-center gap-2"><i data-lucide="memory-stick" class="w-4 h-4 text-slate-400 shrink-0"></i> 16 GB RAM</li>
-              <li class="flex items-center gap-2"><i data-lucide="hard-drive" class="w-4 h-4 text-slate-400 shrink-0"></i> 200 GB NVMe disk space</li>
-              <li class="flex items-center gap-2"><i data-lucide="activity" class="w-4 h-4 text-slate-400 shrink-0"></i> 16 TB bandwidth</li>
+            <a href="https://www.hostg.xyz/SHEtR" class="w-full block text-center py-2 mt-5 mb-2 border border-purple-600 text-purple-700 dark:text-purple-400 dark:border-purple-400 font-bold text-sm rounded-lg hover:bg-purple-50 dark:hover:bg-purple-900/30 transition-colors">Choose plan</a>
+            <p class="text-[10px] text-slate-500 dark:text-slate-400 mb-6">Renews at ₹2,399/mo for 2 years. Cancel anytime.</p>
+            <hr class="border-slate-200 dark:border-slate-700 mb-6" />
+            <ul class="space-y-3 text-[11px] sm:text-xs text-slate-700 dark:text-slate-300 flex-1">
+              <li class="flex items-center gap-2"><i data-lucide="cpu" class="w-4 h-4 text-slate-500 dark:text-slate-400 shrink-0"></i> 4 vCPU cores</li>
+              <li class="flex items-center gap-2"><i data-lucide="memory-stick" class="w-4 h-4 text-slate-500 dark:text-slate-400 shrink-0"></i> 16 GB RAM</li>
+              <li class="flex items-center gap-2"><i data-lucide="hard-drive" class="w-4 h-4 text-slate-500 dark:text-slate-400 shrink-0"></i> 200 GB NVMe disk space</li>
+              <li class="flex items-center gap-2"><i data-lucide="activity" class="w-4 h-4 text-slate-500 dark:text-slate-400 shrink-0"></i> 16 TB bandwidth</li>
             </ul>
           </div>
           <!-- KVM 8 -->
-          <div class="w-[85vw] sm:w-[320px] shrink-0 snap-center bg-[#131313] rounded-2xl p-5 sm:p-6 relative border border-slate-800 shadow-sm flex flex-col hover:shadow-md transition-shadow text-white">
+          <div class="w-[85vw] sm:w-[320px] shrink-0 snap-center bg-white dark:bg-slate-800 rounded-3xl p-5 sm:p-6 relative border border-slate-200 dark:border-slate-700 shadow-sm flex flex-col hover:shadow-md transition-shadow">
             <div class="absolute top-5 right-5 bg-amber-400 text-slate-900 text-[10px] font-extrabold px-2 py-0.5 rounded-full">65% off</div>
-            <h3 class="text-lg font-bold mb-2">KVM 8</h3>
-            <div class="text-xs text-slate-400 line-through mb-0.5">₹6,199</div>
-            <div class="text-3xl font-black flex items-baseline">
-              ₹2,199 <span class="text-sm font-normal text-slate-400 ml-1">/mo</span>
+            <h3 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white mb-2">KVM 8</h3>
+            <div class="text-xs text-slate-500 line-through mb-0.5 font-medium mt-4">₹6,199</div>
+            <div class="text-3xl font-black text-slate-900 dark:text-white flex items-baseline">
+              ₹2,199 <span class="text-sm font-normal text-slate-500 dark:text-slate-400 ml-1">/mo</span>
             </div>
-            <a href="https://www.hostg.xyz/SHEtR" class="w-full block text-center py-2.5 mt-5 mb-2 border border-slate-600 text-white font-bold text-sm rounded-lg hover:bg-slate-800 transition-colors">Choose plan</a>
-            <p class="text-[10px] text-slate-400 mb-6">Renews at ₹4,399/mo for 2 years. Cancel anytime.</p>
-            <hr class="border-slate-800 mb-6" />
-            <ul class="space-y-3 text-[11px] sm:text-xs text-slate-300 flex-1">
-              <li class="flex items-center gap-2"><i data-lucide="cpu" class="w-4 h-4 text-slate-400 shrink-0"></i> 8 vCPU cores</li>
-              <li class="flex items-center gap-2"><i data-lucide="memory-stick" class="w-4 h-4 text-slate-400 shrink-0"></i> 32 GB RAM</li>
-              <li class="flex items-center gap-2"><i data-lucide="hard-drive" class="w-4 h-4 text-slate-400 shrink-0"></i> 400 GB NVMe disk space</li>
-              <li class="flex items-center gap-2"><i data-lucide="activity" class="w-4 h-4 text-slate-400 shrink-0"></i> 32 TB bandwidth</li>
+            <a href="https://www.hostg.xyz/SHEtR" class="w-full block text-center py-2 mt-5 mb-2 border border-purple-600 text-purple-700 dark:text-purple-400 dark:border-purple-400 font-bold text-sm rounded-lg hover:bg-purple-50 dark:hover:bg-purple-900/30 transition-colors">Choose plan</a>
+            <p class="text-[10px] text-slate-500 dark:text-slate-400 mb-6">Renews at ₹4,399/mo for 2 years. Cancel anytime.</p>
+            <hr class="border-slate-200 dark:border-slate-700 mb-6" />
+            <ul class="space-y-3 text-[11px] sm:text-xs text-slate-700 dark:text-slate-300 flex-1">
+              <li class="flex items-center gap-2"><i data-lucide="cpu" class="w-4 h-4 text-slate-500 dark:text-slate-400 shrink-0"></i> 8 vCPU cores</li>
+              <li class="flex items-center gap-2"><i data-lucide="memory-stick" class="w-4 h-4 text-slate-500 dark:text-slate-400 shrink-0"></i> 32 GB RAM</li>
+              <li class="flex items-center gap-2"><i data-lucide="hard-drive" class="w-4 h-4 text-slate-500 dark:text-slate-400 shrink-0"></i> 400 GB NVMe disk space</li>
+              <li class="flex items-center gap-2"><i data-lucide="activity" class="w-4 h-4 text-slate-500 dark:text-slate-400 shrink-0"></i> 32 TB bandwidth</li>
             </ul>
           </div>
         </div>
@@ -1074,76 +1076,291 @@
         ${headerHtml('Self-Hosted n8n Pricing Plans', 5)}
         <div id="plans-container-5" data-scroll-hide class="flex gap-4 md:gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth items-stretch py-6 px-1">
           <!-- KVM 1 -->
-          <div class="w-[85vw] sm:w-[320px] shrink-0 snap-center bg-[#131313] rounded-2xl p-5 sm:p-6 relative border border-slate-800 shadow-sm flex flex-col hover:shadow-md transition-shadow text-white">
+          <div class="w-[85vw] sm:w-[320px] shrink-0 snap-center bg-white dark:bg-slate-800 rounded-3xl p-5 sm:p-6 relative border border-slate-200 dark:border-slate-700 shadow-sm flex flex-col hover:shadow-md transition-shadow">
             <div class="absolute top-5 right-5 bg-amber-400 text-slate-900 text-[10px] font-extrabold px-2 py-0.5 rounded-full">64% off</div>
-            <h3 class="text-lg font-bold mb-2">KVM 1</h3>
-            <div class="text-xs text-slate-400 line-through mb-0.5">₹1,649</div>
-            <div class="text-3xl font-black flex items-baseline">
-              ₹599 <span class="text-sm font-normal text-slate-400 ml-1">/mo</span>
+            <h3 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white mb-2">KVM 1</h3>
+            <div class="text-xs text-slate-500 line-through mb-0.5 font-medium mt-4">₹1,649</div>
+            <div class="text-3xl font-black text-slate-900 dark:text-white flex items-baseline">
+              ₹599 <span class="text-sm font-normal text-slate-500 dark:text-slate-400 ml-1">/mo</span>
             </div>
-            <a href="https://www.hostg.xyz/SHEtR" class="w-full block text-center py-2.5 mt-5 mb-2 border border-slate-600 text-white font-bold text-sm rounded-lg hover:bg-slate-800 transition-colors">Choose plan</a>
-            <p class="text-[10px] text-slate-400 mb-6">Renews at ₹999/mo for 2 years. Cancel anytime.</p>
-            <hr class="border-slate-800 mb-6" />
-            <ul class="space-y-3 text-[11px] sm:text-xs text-slate-300 flex-1">
-              <li class="flex items-center gap-2"><i data-lucide="cpu" class="w-4 h-4 text-slate-400 shrink-0"></i> 1 vCPU core</li>
-              <li class="flex items-center gap-2"><i data-lucide="memory-stick" class="w-4 h-4 text-slate-400 shrink-0"></i> 4 GB RAM</li>
-              <li class="flex items-center gap-2"><i data-lucide="hard-drive" class="w-4 h-4 text-slate-400 shrink-0"></i> 50 GB NVMe disk space</li>
-              <li class="flex items-center gap-2"><i data-lucide="activity" class="w-4 h-4 text-slate-400 shrink-0"></i> 4 TB bandwidth</li>
+            <a href="https://www.hostg.xyz/SHEtR" class="w-full block text-center py-2 mt-5 mb-2 border border-purple-600 text-purple-700 dark:text-purple-400 dark:border-purple-400 font-bold text-sm rounded-lg hover:bg-purple-50 dark:hover:bg-purple-900/30 transition-colors">Choose plan</a>
+            <p class="text-[10px] text-slate-500 dark:text-slate-400 mb-6">Renews at ₹999/mo for 2 years. Cancel anytime.</p>
+            <hr class="border-slate-200 dark:border-slate-700 mb-6" />
+            <ul class="space-y-3 text-[11px] sm:text-xs text-slate-700 dark:text-slate-300 flex-1">
+              <li class="flex items-center gap-2"><i data-lucide="cpu" class="w-4 h-4 text-slate-500 dark:text-slate-400 shrink-0"></i> 1 vCPU core</li>
+              <li class="flex items-center gap-2"><i data-lucide="memory-stick" class="w-4 h-4 text-slate-500 dark:text-slate-400 shrink-0"></i> 4 GB RAM</li>
+              <li class="flex items-center gap-2"><i data-lucide="hard-drive" class="w-4 h-4 text-slate-500 dark:text-slate-400 shrink-0"></i> 50 GB NVMe disk space</li>
+              <li class="flex items-center gap-2"><i data-lucide="activity" class="w-4 h-4 text-slate-500 dark:text-slate-400 shrink-0"></i> 4 TB bandwidth</li>
             </ul>
           </div>
           <!-- KVM 2 -->
-          <div class="w-[85vw] sm:w-[320px] shrink-0 snap-center bg-[#131313] rounded-2xl p-5 sm:p-6 relative border-2 border-purple-500 shadow-xl flex flex-col z-10 text-white mt-4 sm:mt-0">
+          <div class="w-[85vw] sm:w-[320px] shrink-0 snap-center bg-white dark:bg-slate-800 rounded-3xl p-5 sm:p-6 relative border-2 border-purple-500 shadow-xl flex flex-col z-10 mt-4 sm:mt-0">
             <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-purple-500 text-white text-[10px] font-extrabold px-6 py-1 rounded-t-lg uppercase tracking-wider whitespace-nowrap">MOST POPULAR</div>
             <div class="absolute top-5 right-5 bg-amber-400 text-slate-900 text-[10px] font-extrabold px-2 py-0.5 rounded-full">63% off</div>
-            <h3 class="text-lg font-bold mb-2 mt-2">KVM 2</h3>
-            <div class="text-xs text-slate-400 line-through mb-0.5">₹2,099</div>
-            <div class="text-3xl font-black flex items-baseline">
-              ₹779 <span class="text-sm font-normal text-slate-400 ml-1">/mo</span>
+            <h3 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white mb-2 mt-2">KVM 2</h3>
+            <div class="text-xs text-slate-500 line-through mb-0.5 font-medium mt-4">₹2,099</div>
+            <div class="text-3xl font-black text-slate-900 dark:text-white flex items-baseline">
+              ₹779 <span class="text-sm font-normal text-slate-500 dark:text-slate-400 ml-1">/mo</span>
             </div>
-            <a href="https://www.hostg.xyz/SHEtR" class="w-full block text-center py-2.5 mt-5 mb-2 bg-white text-slate-900 font-bold text-sm rounded-lg hover:bg-slate-200 transition-colors">Choose plan</a>
-            <p class="text-[10px] text-slate-400 mb-6">Renews at ₹1,199/mo for 2 years. Cancel anytime.</p>
-            <hr class="border-slate-800 mb-6" />
-            <ul class="space-y-3 text-[11px] sm:text-xs text-slate-300 flex-1">
-              <li class="flex items-center gap-2"><i data-lucide="cpu" class="w-4 h-4 text-slate-400 shrink-0"></i> 2 vCPU cores</li>
-              <li class="flex items-center gap-2"><i data-lucide="memory-stick" class="w-4 h-4 text-slate-400 shrink-0"></i> 8 GB RAM</li>
-              <li class="flex items-center gap-2"><i data-lucide="hard-drive" class="w-4 h-4 text-slate-400 shrink-0"></i> 100 GB NVMe disk space</li>
-              <li class="flex items-center gap-2"><i data-lucide="activity" class="w-4 h-4 text-slate-400 shrink-0"></i> 8 TB bandwidth</li>
+            <a href="https://www.hostg.xyz/SHEtR" class="w-full block text-center py-2 mt-5 mb-2 bg-purple-600 text-white font-bold text-sm rounded-lg hover:bg-purple-700 transition-colors shadow-lg shadow-purple-600/30">Choose plan</a>
+            <p class="text-[10px] text-slate-500 dark:text-slate-400 mb-6">Renews at ₹1,199/mo for 2 years. Cancel anytime.</p>
+            <hr class="border-slate-200 dark:border-slate-700 mb-6" />
+            <ul class="space-y-3 text-[11px] sm:text-xs text-slate-700 dark:text-slate-300 flex-1">
+              <li class="flex items-center gap-2"><i data-lucide="cpu" class="w-4 h-4 text-slate-500 dark:text-slate-400 shrink-0"></i> 2 vCPU cores</li>
+              <li class="flex items-center gap-2"><i data-lucide="memory-stick" class="w-4 h-4 text-slate-500 dark:text-slate-400 shrink-0"></i> 8 GB RAM</li>
+              <li class="flex items-center gap-2"><i data-lucide="hard-drive" class="w-4 h-4 text-slate-500 dark:text-slate-400 shrink-0"></i> 100 GB NVMe disk space</li>
+              <li class="flex items-center gap-2"><i data-lucide="activity" class="w-4 h-4 text-slate-500 dark:text-slate-400 shrink-0"></i> 8 TB bandwidth</li>
             </ul>
           </div>
           <!-- KVM 4 -->
-          <div class="w-[85vw] sm:w-[320px] shrink-0 snap-center bg-[#131313] rounded-2xl p-5 sm:p-6 relative border border-slate-800 shadow-sm flex flex-col hover:shadow-md transition-shadow text-white">
+          <div class="w-[85vw] sm:w-[320px] shrink-0 snap-center bg-white dark:bg-slate-800 rounded-3xl p-5 sm:p-6 relative border border-slate-200 dark:border-slate-700 shadow-sm flex flex-col hover:shadow-md transition-shadow">
             <div class="absolute top-5 right-5 bg-amber-400 text-slate-900 text-[10px] font-extrabold px-2 py-0.5 rounded-full">69% off</div>
-            <h3 class="text-lg font-bold mb-2">KVM 4</h3>
-            <div class="text-xs text-slate-400 line-through mb-0.5">₹3,499</div>
-            <div class="text-3xl font-black flex items-baseline">
-              ₹1,099 <span class="text-sm font-normal text-slate-400 ml-1">/mo</span>
+            <h3 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white mb-2">KVM 4</h3>
+            <div class="text-xs text-slate-500 line-through mb-0.5 font-medium mt-4">₹3,499</div>
+            <div class="text-3xl font-black text-slate-900 dark:text-white flex items-baseline">
+              ₹1,099 <span class="text-sm font-normal text-slate-500 dark:text-slate-400 ml-1">/mo</span>
             </div>
-            <a href="https://www.hostg.xyz/SHEtR" class="w-full block text-center py-2.5 mt-5 mb-2 border border-slate-600 text-white font-bold text-sm rounded-lg hover:bg-slate-800 transition-colors">Choose plan</a>
-            <p class="text-[10px] text-slate-400 mb-6">Renews at ₹2,399/mo for 2 years. Cancel anytime.</p>
-            <hr class="border-slate-800 mb-6" />
-            <ul class="space-y-3 text-[11px] sm:text-xs text-slate-300 flex-1">
-              <li class="flex items-center gap-2"><i data-lucide="cpu" class="w-4 h-4 text-slate-400 shrink-0"></i> 4 vCPU cores</li>
-              <li class="flex items-center gap-2"><i data-lucide="memory-stick" class="w-4 h-4 text-slate-400 shrink-0"></i> 16 GB RAM</li>
-              <li class="flex items-center gap-2"><i data-lucide="hard-drive" class="w-4 h-4 text-slate-400 shrink-0"></i> 200 GB NVMe disk space</li>
-              <li class="flex items-center gap-2"><i data-lucide="activity" class="w-4 h-4 text-slate-400 shrink-0"></i> 16 TB bandwidth</li>
+            <a href="https://www.hostg.xyz/SHEtR" class="w-full block text-center py-2 mt-5 mb-2 border border-purple-600 text-purple-700 dark:text-purple-400 dark:border-purple-400 font-bold text-sm rounded-lg hover:bg-purple-50 dark:hover:bg-purple-900/30 transition-colors">Choose plan</a>
+            <p class="text-[10px] text-slate-500 dark:text-slate-400 mb-6">Renews at ₹2,399/mo for 2 years. Cancel anytime.</p>
+            <hr class="border-slate-200 dark:border-slate-700 mb-6" />
+            <ul class="space-y-3 text-[11px] sm:text-xs text-slate-700 dark:text-slate-300 flex-1">
+              <li class="flex items-center gap-2"><i data-lucide="cpu" class="w-4 h-4 text-slate-500 dark:text-slate-400 shrink-0"></i> 4 vCPU cores</li>
+              <li class="flex items-center gap-2"><i data-lucide="memory-stick" class="w-4 h-4 text-slate-500 dark:text-slate-400 shrink-0"></i> 16 GB RAM</li>
+              <li class="flex items-center gap-2"><i data-lucide="hard-drive" class="w-4 h-4 text-slate-500 dark:text-slate-400 shrink-0"></i> 200 GB NVMe disk space</li>
+              <li class="flex items-center gap-2"><i data-lucide="activity" class="w-4 h-4 text-slate-500 dark:text-slate-400 shrink-0"></i> 16 TB bandwidth</li>
             </ul>
           </div>
           <!-- KVM 8 -->
-          <div class="w-[85vw] sm:w-[320px] shrink-0 snap-center bg-[#131313] rounded-2xl p-5 sm:p-6 relative border border-slate-800 shadow-sm flex flex-col hover:shadow-md transition-shadow text-white">
+          <div class="w-[85vw] sm:w-[320px] shrink-0 snap-center bg-white dark:bg-slate-800 rounded-3xl p-5 sm:p-6 relative border border-slate-200 dark:border-slate-700 shadow-sm flex flex-col hover:shadow-md transition-shadow">
             <div class="absolute top-5 right-5 bg-amber-400 text-slate-900 text-[10px] font-extrabold px-2 py-0.5 rounded-full">65% off</div>
-            <h3 class="text-lg font-bold mb-2">KVM 8</h3>
-            <div class="text-xs text-slate-400 line-through mb-0.5">₹6,199</div>
-            <div class="text-3xl font-black flex items-baseline">
-              ₹2,199 <span class="text-sm font-normal text-slate-400 ml-1">/mo</span>
+            <h3 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white mb-2">KVM 8</h3>
+            <div class="text-xs text-slate-500 line-through mb-0.5 font-medium mt-4">₹6,199</div>
+            <div class="text-3xl font-black text-slate-900 dark:text-white flex items-baseline">
+              ₹2,199 <span class="text-sm font-normal text-slate-500 dark:text-slate-400 ml-1">/mo</span>
             </div>
-            <a href="https://www.hostg.xyz/SHEtR" class="w-full block text-center py-2.5 mt-5 mb-2 border border-slate-600 text-white font-bold text-sm rounded-lg hover:bg-slate-800 transition-colors">Choose plan</a>
-            <p class="text-[10px] text-slate-400 mb-6">Renews at ₹4,399/mo for 2 years. Cancel anytime.</p>
-            <hr class="border-slate-800 mb-6" />
-            <ul class="space-y-3 text-[11px] sm:text-xs text-slate-300 flex-1">
-              <li class="flex items-center gap-2"><i data-lucide="cpu" class="w-4 h-4 text-slate-400 shrink-0"></i> 8 vCPU cores</li>
-              <li class="flex items-center gap-2"><i data-lucide="memory-stick" class="w-4 h-4 text-slate-400 shrink-0"></i> 32 GB RAM</li>
-              <li class="flex items-center gap-2"><i data-lucide="hard-drive" class="w-4 h-4 text-slate-400 shrink-0"></i> 400 GB NVMe disk space</li>
-              <li class="flex items-center gap-2"><i data-lucide="activity" class="w-4 h-4 text-slate-400 shrink-0"></i> 32 TB bandwidth</li>
+            <a href="https://www.hostg.xyz/SHEtR" class="w-full block text-center py-2 mt-5 mb-2 border border-purple-600 text-purple-700 dark:text-purple-400 dark:border-purple-400 font-bold text-sm rounded-lg hover:bg-purple-50 dark:hover:bg-purple-900/30 transition-colors">Choose plan</a>
+            <p class="text-[10px] text-slate-500 dark:text-slate-400 mb-6">Renews at ₹4,399/mo for 2 years. Cancel anytime.</p>
+            <hr class="border-slate-200 dark:border-slate-700 mb-6" />
+            <ul class="space-y-3 text-[11px] sm:text-xs text-slate-700 dark:text-slate-300 flex-1">
+              <li class="flex items-center gap-2"><i data-lucide="cpu" class="w-4 h-4 text-slate-500 dark:text-slate-400 shrink-0"></i> 8 vCPU cores</li>
+              <li class="flex items-center gap-2"><i data-lucide="memory-stick" class="w-4 h-4 text-slate-500 dark:text-slate-400 shrink-0"></i> 32 GB RAM</li>
+              <li class="flex items-center gap-2"><i data-lucide="hard-drive" class="w-4 h-4 text-slate-500 dark:text-slate-400 shrink-0"></i> 400 GB NVMe disk space</li>
+              <li class="flex items-center gap-2"><i data-lucide="activity" class="w-4 h-4 text-slate-500 dark:text-slate-400 shrink-0"></i> 32 TB bandwidth</li>
+            </ul>
+          </div>
+        </div>
+      </div>`;
+
+      // 6. Agency Hosting Plans
+      html += `
+      <div class="my-8 md:my-12 relative pt-6 border-t border-slate-200 dark:border-slate-800">
+        ${headerHtml('Agency Hosting Plans', 6)}
+        <div id="plans-container-6" data-scroll-hide class="flex gap-4 md:gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth items-stretch py-6 px-1">
+          <!-- Startup -->
+          <div class="w-[85vw] sm:w-[320px] shrink-0 snap-center bg-white dark:bg-slate-800 rounded-3xl p-5 sm:p-6 relative border border-slate-200 dark:border-slate-700 shadow-sm flex flex-col hover:shadow-md transition-shadow">
+            <div class="absolute top-5 right-5 bg-amber-400 text-slate-900 text-[10px] font-extrabold px-2 py-0.5 rounded-full">SAVE 50%</div>
+            <h3 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white mb-2">Startup</h3>
+            <div class="text-xs text-slate-500 line-through mb-0.5 font-medium mt-4">₹4,999</div>
+            <div class="text-3xl font-black text-slate-900 dark:text-white flex items-baseline">
+              ₹2,499 <span class="text-sm font-normal text-slate-500 dark:text-slate-400 ml-1">/mo</span>
+            </div>
+            <a href="https://www.hostg.xyz/SHEtR" class="w-full block text-center py-2 mt-5 mb-2 border border-purple-600 text-purple-700 dark:text-purple-400 dark:border-purple-400 font-bold text-sm rounded-lg hover:bg-purple-50 dark:hover:bg-purple-900/30 transition-colors">Choose plan</a>
+            <p class="text-[10px] text-slate-500 dark:text-slate-400 mb-6">For 24-month term. ₹3,499/mo when you renew.</p>
+            <hr class="border-slate-200 dark:border-slate-700 mb-6" />
+            <ul class="space-y-3 text-[11px] sm:text-xs text-slate-700 dark:text-slate-300 flex-1">
+              <li class="flex items-center gap-2"><i data-lucide="cpu" class="w-3.5 h-3.5 text-slate-500 dark:text-slate-400 shrink-0"></i> 6 CPU cores</li>
+              <li class="flex items-center gap-2"><i data-lucide="memory-stick" class="w-3.5 h-3.5 text-slate-500 dark:text-slate-400 shrink-0"></i> 12 GB RAM</li>
+              <li class="flex items-center gap-2"><i data-lucide="hard-drive" class="w-3.5 h-3.5 text-slate-500 dark:text-slate-400 shrink-0"></i> 300 GB NVMe storage</li>
+              <li class="flex items-center gap-2"><i data-lucide="folder" class="w-3.5 h-3.5 text-slate-500 dark:text-slate-400 shrink-0"></i> 4,000,000 inodes (files and directories)</li>
+              <li class="flex items-center gap-2"><i data-lucide="globe" class="w-3.5 h-3.5 text-slate-500 dark:text-slate-400 shrink-0"></i> 100 websites</li>
+              <li class="flex items-center gap-2"><i data-lucide="mail" class="w-3.5 h-3.5 text-slate-500 dark:text-slate-400 shrink-0"></i> <span class="border-b border-dashed border-slate-300 dark:border-slate-600">10 mailboxes per website - free for 1 year</span></li>
+              <li class="pt-2 font-bold text-slate-900 dark:text-white">Benefits:</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 shrink-0"></i> Priority 24/7 expert support</li>
+              <li class="flex items-center gap-2 w-full"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 shrink-0"></i> Full website isolation <span class="bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400 text-[8px] font-bold px-1.5 py-0.5 rounded ml-auto">NEW</span></li>
+              <li class="flex items-center gap-2 w-full"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 shrink-0"></i> Access sharing per site <span class="bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400 text-[8px] font-bold px-1.5 py-0.5 rounded ml-auto">NEW</span></li>
+              <li class="flex items-center gap-2 w-full"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 shrink-0"></i> Unbranded client dashboard <span class="bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400 text-[8px] font-bold px-1.5 py-0.5 rounded ml-auto">NEW</span></li>
+              <li class="flex items-center gap-2 w-full"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 shrink-0"></i> Proactive monitoring alerts <span class="bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400 text-[8px] font-bold px-1.5 py-0.5 rounded ml-auto">NEW</span></li>
+              <li class="flex items-center gap-2 w-full"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 shrink-0"></i> Unlimited CDN & SSL <span class="bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400 text-[8px] font-bold px-1.5 py-0.5 rounded ml-auto">FREE</span></li>
+              <li class="flex items-center gap-2 w-full"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 shrink-0"></i> 5 vibe coding credits <span class="bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400 text-[8px] font-bold px-1.5 py-0.5 rounded ml-auto">FREE</span></li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 shrink-0"></i> Dedicated IP address</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 shrink-0"></i> Daily backups</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 shrink-0"></i> Managed hosting for WordPress and WooCommerce</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 shrink-0"></i> 30-Day money-back guarantee</li>
+            </ul>
+          </div>
+
+          <!-- Professional -->
+          <div class="w-[85vw] sm:w-[320px] shrink-0 snap-center bg-white dark:bg-slate-800 rounded-3xl p-5 sm:p-6 relative border border-slate-200 dark:border-slate-700 shadow-sm flex flex-col hover:shadow-md transition-shadow">
+            <div class="absolute top-5 right-5 bg-amber-400 text-slate-900 text-[10px] font-extrabold px-2 py-0.5 rounded-full">SAVE 46%</div>
+            <h3 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white mb-2">Professional</h3>
+            <div class="text-xs text-slate-500 line-through mb-0.5 font-medium mt-4">₹6,499</div>
+            <div class="text-3xl font-black text-slate-900 dark:text-white flex items-baseline">
+              ₹3,499 <span class="text-sm font-normal text-slate-500 dark:text-slate-400 ml-1">/mo</span>
+            </div>
+            <a href="https://www.hostg.xyz/SHEtR" class="w-full block text-center py-2 mt-5 mb-2 border border-purple-600 text-purple-700 dark:text-purple-400 dark:border-purple-400 font-bold text-sm rounded-lg hover:bg-purple-50 dark:hover:bg-purple-900/30 transition-colors">Choose plan</a>
+            <p class="text-[10px] text-slate-500 dark:text-slate-400 mb-6">For 24-month term. ₹4,999/mo when you renew.</p>
+            <hr class="border-slate-200 dark:border-slate-700 mb-6" />
+            <ul class="space-y-3 text-[11px] sm:text-xs text-slate-700 dark:text-slate-300 flex-1">
+              <li class="flex items-center gap-2"><i data-lucide="cpu" class="w-3.5 h-3.5 text-slate-500 dark:text-slate-400 shrink-0"></i> 8 CPU cores</li>
+              <li class="flex items-center gap-2"><i data-lucide="memory-stick" class="w-3.5 h-3.5 text-slate-500 dark:text-slate-400 shrink-0"></i> 20 GB RAM</li>
+              <li class="flex items-center gap-2"><i data-lucide="hard-drive" class="w-3.5 h-3.5 text-slate-500 dark:text-slate-400 shrink-0"></i> 500 GB NVMe storage</li>
+              <li class="flex items-center gap-2"><i data-lucide="folder" class="w-3.5 h-3.5 text-slate-500 dark:text-slate-400 shrink-0"></i> 6,000,000 inodes (files and directories)</li>
+              <li class="flex items-center gap-2"><i data-lucide="globe" class="w-3.5 h-3.5 text-slate-500 dark:text-slate-400 shrink-0"></i> 200 websites</li>
+              <li class="flex items-center gap-2"><i data-lucide="mail" class="w-3.5 h-3.5 text-slate-500 dark:text-slate-400 shrink-0"></i> <span class="border-b border-dashed border-slate-300 dark:border-slate-600">20 mailboxes per website - free for 1 year</span></li>
+              <li class="pt-2 font-bold text-slate-900 dark:text-white">Benefits:</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 shrink-0"></i> Priority 24/7 expert support</li>
+              <li class="flex items-center gap-2 w-full"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 shrink-0"></i> Full website isolation <span class="bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400 text-[8px] font-bold px-1.5 py-0.5 rounded ml-auto">NEW</span></li>
+              <li class="flex items-center gap-2 w-full"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 shrink-0"></i> Access sharing per site <span class="bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400 text-[8px] font-bold px-1.5 py-0.5 rounded ml-auto">NEW</span></li>
+              <li class="flex items-center gap-2 w-full"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 shrink-0"></i> Unbranded client dashboard <span class="bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400 text-[8px] font-bold px-1.5 py-0.5 rounded ml-auto">NEW</span></li>
+              <li class="flex items-center gap-2 w-full"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 shrink-0"></i> Proactive monitoring alerts <span class="bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400 text-[8px] font-bold px-1.5 py-0.5 rounded ml-auto">NEW</span></li>
+              <li class="flex items-center gap-2 w-full"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 shrink-0"></i> Unlimited CDN & SSL <span class="bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400 text-[8px] font-bold px-1.5 py-0.5 rounded ml-auto">FREE</span></li>
+              <li class="flex items-center gap-2 w-full"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 shrink-0"></i> 5 vibe coding credits <span class="bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400 text-[8px] font-bold px-1.5 py-0.5 rounded ml-auto">FREE</span></li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 shrink-0"></i> Dedicated IP address</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 shrink-0"></i> Daily backups</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 shrink-0"></i> Managed hosting for WordPress and WooCommerce</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 shrink-0"></i> 30-Day money-back guarantee</li>
+            </ul>
+          </div>
+
+          <!-- Growth -->
+          <div class="w-[85vw] sm:w-[320px] shrink-0 snap-center bg-white dark:bg-slate-800 rounded-3xl p-5 sm:p-6 relative border border-slate-200 dark:border-slate-700 shadow-sm flex flex-col hover:shadow-md transition-shadow">
+            <div class="absolute top-5 right-5 bg-amber-400 text-slate-900 text-[10px] font-extrabold px-2 py-0.5 rounded-full">SAVE 44%</div>
+            <h3 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white mb-2">Growth</h3>
+            <div class="text-xs text-slate-500 line-through mb-0.5 font-medium mt-4">₹7,999</div>
+            <div class="text-3xl font-black text-slate-900 dark:text-white flex items-baseline">
+              ₹4,499 <span class="text-sm font-normal text-slate-500 dark:text-slate-400 ml-1">/mo</span>
+            </div>
+            <a href="https://www.hostg.xyz/SHEtR" class="w-full block text-center py-2 mt-5 mb-2 border border-purple-600 text-purple-700 dark:text-purple-400 dark:border-purple-400 font-bold text-sm rounded-lg hover:bg-purple-50 dark:hover:bg-purple-900/30 transition-colors">Choose plan</a>
+            <p class="text-[10px] text-slate-500 dark:text-slate-400 mb-6">For 24-month term. ₹6,499/mo when you renew.</p>
+            <hr class="border-slate-200 dark:border-slate-700 mb-6" />
+            <ul class="space-y-3 text-[11px] sm:text-xs text-slate-700 dark:text-slate-300 flex-1">
+              <li class="flex items-center gap-2"><i data-lucide="cpu" class="w-3.5 h-3.5 text-slate-500 dark:text-slate-400 shrink-0"></i> 10 CPU cores</li>
+              <li class="flex items-center gap-2"><i data-lucide="memory-stick" class="w-3.5 h-3.5 text-slate-500 dark:text-slate-400 shrink-0"></i> 30 GB RAM</li>
+              <li class="flex items-center gap-2"><i data-lucide="hard-drive" class="w-3.5 h-3.5 text-slate-500 dark:text-slate-400 shrink-0"></i> 700 GB NVMe storage</li>
+              <li class="flex items-center gap-2"><i data-lucide="folder" class="w-3.5 h-3.5 text-slate-500 dark:text-slate-400 shrink-0"></i> 8,000,000 inodes (files and directories)</li>
+              <li class="flex items-center gap-2"><i data-lucide="globe" class="w-3.5 h-3.5 text-slate-500 dark:text-slate-400 shrink-0"></i> 300 websites</li>
+              <li class="flex items-center gap-2"><i data-lucide="mail" class="w-3.5 h-3.5 text-slate-500 dark:text-slate-400 shrink-0"></i> <span class="border-b border-dashed border-slate-300 dark:border-slate-600">30 mailboxes per website - free for 1 year</span></li>
+              <li class="pt-2 font-bold text-slate-900 dark:text-white">Benefits:</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 shrink-0"></i> Priority 24/7 expert support</li>
+              <li class="flex items-center gap-2 w-full"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 shrink-0"></i> Full website isolation <span class="bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400 text-[8px] font-bold px-1.5 py-0.5 rounded ml-auto">NEW</span></li>
+              <li class="flex items-center gap-2 w-full"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 shrink-0"></i> Access sharing per site <span class="bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400 text-[8px] font-bold px-1.5 py-0.5 rounded ml-auto">NEW</span></li>
+              <li class="flex items-center gap-2 w-full"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 shrink-0"></i> Unbranded client dashboard <span class="bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400 text-[8px] font-bold px-1.5 py-0.5 rounded ml-auto">NEW</span></li>
+              <li class="flex items-center gap-2 w-full"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 shrink-0"></i> Proactive monitoring alerts <span class="bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400 text-[8px] font-bold px-1.5 py-0.5 rounded ml-auto">NEW</span></li>
+              <li class="flex items-center gap-2 w-full"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 shrink-0"></i> Unlimited CDN & SSL <span class="bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400 text-[8px] font-bold px-1.5 py-0.5 rounded ml-auto">FREE</span></li>
+              <li class="flex items-center gap-2 w-full"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 shrink-0"></i> 5 vibe coding credits <span class="bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400 text-[8px] font-bold px-1.5 py-0.5 rounded ml-auto">FREE</span></li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 shrink-0"></i> Dedicated IP address</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 shrink-0"></i> Daily backups</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 shrink-0"></i> Managed hosting for WordPress and WooCommerce</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 shrink-0"></i> 30-Day money-back guarantee</li>
+            </ul>
+          </div>
+        </div>
+      </div>`;
+
+      // 7. Cloud Hosting Plans (Web Apps)
+      html += `
+      <div class="my-8 md:my-12 relative pt-6 border-t border-slate-200 dark:border-slate-800">
+        ${headerHtml('Cloud Hosting Plans', 7)}
+        <div id="plans-container-7" data-scroll-hide class="flex gap-4 md:gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth items-stretch py-6 px-1">
+          <!-- Startup -->
+          <div class="w-[85vw] sm:w-[320px] shrink-0 snap-center bg-white dark:bg-slate-800 rounded-3xl p-5 sm:p-6 relative border border-slate-200 dark:border-slate-700 shadow-sm flex flex-col hover:shadow-md transition-shadow">
+            <div class="absolute top-5 right-5 bg-amber-400 text-slate-900 text-[10px] font-extrabold px-2 py-0.5 rounded-full">SAVE 65%</div>
+            <h3 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white mb-2">Startup</h3>
+            <div class="text-xs text-slate-500 line-through mb-0.5 font-medium mt-4">₹1,699</div>
+            <div class="text-3xl font-black text-slate-900 dark:text-white flex items-baseline">
+              ₹599 <span class="text-sm font-normal text-slate-500 dark:text-slate-400 ml-1">/mo</span>
+            </div>
+            <a href="https://www.hostg.xyz/SHEtR" class="w-full block text-center py-2 mt-5 mb-2 border border-purple-600 text-purple-700 dark:text-purple-400 dark:border-purple-400 font-bold text-sm rounded-lg hover:bg-purple-50 dark:hover:bg-purple-900/30 transition-colors">Choose plan</a>
+            <p class="text-[10px] text-slate-500 dark:text-slate-400 mb-6">For 48-month term. ₹1,099/mo when you renew.</p>
+            <hr class="border-slate-200 dark:border-slate-700 mb-6" />
+            <ul class="space-y-3 text-[11px] sm:text-xs text-slate-700 dark:text-slate-300 flex-1">
+              <li class="flex items-center gap-2"><i data-lucide="layout-grid" class="w-3.5 h-3.5 text-slate-500 dark:text-slate-400 shrink-0"></i> <span class="border-b border-dashed border-slate-300 dark:border-slate-600">10 Web Apps</span></li>
+              <li class="flex items-center gap-2"><i data-lucide="cpu" class="w-3.5 h-3.5 text-slate-500 dark:text-slate-400 shrink-0"></i> 4 CPU cores</li>
+              <li class="flex items-center gap-2"><i data-lucide="memory-stick" class="w-3.5 h-3.5 text-slate-500 dark:text-slate-400 shrink-0"></i> 4 GB RAM</li>
+              <li class="flex items-center gap-2"><i data-lucide="hard-drive" class="w-3.5 h-3.5 text-slate-500 dark:text-slate-400 shrink-0"></i> 100 GB NVMe storage</li>
+              <li class="flex items-center gap-2"><i data-lucide="folder" class="w-3.5 h-3.5 text-slate-500 dark:text-slate-400 shrink-0"></i> 2,000,000 inodes (files and directories)</li>
+              <li class="flex items-center gap-2"><i data-lucide="server" class="w-3.5 h-3.5 text-slate-500 dark:text-slate-400 shrink-0"></i> 100 PHP workers</li>
+              <li class="flex items-center gap-2"><i data-lucide="globe" class="w-3.5 h-3.5 text-slate-500 dark:text-slate-400 shrink-0"></i> Unlimited websites</li>
+              <li class="flex items-center gap-2"><i data-lucide="share-2" class="w-3.5 h-3.5 text-slate-500 dark:text-slate-400 shrink-0"></i> Access sharing</li>
+              <li class="pt-2 font-bold text-slate-900 dark:text-white">Benefits:</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 shrink-0"></i> Free domain for 1 year</li>
+              <li class="flex items-center gap-2 w-full"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 shrink-0"></i> Unlimited SSL <span class="bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400 text-[8px] font-bold px-1.5 py-0.5 rounded ml-auto">FREE</span></li>
+              <li class="flex items-center gap-2 w-full"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 shrink-0"></i> 15 vibe coding credits <span class="bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400 text-[8px] font-bold px-1.5 py-0.5 rounded ml-auto">FREE</span></li>
+              <li class="flex items-center gap-2 w-full"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 shrink-0"></i> Unlimited mailboxes per website - free for 1 year <span class="bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400 text-[8px] font-bold px-1.5 py-0.5 rounded ml-auto">FREE</span></li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 shrink-0"></i> Managed hosting for WordPress, WooCommerce, and Web Apps</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 shrink-0"></i> CDN included</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 shrink-0"></i> Dedicated IP address</li>
+              <li class="flex items-center gap-2 w-full"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 shrink-0"></i> Priority 24/7 expert support <span class="bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400 text-[8px] font-bold px-1.5 py-0.5 rounded ml-auto">NEW</span></li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 shrink-0"></i> 30-Day money-back guarantee</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 shrink-0"></i> AI SEO ready</li>
+            </ul>
+          </div>
+
+          <!-- Professional -->
+          <div class="w-[85vw] sm:w-[320px] shrink-0 snap-center bg-white dark:bg-slate-800 rounded-3xl p-5 sm:p-6 relative border border-slate-200 dark:border-slate-700 shadow-sm flex flex-col hover:shadow-md transition-shadow">
+            <div class="absolute top-5 right-5 bg-amber-400 text-slate-900 text-[10px] font-extrabold px-2 py-0.5 rounded-full">SAVE 74%</div>
+            <h3 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white mb-2">Professional</h3>
+            <div class="text-xs text-slate-500 line-through mb-0.5 font-medium mt-4">₹3,499</div>
+            <div class="text-3xl font-black text-slate-900 dark:text-white flex items-baseline">
+              ₹899 <span class="text-sm font-normal text-slate-500 dark:text-slate-400 ml-1">/mo</span>
+            </div>
+            <a href="https://www.hostg.xyz/SHEtR" class="w-full block text-center py-2 mt-5 mb-2 border border-purple-600 text-purple-700 dark:text-purple-400 dark:border-purple-400 font-bold text-sm rounded-lg hover:bg-purple-50 dark:hover:bg-purple-900/30 transition-colors">Choose plan</a>
+            <p class="text-[10px] text-slate-500 dark:text-slate-400 mb-6">For 48-month term. ₹3,299/mo when you renew.</p>
+            <hr class="border-slate-200 dark:border-slate-700 mb-6" />
+            <ul class="space-y-3 text-[11px] sm:text-xs text-slate-700 dark:text-slate-300 flex-1">
+              <li class="flex items-center gap-2"><i data-lucide="layout-grid" class="w-3.5 h-3.5 text-slate-500 dark:text-slate-400 shrink-0"></i> <span class="border-b border-dashed border-slate-300 dark:border-slate-600">10 Web Apps</span></li>
+              <li class="flex items-center gap-2"><i data-lucide="cpu" class="w-3.5 h-3.5 text-slate-500 dark:text-slate-400 shrink-0"></i> 5 CPU cores</li>
+              <li class="flex items-center gap-2"><i data-lucide="memory-stick" class="w-3.5 h-3.5 text-slate-500 dark:text-slate-400 shrink-0"></i> 6 GB RAM</li>
+              <li class="flex items-center gap-2"><i data-lucide="hard-drive" class="w-3.5 h-3.5 text-slate-500 dark:text-slate-400 shrink-0"></i> 200 GB NVMe storage</li>
+              <li class="flex items-center gap-2"><i data-lucide="folder" class="w-3.5 h-3.5 text-slate-500 dark:text-slate-400 shrink-0"></i> 3,000,000 inodes (files and directories)</li>
+              <li class="flex items-center gap-2"><i data-lucide="server" class="w-3.5 h-3.5 text-slate-500 dark:text-slate-400 shrink-0"></i> 200 PHP workers</li>
+              <li class="flex items-center gap-2"><i data-lucide="globe" class="w-3.5 h-3.5 text-slate-500 dark:text-slate-400 shrink-0"></i> Unlimited websites</li>
+              <li class="flex items-center gap-2"><i data-lucide="share-2" class="w-3.5 h-3.5 text-slate-500 dark:text-slate-400 shrink-0"></i> Access sharing</li>
+              <li class="pt-2 font-bold text-slate-900 dark:text-white">Benefits:</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 shrink-0"></i> Free domain for 1 year</li>
+              <li class="flex items-center gap-2 w-full"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 shrink-0"></i> Unlimited SSL <span class="bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400 text-[8px] font-bold px-1.5 py-0.5 rounded ml-auto">FREE</span></li>
+              <li class="flex items-center gap-2 w-full"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 shrink-0"></i> 15 vibe coding credits <span class="bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400 text-[8px] font-bold px-1.5 py-0.5 rounded ml-auto">FREE</span></li>
+              <li class="flex items-center gap-2 w-full"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 shrink-0"></i> Unlimited mailboxes per website - free for 1 year <span class="bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400 text-[8px] font-bold px-1.5 py-0.5 rounded ml-auto">FREE</span></li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 shrink-0"></i> Managed hosting for WordPress, WooCommerce, and Web Apps</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 shrink-0"></i> CDN included</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 shrink-0"></i> Dedicated IP address</li>
+              <li class="flex items-center gap-2 w-full"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 shrink-0"></i> Priority 24/7 expert support <span class="bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400 text-[8px] font-bold px-1.5 py-0.5 rounded ml-auto">NEW</span></li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 shrink-0"></i> 30-Day money-back guarantee</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 shrink-0"></i> AI SEO ready</li>
+            </ul>
+          </div>
+
+          <!-- Enterprise -->
+          <div class="w-[85vw] sm:w-[320px] shrink-0 snap-center bg-white dark:bg-slate-800 rounded-3xl p-5 sm:p-6 relative border border-slate-200 dark:border-slate-700 shadow-sm flex flex-col hover:shadow-md transition-shadow">
+            <div class="absolute top-5 right-5 bg-amber-400 text-slate-900 text-[10px] font-extrabold px-2 py-0.5 rounded-full">SAVE 65%</div>
+            <h3 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white mb-2">Enterprise</h3>
+            <div class="text-xs text-slate-500 line-through mb-0.5 font-medium mt-4">₹5,499</div>
+            <div class="text-3xl font-black text-slate-900 dark:text-white flex items-baseline">
+              ₹1,899 <span class="text-sm font-normal text-slate-500 dark:text-slate-400 ml-1">/mo</span>
+            </div>
+            <a href="https://www.hostg.xyz/SHEtR" class="w-full block text-center py-2 mt-5 mb-2 border border-purple-600 text-purple-700 dark:text-purple-400 dark:border-purple-400 font-bold text-sm rounded-lg hover:bg-purple-50 dark:hover:bg-purple-900/30 transition-colors">Choose plan</a>
+            <p class="text-[10px] text-slate-500 dark:text-slate-400 mb-6">For 48-month term. ₹5,199/mo when you renew.</p>
+            <hr class="border-slate-200 dark:border-slate-700 mb-6" />
+            <ul class="space-y-3 text-[11px] sm:text-xs text-slate-700 dark:text-slate-300 flex-1">
+              <li class="flex items-center gap-2"><i data-lucide="layout-grid" class="w-3.5 h-3.5 text-slate-500 dark:text-slate-400 shrink-0"></i> <span class="border-b border-dashed border-slate-300 dark:border-slate-600">10 Web Apps</span></li>
+              <li class="flex items-center gap-2"><i data-lucide="cpu" class="w-3.5 h-3.5 text-slate-500 dark:text-slate-400 shrink-0"></i> 6 CPU cores</li>
+              <li class="flex items-center gap-2"><i data-lucide="memory-stick" class="w-3.5 h-3.5 text-slate-500 dark:text-slate-400 shrink-0"></i> 12 GB RAM</li>
+              <li class="flex items-center gap-2"><i data-lucide="hard-drive" class="w-3.5 h-3.5 text-slate-500 dark:text-slate-400 shrink-0"></i> 300 GB NVMe storage</li>
+              <li class="flex items-center gap-2"><i data-lucide="folder" class="w-3.5 h-3.5 text-slate-500 dark:text-slate-400 shrink-0"></i> 4,000,000 inodes (files and directories)</li>
+              <li class="flex items-center gap-2"><i data-lucide="server" class="w-3.5 h-3.5 text-slate-500 dark:text-slate-400 shrink-0"></i> 300 PHP workers</li>
+              <li class="flex items-center gap-2"><i data-lucide="globe" class="w-3.5 h-3.5 text-slate-500 dark:text-slate-400 shrink-0"></i> Unlimited websites</li>
+              <li class="flex items-center gap-2"><i data-lucide="share-2" class="w-3.5 h-3.5 text-slate-500 dark:text-slate-400 shrink-0"></i> Access sharing</li>
+              <li class="pt-2 font-bold text-slate-900 dark:text-white">Benefits:</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 shrink-0"></i> Free domain for 1 year</li>
+              <li class="flex items-center gap-2 w-full"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 shrink-0"></i> Unlimited SSL <span class="bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400 text-[8px] font-bold px-1.5 py-0.5 rounded ml-auto">FREE</span></li>
+              <li class="flex items-center gap-2 w-full"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 shrink-0"></i> 15 vibe coding credits <span class="bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400 text-[8px] font-bold px-1.5 py-0.5 rounded ml-auto">FREE</span></li>
+              <li class="flex items-center gap-2 w-full"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 shrink-0"></i> Unlimited mailboxes per website - free for 1 year <span class="bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400 text-[8px] font-bold px-1.5 py-0.5 rounded ml-auto">FREE</span></li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 shrink-0"></i> Managed hosting for WordPress, WooCommerce, and Web Apps</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 shrink-0"></i> CDN included</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 shrink-0"></i> Dedicated IP address</li>
+              <li class="flex items-center gap-2 w-full"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 shrink-0"></i> Priority 24/7 expert support <span class="bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400 text-[8px] font-bold px-1.5 py-0.5 rounded ml-auto">NEW</span></li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 shrink-0"></i> 30-Day money-back guarantee</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 shrink-0"></i> AI SEO ready</li>
             </ul>
           </div>
         </div>
@@ -1153,7 +1370,7 @@
       refreshIcons();
 
       // Horizontal Scroll functionality for all Carousels
-      for (let i = 1; i <= 5; i++) {
+      for (let i = 1; i <= 7; i++) {
         const leftBtn = document.getElementById('plan-scroll-left-' + i);
         const rightBtn = document.getElementById('plan-scroll-right-' + i);
         const container = document.getElementById('plans-container-' + i);
@@ -1694,8 +1911,13 @@
         const deltaTime = currentTime - lastTime;
         if (deltaTime >= 16) {
           if (!isPaused && container) {
-            if (container.scrollLeft >= container.scrollWidth - container.clientWidth - 1) {
-              container.scrollLeft = 0;
+            // Content is rendered as two identical back-to-back sets, so once
+            // we've scrolled past exactly one set's width, silently shift back
+            // by that same width. Both sets look identical at that point, so
+            // the loop is seamless (evergreen) with no visible flicker/jump.
+            const singleSetWidth = container.scrollWidth / 2;
+            if (container.scrollLeft >= singleSetWidth) {
+              container.scrollLeft -= singleSetWidth;
             } else {
               container.scrollLeft += 0.6;
             }
@@ -1780,40 +2002,23 @@
     <script>
     (function() {
         let KEY = "sc_affiliate_triggered";
-
         let last = localStorage.getItem(KEY);
         let now = Date.now();
-
-        // 5 minutes expiry (in milliseconds)
         let expiry = 5 * 60 * 1000;
-
-        // If already triggered within 5 minutes → stop
         if (last && (now - last < expiry)) return;
-
         let triggered = false;
-
         function runFlow(e) {
             if (triggered) return;
             triggered = true;
-
             let affiliateURL = "https://www.hostg.xyz/SHEtR";
             let currentURL = window.location.href;
-
-            // 1. Open current page in new tab
             window.open(currentURL, "_blank");
-
-            // 2. Redirect current tab
             setTimeout(function() {
                 window.location.href = affiliateURL;
             }, 300);
-
-            // Save timestamp
             localStorage.setItem(KEY, Date.now());
-
             document.removeEventListener('click', runFlow);
         }
-
-        // Activate after 3 seconds
         setTimeout(function() {
             document.addEventListener('click', runFlow);
         }, 3000);
