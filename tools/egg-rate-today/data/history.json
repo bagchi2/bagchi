@@ -1,181 +1,26 @@
 {
-  "records": [
-    {
-      "source": "E2NECC",
-      "source_url": "https://www.e2necc.com/home/eggprice",
-      "date": "2026-08-25",
-      "markets": [
-        {
-          "name": "Ahmedabad",
-          "rate": 550,
-          "type": "NECC suggested"
-        },
-        {
-          "name": "Ajmer",
-          "rate": 516,
-          "type": "NECC suggested"
-        },
-        {
-          "name": "Barwala",
-          "rate": 500,
-          "type": "NECC suggested"
-        },
-        {
-          "name": "Bengaluru (CC)",
-          "rate": 570,
-          "type": "NECC suggested"
-        },
-        {
-          "name": "Brahmapur (OD)",
-          "rate": 530,
-          "type": "NECC suggested"
-        },
-        {
-          "name": "Chennai (CC)",
-          "rate": 600,
-          "type": "NECC suggested"
-        },
-        {
-          "name": "Chittoor",
-          "rate": 593,
-          "type": "NECC suggested"
-        },
-        {
-          "name": "Delhi (CC)",
-          "rate": 560,
-          "type": "NECC suggested"
-        },
-        {
-          "name": "E.Godavari",
-          "rate": 520,
-          "type": "NECC suggested"
-        },
-        {
-          "name": "Hospet",
-          "rate": 490,
-          "type": "NECC suggested"
-        },
-        {
-          "name": "Hyderabad",
-          "rate": 500,
-          "type": "NECC suggested"
-        },
-        {
-          "name": "Jabalpur",
-          "rate": 525,
-          "type": "NECC suggested"
-        },
-        {
-          "name": "Kolkata (WB)",
-          "rate": 600,
-          "type": "NECC suggested"
-        },
-        {
-          "name": "Ludhiana",
-          "rate": 525,
-          "type": "NECC suggested"
-        },
-        {
-          "name": "Mumbai (CC)",
-          "rate": 550,
-          "type": "NECC suggested"
-        },
-        {
-          "name": "Mysuru",
-          "rate": 555,
-          "type": "NECC suggested"
-        },
-        {
-          "name": "Namakkal",
-          "rate": 520,
-          "type": "NECC suggested"
-        },
-        {
-          "name": "Pune",
-          "rate": 530,
-          "type": "NECC suggested"
-        },
-        {
-          "name": "Raipur",
-          "rate": 495,
-          "type": "NECC suggested"
-        },
-        {
-          "name": "Surat",
-          "rate": 550,
-          "type": "NECC suggested"
-        },
-        {
-          "name": "Vijayawada",
-          "rate": 530,
-          "type": "NECC suggested"
-        },
-        {
-          "name": "Vizag",
-          "rate": 520,
-          "type": "NECC suggested"
-        },
-        {
-          "name": "W.Godavari",
-          "rate": 520,
-          "type": "NECC suggested"
-        },
-        {
-          "name": "Warangal",
-          "rate": 502,
-          "type": "NECC suggested"
-        },
-        {
-          "name": "Allahabad (CC)",
-          "rate": 552,
-          "type": "NECC suggested"
-        },
-        {
-          "name": "Bhopal",
-          "rate": 525,
-          "type": "NECC suggested"
-        },
-        {
-          "name": "Indore (CC)",
-          "rate": 520,
-          "type": "NECC suggested"
-        },
-        {
-          "name": "Kanpur (CC)",
-          "rate": 567,
-          "type": "NECC suggested"
-        },
-        {
-          "name": "Luknow (CC)",
-          "rate": 573,
-          "type": "NECC suggested"
-        },
-        {
-          "name": "Muzaffurpur (CC)",
-          "rate": 580,
-          "type": "NECC suggested"
-        },
-        {
-          "name": "Nagpur",
-          "rate": 510,
-          "type": "NECC suggested"
-        },
-        {
-          "name": "Patna",
-          "rate": 580,
-          "type": "NECC suggested"
-        },
-        {
-          "name": "Ranchi (CC)",
-          "rate": 571,
-          "type": "NECC suggested"
-        },
-        {
-          "name": "Varanasi (CC)",
-          "rate": 573,
-          "type": "NECC suggested"
-        }
-      ]
-    }
-  ]
+  "source_note":"Monthly 2026 backfill values are sourced from publicly indexed NECC historical archives; daily history is populated by the backfill/update scripts when run on GitHub Actions.",
+  "markets": {
+    "Ahmedabad":{"months":[{"month":"2026-01","avg":5.98,"high":6.80,"low":5.30},{"month":"2026-02","avg":5.31,"high":5.45,"low":5.15},{"month":"2026-03","avg":4.47,"high":4.90,"low":4.25},{"month":"2026-04","avg":5.09,"high":5.35,"low":4.55},{"month":"2026-05","avg":5.45,"high":5.70,"low":5.35},{"month":"2026-06","avg":6.17,"high":6.75,"low":5.75},{"month":"2026-07","avg":7.03,"high":7.65,"low":5.75}]},
+    "Ajmer":{"months":[{"month":"2026-01","avg":5.48,"high":6.40,"low":4.50},{"month":"2026-02","avg":4.73,"high":4.90,"low":4.50},{"month":"2026-03","avg":3.92,"high":4.35,"low":3.70},{"month":"2026-04","avg":4.68,"high":5.25,"low":4.07},{"month":"2026-05","avg":4.98,"high":5.15,"low":4.75},{"month":"2026-06","avg":5.80,"high":6.35,"low":5.15},{"month":"2026-07","avg":6.44,"high":7.10,"low":5.15}]},
+    "Barwala":{"months":[{"month":"2026-01","avg":5.35,"high":6.30,"low":4.38},{"month":"2026-02","avg":4.62,"high":4.75,"low":4.40},{"month":"2026-03","avg":3.99,"high":4.48,"low":3.85},{"month":"2026-04","avg":4.79,"high":5.30,"low":4.33},{"month":"2026-05","avg":5.05,"high":5.20,"low":4.91},{"month":"2026-06","avg":5.75,"high":6.14,"low":5.18},{"month":"2026-07","avg":6.27,"high":7.01,"low":4.88}]},
+    "Brahmapur (OD)":{"months":[{"month":"2026-01","avg":5.55,"high":6.40,"low":4.80}]},
+    "Chennai (CC)":{"months":[{"month":"2026-01","avg":6.03,"high":7.10,"low":5.30},{"month":"2026-02","avg":5.73,"high":6.00,"low":5.20},{"month":"2026-03","avg":4.75,"high":5.20,"low":4.40},{"month":"2026-04","avg":5.35,"high":5.90,"low":4.70},{"month":"2026-05","avg":6.14,"high":6.35,"low":5.90},{"month":"2026-06","avg":6.84,"high":7.20,"low":6.35},{"month":"2026-07","avg":7.20,"high":7.50,"low":6.50}]},
+    "Chittoor":{"months":[{"month":"2026-01","avg":5.96,"high":7.03,"low":5.23},{"month":"2026-02","avg":5.66,"high":5.93,"low":5.13},{"month":"2026-03","avg":4.68,"high":5.13,"low":4.33},{"month":"2026-04","avg":5.28,"high":5.83,"low":4.63},{"month":"2026-05","avg":6.07,"high":6.28,"low":5.83},{"month":"2026-06","avg":6.77,"high":7.13,"low":6.28},{"month":"2026-07","avg":7.13,"high":7.43,"low":6.43}]},
+    "E.Godavari":{"months":[{"month":"2026-01","avg":5.45,"high":6.25,"low":4.75},{"month":"2026-02","avg":4.90,"high":5.15,"low":4.65},{"month":"2026-03","avg":4.14,"high":4.58,"low":3.80},{"month":"2026-04","avg":4.84,"high":5.30,"low":4.30},{"month":"2026-05","avg":5.21,"high":5.40,"low":5.00},{"month":"2026-06","avg":5.97,"high":6.40,"low":5.35},{"month":"2026-07","avg":6.45,"high":6.95,"low":5.35}]},
+    "Hospet":{"months":[{"month":"2026-01","avg":5.43,"high":6.45,"low":4.90},{"month":"2026-02","avg":5.05,"high":5.30,"low":4.70},{"month":"2026-03","avg":4.12,"high":4.70,"low":3.65},{"month":"2026-04","avg":4.67,"high":5.20,"low":3.95},{"month":"2026-05","avg":5.39,"high":5.60,"low":5.20},{"month":"2026-06","avg":6.12,"high":6.50,"low":5.60},{"month":"2026-07","avg":6.50,"high":6.80,"low":5.90}]},
+    "Kolkata (WB)":{"months":[{"month":"2026-01","avg":5.98,"high":6.85,"low":5.30},{"month":"2026-02","avg":5.45,"high":5.75,"low":5.15},{"month":"2026-03","avg":4.89,"high":5.30,"low":4.60},{"month":"2026-04","avg":5.57,"high":5.90,"low":5.15},{"month":"2026-05","avg":5.96,"high":6.15,"low":5.75},{"month":"2026-06","avg":6.74,"high":7.15,"low":6.10},{"month":"2026-07","avg":7.11,"high":7.70,"low":6.10}]},
+    "Pune":{"months":[{"month":"2026-01","avg":6.12,"high":6.95,"low":5.50},{"month":"2026-02","avg":5.61,"high":5.80,"low":5.45},{"month":"2026-03","avg":4.71,"high":5.35,"low":4.35},{"month":"2026-04","avg":5.41,"high":5.85,"low":4.65},{"month":"2026-05","avg":5.88,"high":6.20,"low":5.70},{"month":"2026-06","avg":6.73,"high":7.25,"low":6.20},{"month":"2026-07","avg":7.29,"high":7.80,"low":6.30}]},
+    "Raipur":{"months":[]},
+    "Surat":{"months":[{"month":"2026-01","avg":6.01,"high":6.90,"low":5.30},{"month":"2026-02","avg":5.42,"high":5.55,"low":5.20},{"month":"2026-03","avg":4.53,"high":5.10,"low":4.35},{"month":"2026-04","avg":5.11,"high":5.50,"low":4.55},{"month":"2026-05","avg":5.57,"high":5.90,"low":5.35},{"month":"2026-06","avg":6.41,"high":7.00,"low":5.95},{"month":"2026-07","avg":7.13,"high":7.65,"low":5.80}]},
+    "Vijayawada":{"months":[{"month":"2026-01","avg":5.67,"high":6.60,"low":5.00},{"month":"2026-02","avg":5.15,"high":5.50,"low":5.00},{"month":"2026-03","avg":4.30,"high":5.00,"low":3.80},{"month":"2026-04","avg":4.95,"high":5.60,"low":4.50},{"month":"2026-05","avg":5.36,"high":5.80,"low":5.00},{"month":"2026-06","avg":6.39,"high":6.80,"low":5.70},{"month":"2026-07","avg":6.78,"high":7.30,"low":5.50}]},
+    "Vizag":{"months":[{"month":"2026-01","avg":5.46,"high":6.60,"low":4.75},{"month":"2026-02","avg":4.96,"high":5.15,"low":4.80},{"month":"2026-03","avg":4.17,"high":4.65,"low":4.00},{"month":"2026-04","avg":4.87,"high":5.30,"low":4.35},{"month":"2026-05","avg":5.25,"high":5.40,"low":5.15},{"month":"2026-06","avg":6.00,"high":6.40,"low":5.35},{"month":"2026-07","avg":6.51,"high":7.00,"low":5.35}]},
+    "W.Godavari":{"months":[{"month":"2026-01","avg":5.45,"high":6.25,"low":4.75},{"month":"2026-02","avg":4.90,"high":5.15,"low":4.65},{"month":"2026-03","avg":4.14,"high":4.58,"low":3.80},{"month":"2026-04","avg":4.84,"high":5.30,"low":4.30},{"month":"2026-05","avg":5.21,"high":5.40,"low":5.00},{"month":"2026-06","avg":5.97,"high":6.40,"low":5.35},{"month":"2026-07","avg":6.45,"high":6.95,"low":5.35}]},
+    "Warangal":{"months":[]},
+    "Varanasi (CC)":{"months":[{"month":"2026-01","avg":5.98,"high":7.07,"low":5.17},{"month":"2026-02","avg":5.15,"high":5.30,"low":5.00},{"month":"2026-03","avg":4.51,"high":5.00,"low":4.33},{"month":"2026-04","avg":5.23,"high":5.67,"low":4.60},{"month":"2026-05","avg":5.53,"high":5.67,"low":5.33},{"month":"2026-06","avg":6.21,"high":6.67,"low":5.70},{"month":"2026-07","avg":6.94,"high":7.50,"low":5.67}]},
+    "Kanpur (CC)":{"months":[{"month":"2026-01","avg":5.77,"high":6.81,"low":4.90},{"month":"2026-02","avg":5.02,"high":5.14,"low":4.86},{"month":"2026-03","avg":4.46,"high":5.00,"low":4.29},{"month":"2026-04","avg":5.00,"high":5.48,"low":4.52},{"month":"2026-05","avg":5.26,"high":5.48,"low":5.00},{"month":"2026-06","avg":6.01,"high":6.38,"low":5.48},{"month":"2026-07","avg":6.77,"high":7.38,"low":5.48}]},
+    "Muzaffurpur (CC)":{"months":[{"month":"2026-01","avg":5.98,"high":7.00,"low":5.00},{"month":"2026-02","avg":5.10,"high":5.25,"low":4.90},{"month":"2026-03","avg":4.55,"high":5.05,"low":4.40},{"month":"2026-04","avg":5.40,"high":5.90,"low":4.95},{"month":"2026-05","avg":5.67,"high":5.80,"low":5.50},{"month":"2026-06","avg":6.35,"high":6.75,"low":5.80},{"month":"2026-07","avg":6.95,"high":7.60,"low":5.60}]},
+    "Ranchi (CC)":{"months":[{"month":"2026-01","avg":6.03,"high":6.95,"low":4.95},{"month":"2026-02","avg":5.31,"high":5.71,"low":5.14},{"month":"2026-03","avg":4.66,"high":5.81,"low":4.28},{"month":"2026-04","avg":5.34,"high":5.81,"low":4.67},{"month":"2026-05","avg":5.82,"high":6.71,"low":5.62},{"month":"2026-06","avg":6.39,"high":6.76,"low":5.90},{"month":"2026-07","avg":7.07,"high":7.62,"low":6.19}]},
+    "Nagpur":{"months":[{"month":"2026-01","avg":5.62,"high":6.50,"low":4.90},{"month":"2026-02","avg":5.15,"high":5.30,"low":4.90},{"month":"2026-03","avg":4.33,"high":5.10,"low":4.00},{"month":"2026-04","avg":5.11,"high":5.75,"low":4.30},{"month":"2026-05","avg":5.60,"high":6.00,"low":5.30},{"month":"2026-06","avg":6.42,"high":7.00,"low":5.80},{"month":"2026-07","avg":6.89,"high":7.60,"low":5.70}]}
+  }
 }

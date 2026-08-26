@@ -1,12 +1,11 @@
 # EggRate India
 
-Independent informational egg-rate portal.
+URL: https://bagchi.in/tools/egg-rate-today/
 
 Source: https://www.e2necc.com/home/eggprice
+Last official sheet in package: 2026-08-25
+Markets: 34
 
-Public URL: https://bagchi.in/tools/egg-rate-today/
+Historical archive: January 2026 through August 2026, with bootstrap history and an automated backfill job.
 
-Last generated: 2026-08-25
-Markets tracked: 34
-
-NECC suggested egg prices are reference/informational prices and are not mandatory selling prices. Actual local prices may differ.
+Disclaimer: E2NECC says its suggested prices are merely suggestive, not mandatory, and are published for reference and information of the trade and industry.

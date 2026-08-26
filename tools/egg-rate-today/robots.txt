@@ -1,3 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://bagchi.in/tools/egg-rate-today/sitemap.xml
