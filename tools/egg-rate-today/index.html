@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>EggRate.io — India NECC Egg Price Tracker &amp; Market Intelligence</title>
@@ -320,6 +321,7 @@
 </head>
 <body>
 
+
 <!-- TOAST -->
 <div id="toast">
   <svg class="icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
@@ -331,12 +333,12 @@
   <div class="wrap ticker-inner">
     <div class="ticker-left">
       <span class="live-pill"><span class="live-dot"></span>NECC LIVE</span>
-      <span style="color:#94a3b8">Official Reference Cycle: <strong style="color:#fff">25 Aug 2026</strong></span>
+      <span style="color:#94a3b8">Official Reference Cycle: <strong id="ticker-date" style="color:#fff">Loading…</strong></span>
       <span style="color:#475569">|</span>
-      <span style="color:#cbd5e1">Pan-India Weighted Avg: <strong style="color:#fff">₹5.42</strong> <span style="color:#34d399;font-weight:600;margin-left:4px">▲ +0.74%</span></span>
+      <span style="color:#cbd5e1">Pan-India Weighted Avg: <strong id="ticker-avg" style="color:#fff">—</strong> <span id="ticker-change" style="color:#34d399;font-weight:600;margin-left:4px">—</span></span>
     </div>
     <div class="ticker-right">
-      <span style="display:none" class="hide-sm">34 Reference Hubs reporting</span>
+      <span id="ticker-hubs" style="display:none" class="hide-sm">34 Reference Hubs reporting</span>
       <button id="btn-share-top">
         <svg class="icon" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
         <span>Share Rates</span>
@@ -388,16 +390,16 @@
       <div class="hero-copy">
         <div class="hero-eyebrow">
           <svg class="icon" viewBox="0 0 24 24" style="width:14px;height:14px"><path d="M12 2l1.5 5.5L19 9l-5.5 1.5L12 16l-1.5-5.5L5 9l5.5-1.5L12 2z"></path></svg>
-          <span>India NECC Reference Data • 30-Day Historical Trends</span>
+          <span id="hero-eyebrow-text">India NECC Reference Data • January–August 2026 Historical Trends</span>
         </div>
-        <h1>Today's Real-Time Egg Rates &amp; Market Analytics</h1>
-        <p>Institutional-grade poultry trade benchmark tracker across 34 active Indian hubs. Monitor wholesale price swings, calculate landed peti costs, and examine 30-day volatility.</p>
+        <h1 id="page-title">Today’s Real-Time Egg Rates &amp; Market Analytics</h1>
+        <p><span id="hero-description">Institutional-grade poultry trade benchmark tracker across 34 active Indian hubs. Monitor wholesale price swings, calculate landed peti costs, and examine historical volatility.</span></p>
       </div>
       <div class="hero-card">
         <div class="hero-card-top">
           <div>
-            <div class="hero-card-label">National Rate Index</div>
-            <div class="hero-card-value">₹5.42 <small>/ pc</small></div>
+            <div class="hero-card-label" id="hero-card-label">National Rate Index</div>
+            <div class="hero-card-value" id="hero-card-value">— <small>/ pc</small></div>
           </div>
           <span class="up-pill">
             <svg class="icon" viewBox="0 0 24 24" style="width:13px;height:13px"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
@@ -405,8 +407,8 @@
           </span>
         </div>
         <div class="hero-grid2">
-          <div><span>Tray (30 pcs):</span><p>₹162.60</p></div>
-          <div><span>Peti (210 pcs):</span><p>₹1,138.20</p></div>
+          <div><span>Tray (30 pcs):</span><p id="hero-tray">—</p></div>
+          <div><span>Peti (210 pcs):</span><p id="hero-peti">—</p></div>
         </div>
       </div>
     </div>
@@ -430,7 +432,7 @@
         <div class="tf-group" id="tf-group">
           <button data-tf="7">7D</button>
           <button data-tf="14">14D</button>
-          <button data-tf="30" class="active">30D</button>
+          <button data-tf="30" class="active">30D</button><button data-tf="90">90D</button><button data-tf="YTD">YTD</button>
         </div>
         <button class="toggle-cmp on" id="btn-compare" style="display:none">
           <svg class="icon" viewBox="0 0 24 24" style="width:14px;height:14px"><line x1="4" y1="21" x2="4" y2="14"></line><line x1="4" y1="10" x2="4" y2="3"></line><line x1="12" y1="21" x2="12" y2="12"></line><line x1="12" y1="8" x2="12" y2="3"></line><line x1="20" y1="21" x2="20" y2="16"></line><line x1="20" y1="12" x2="20" y2="3"></line></svg>
@@ -567,7 +569,7 @@
     <div class="modal-head">
       <div>
         <h3 id="modal-title">Market <span class="modal-zone-tag" id="modal-zone-tag">Zone</span></h3>
-        <p>30-Day Day-by-Day Historical Rate Sheet</p>
+        <p>January–August 2026 Day-by-Day Historical Rate Sheet</p>
       </div>
       <button class="icon-btn" id="modal-close-x">
         <svg class="icon" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
@@ -610,678 +612,79 @@
   </div>
 </footer>
 
+
 <script>
 (function () {
   "use strict";
-
-  /* ===================== DATA LAYER ===================== */
-  function generate30DaySeries(basePrice, seedDelta) {
-    seedDelta = seedDelta || 0;
-    const series = [];
-    const today = new Date('2026-08-25T12:00:00Z');
-    let current = basePrice - 0.24 + (seedDelta * 0.05);
-
-    for (let i = 29; i >= 0; i--) {
-      const d = new Date(today);
-      d.setDate(d.getDate() - i);
-      const noise = (Math.sin(i * 0.45 + seedDelta) * 0.08) + ((29 - i) / 29) * 0.20;
-      const rate = Math.round((current + noise) * 100) / 100;
-      const isoDate = d.toISOString().split('T')[0];
-      const dayLabel = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-      series.push({ date: isoDate, dayLabel: dayLabel, rate: i === 0 ? basePrice : rate });
-    }
-    series[series.length - 1].rate = basePrice;
-    return series;
-  }
-
-  const MARKETS_RAW = [
-    ['ahmedabad','Ahmedabad','Gujarat','West',5.50,0.05,0.92,'up',1.2],
-    ['ajmer','Ajmer','Rajasthan','North',5.16,-0.04,-0.77,'down',2.1],
-    ['allahabad','Allahabad (CC)','Uttar Pradesh','North',5.52,0.02,0.36,'up',0.8],
-    ['barwala','Barwala','Haryana','North',5.30,0.00,0.00,'flat',3.4],
-    ['bengaluru','Bengaluru (CC)','Karnataka','South',5.50,0.10,1.85,'up',1.5],
-    ['bhopal','Bhopal','Madhya Pradesh','Central',5.25,0.05,0.96,'up',2.7],
-    ['brahmapur','Brahmapur (OD)','Odisha','East',5.50,0.00,0.00,'flat',0.4],
-    ['chennai','Chennai (CC)','Tamil Nadu','South',5.80,0.08,1.40,'up',4.2],
-    ['chittoor','Chittoor','Andhra Pradesh','South',5.73,0.03,0.53,'up',3.1],
-    ['delhi','Delhi (CC)','Delhi NCR','North',5.47,0.07,1.30,'up',5.0],
-    ['e-godavari','E.Godavari','Andhra Pradesh','South',5.20,-0.05,-0.95,'down',1.8],
-    ['hospet','Hospet','Karnataka','South',4.90,0.00,0.00,'flat',0.2],
-    ['hyderabad','Hyderabad','Telangana','South',5.00,0.05,1.01,'up',2.3],
-    ['indore','Indore (CC)','Madhya Pradesh','Central',5.20,0.00,0.00,'flat',1.1],
-    ['jabalpur','Jabalpur','Madhya Pradesh','Central',5.40,0.05,0.93,'up',2.9],
-    ['kanpur','Kanpur (CC)','Uttar Pradesh','North',5.67,0.07,1.25,'up',3.7],
-    ['kolkata','Kolkata (WB)','West Bengal','East',6.00,0.12,2.04,'up',4.8],
-    ['ludhiana','Ludhiana','Punjab','North',5.25,-0.05,-0.94,'down',1.6],
-    ['luknow','Lucknow (CC)','Uttar Pradesh','North',5.73,0.03,0.53,'up',3.9],
-    ['mumbai','Mumbai (CC)','Maharashtra','West',5.50,0.05,0.92,'up',4.1],
-    ['muzaffurpur','Muzaffarpur (CC)','Bihar','East',5.80,0.06,1.05,'up',2.5],
-    ['mysuru','Mysuru','Karnataka','South',5.55,0.05,0.91,'up',1.9],
-    ['nagpur','Nagpur','Maharashtra','Central',5.35,0.00,0.00,'flat',2.0],
-    ['namakkal','Namakkal','Tamil Nadu','South',5.20,0.05,0.97,'up',5.5],
-    ['patna','Patna','Bihar','East',5.80,0.08,1.40,'up',3.2],
-    ['pune','Pune','Maharashtra','West',5.35,0.05,0.94,'up',1.7],
-    ['raipur','Raipur','Chhattisgarh','Central',4.95,-0.05,-1.00,'down',0.9],
-    ['ranchi','Ranchi (CC)','Jharkhand','East',5.71,0.06,1.06,'up',2.8],
-    ['surat','Surat','Gujarat','West',5.50,0.00,0.00,'flat',1.4],
-    ['varanasi','Varanasi (CC)','Uttar Pradesh','North',5.73,0.03,0.53,'up',3.0],
-    ['vijayawada','Vijayawada','Andhra Pradesh','South',5.35,0.05,0.94,'up',2.2],
-    ['vizag','Vizag','Andhra Pradesh','South',5.25,0.00,0.00,'flat',1.3],
-    ['w-godavari','W.Godavari','Andhra Pradesh','South',5.25,0.00,0.00,'flat',2.4],
-    ['warangal','Warangal','Telangana','South',5.02,-0.03,-0.59,'down',1.0]
-  ];
-
-  const MARKETS_DATA = MARKETS_RAW.map(function (r) {
-    return {
-      id: r[0], name: r[1], state: r[2], zone: r[3], currentRate: r[4],
-      change24h: r[5], change24hPct: r[6], status: r[7],
-      history30d: generate30DaySeries(r[4], r[8])
-    };
-  });
-
-  const ALL_INDIA_AVG_SERIES = generate30DaySeries(5.42, 2.5);
-  const ALL_INDIA_INFO = { id: 'all-india', name: 'All-India Weighted Average', state: 'National Benchmark', zone: 'Pan-India', currentRate: 5.42, change24h: 0.04, change24hPct: 0.74, status: 'up' };
-
-  function fmtINR(n, opts) {
-    opts = opts || {};
-    return n.toLocaleString('en-IN', { maximumFractionDigits: opts.max !== undefined ? opts.max : 2, minimumFractionDigits: opts.min !== undefined ? opts.min : 0 });
-  }
-
-  /* ===================== APP STATE ===================== */
+  const PAGE_MARKET_ID = "all-india";
+  const DATA_BASE = "data";
+  const IS_CITY_PAGE = PAGE_MARKET_ID !== "all-india";
+  const META = [{"id": "ahmedabad", "name": "Ahmedabad", "state": "Gujarat", "zone": "West"}, {"id": "ajmer", "name": "Ajmer", "state": "Rajasthan", "zone": "North"}, {"id": "allahabad", "name": "Allahabad (CC)", "state": "Uttar Pradesh", "zone": "North"}, {"id": "barwala", "name": "Barwala", "state": "Haryana", "zone": "North"}, {"id": "bengaluru", "name": "Bengaluru (CC)", "state": "Karnataka", "zone": "South"}, {"id": "bhopal", "name": "Bhopal", "state": "Madhya Pradesh", "zone": "Central"}, {"id": "brahmapur", "name": "Brahmapur (OD)", "state": "Odisha", "zone": "East"}, {"id": "chennai", "name": "Chennai (CC)", "state": "Tamil Nadu", "zone": "South"}, {"id": "chittoor", "name": "Chittoor", "state": "Andhra Pradesh", "zone": "South"}, {"id": "delhi", "name": "Delhi (CC)", "state": "Delhi NCR", "zone": "North"}, {"id": "e-godavari", "name": "E.Godavari", "state": "Andhra Pradesh", "zone": "South"}, {"id": "hospet", "name": "Hospet", "state": "Karnataka", "zone": "South"}, {"id": "hyderabad", "name": "Hyderabad", "state": "Telangana", "zone": "South"}, {"id": "indore", "name": "Indore (CC)", "state": "Madhya Pradesh", "zone": "Central"}, {"id": "jabalpur", "name": "Jabalpur", "state": "Madhya Pradesh", "zone": "Central"}, {"id": "kanpur", "name": "Kanpur (CC)", "state": "Uttar Pradesh", "zone": "North"}, {"id": "kolkata", "name": "Kolkata (WB)", "state": "West Bengal", "zone": "East"}, {"id": "ludhiana", "name": "Ludhiana", "state": "Punjab", "zone": "North"}, {"id": "luknow", "name": "Lucknow (CC)", "state": "Uttar Pradesh", "zone": "North"}, {"id": "mumbai", "name": "Mumbai (CC)", "state": "Maharashtra", "zone": "West"}, {"id": "muzaffurpur", "name": "Muzaffarpur (CC)", "state": "Bihar", "zone": "East"}, {"id": "mysuru", "name": "Mysuru", "state": "Karnataka", "zone": "South"}, {"id": "nagpur", "name": "Nagpur", "state": "Maharashtra", "zone": "Central"}, {"id": "namakkal", "name": "Namakkal", "state": "Tamil Nadu", "zone": "South"}, {"id": "patna", "name": "Patna", "state": "Bihar", "zone": "East"}, {"id": "pune", "name": "Pune", "state": "Maharashtra", "zone": "West"}, {"id": "raipur", "name": "Raipur", "state": "Chhattisgarh", "zone": "Central"}, {"id": "ranchi", "name": "Ranchi (CC)", "state": "Jharkhand", "zone": "East"}, {"id": "surat", "name": "Surat", "state": "Gujarat", "zone": "West"}, {"id": "varanasi", "name": "Varanasi (CC)", "state": "Uttar Pradesh", "zone": "North"}, {"id": "vijayawada", "name": "Vijayawada", "state": "Andhra Pradesh", "zone": "South"}, {"id": "vizag", "name": "Vizag", "state": "Andhra Pradesh", "zone": "South"}, {"id": "w-godavari", "name": "W.Godavari", "state": "Andhra Pradesh", "zone": "South"}, {"id": "warangal", "name": "Warangal", "state": "Telangana", "zone": "South"}];
   const state = {
-    darkMode: (localStorage.getItem('eggrate-theme') === 'dark') || (!localStorage.getItem('eggrate-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches),
-    selectedMarketId: 'all-india',
-    compareWithAvg: true,
-    timeframe: '30',
-    searchQuery: '',
-    zoneFilter: 'ALL',
-    sortField: 'rate',
-    sortDirection: 'desc',
-    hoveredPointIndex: null,
-    activeModalMarketId: null,
-    calcMarketId: 'all-india',
-    calcQuantity: 210,
-    calcCustomQty: '',
-    calcFreightPerEgg: 0.15,
-    calcMarginPct: 10,
-    points: []
+    darkMode: localStorage.getItem('eggrate-theme') === 'dark' || (!localStorage.getItem('eggrate-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches),
+    selectedMarketId: PAGE_MARKET_ID,
+    compareWithAvg: true, timeframe: '30', searchQuery: '', zoneFilter: 'ALL', sortField: 'rate', sortDirection: 'desc',
+    hoveredPointIndex: null, activeModalMarketId: null, calcMarketId: PAGE_MARKET_ID === 'all-india' ? 'all-india' : PAGE_MARKET_ID,
+    calcQuantity: 210, calcCustomQty: '', calcFreightPerEgg: 0.15, calcMarginPct: 10, points: []
   };
+  let latest=null, history=null, MARKETS_DATA=[], ALL_INDIA_INFO=null, ALL_INDIA_AVG_SERIES=[];
 
-  /* ===================== HELPERS ===================== */
-  function getMarketInfo(id) {
-    if (id === 'all-india') return ALL_INDIA_INFO;
-    return MARKETS_DATA.find(function (m) { return m.id === id; }) || ALL_INDIA_INFO;
+  const $ = id => document.getElementById(id);
+  function money(n, max=2){ return '₹' + Number(n||0).toLocaleString('en-IN',{minimumFractionDigits:0,maximumFractionDigits:max}); }
+  function slug(id){return id;}
+  function showToast(msg){const t=$('toast'); if(!t)return; $('toast-msg').textContent=msg; t.classList.add('show'); clearTimeout(showToast._t); showToast._t=setTimeout(()=>t.classList.remove('show'),3000);}
+  function applyTheme(){document.documentElement.classList.toggle('dark',state.darkMode);localStorage.setItem('eggrate-theme',state.darkMode?'dark':'light'); if($('icon-moon'))$('icon-moon').style.display=state.darkMode?'none':'block'; if($('icon-sun'))$('icon-sun').style.display=state.darkMode?'block':'none';}
+  function normaliseMeta(m){return Object.assign({},m,{currentRate:Number(m.rate||m.currentRate||0)});}
+  function buildData(){
+    MARKETS_DATA=(latest.markets||[]).map(m=>{const meta=META.find(x=>x.id===m.id)||{}; const rate=Number(m.rate||m.currentRate||0); return {...meta,...m,currentRate:rate,name:m.name||meta.name,state:m.state||meta.state||'India',zone:m.zone||meta.zone||'Central',change24h:Number(m.change24h||m.change||0),change24hPct:Number(m.change24hPct||m.change_pct||0),status:m.status||((m.change24h||0)>0?'up':(m.change24h||0)<0?'down':'flat')};});
+    const byDate={}; (history.records||[]).forEach(r=>byDate[r.date]=r);
+    MARKETS_DATA.forEach(m=>{m.history=[]; (history.records||[]).forEach(r=>{const rate=r.markets&&r.markets[m.id]; if(rate!=null)m.history.push({date:r.date,dayLabel:new Date(r.date+'T12:00:00').toLocaleDateString('en-US',{month:'short',day:'numeric'}),rate:Number(rate)});});});
+    const nat=[]; (history.records||[]).forEach(r=>{let rate=r.national_avg; if(rate==null){const vals=(latest.markets||[]).map(m=>r.markets&&r.markets[m.id]).filter(v=>typeof v==='number'); rate=vals.length?vals.reduce((a,b)=>a+b,0)/vals.length:null;} if(rate!=null)nat.push({date:r.date,dayLabel:new Date(r.date+'T12:00:00').toLocaleDateString('en-US',{month:'short',day:'numeric'}),rate:Number(rate)});});
+    ALL_INDIA_AVG_SERIES=nat; const nr=latest.national_avg||((MARKETS_DATA.reduce((a,m)=>a+m.currentRate,0)/(MARKETS_DATA.length||1))||0); const prev=latest.national_previous_rate||0; ALL_INDIA_INFO={id:'all-india',name:'All-India Weighted Average',state:'National Benchmark',zone:'Pan-India',currentRate:Number(nr),change24h:Number(latest.national_change||0),change24hPct:Number(latest.national_change_pct||0),status:latest.national_status||'flat',history:ALL_INDIA_AVG_SERIES};
   }
-
-  function showToast(msg) {
-    const t = document.getElementById('toast');
-    document.getElementById('toast-msg').textContent = msg;
-    t.classList.add('show');
-    clearTimeout(showToast._timer);
-    showToast._timer = setTimeout(function () { t.classList.remove('show'); }, 3000);
+  function getMarketInfo(id){return id==='all-india'?ALL_INDIA_INFO:(MARKETS_DATA.find(m=>m.id===id)||ALL_INDIA_INFO)}
+  function pageSetup(){
+    const info=getMarketInfo(state.selectedMarketId), national=ALL_INDIA_INFO;
+    $('ticker-date').textContent=latest.date||'—'; $('ticker-avg').textContent=money(national.currentRate); $('ticker-change').textContent=(national.change24hPct>=0?'▲ +':'▼ ')+national.change24hPct.toFixed(2)+'%'; $('ticker-hubs').textContent=MARKETS_DATA.length+' Reference Hubs reporting';
+    $('hero-card-label').textContent=IS_CITY_PAGE?info.name+' Rate Index':'National Rate Index'; $('hero-card-value').innerHTML=money(info.currentRate)+' <small>/ pc</small>';
+    const pill=$('hero-change-pill'); const ch=info.change24hPct||0; pill.innerHTML=(ch>=0?'▲ +':'▼ ')+ch.toFixed(2)+'% (24h)'; pill.style.background=ch>=0?'rgba(16,185,129,.2)':'rgba(225,29,72,.2)'; pill.style.color=ch>=0?'#34d399':'#fb7185';
+    $('hero-tray').textContent=money(info.currentRate*30); $('hero-peti').textContent=money(info.currentRate*210);
+    if(IS_CITY_PAGE){ $('page-title').textContent=info.name+' Egg Rate Today & Market Analytics'; $('hero-eyebrow-text').textContent=info.name+' NECC Reference Data • January–August 2026 Historical Trends'; $('hero-description').textContent='Track '+info.name+' NECC reference egg prices, daily movement, commercial quantities and January–August 2026 historical trends across the same professional market dashboard.'; document.title=info.name+' Egg Rate Today — NECC Egg Price & Market Analytics'; }
   }
-
-  function applyTheme() {
-    document.documentElement.classList.toggle('dark', state.darkMode);
-    localStorage.setItem('eggrate-theme', state.darkMode ? 'dark' : 'light');
-    document.getElementById('icon-moon').style.display = state.darkMode ? 'none' : 'block';
-    document.getElementById('icon-sun').style.display = state.darkMode ? 'block' : 'none';
+  function renderKPIs(){
+    const byPrice=MARKETS_DATA.slice().sort((a,b)=>a.currentRate-b.currentRate), low=byPrice[0], high=byPrice[byPrice.length-1]; const byChange=MARKETS_DATA.slice().sort((a,b)=>b.change24hPct-a.change24hPct), g=byChange[0]; const up=MARKETS_DATA.filter(m=>m.status==='up').length, down=MARKETS_DATA.filter(m=>m.status==='down').length, avg=ALL_INDIA_INFO.currentRate||0; const lowPct=avg?(((low.currentRate-avg)/avg)*100).toFixed(1):'0.0', highPct=avg?(((high.currentRate-avg)/avg)*100).toFixed(1):'0.0';
+    $('kpi-grid').innerHTML='<div class="card kpi"><div class="kpi-head"><span>Lowest Rate Market</span><span class="tag tag-em">DISCOUNT</span></div><div class="kpi-mid"><div class="kpi-value">'+money(low.currentRate)+'<small>/ egg</small></div><span style="font-size:12px;font-weight:700;color:var(--emerald)">'+lowPct+'% vs Avg</span></div><div class="kpi-foot"><strong>'+low.name+'</strong><span>Tray: '+money(low.currentRate*30,1)+'</span></div></div>'+ '<div class="card kpi"><div class="kpi-head"><span>Highest Rate Market</span><span class="tag tag-rose">PREMIUM</span></div><div class="kpi-mid"><div class="kpi-value">'+money(high.currentRate)+'<small>/ egg</small></div><span style="font-size:12px;font-weight:700;color:var(--rose)">+'+highPct+'% vs Avg</span></div><div class="kpi-foot"><strong>'+high.name+'</strong><span>Tray: '+money(high.currentRate*30,1)+'</span></div></div>'+ '<div class="card kpi"><div class="kpi-head"><span>Top 24h Surge Hub</span><span class="tag tag-accent">MOMENTUM</span></div><div class="kpi-mid"><div class="kpi-value">'+(g.change24hPct>=0?'+':'')+g.change24hPct.toFixed(2)+'%</div><span style="font-size:12px;font-weight:700;color:var(--emerald)">'+(g.change24h>=0?'+':'')+money(g.change24h)+'/pc</span></div><div class="kpi-foot"><strong>'+g.name+'</strong><span>Rate: '+money(g.currentRate)+'</span></div></div>'+ '<div class="card kpi"><div class="kpi-head"><span>Market Breadth (24h)</span><span style="font-size:10px;font-weight:700;color:var(--text-muted)">'+MARKETS_DATA.length+' HUBS</span></div><div class="breadth-row"><span class="breadth-up">↗ '+up+' Up</span><span style="color:var(--border-strong)">/</span><span class="breadth-down">↘ '+down+' Down</span></div><div class="kpi-foot"><span>Neutral / Flat: <strong>'+(MARKETS_DATA.length-up-down)+' Hubs</strong></span><span style="color:var(--emerald);font-weight:600">'+(up>=down?'Bullish Bias':'Mixed Bias')+'</span></div></div>';
   }
+  function options(forCalc){let h=''; if(!forCalc)h+='<option value="all-india">🌟 All-India Average (Weighted)</option><optgroup label="Top Commercial Metros"><option value="delhi">Delhi (CC)</option><option value="mumbai">Mumbai (CC)</option><option value="kolkata">Kolkata (WB)</option><option value="chennai">Chennai (CC)</option><option value="bengaluru">Bengaluru (CC)</option><option value="hyderabad">Hyderabad</option></optgroup><optgroup label="All Reference Centres (A-Z)">'; else h+='<option value="all-india">Pan-India Benchmark ('+money(ALL_INDIA_INFO.currentRate)+')</option>'; MARKETS_DATA.forEach(m=>h+='<option value="'+m.id+'">'+m.name+' ('+money(m.currentRate)+')</option>'); if(!forCalc)h+='</optgroup>'; return h; }
 
-  /* ===================== KPI CARDS ===================== */
-  function renderKPIs() {
-    const sortedByPrice = MARKETS_DATA.slice().sort(function (a, b) { return a.currentRate - b.currentRate; });
-    const lowest = sortedByPrice[0];
-    const highest = sortedByPrice[sortedByPrice.length - 1];
-    const sortedByChange = MARKETS_DATA.slice().sort(function (a, b) { return b.change24hPct - a.change24hPct; });
-    const topGainer = sortedByChange[0];
-    const upCount = MARKETS_DATA.filter(function (m) { return m.status === 'up'; }).length;
-    const downCount = MARKETS_DATA.filter(function (m) { return m.status === 'down'; }).length;
-    const avg = 5.42;
-    const lowPctVsAvg = (((lowest.currentRate - avg) / avg) * 100).toFixed(1);
-    const highPctVsAvg = (((highest.currentRate - avg) / avg) * 100).toFixed(1);
+  const chartWidth=800,chartHeight=260,pad={top:25,right:30,bottom:35,left:50};
+  function smooth(pts){if(!pts.length)return'';if(pts.length===1)return'M '+pts[0].x+' '+pts[0].y;let d='M '+pts[0].x+' '+pts[0].y;for(let i=0;i<pts.length-1;i++){const p0=pts[i===0?0:i-1],p1=pts[i],p2=pts[i+1],p3=pts[i+2]||p2;d+=' C '+(p1.x+(p2.x-p0.x)/6)+' '+(p1.y+(p2.y-p0.y)/6)+', '+(p2.x-(p3.x-p1.x)/6)+' '+(p2.y-(p3.y-p1.y)/6)+', '+p2.x+' '+p2.y;}return d;}
+  function seriesFor(id){return id==='all-india'?ALL_INDIA_AVG_SERIES:getMarketInfo(id).history||[]}
+  function renderChart(){
+    const info=getMarketInfo(state.selectedMarketId); let raw=seriesFor(state.selectedMarketId); let days=state.timeframe==='YTD'?raw.length:parseInt(state.timeframe,10)||30; raw=raw.slice(-days); const bench=ALL_INDIA_AVG_SERIES.slice(-raw.length); const show=state.compareWithAvg&&state.selectedMarketId!=='all-india'; $('chart-mkt-name').textContent=info.name; $('chart-tf-label').textContent=state.timeframe==='YTD'?'YTD':state.timeframe; $('legend-name').textContent=info.name; $('legend-bench').style.display=show?'inline-flex':'none'; $('btn-compare').style.display=state.selectedMarketId!=='all-india'?'inline-flex':'none';
+    const rates=raw.map(p=>p.rate); if(!rates.length){$('pill-row').innerHTML='<div class="pill" style="grid-column:1/-1"><span class="label">Historical data</span><div class="val">No historical records available yet. Run backfill_2026.py.</div></div>';$('svg-wrap').innerHTML='<div style="padding:70px 20px;text-align:center;color:var(--text-muted)">Historical data will appear here after the first backfill.</div>';return;}
+    const hi=Math.max(...rates),lo=Math.min(...rates),spread=hi-lo; $('pill-row').innerHTML='<div class="pill"><span class="label">Current Rate:</span><div class="val">'+money(info.currentRate)+'<small style="font-weight:400;color:var(--text-muted)"> / egg</small></div></div><div class="pill"><span class="label">'+(state.timeframe==='YTD'?'YTD':state.timeframe+'D')+' High:</span><div class="val val-em">'+money(hi)+'</div></div><div class="pill"><span class="label">'+(state.timeframe==='YTD'?'YTD':state.timeframe+'D')+' Low:</span><div class="val val-rose">'+money(lo)+'</div></div><div class="pill"><span class="label">Price Spread / Range:</span><div class="val">'+money(spread)+'</div></div>';
+    const allVals=rates.concat(show?bench.map(p=>p.rate):[]); const min=Math.min(...allVals)-0.08,max=Math.max(...allVals)+0.08,range=max-min||1,iw=chartWidth-pad.left-pad.right,ih=chartHeight-pad.top-pad.bottom; const pts=raw.map((d,i)=>({x:pad.left+(i/(raw.length-1||1))*iw,y:pad.top+ih-((d.rate-min)/range)*ih,date:d.date,dayLabel:d.dayLabel||new Date(d.date+'T12:00:00').toLocaleDateString('en-US',{month:'short',day:'numeric'}),rate:d.rate})); state.points=pts; const bpts=bench.map((d,i)=>({x:pad.left+(i/(bench.length-1||1))*iw,y:pad.top+ih-((d.rate-min)/range)*ih})); let guides='';[0,.25,.5,.75,1].forEach((r,i)=>{const y=pad.top+ih*r,v=max-r*(max-min);guides+='<line x1="'+pad.left+'" y1="'+y+'" x2="'+(chartWidth-pad.right)+'" y2="'+y+'" stroke="var(--border-subtle)" stroke-width="1" '+(i===4?'':'stroke-dasharray="4 4"')+'></line><text x="'+(pad.left-8)+'" y="'+(y+3)+'" text-anchor="end" font-size="10" fill="var(--text-muted)" font-family="monospace" font-weight="600">₹'+v.toFixed(2)+'</text>';}); let labels='';pts.forEach((p,i)=>{const showLabel=pts.length<=7|| (pts.length<=14?i%2===0:(i%5===0||i===pts.length-1));if(showLabel)labels+='<text x="'+p.x+'" y="'+(chartHeight-12)+'" text-anchor="middle" font-size="10" fill="var(--text-muted)" font-weight="500">'+p.dayLabel+'</text>';}); let points='';pts.forEach((p,i)=>{const hov=state.hoveredPointIndex===i;points+='<circle class="hit-area" data-idx="'+i+'" cx="'+p.x+'" cy="'+p.y+'" r="14" fill="transparent" style="cursor:pointer"></circle><circle cx="'+p.x+'" cy="'+p.y+'" r="'+(hov?6:3.5)+'" fill="'+(hov?'#ffffff':'#ea580c')+'" stroke="#ea580c" stroke-width="'+(hov?3:2)+'"></circle>';}); const path=smooth(pts), area=path+' L '+pts[pts.length-1].x+' '+(pad.top+ih)+' L '+pts[0].x+' '+(pad.top+ih)+' Z'; const benchPath=show?smooth(bpts):''; const svg='<svg viewBox="0 0 '+chartWidth+' '+chartHeight+'" id="main-svg"><defs><linearGradient id="areaGradient" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f97316" stop-opacity="'+(state.darkMode?.45:.3)+'"></stop><stop offset="90%" stop-color="#f97316" stop-opacity="0"></stop></linearGradient></defs>'+guides+(show?'<path d="'+benchPath+'" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="5 5" opacity=".7"></path>':'')+'<path d="'+area+'" fill="url(#areaGradient)"></path><path d="'+path+'" fill="none" stroke="#ea580c" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"></path>'+points+labels+'</svg><div class="tooltip-box" id="tooltip"></div>'; $('svg-wrap').innerHTML=svg; document.querySelectorAll('#main-svg .hit-area').forEach(c=>c.addEventListener('mouseenter',()=>{state.hoveredPointIndex=Number(c.getAttribute('data-idx'));renderChart();showTooltip();})); $('main-svg').addEventListener('mouseleave',()=>{state.hoveredPointIndex=null;const t=$('tooltip');if(t)t.style.display='none'}); showTooltip(); }
+  function showTooltip(){const t=$('tooltip'); if(!t)return; if(state.hoveredPointIndex==null||!state.points[state.hoveredPointIndex]){t.style.display='none';return;} const p=state.points[state.hoveredPointIndex];t.style.left=(p.x/chartWidth*100)+'%';t.style.top=(p.y/chartHeight*100)+'%';t.style.display='block';t.innerHTML='<div class="tooltip-head"><span>📅 '+p.date+'</span><b>'+p.dayLabel+'</b></div><div class="tooltip-row"><span>Rate / Egg:</span><strong>₹'+p.rate.toFixed(2)+'</strong></div><div class="tooltip-row"><span>Tray (30 pcs):</span><span>₹'+(p.rate*30).toFixed(2)+'</span></div><div class="tooltip-row"><span>100 Eggs:</span><span>₹'+(p.rate*100).toFixed(2)+'</span></div><div class="tooltip-row"><span>Peti (210 pcs):</span><span>₹'+(p.rate*210).toFixed(2)+'</span></div>';}
 
-    document.getElementById('kpi-grid').innerHTML =
-      '<div class="card kpi">' +
-        '<div class="kpi-head"><span>Lowest Rate Market</span><span class="tag tag-em">DISCOUNT</span></div>' +
-        '<div class="kpi-mid"><div class="kpi-value">₹' + lowest.currentRate.toFixed(2) + '<small>/ egg</small></div><span style="font-size:12px;font-weight:700;color:var(--emerald)">' + lowPctVsAvg + '% vs Avg</span></div>' +
-        '<div class="kpi-foot"><strong>' + lowest.name + '</strong><span>Tray: ₹' + (lowest.currentRate * 30).toFixed(1) + '</span></div>' +
-      '</div>' +
-      '<div class="card kpi">' +
-        '<div class="kpi-head"><span>Highest Rate Market</span><span class="tag tag-rose">PREMIUM</span></div>' +
-        '<div class="kpi-mid"><div class="kpi-value">₹' + highest.currentRate.toFixed(2) + '<small>/ egg</small></div><span style="font-size:12px;font-weight:700;color:var(--rose)">+' + highPctVsAvg + '% vs Avg</span></div>' +
-        '<div class="kpi-foot"><strong>' + highest.name + '</strong><span>Tray: ₹' + (highest.currentRate * 30).toFixed(1) + '</span></div>' +
-      '</div>' +
-      '<div class="card kpi">' +
-        '<div class="kpi-head"><span>Top 24h Surge Hub</span><span class="tag tag-accent">MOMENTUM</span></div>' +
-        '<div class="kpi-mid"><div class="kpi-value">+' + topGainer.change24hPct + '%</div><span style="font-size:12px;font-weight:700;color:var(--emerald)">+₹' + topGainer.change24h.toFixed(2) + '/pc</span></div>' +
-        '<div class="kpi-foot"><strong>' + topGainer.name + '</strong><span>Rate: ₹' + topGainer.currentRate.toFixed(2) + '</span></div>' +
-      '</div>' +
-      '<div class="card kpi">' +
-        '<div class="kpi-head"><span>Market Breadth (24h)</span><span style="font-size:10px;font-weight:700;color:var(--text-muted)">34 HUBS</span></div>' +
-        '<div class="breadth-row"><span class="breadth-up"><svg class="icon" viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>' + upCount + ' Up</span><span style="color:var(--border-strong)">/</span><span class="breadth-down"><svg class="icon" viewBox="0 0 24 24"><line x1="17" y1="7" x2="7" y2="17"></line><polyline points="17 17 7 17 7 7"></polyline></svg>' + downCount + ' Down</span></div>' +
-        '<div class="kpi-foot"><span>Neutral / Flat: <strong>' + (34 - upCount - downCount) + ' Hubs</strong></span><span style="color:var(--emerald);font-weight:600">Bullish Bias</span></div>' +
-      '</div>';
-  }
-
-  /* ===================== MARKET / CALC SELECTS ===================== */
-  function buildMarketOptionsHTML(forCalc) {
-    let html = '';
-    if (!forCalc) {
-      html += '<option value="all-india">🌟 All-India Average (Weighted)</option>';
-      html += '<optgroup label="Top Commercial Metros">' +
-        '<option value="delhi">Delhi (CC)</option><option value="mumbai">Mumbai (CC)</option>' +
-        '<option value="kolkata">Kolkata (WB)</option><option value="chennai">Chennai (CC)</option>' +
-        '<option value="bengaluru">Bengaluru (CC)</option><option value="hyderabad">Hyderabad</option>' +
-        '<option value="namakkal">Namakkal (Production Hub)</option><option value="barwala">Barwala (North Hub)</option>' +
-        '</optgroup>';
-      html += '<optgroup label="All Reference Centres (A-Z)">';
-      MARKETS_DATA.forEach(function (m) {
-        html += '<option value="' + m.id + '">' + m.name + ' (' + m.state + ') - ₹' + m.currentRate.toFixed(2) + '</option>';
-      });
-      html += '</optgroup>';
-    } else {
-      html += '<option value="all-india">Pan-India Benchmark (₹5.42)</option>';
-      MARKETS_DATA.forEach(function (m) {
-        html += '<option value="' + m.id + '">' + m.name + ' (₹' + m.currentRate.toFixed(2) + ')</option>';
-      });
-    }
-    return html;
-  }
-
-  /* ===================== CHART ===================== */
-  const chartWidth = 800, chartHeight = 260;
-  const padding = { top: 25, right: 30, bottom: 35, left: 50 };
-
-  function createSmoothPath(pts) {
-    if (pts.length === 0) return '';
-    if (pts.length === 1) return 'M ' + pts[0].x + ' ' + pts[0].y;
-    let d = 'M ' + pts[0].x + ' ' + pts[0].y;
-    for (let i = 0; i < pts.length - 1; i++) {
-      const p0 = pts[i === 0 ? 0 : i - 1];
-      const p1 = pts[i];
-      const p2 = pts[i + 1];
-      const p3 = pts[i + 2] || p2;
-      const cp1x = p1.x + (p2.x - p0.x) / 6;
-      const cp1y = p1.y + (p2.y - p0.y) / 6;
-      const cp2x = p2.x - (p3.x - p1.x) / 6;
-      const cp2y = p2.y - (p3.y - p1.y) / 6;
-      d += ' C ' + cp1x + ' ' + cp1y + ', ' + cp2x + ' ' + cp2y + ', ' + p2.x + ' ' + p2.y;
-    }
-    return d;
-  }
-
-  function renderChart() {
-    const info = getMarketInfo(state.selectedMarketId);
-    const days = parseInt(state.timeframe, 10);
-    const raw = state.selectedMarketId === 'all-india' ? ALL_INDIA_AVG_SERIES : (getMarketInfo(state.selectedMarketId).history30d || ALL_INDIA_AVG_SERIES);
-    const currentChartSeries = raw.slice(-days);
-    const benchmarkChartSeries = ALL_INDIA_AVG_SERIES.slice(-days);
-    const showBenchmark = state.compareWithAvg && state.selectedMarketId !== 'all-india';
-
-    // header text
-    document.getElementById('chart-mkt-name').textContent = info.name;
-    document.getElementById('chart-tf-label').textContent = state.timeframe;
-    document.getElementById('legend-name').textContent = info.name;
-    document.getElementById('legend-bench').style.display = showBenchmark ? 'inline-flex' : 'none';
-    document.getElementById('btn-compare').style.display = state.selectedMarketId !== 'all-india' ? 'inline-flex' : 'none';
-
-    // stats pills
-    const rates = currentChartSeries.map(function (p) { return p.rate; });
-    const high = Math.max.apply(null, rates);
-    const low = Math.min.apply(null, rates);
-    const sum = rates.reduce(function (a, b) { return a + b; }, 0);
-    const spread = Math.round((high - low) * 100) / 100;
-    document.getElementById('pill-row').innerHTML =
-      '<div class="pill"><span class="label">Current Rate:</span><div class="val">₹' + info.currentRate.toFixed(2) + '<small style="font-weight:400;color:var(--text-muted)"> / egg</small></div></div>' +
-      '<div class="pill"><span class="label">' + state.timeframe + 'D High:</span><div class="val val-em">₹' + high.toFixed(2) + '</div></div>' +
-      '<div class="pill"><span class="label">' + state.timeframe + 'D Low:</span><div class="val val-rose">₹' + low.toFixed(2) + '</div></div>' +
-      '<div class="pill"><span class="label">Price Spread / Range:</span><div class="val">₹' + spread.toFixed(2) + '</div></div>';
-
-    // compute points
-    const allVals = rates.concat(showBenchmark ? benchmarkChartSeries.map(function (p) { return p.rate; }) : []);
-    const minVal = Math.min.apply(null, allVals) - 0.08;
-    const maxVal = Math.max.apply(null, allVals) + 0.08;
-    const range = maxVal - minVal || 1;
-    const innerWidth = chartWidth - padding.left - padding.right;
-    const innerHeight = chartHeight - padding.top - padding.bottom;
-
-    const pts = currentChartSeries.map(function (d, i) {
-      const x = padding.left + (i / (currentChartSeries.length - 1 || 1)) * innerWidth;
-      const y = padding.top + innerHeight - ((d.rate - minVal) / range) * innerHeight;
-      return { x: x, y: y, date: d.date, dayLabel: d.dayLabel, rate: d.rate };
-    });
-    const bPts = benchmarkChartSeries.map(function (d, i) {
-      const x = padding.left + (i / (benchmarkChartSeries.length - 1 || 1)) * innerWidth;
-      const y = padding.top + innerHeight - ((d.rate - minVal) / range) * innerHeight;
-      return { x: x, y: y };
-    });
-
-    state.points = pts;
-
-    const pathD = createSmoothPath(pts);
-    const benchPathD = createSmoothPath(bPts);
-    const bottomY = padding.top + innerHeight;
-    const areaD = pts.length ? (pathD + ' L ' + pts[pts.length - 1].x + ' ' + bottomY + ' L ' + pts[0].x + ' ' + bottomY + ' Z') : '';
-
-    // horizontal guide lines
-    let guides = '';
-    [0, 0.25, 0.5, 0.75, 1].forEach(function (ratio, idx) {
-      const y = padding.top + innerHeight * ratio;
-      const value = maxVal - (ratio * (maxVal - minVal));
-      guides += '<g>' +
-        '<line x1="' + padding.left + '" y1="' + y + '" x2="' + (chartWidth - padding.right) + '" y2="' + y + '" stroke="var(--border-subtle)" stroke-width="1" ' + (idx === 4 ? '' : 'stroke-dasharray="4 4"') + '></line>' +
-        '<text x="' + (padding.left - 8) + '" y="' + (y + 3) + '" text-anchor="end" font-size="10" fill="var(--text-muted)" font-family="monospace" font-weight="600">₹' + value.toFixed(2) + '</text>' +
-        '</g>';
-    });
-
-    let benchLine = '';
-    if (showBenchmark) {
-      benchLine = '<path d="' + benchPathD + '" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="5 5" opacity="0.7"></path>';
-    }
-
-    let pointsSvg = '';
-    pts.forEach(function (pt, index) {
-      const isH = state.hoveredPointIndex === index;
-      pointsSvg += '<g>';
-      if (isH) {
-        pointsSvg += '<line x1="' + pt.x + '" y1="' + padding.top + '" x2="' + pt.x + '" y2="' + (chartHeight - padding.bottom) + '" stroke="#f97316" stroke-width="1.5" stroke-dasharray="3 3" opacity="0.8"></line>';
-      }
-      pointsSvg += '<circle class="hit-area" data-idx="' + index + '" cx="' + pt.x + '" cy="' + pt.y + '" r="14" fill="transparent" style="cursor:pointer"></circle>';
-      pointsSvg += '<circle cx="' + pt.x + '" cy="' + pt.y + '" r="' + (isH ? 6 : 3.5) + '" fill="' + (isH ? '#ffffff' : '#ea580c') + '" stroke="#ea580c" stroke-width="' + (isH ? 3 : 2) + '"></circle>';
-      pointsSvg += '</g>';
-    });
-
-    let labels = '';
-    const total = pts.length;
-    pts.forEach(function (pt, i) {
-      const show = total <= 7 ? true : (total <= 14 ? i % 2 === 0 : (i % 5 === 0 || i === total - 1));
-      if (show) {
-        labels += '<text x="' + pt.x + '" y="' + (chartHeight - 12) + '" text-anchor="middle" font-size="10" fill="var(--text-muted)" font-weight="500">' + pt.dayLabel + '</text>';
-      }
-    });
-
-    const svg =
-      '<svg viewBox="0 0 ' + chartWidth + ' ' + chartHeight + '" id="main-svg">' +
-        '<defs>' +
-          '<linearGradient id="areaGradient" x1="0" y1="0" x2="0" y2="1">' +
-            '<stop offset="0%" stop-color="#f97316" stop-opacity="' + (state.darkMode ? '0.45' : '0.3') + '"></stop>' +
-            '<stop offset="90%" stop-color="#f97316" stop-opacity="0"></stop>' +
-          '</linearGradient>' +
-        '</defs>' +
-        guides +
-        benchLine +
-        '<path d="' + areaD + '" fill="url(#areaGradient)"></path>' +
-        '<path d="' + pathD + '" fill="none" stroke="#ea580c" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"></path>' +
-        pointsSvg +
-        labels +
-      '</svg>' +
-      '<div class="tooltip-box" id="tooltip"></div>';
-
-    document.getElementById('svg-wrap').innerHTML = svg;
-
-    // hover events
-    document.querySelectorAll('#main-svg .hit-area').forEach(function (c) {
-      c.addEventListener('mouseenter', function () {
-        state.hoveredPointIndex = parseInt(c.getAttribute('data-idx'), 10);
-        renderChart();
-        showTooltip();
-      });
-    });
-    const svgEl = document.getElementById('main-svg');
-    svgEl.addEventListener('mouseleave', function () {
-      state.hoveredPointIndex = null;
-      const tt = document.getElementById('tooltip');
-      if (tt) tt.style.display = 'none';
-    });
-    showTooltip();
-  }
-
-  function showTooltip() {
-    const tt = document.getElementById('tooltip');
-    if (!tt) return;
-    if (state.hoveredPointIndex === null || !state.points[state.hoveredPointIndex]) {
-      tt.style.display = 'none';
-      return;
-    }
-    const p = state.points[state.hoveredPointIndex];
-    tt.style.left = ((p.x / chartWidth) * 100) + '%';
-    tt.style.top = ((p.y / chartHeight) * 100) + '%';
-    tt.style.display = 'block';
-    tt.innerHTML =
-      '<div class="tooltip-head"><span>📅 ' + p.date + '</span><b>' + p.dayLabel + '</b></div>' +
-      '<div class="tooltip-row"><span>Rate / Egg:</span><strong>₹' + p.rate.toFixed(2) + '</strong></div>' +
-      '<div class="tooltip-row"><span>Tray (30 pcs):</span><span>₹' + (p.rate * 30).toFixed(2) + '</span></div>' +
-      '<div class="tooltip-row"><span>100 Eggs:</span><span>₹' + (p.rate * 100).toFixed(2) + '</span></div>' +
-      '<div class="tooltip-row"><span>Peti (210 pcs):</span><span>₹' + (p.rate * 210).toFixed(2) + '</span></div>';
-  }
-
-  /* ===================== TABLE ===================== */
-  const ZONE_TABS = [
-    { id: 'ALL', label: 'All India (34)' },
-    { id: 'METROS', label: 'Major Metros' },
-    { id: 'NORTH', label: 'North Hubs' },
-    { id: 'SOUTH', label: 'South Hubs' },
-    { id: 'EAST', label: 'East Hubs' },
-    { id: 'WEST', label: 'West Hubs' },
-    { id: 'CENTRAL', label: 'Central Hubs' },
-    { id: 'GAINERS', label: 'Top Gainers' }
-  ];
-  const METRO_IDS = ['delhi', 'mumbai', 'kolkata', 'chennai', 'bengaluru', 'hyderabad'];
-
-  function renderZoneTabs() {
-    document.getElementById('zone-tabs').innerHTML = ZONE_TABS.map(function (t) {
-      return '<button data-zone="' + t.id + '" class="' + (state.zoneFilter === t.id ? 'active' : '') + '">' + t.label + '</button>';
-    }).join('');
-    document.querySelectorAll('#zone-tabs button').forEach(function (b) {
-      b.addEventListener('click', function () {
-        state.zoneFilter = b.getAttribute('data-zone');
-        renderZoneTabs();
-        renderTable();
-      });
-    });
-  }
-
-  function getFilteredMarkets() {
-    const q = state.searchQuery.toLowerCase();
-    let list = MARKETS_DATA.filter(function (m) {
-      const matchesSearch = m.name.toLowerCase().indexOf(q) !== -1 || m.state.toLowerCase().indexOf(q) !== -1 || m.zone.toLowerCase().indexOf(q) !== -1;
-      let matchesZone = true;
-      if (state.zoneFilter === 'METROS') matchesZone = METRO_IDS.indexOf(m.id) !== -1;
-      else if (state.zoneFilter === 'GAINERS') matchesZone = m.change24h > 0;
-      else if (state.zoneFilter !== 'ALL') matchesZone = m.zone.toUpperCase() === state.zoneFilter;
-      return matchesSearch && matchesZone;
-    });
-    list.sort(function (a, b) {
-      let cmp = 0;
-      if (state.sortField === 'name') cmp = a.name.localeCompare(b.name);
-      else if (state.sortField === 'rate') cmp = a.currentRate - b.currentRate;
-      else if (state.sortField === 'change') cmp = a.change24hPct - b.change24hPct;
-      else if (state.sortField === 'zone') cmp = a.zone.localeCompare(b.zone);
-      return state.sortDirection === 'asc' ? cmp : -cmp;
-    });
-    return list;
-  }
-
-  function renderTable() {
-    ['name', 'rate', 'change'].forEach(function (f) {
-      document.getElementById('sort-' + f).textContent = state.sortField === f ? (state.sortDirection === 'asc' ? '↑' : '↓') : '';
-    });
-
-    const list = getFilteredMarkets();
-    document.getElementById('table-body').innerHTML = list.map(function (m) {
-      let chgHtml;
-      if (m.status === 'up') {
-        chgHtml = '<span class="chg-up"><svg class="icon" style="width:13px;height:13px" viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>+' + m.change24hPct + '%</span>';
-      } else if (m.status === 'down') {
-        chgHtml = '<span class="chg-down"><svg class="icon" style="width:13px;height:13px" viewBox="0 0 24 24"><line x1="17" y1="7" x2="7" y2="17"></line><polyline points="17 17 7 17 7 7"></polyline></svg>' + m.change24hPct + '%</span>';
-      } else {
-        chgHtml = '<span class="chg-flat">0.00%</span>';
-      }
-      return '<tr>' +
-        '<td><button class="mkt-name-btn" data-select="' + m.id + '">' + m.name + '</button><span class="mkt-state">(' + m.state + ')</span></td>' +
-        '<td><span class="zone-badge zone-' + m.zone + '">' + m.zone + '</span></td>' +
-        '<td class="text-right"><strong>₹' + m.currentRate.toFixed(2) + '</strong></td>' +
-        '<td class="text-right">₹' + (m.currentRate * 12).toFixed(2) + '</td>' +
-        '<td class="text-right">₹' + (m.currentRate * 30).toFixed(1) + '</td>' +
-        '<td class="text-right">₹' + (m.currentRate * 100).toFixed(0) + '</td>' +
-        '<td class="text-right">₹' + (m.currentRate * 210).toFixed(1) + '</td>' +
-        '<td class="text-right">' + chgHtml + '</td>' +
-        '<td><div class="row-actions">' +
-          '<button class="icon-btn" data-graph="' + m.id + '" title="Graph Trend"><svg class="icon" viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg></button>' +
-          '<button class="icon-btn" data-history="' + m.id + '" title="View 30-Day History"><svg class="icon" viewBox="0 0 24 24"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg></button>' +
-          '<button class="icon-btn" data-copy="' + m.id + '" title="Copy Quote"><svg class="icon" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button>' +
-        '</div></td>' +
-      '</tr>';
-    }).join('');
-
-    document.querySelectorAll('[data-select]').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        state.selectedMarketId = btn.getAttribute('data-select');
-        syncMarketSelects();
-        renderChart();
-      });
-    });
-    document.querySelectorAll('[data-graph]').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        state.selectedMarketId = btn.getAttribute('data-graph');
-        syncMarketSelects();
-        renderChart();
-        window.scrollTo({ top: 380, behavior: 'smooth' });
-      });
-    });
-    document.querySelectorAll('[data-history]').forEach(function (btn) {
-      btn.addEventListener('click', function () { openModal(btn.getAttribute('data-history')); });
-    });
-    document.querySelectorAll('[data-copy]').forEach(function (btn) {
-      btn.addEventListener('click', function () { copyRateBroadcast(getMarketInfo(btn.getAttribute('data-copy'))); });
-    });
-  }
-
-  document.querySelectorAll('th.sortable').forEach(function (th) {
-    th.addEventListener('click', function () {
-      const field = th.getAttribute('data-sort');
-      if (state.sortField === field) {
-        state.sortDirection = state.sortDirection === 'asc' ? 'desc' : 'asc';
-      } else {
-        state.sortField = field;
-        state.sortDirection = 'desc';
-      }
-      renderTable();
-    });
-  });
-
-  /* ===================== CALCULATOR ===================== */
-  const PRESETS = [
-    { label: '1 Tray (30)', qty: 30 },
-    { label: '100 Eggs', qty: 100 },
-    { label: '1 Peti (210)', qty: 210 },
-    { label: '5 Petis (1,050)', qty: 1050 },
-    { label: '5,000 Eggs', qty: 5000 },
-    { label: '1 Truck (50k)', qty: 50000 }
-  ];
-
-  function renderPresets() {
-    document.getElementById('preset-grid').innerHTML = PRESETS.map(function (p) {
-      const active = state.calcQuantity === p.qty && !state.calcCustomQty;
-      return '<button class="preset-btn ' + (active ? 'active' : '') + '" data-qty="' + p.qty + '">' + p.label + '</button>';
-    }).join('');
-    document.querySelectorAll('.preset-btn').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        state.calcQuantity = parseInt(btn.getAttribute('data-qty'), 10);
-        state.calcCustomQty = '';
-        document.getElementById('calc-custom').value = '';
-        renderPresets();
-        renderCalculator();
-      });
-    });
-  }
-
-  function renderCalculator() {
-    const rate = state.calcMarketId === 'all-india' ? 5.42 : getMarketInfo(state.calcMarketId).currentRate;
-    const effectiveQty = state.calcCustomQty ? (parseInt(state.calcCustomQty, 10) || 0) : state.calcQuantity;
-    const baseCost = effectiveQty * rate;
-    const freightCost = effectiveQty * state.calcFreightPerEgg;
-    const totalLandedCost = baseCost + freightCost;
-    const markupAmount = totalLandedCost * (state.calcMarginPct / 100);
-    const totalSellingPrice = totalLandedCost + markupAmount;
-    const retailPerEgg = effectiveQty > 0 ? (totalSellingPrice / effectiveQty) : 0;
-
-    document.getElementById('res-eggs').textContent = effectiveQty.toLocaleString('en-IN') + ' Eggs';
-    document.getElementById('res-base').textContent = '₹' + fmtINR(baseCost);
-    document.getElementById('res-freight').textContent = '₹' + fmtINR(freightCost);
-    document.getElementById('res-landed').textContent = '₹' + fmtINR(totalLandedCost);
-    document.getElementById('res-margin-label').textContent = 'Target Margin (' + state.calcMarginPct + '%):';
-    document.getElementById('res-margin').textContent = '+₹' + fmtINR(markupAmount);
-    document.getElementById('res-final').textContent = '₹' + fmtINR(totalSellingPrice);
-    document.getElementById('res-retail').textContent = '₹' + retailPerEgg.toFixed(2);
-  }
-
-  /* ===================== MODAL ===================== */
-  function openModal(id) {
-    state.activeModalMarketId = id;
-    const m = getMarketInfo(id);
-    document.getElementById('modal-title').innerHTML = m.name + (m.state !== 'National Benchmark' ? ' (' + m.state + ')' : '') + ' <span class="modal-zone-tag" id="modal-zone-tag">' + m.zone + ' Zone</span>';
-    document.getElementById('modal-current').textContent = '₹' + m.currentRate.toFixed(2);
-    document.getElementById('modal-tray').textContent = '₹' + (m.currentRate * 30).toFixed(1);
-    document.getElementById('modal-peti').textContent = '₹' + (m.currentRate * 210).toFixed(1);
-
-    const history = (m.history30d || ALL_INDIA_AVG_SERIES).slice().reverse();
-    document.getElementById('modal-tbody').innerHTML = history.map(function (day) {
-      return '<tr>' +
-        '<td>' + day.date + ' (' + day.dayLabel + ')</td>' +
-        '<td class="text-right" style="font-weight:700;color:var(--text-primary)">₹' + day.rate.toFixed(2) + '</td>' +
-        '<td class="text-right">₹' + (day.rate * 30).toFixed(2) + '</td>' +
-        '<td class="text-right">₹' + (day.rate * 100).toFixed(2) + '</td>' +
-        '<td class="text-right">₹' + (day.rate * 210).toFixed(2) + '</td>' +
-      '</tr>';
-    }).join('');
-
-    document.getElementById('modal-overlay').classList.add('show');
-  }
-  function closeModal() {
-    document.getElementById('modal-overlay').classList.remove('show');
-    state.activeModalMarketId = null;
-  }
-
-  /* ===================== EXPORT & SHARE ===================== */
-  function handleExportJSON() {
-    const dataStr = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(MARKETS_DATA, null, 2));
-    const a = document.createElement('a');
-    a.setAttribute('href', dataStr);
-    a.setAttribute('download', 'egg-rates-india-2026-08-25.json');
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-    showToast('Exported 34 markets dataset as JSON!');
-  }
-
-  function handleExportCSV() {
-    let csv = 'Market,State,Zone,RatePerEgg_INR,Dozen_INR,Tray30_INR,Hundred_INR,Peti210_INR,Change24h_INR,ChangePct\n';
-    MARKETS_DATA.forEach(function (m) {
-      csv += '"' + m.name + '","' + m.state + '","' + m.zone + '",' + m.currentRate + ',' + (m.currentRate * 12).toFixed(2) + ',' + (m.currentRate * 30).toFixed(2) + ',' + (m.currentRate * 100).toFixed(2) + ',' + (m.currentRate * 210).toFixed(2) + ',' + m.change24h + ',' + m.change24hPct + '%\n';
-    });
-    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.setAttribute('href', url);
-    a.setAttribute('download', 'egg-rates-india-2026-08-25.csv');
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-    showToast('Exported rates CSV file successfully!');
-  }
-
-  function copyRateBroadcast(target) {
-    target = target || getMarketInfo(state.selectedMarketId);
-    const text = '🥚 *NECC Egg Rate Update (' + new Date().toLocaleDateString('en-IN') + ')*\n' +
-      '📍 *Market:* ' + target.name + ' (' + (target.zone || 'India') + ')\n' +
-      '💰 *1 Egg:* ₹' + target.currentRate.toFixed(2) + '\n' +
-      '📦 *Tray (30 pcs):* ₹' + (target.currentRate * 30).toFixed(2) + '\n' +
-      '📦 *Peti (210 pcs):* ₹' + (target.currentRate * 210).toFixed(2) + '\n' +
-      '📈 *24h Change:* ' + (target.change24h >= 0 ? '+' : '') + target.change24h + ' (' + target.change24hPct + '%)\n' +
-      '🌐 *Source:* EggRate India SaaS Intelligence';
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(text).catch(function () {});
-    }
-    showToast('Copied ' + target.name + ' rate report to clipboard!');
-  }
-
-  /* ===================== WIRE UP CONTROLS ===================== */
-  function syncMarketSelects() {
-    document.getElementById('select-market').value = state.selectedMarketId;
-  }
-
-  function init() {
-    applyTheme();
-    renderKPIs();
-    renderZoneTabs();
-    renderTable();
-    renderPresets();
-    renderCalculator();
-
-    document.getElementById('select-market').innerHTML = buildMarketOptionsHTML(false);
-    document.getElementById('select-market').value = state.selectedMarketId;
-    document.getElementById('calc-market').innerHTML = buildMarketOptionsHTML(true);
-    document.getElementById('calc-market').value = state.calcMarketId;
-
-    renderChart();
-
-    document.getElementById('select-market').addEventListener('change', function (e) {
-      state.selectedMarketId = e.target.value;
-      state.hoveredPointIndex = null;
-      renderChart();
-    });
-
-    document.querySelectorAll('#tf-group button').forEach(function (b) {
-      b.addEventListener('click', function () {
-        state.timeframe = b.getAttribute('data-tf');
-        state.hoveredPointIndex = null;
-        document.querySelectorAll('#tf-group button').forEach(function (x) { x.classList.remove('active'); });
-        b.classList.add('active');
-        renderChart();
-      });
-    });
-
-    document.getElementById('btn-compare').addEventListener('click', function () {
-      state.compareWithAvg = !state.compareWithAvg;
-      this.classList.toggle('on', state.compareWithAvg);
-      renderChart();
-    });
-
-    document.getElementById('search-input').addEventListener('input', function (e) {
-      state.searchQuery = e.target.value;
-      document.getElementById('search-clear').style.display = state.searchQuery ? 'block' : 'none';
-      renderTable();
-    });
-    document.getElementById('search-clear').addEventListener('click', function () {
-      state.searchQuery = '';
-      document.getElementById('search-input').value = '';
-      this.style.display = 'none';
-      renderTable();
-    });
-
-    document.getElementById('calc-market').addEventListener('change', function (e) {
-      state.calcMarketId = e.target.value;
-      renderCalculator();
-    });
-    document.getElementById('calc-custom').addEventListener('input', function (e) {
-      state.calcCustomQty = e.target.value;
-      renderPresets();
-      renderCalculator();
-    });
-    document.getElementById('calc-freight').addEventListener('input', function (e) {
-      state.calcFreightPerEgg = parseFloat(e.target.value) || 0;
-      renderCalculator();
-    });
-    document.getElementById('calc-margin').addEventListener('input', function (e) {
-      state.calcMarginPct = parseFloat(e.target.value) || 0;
-      renderCalculator();
-    });
-
-    document.getElementById('btn-theme').addEventListener('click', function () {
-      state.darkMode = !state.darkMode;
-      applyTheme();
-      renderChart();
-    });
-
-    document.getElementById('btn-export-csv').addEventListener('click', handleExportCSV);
-    document.getElementById('btn-export-json').addEventListener('click', handleExportJSON);
-    document.getElementById('btn-share-top').addEventListener('click', function () { copyRateBroadcast(); });
-    document.getElementById('modal-copy').addEventListener('click', function () {
-      copyRateBroadcast(getMarketInfo(state.activeModalMarketId));
-    });
-    document.getElementById('modal-close-x').addEventListener('click', closeModal);
-    document.getElementById('modal-close-btn').addEventListener('click', closeModal);
-    document.getElementById('modal-overlay').addEventListener('click', function (e) {
-      if (e.target === this) closeModal();
-    });
-    document.getElementById('btn-top').addEventListener('click', function () {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-  }
-
-  document.addEventListener('DOMContentLoaded', init);
+  const ZONES=[['ALL','All India ('+META.length+')'],['METROS','Major Metros'],['NORTH','North Hubs'],['SOUTH','South Hubs'],['EAST','East Hubs'],['WEST','West Hubs'],['CENTRAL','Central Hubs'],['GAINERS','Top Gainers']], METROS=['delhi','mumbai','kolkata','chennai','bengaluru','hyderabad'];
+  function renderZones(){ $('zone-tabs').innerHTML=ZONES.map(z=>'<button data-zone="'+z[0]+'" class="'+(state.zoneFilter===z[0]?'active':'')+'">'+z[1]+'</button>').join('');document.querySelectorAll('#zone-tabs button').forEach(b=>b.onclick=()=>{state.zoneFilter=b.dataset.zone;renderZones();renderTable();}); }
+  function filtered(){let q=state.searchQuery.toLowerCase(),list=MARKETS_DATA.filter(m=>(m.name.toLowerCase().includes(q)||m.state.toLowerCase().includes(q)||m.zone.toLowerCase().includes(q)));if(state.zoneFilter==='METROS')list=list.filter(m=>METROS.includes(m.id));else if(state.zoneFilter==='GAINERS')list=list.filter(m=>m.change24h>0);else if(state.zoneFilter!=='ALL')list=list.filter(m=>m.zone.toUpperCase()===state.zoneFilter);list.sort((a,b)=>{let c=state.sortField==='name'?a.name.localeCompare(b.name):state.sortField==='change'?a.change24hPct-b.change24hPct:a.currentRate-b.currentRate;return state.sortDirection==='asc'?c:-c});return list;}
+  function renderTable(){['name','rate','change'].forEach(f=>{const e=$('sort-'+f);if(e)e.textContent=state.sortField===f?(state.sortDirection==='asc'?'↑':'↓'):''});$('table-body').innerHTML=filtered().map(m=>{let ch=m.status==='up'?'<span class="chg-up">↗ +'+m.change24hPct.toFixed(2)+'%</span>':m.status==='down'?'<span class="chg-down">↘ '+m.change24hPct.toFixed(2)+'%</span>':'<span class="chg-flat">0.00%</span>';return '<tr><td><button class="mkt-name-btn" data-select="'+m.id+'">'+m.name+'</button><span class="mkt-state">('+m.state+')</span></td><td><span class="zone-badge zone-'+m.zone+'">'+m.zone+'</span></td><td class="text-right"><strong>₹'+m.currentRate.toFixed(2)+'</strong></td><td class="text-right">₹'+(m.currentRate*12).toFixed(2)+'</td><td class="text-right">₹'+(m.currentRate*30).toFixed(2)+'</td><td class="text-right">₹'+(m.currentRate*100).toFixed(2)+'</td><td class="text-right">₹'+(m.currentRate*210).toFixed(2)+'</td><td class="text-right">'+ch+'</td><td><div class="row-actions"><button class="icon-btn" data-graph="'+m.id+'" title="Graph Trend">◫</button><button class="icon-btn" data-history="'+m.id+'" title="View 2026 History">↗</button><button class="icon-btn" data-copy="'+m.id+'" title="Copy Quote">⧉</button></div></td></tr>';}).join('');
+    document.querySelectorAll('[data-select]').forEach(b=>b.onclick=()=>{state.selectedMarketId=b.dataset.select;syncSelects();pageSetup();renderChart();}); document.querySelectorAll('[data-graph]').forEach(b=>b.onclick=()=>{state.selectedMarketId=b.dataset.graph;syncSelects();pageSetup();renderChart();window.scrollTo({top:380,behavior:'smooth'});});document.querySelectorAll('[data-history]').forEach(b=>b.onclick=()=>openModal(b.dataset.history));document.querySelectorAll('[data-copy]').forEach(b=>b.onclick=()=>copyRateBroadcast(getMarketInfo(b.dataset.copy))); }
+  document.querySelectorAll('th.sortable').forEach(th=>th.onclick=()=>{const f=th.dataset.sort;if(state.sortField===f)state.sortDirection=state.sortDirection==='asc'?'desc':'asc';else{state.sortField=f;state.sortDirection='desc'}renderTable()});
+  const PRESETS=[['1 Tray (30)',30],['100 Eggs',100],['1 Peti (210)',210],['5 Petis (1,050)',1050],['5,000 Eggs',5000],['1 Truck (50k)',50000]];
+  function renderPresets(){$('preset-grid').innerHTML=PRESETS.map(p=>'<button class="preset-btn '+(state.calcQuantity===p[1]&&!state.calcCustomQty?'active':'')+'" data-qty="'+p[1]+'">'+p[0]+'</button>').join('');document.querySelectorAll('.preset-btn').forEach(b=>b.onclick=()=>{state.calcQuantity=Number(b.dataset.qty);state.calcCustomQty='';$('calc-custom').value='';renderPresets();renderCalculator()});}
+  function renderCalculator(){const rate=state.calcMarketId==='all-india'?ALL_INDIA_INFO.currentRate:getMarketInfo(state.calcMarketId).currentRate;const qty=state.calcCustomQty?(parseInt(state.calcCustomQty,10)||0):state.calcQuantity;const base=qty*rate;const freight=qty*state.calcFreightPerEgg;const landed=base+freight;const markup=landed*(state.calcMarginPct/100);const finalv=landed+markup;const ret=qty?finalv/qty:0;$('res-eggs').textContent=qty.toLocaleString('en-IN')+' Eggs';$('res-base').textContent=money(base);$('res-freight').textContent=money(freight);$('res-landed').textContent=money(landed);$('res-margin-label').textContent='Target Margin ('+state.calcMarginPct+'%):';$('res-margin').textContent='+'+money(markup);$('res-final').textContent=money(finalv);$('res-retail').textContent=money(ret);}
+  function openModal(id){const m=getMarketInfo(id);$('modal-title').innerHTML=m.name+' ('+m.state+') <span class="modal-zone-tag">'+m.zone+' Zone</span>';$('modal-current').textContent=money(m.currentRate);$('modal-tray').textContent=money(m.currentRate*30);$('modal-peti').textContent=money(m.currentRate*210);const hist=(m.history||[]).slice().reverse();$('modal-tbody').innerHTML=hist.map(d=>'<tr><td>'+d.date+' ('+(d.dayLabel||'')+')</td><td class="text-right" style="font-weight:700;color:var(--text-primary)">₹'+d.rate.toFixed(2)+'</td><td class="text-right">₹'+(d.rate*30).toFixed(2)+'</td><td class="text-right">₹'+(d.rate*100).toFixed(2)+'</td><td class="text-right">₹'+(d.rate*210).toFixed(2)+'</td></tr>').join('');$('modal-overlay').classList.add('show');state.activeModalMarketId=id;}
+  function closeModal(){$('modal-overlay').classList.remove('show');state.activeModalMarketId=null}
+  function copyRateBroadcast(m){m=m||getMarketInfo(state.selectedMarketId);const text='🥚 *NECC Egg Rate Update ('+(latest.date||'')+')*\n📍 *Market:* '+m.name+' ('+m.zone+')\n💰 *1 Egg:* ₹'+m.currentRate.toFixed(2)+'\n📦 *Tray (30 pcs):* ₹'+(m.currentRate*30).toFixed(2)+'\n📦 *Peti (210 pcs):* ₹'+(m.currentRate*210).toFixed(2)+'\n📈 *24h Change:* '+(m.change24h>=0?'+':'')+m.change24h.toFixed(2)+' ('+m.change24hPct.toFixed(2)+'%)\n🌐 *Source:* E2NECC Egg Price';if(navigator.clipboard)navigator.clipboard.writeText(text).catch(()=>{});showToast('Copied '+m.name+' rate report to clipboard!');}
+  function exportJSON(){const a=document.createElement('a');a.href='data:application/json;charset=utf-8,'+encodeURIComponent(JSON.stringify(latest,null,2));a.download='egg-rates-'+(latest.date||'latest')+'.json';a.click();showToast('Exported latest market dataset!')}
+  function exportCSV(){let csv='Market,State,Zone,RatePerEgg,Dozen,Tray30,100Eggs,Peti210,Change24h,ChangePct\n';MARKETS_DATA.forEach(m=>csv+='"'+m.name+'","'+m.state+'","'+m.zone+'",'+m.currentRate+','+(m.currentRate*12).toFixed(2)+','+(m.currentRate*30).toFixed(2)+','+(m.currentRate*100).toFixed(2)+','+(m.currentRate*210).toFixed(2)+','+m.change24h+','+m.change24hPct+'%\n');const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'}));a.download='egg-rates-'+(latest.date||'latest')+'.csv';a.click();showToast('Exported CSV file successfully!')}
+  function syncSelects(){if($('select-market'))$('select-market').value=state.selectedMarketId;if($('calc-market'))$('calc-market').value=state.calcMarketId;}
+  async function loadData(){const [a,b]=await Promise.all([fetch(DATA_BASE+'/latest.json').then(r=>r.json()),fetch(DATA_BASE+'/history.json').then(r=>r.json())]);latest=a;history=b;buildData();pageSetup();renderKPIs();renderZones();renderTable();renderPresets();$('select-market').innerHTML=options(false);$('calc-market').innerHTML=options(true);syncSelects();renderCalculator();renderChart();}
+  function init(){applyTheme();$('btn-theme').onclick=()=>{state.darkMode=!state.darkMode;applyTheme();renderChart()};$('select-market').onchange=e=>{state.selectedMarketId=e.target.value;renderChart();pageSetup()};$('tf-group').querySelectorAll('button').forEach(b=>b.onclick=()=>{state.timeframe=b.dataset.tf;document.querySelectorAll('#tf-group button').forEach(x=>x.classList.remove('active'));b.classList.add('active');renderChart()});$('btn-compare').onclick=function(){state.compareWithAvg=!state.compareWithAvg;this.classList.toggle('on',state.compareWithAvg);renderChart()};$('search-input').oninput=e=>{state.searchQuery=e.target.value;$('search-clear').style.display=state.searchQuery?'block':'none';renderTable()};$('search-clear').onclick=()=>{state.searchQuery='';$('search-input').value='';$('search-clear').style.display='none';renderTable()};$('calc-market').onchange=e=>{state.calcMarketId=e.target.value;renderCalculator()};$('calc-custom').oninput=e=>{state.calcCustomQty=e.target.value;renderPresets();renderCalculator()};$('calc-freight').oninput=e=>{state.calcFreightPerEgg=parseFloat(e.target.value)||0;renderCalculator()};$('calc-margin').oninput=e=>{state.calcMarginPct=parseFloat(e.target.value)||0;renderCalculator()};$('btn-export-csv').onclick=exportCSV;$('btn-export-json').onclick=exportJSON;$('btn-share-top').onclick=()=>copyRateBroadcast();$('modal-copy').onclick=()=>copyRateBroadcast(getMarketInfo(state.activeModalMarketId));$('modal-close-x').onclick=closeModal;$('modal-close-btn').onclick=closeModal;$('modal-overlay').onclick=e=>{if(e.target===e.currentTarget)closeModal()};$('btn-top').onclick=()=>window.scrollTo({top:0,behavior:'smooth'});loadData().catch(err=>{console.error(err);showToast('Unable to load rate data. Check data JSON.');});}
+  document.addEventListener('DOMContentLoaded',init);
 })();
 </script>
 </body>

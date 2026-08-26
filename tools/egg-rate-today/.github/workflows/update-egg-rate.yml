@@ -1,7 +1,7 @@
-name: Egg Rate Update
+name: Update Egg Rate
 on:
   schedule:
-    - cron: '25 18 * * *'
+    - cron: "30 18 * * *"
   workflow_dispatch:
 permissions:
   contents: write
@@ -12,19 +12,19 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: '3.x'
-      - name: Install
+          python-version: "3.x"
+      - name: Install dependencies
         run: pip install requests beautifulsoup4
-      - name: Backfill 2026 history
-        run: python tools/scripts/backfill_2026.py
-      - name: Fetch latest official rate
-        run: python tools/scripts/update_egg_rates.py
-      - name: Build static pages
-        run: python tools/scripts/build_site.py
-      - name: Commit
+      - name: Backfill 2026 history (only adds verified available records)
+        run: python scripts/backfill_2026.py
+      - name: Fetch today's E2NECC rate
+        run: python scripts/update_egg_rates.py
+      - name: Build city pages from supplied master design
+        run: python scripts/build_site.py
+      - name: Commit and push changes
         run: |
-          git config user.name 'egg-rate-bot'
-          git config user.email 'actions@users.noreply.github.com'
-          git add tools/egg-rate-today sitemap.xml robots.txt
-          git diff --cached --quiet || git commit -m 'Update egg rates and 2026 history'
+          git config user.name "egg-rate-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add .
+          git diff --cached --quiet || git commit -m "Update daily egg rates and history"
           git push

@@ -1,50 +1,74 @@
-import json,re,requests,time
-from bs4 import BeautifulSoup
+#!/usr/bin/env python3
+"""Backfill January 2026 through today from public monthly NECC-history pages.
+
+Primary current source remains E2NECC. Historical backfill uses public daily-history pages
+because E2NECC's public current sheet does not expose a simple API for all prior months.
+The script never invents missing observations: a month/city is skipped when no page is found.
+"""
+import json,re,time
+from datetime import date
 from pathlib import Path
+import requests
+from bs4 import BeautifulSoup
 
-ROOT=Path(__file__).resolve().parents[1]; SITE=ROOT/'tools'/'egg-rate-today'; DATA=SITE/'data'
-HEAD={'User-Agent':'Mozilla/5.0 (compatible; BagchiEggRateBackfill/1.0)'}
-ALIAS={
-'Ahmedabad':'ahmedabad','Ajmer':'ajmer','Barwala':'barwala','Bengaluru (CC)':'bengaluru','Brahmapur (OD)':'brahmapur','Chennai (CC)':'chennai','Chittoor':'chittoor','Delhi (CC)':'delhi','E.Godavari':'east-godavari','Hospet':'hospet','Hyderabad':'hyderabad','Jabalpur':'jabalpur','Kolkata (WB)':'kolkata','Ludhiana':'ludhiana','Mumbai (CC)':'mumbai','Mysuru':'mysuru','Namakkal':'namakkal','Pune':'pune','Raipur':'raipur','Surat':'surat','Vijayawada':'vijayawada','Vizag':'visakhapatnam','W.Godavari':'west-godavari','Warangal':'warangal','Allahabad (CC)':'allahabad','Bhopal':'bhopal','Indore (CC)':'indore','Kanpur (CC)':'kanpur','Luknow (CC)':'lucknow','Muzaffurpur (CC)':'muzaffarpur','Nagpur':'nagpur','Patna':'patna','Ranchi (CC)':'ranchi','Varanasi (CC)':'varanasi'}
+ROOT=Path(__file__).resolve().parents[1]; DATA=ROOT/'data'; HISTORY=DATA/'history.json'
+BASE='https://eggratetoday.com/egg-rate-history/{slug}/{ym}'
+CITY_SLUGS={'e-godavari':'e-godavari','w-godavari':'w-godavari','luknow':'lucknow','muzaffurpur':'muzaffarpur','bengaluru':'bengaluru','brahmapur':'brahmapur','mysuru':'mysuru','vizag':'vizag','ahmedabad':'ahmedabad','ajmer':'ajmer','allahabad':'allahabad','barwala':'barwala','bhopal':'bhopal','chennai':'chennai','chittoor':'chittoor','delhi':'delhi','hospet':'hospet','hyderabad':'hyderabad','indore':'indore','jabalpur':'jabalpur','kanpur':'kanpur','kolkata':'kolkata','ludhiana':'ludhiana','mumbai':'mumbai','nagpur':'nagpur','namakkal':'namakkal','patna':'patna','pune':'pune','raipur':'raipur','ranchi':'ranchi','surat':'surat','varanasi':'varanasi','vijayawada':'vijayawada','warangal':'warangal'}
+HEAD={'User-Agent':'Mozilla/5.0 (compatible; EggRateIndiaHistory/1.0)'}
+PRICE_RE=re.compile(r'₹\s*([0-9]+(?:\.[0-9]+)?)')
+DATE_RE=re.compile(r'\b([A-Z][a-z]+\s+\d{1,2},\s+2026)\b')
 
-def parse_month(slug, ym):
-    url=f'https://eggratetoday.com/egg-rate-history/{slug}/{ym}'
-    r=requests.get(url,headers=HEAD,timeout=40)
-    if r.status_code!=200: return []
-    soup=BeautifulSoup(r.text,'html.parser'); text=soup.get_text('\n',strip=True)
-    # target table from Daily Egg Prices section
-    rows=[]; table=None
-    for t in soup.find_all('table'):
-        if 'Date' in t.get_text(' ',strip=True) and 'NECC Price' in t.get_text(' ',strip=True): table=t; break
-    if not table: return []
-    for tr in table.find_all('tr'):
+def parse_month(text):
+    soup=BeautifulSoup(text,'html.parser'); rows=[]
+    for tr in soup.find_all('tr'):
         cells=[re.sub(r'\s+',' ',c.get_text(' ',strip=True)) for c in tr.find_all(['th','td'])]
-        if len(cells)>=2 and re.match(r'^[A-Za-z]+ \d{1,2}, 2026$',cells[0]):
-            v=re.search(r'([0-9]+(?:\.[0-9]+)?)',cells[1].replace(',',''))
-            if v:
-                rows.append({'date':cells[0],'rate':float(v.group(1))})
-    return rows
+        if len(cells)>=2: rows.append(cells)
+    out={}
+    for row in rows:
+        d=None
+        for c in row[:2]:
+            m=DATE_RE.search(c)
+            if m:
+                d=m.group(1); break
+        if not d: continue
+        price=None
+        for c in row[1:]:
+            m=PRICE_RE.search(c)
+            if m: price=float(m.group(1)); break
+        if price is not None: out[d]=round(price,2)
+    return out
 
 def main():
-    hist=json.loads((DATA/'history.json').read_text())
-    months=[f'2026-{m:02d}' for m in range(1,9)]
-    for city,slug in ALIAS.items():
-        c=hist.setdefault('markets',{}).setdefault(city,{'months':[],'daily':[]})
-        daily={x['date']:x for x in c.get('daily',[])}
-        monthly={x['month']:x for x in c.get('months',[])}
-        got=0
-        for ym in months:
-            try: rows=parse_month(slug,ym)
-            except Exception as e: print('skip',city,ym,e); rows=[]
-            if rows:
-                got+=len(rows)
-                for x in rows: daily[x['date']]=x
-                vals=[x['rate'] for x in rows]
-                monthly[ym]={'month':ym,'avg':round(sum(vals)/len(vals),2),'high':max(vals),'low':min(vals)}
-            time.sleep(.12)
-        c['daily']=sorted(daily.values(),key=lambda x:x['date'])
-        c['months']=sorted(monthly.values(),key=lambda x:x['month'])
-        print(city, 'rows',got)
-    hist['history_backfill']='2026-01 through 2026-08; public NECC historical mirror used for bootstrap, with official E2NECC as the live source.'
-    (DATA/'history.json').write_text(json.dumps(hist,indent=2,ensure_ascii=False),encoding='utf-8')
-if __name__=='__main__': main()
+    import calendar
+    try: hist=json.loads(HISTORY.read_text())
+    except: hist={'records':[]}
+    records={r['date']:r for r in hist.get('records',[])}
+    today=date.today()
+    for month in range(1,today.month+1):
+        last=calendar.monthrange(2026,month)[1] if month<today.month else today.day
+        ym=f'2026-{month:02d}'
+        for cid,slug in CITY_SLUGS.items():
+            url=BASE.format(slug=slug,ym=ym)
+            try:
+                r=requests.get(url,headers=HEAD,timeout=25)
+                if r.status_code!=200: continue
+                daily=parse_month(r.text)
+                if not daily: continue
+                for dstr,val in daily.items():
+                    # Ignore dates beyond current day in current month.
+                    dt=date.fromisoformat(__import__('datetime').datetime.strptime(dstr,'%B %d, %Y').date().isoformat())
+                    if dt>today: continue
+                    key=dt.isoformat(); rec=records.setdefault(key,{'date':key,'markets':{},'source':'public-historical-archive'})
+                    rec['markets'][cid]=val
+            except Exception as e:
+                print('skip',cid,ym,e)
+            time.sleep(.15)
+    # Calculate national daily averages from available city records.
+    for rec in records.values():
+        vals=[v for v in rec.get('markets',{}).values() if isinstance(v,(int,float))]
+        if vals: rec['national_avg']=round(sum(vals)/len(vals),2)
+    ordered=[records[k] for k in sorted(records)]
+    hist={'source':'E2NECC current data + public historical archive backfill','coverage_start':ordered[0]['date'] if ordered else None,'coverage_end':ordered[-1]['date'] if ordered else None,'records':ordered,'notes':'Historical observations are only written when a public daily-history page provides them; missing city/month pages remain missing rather than being fabricated.'}
+    HISTORY.write_text(json.dumps(hist,indent=2,ensure_ascii=False)+'\n')
+    print('Backfilled',len(ordered),'daily records from January 2026 through',today.isoformat())
+if __name__=='__main__':main()

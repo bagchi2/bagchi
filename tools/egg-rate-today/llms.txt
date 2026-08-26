@@ -1,0 +1,8 @@
+# EggRate.io — Bagchi.in
+
+Public URL: https://bagchi.in/tools/egg-rate-today/
+
+Current source: E2NECC Egg Price
+Historical backfill: public daily-history archive pages where available
+
+The site is an independent presentation layer and NECC suggested prices are reference values, not mandatory retail prices.
