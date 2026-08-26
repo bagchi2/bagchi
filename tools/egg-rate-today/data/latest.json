@@ -1,0 +1,177 @@
+{
+  "source": "E2NECC",
+  "source_url": "https://www.e2necc.com/home/eggprice",
+  "date": "2026-08-25",
+  "markets": [
+    {
+      "name": "Ahmedabad",
+      "rate": 550,
+      "type": "NECC suggested"
+    },
+    {
+      "name": "Ajmer",
+      "rate": 516,
+      "type": "NECC suggested"
+    },
+    {
+      "name": "Barwala",
+      "rate": 500,
+      "type": "NECC suggested"
+    },
+    {
+      "name": "Bengaluru (CC)",
+      "rate": 570,
+      "type": "NECC suggested"
+    },
+    {
+      "name": "Brahmapur (OD)",
+      "rate": 530,
+      "type": "NECC suggested"
+    },
+    {
+      "name": "Chennai (CC)",
+      "rate": 600,
+      "type": "NECC suggested"
+    },
+    {
+      "name": "Chittoor",
+      "rate": 593,
+      "type": "NECC suggested"
+    },
+    {
+      "name": "Delhi (CC)",
+      "rate": 560,
+      "type": "NECC suggested"
+    },
+    {
+      "name": "E.Godavari",
+      "rate": 520,
+      "type": "NECC suggested"
+    },
+    {
+      "name": "Hospet",
+      "rate": 490,
+      "type": "NECC suggested"
+    },
+    {
+      "name": "Hyderabad",
+      "rate": 500,
+      "type": "NECC suggested"
+    },
+    {
+      "name": "Jabalpur",
+      "rate": 525,
+      "type": "NECC suggested"
+    },
+    {
+      "name": "Kolkata (WB)",
+      "rate": 600,
+      "type": "NECC suggested"
+    },
+    {
+      "name": "Ludhiana",
+      "rate": 525,
+      "type": "NECC suggested"
+    },
+    {
+      "name": "Mumbai (CC)",
+      "rate": 550,
+      "type": "NECC suggested"
+    },
+    {
+      "name": "Mysuru",
+      "rate": 555,
+      "type": "NECC suggested"
+    },
+    {
+      "name": "Namakkal",
+      "rate": 520,
+      "type": "NECC suggested"
+    },
+    {
+      "name": "Pune",
+      "rate": 530,
+      "type": "NECC suggested"
+    },
+    {
+      "name": "Raipur",
+      "rate": 495,
+      "type": "NECC suggested"
+    },
+    {
+      "name": "Surat",
+      "rate": 550,
+      "type": "NECC suggested"
+    },
+    {
+      "name": "Vijayawada",
+      "rate": 530,
+      "type": "NECC suggested"
+    },
+    {
+      "name": "Vizag",
+      "rate": 520,
+      "type": "NECC suggested"
+    },
+    {
+      "name": "W.Godavari",
+      "rate": 520,
+      "type": "NECC suggested"
+    },
+    {
+      "name": "Warangal",
+      "rate": 502,
+      "type": "NECC suggested"
+    },
+    {
+      "name": "Allahabad (CC)",
+      "rate": 552,
+      "type": "NECC suggested"
+    },
+    {
+      "name": "Bhopal",
+      "rate": 525,
+      "type": "NECC suggested"
+    },
+    {
+      "name": "Indore (CC)",
+      "rate": 520,
+      "type": "NECC suggested"
+    },
+    {
+      "name": "Kanpur (CC)",
+      "rate": 567,
+      "type": "NECC suggested"
+    },
+    {
+      "name": "Luknow (CC)",
+      "rate": 573,
+      "type": "NECC suggested"
+    },
+    {
+      "name": "Muzaffurpur (CC)",
+      "rate": 580,
+      "type": "NECC suggested"
+    },
+    {
+      "name": "Nagpur",
+      "rate": 510,
+      "type": "NECC suggested"
+    },
+    {
+      "name": "Patna",
+      "rate": 580,
+      "type": "NECC suggested"
+    },
+    {
+      "name": "Ranchi (CC)",
+      "rate": 571,
+      "type": "NECC suggested"
+    },
+    {
+      "name": "Varanasi (CC)",
+      "rate": 573,
+      "type": "NECC suggested"
+    }
+  ]
+}
