@@ -1,8 +1,40 @@
-# EggRate.io — Bagchi.in
+# egg rate today
 
-Public URL: https://bagchi.in/tools/egg-rate-today/
+Main URL: https://bagchi.in/tools/egg-rate-today/
+Source: https://www.e2necc.com/home/eggprice
 
-Current source: E2NECC Egg Price
-Historical backfill: public daily-history archive pages where available
-
-The site is an independent presentation layer and NECC suggested prices are reference values, not mandatory retail prices.
+City pages:
+- Ahmedabad: https://bagchi.in/tools/egg-rate-today/cities/ahmedabad.html
+- Ajmer: https://bagchi.in/tools/egg-rate-today/cities/ajmer.html
+- Barwala: https://bagchi.in/tools/egg-rate-today/cities/barwala.html
+- Bengaluru (CC): https://bagchi.in/tools/egg-rate-today/cities/bengaluru.html
+- Brahmapur (OD): https://bagchi.in/tools/egg-rate-today/cities/brahmapur.html
+- Chennai (CC): https://bagchi.in/tools/egg-rate-today/cities/chennai.html
+- Chittoor: https://bagchi.in/tools/egg-rate-today/cities/chittoor.html
+- Delhi (CC): https://bagchi.in/tools/egg-rate-today/cities/delhi.html
+- E.Godavari: https://bagchi.in/tools/egg-rate-today/cities/e-godavari.html
+- Hospet: https://bagchi.in/tools/egg-rate-today/cities/hospet.html
+- Hyderabad: https://bagchi.in/tools/egg-rate-today/cities/hyderabad.html
+- Jabalpur: https://bagchi.in/tools/egg-rate-today/cities/jabalpur.html
+- Kolkata (WB): https://bagchi.in/tools/egg-rate-today/cities/kolkata.html
+- Ludhiana: https://bagchi.in/tools/egg-rate-today/cities/ludhiana.html
+- Mumbai (CC): https://bagchi.in/tools/egg-rate-today/cities/mumbai.html
+- Mysuru: https://bagchi.in/tools/egg-rate-today/cities/mysuru.html
+- Namakkal: https://bagchi.in/tools/egg-rate-today/cities/namakkal.html
+- Pune: https://bagchi.in/tools/egg-rate-today/cities/pune.html
+- Raipur: https://bagchi.in/tools/egg-rate-today/cities/raipur.html
+- Surat: https://bagchi.in/tools/egg-rate-today/cities/surat.html
+- Vijayawada: https://bagchi.in/tools/egg-rate-today/cities/vijayawada.html
+- Vizag: https://bagchi.in/tools/egg-rate-today/cities/vizag.html
+- W.Godavari: https://bagchi.in/tools/egg-rate-today/cities/w-godavari.html
+- Warangal: https://bagchi.in/tools/egg-rate-today/cities/warangal.html
+- Allahabad (CC): https://bagchi.in/tools/egg-rate-today/cities/allahabad.html
+- Bhopal: https://bagchi.in/tools/egg-rate-today/cities/bhopal.html
+- Indore (CC): https://bagchi.in/tools/egg-rate-today/cities/indore.html
+- Kanpur (CC): https://bagchi.in/tools/egg-rate-today/cities/kanpur.html
+- Lucknow (CC): https://bagchi.in/tools/egg-rate-today/cities/luknow.html
+- Muzaffarpur (CC): https://bagchi.in/tools/egg-rate-today/cities/muzaffurpur.html
+- Nagpur: https://bagchi.in/tools/egg-rate-today/cities/nagpur.html
+- Patna: https://bagchi.in/tools/egg-rate-today/cities/patna.html
+- Ranchi (CC): https://bagchi.in/tools/egg-rate-today/cities/ranchi.html
+- Varanasi (CC): https://bagchi.in/tools/egg-rate-today/cities/varanasi.html

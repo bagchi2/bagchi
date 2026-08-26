@@ -1,74 +1,76 @@
-#!/usr/bin/env python3
-"""Backfill January 2026 through today from public monthly NECC-history pages.
-
-Primary current source remains E2NECC. Historical backfill uses public daily-history pages
-because E2NECC's public current sheet does not expose a simple API for all prior months.
-The script never invents missing observations: a month/city is skipped when no page is found.
-"""
-import json,re,time
-from datetime import date
+import asyncio,datetime,json,re
 from pathlib import Path
-import requests
-from bs4 import BeautifulSoup
-
-ROOT=Path(__file__).resolve().parents[1]; DATA=ROOT/'data'; HISTORY=DATA/'history.json'
-BASE='https://eggratetoday.com/egg-rate-history/{slug}/{ym}'
-CITY_SLUGS={'e-godavari':'e-godavari','w-godavari':'w-godavari','luknow':'lucknow','muzaffurpur':'muzaffarpur','bengaluru':'bengaluru','brahmapur':'brahmapur','mysuru':'mysuru','vizag':'vizag','ahmedabad':'ahmedabad','ajmer':'ajmer','allahabad':'allahabad','barwala':'barwala','bhopal':'bhopal','chennai':'chennai','chittoor':'chittoor','delhi':'delhi','hospet':'hospet','hyderabad':'hyderabad','indore':'indore','jabalpur':'jabalpur','kanpur':'kanpur','kolkata':'kolkata','ludhiana':'ludhiana','mumbai':'mumbai','nagpur':'nagpur','namakkal':'namakkal','patna':'patna','pune':'pune','raipur':'raipur','ranchi':'ranchi','surat':'surat','varanasi':'varanasi','vijayawada':'vijayawada','warangal':'warangal'}
-HEAD={'User-Agent':'Mozilla/5.0 (compatible; EggRateIndiaHistory/1.0)'}
-PRICE_RE=re.compile(r'₹\s*([0-9]+(?:\.[0-9]+)?)')
-DATE_RE=re.compile(r'\b([A-Z][a-z]+\s+\d{1,2},\s+2026)\b')
-
-def parse_month(text):
-    soup=BeautifulSoup(text,'html.parser'); rows=[]
-    for tr in soup.find_all('tr'):
-        cells=[re.sub(r'\s+',' ',c.get_text(' ',strip=True)) for c in tr.find_all(['th','td'])]
-        if len(cells)>=2: rows.append(cells)
-    out={}
-    for row in rows:
-        d=None
-        for c in row[:2]:
-            m=DATE_RE.search(c)
-            if m:
-                d=m.group(1); break
-        if not d: continue
-        price=None
-        for c in row[1:]:
-            m=PRICE_RE.search(c)
-            if m: price=float(m.group(1)); break
-        if price is not None: out[d]=round(price,2)
+from playwright.async_api import async_playwright
+ROOT=Path(__file__).resolve().parents[1];URL='https://www.e2necc.com/home/eggprice'
+MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December']
+def clean(x): return re.sub(r'\s+',' ',x).strip()
+async def find_select(page,targets):
+    sels=page.locator('select')
+    for i in range(await sels.count()):
+        texts=[clean(x).lower() for x in await sels.nth(i).locator('option').all_text_contents()]
+        if any(t.lower() in texts for t in targets): return sels.nth(i)
+    return None
+async def choose_daily(page):
+    loc=page.get_by_text('Daily Rate Sheet',exact=True)
+    if await loc.count():
+        try: await loc.first().click(timeout=3000);await page.wait_for_timeout(700);return
+        except: pass
+    radios=page.locator('input[type=radio]')
+    for i in range(await radios.count()):
+        val=(await radios.nth(i).get_attribute('value') or '').lower()
+        if 'daily' in val:
+            try: await radios.nth(i).check();await page.wait_for_timeout(700);return
+            except: pass
+async def parse_month(page,year,month,today):
+    await page.goto(URL,wait_until='domcontentloaded',timeout=90000);await page.wait_for_timeout(800)
+    ms=await find_select(page,[MONTHS[month-1]]);ys=await find_select(page,[str(year)])
+    if not ms or not ys: raise RuntimeError('Month/Year selector not found')
+    try: await ys.select_option(label=str(year))
+    except: await ys.select_option(str(year))
+    await page.wait_for_timeout(500)
+    try: await ms.select_option(label=MONTHS[month-1])
+    except:
+        for i in range(await ms.locator('option').count()):
+            txt=clean(await ms.locator('option').nth(i).inner_text())
+            if MONTHS[month-1].lower() in txt.lower():
+                await ms.select_option(await ms.locator('option').nth(i).get_attribute('value'));break
+    await page.wait_for_timeout(1200);await choose_daily(page)
+    rows=page.locator('table tr');section=None;out=[]
+    for i in range(await rows.count()):
+        c=[clean(x) for x in await rows.nth(i).locator('th,td').all_text_contents()]
+        if not c: continue
+        label=c[0]
+        if label=='NECC SUGGESTED EGG PRICES': section='suggested';continue
+        if label=='Prevailing Prices': section='prevailing';continue
+        if section not in ('suggested','prevailing'): continue
+        nums=[float(x)/100 if re.fullmatch(r'\d+(?:\.\d+)?',x) else None for x in c[1:]]
+        for day,v in enumerate(nums[:-1],1):
+            if v is None: continue
+            dt=datetime.date(year,month,day)
+            if dt<=today: out.append((label,section,dt.isoformat(),round(v,4)))
     return out
-
-def main():
-    import calendar
-    try: hist=json.loads(HISTORY.read_text())
-    except: hist={'records':[]}
-    records={r['date']:r for r in hist.get('records',[])}
-    today=date.today()
-    for month in range(1,today.month+1):
-        last=calendar.monthrange(2026,month)[1] if month<today.month else today.day
-        ym=f'2026-{month:02d}'
-        for cid,slug in CITY_SLUGS.items():
-            url=BASE.format(slug=slug,ym=ym)
+async def main():
+    today=datetime.date.today();months=[];cur=datetime.date(2026,1,1)
+    while cur<=today.replace(day=1):
+        months.append((cur.year,cur.month));nxt=cur.replace(day=28)+datetime.timedelta(days=4);cur=nxt.replace(day=1)
+    allrows=[]
+    async with async_playwright() as p:
+        browser=await p.chromium.launch(headless=True);page=await browser.new_page(viewport={'width':1400,'height':900})
+        for y,m in months:
             try:
-                r=requests.get(url,headers=HEAD,timeout=25)
-                if r.status_code!=200: continue
-                daily=parse_month(r.text)
-                if not daily: continue
-                for dstr,val in daily.items():
-                    # Ignore dates beyond current day in current month.
-                    dt=date.fromisoformat(__import__('datetime').datetime.strptime(dstr,'%B %d, %Y').date().isoformat())
-                    if dt>today: continue
-                    key=dt.isoformat(); rec=records.setdefault(key,{'date':key,'markets':{},'source':'public-historical-archive'})
-                    rec['markets'][cid]=val
-            except Exception as e:
-                print('skip',cid,ym,e)
-            time.sleep(.15)
-    # Calculate national daily averages from available city records.
-    for rec in records.values():
-        vals=[v for v in rec.get('markets',{}).values() if isinstance(v,(int,float))]
-        if vals: rec['national_avg']=round(sum(vals)/len(vals),2)
-    ordered=[records[k] for k in sorted(records)]
-    hist={'source':'E2NECC current data + public historical archive backfill','coverage_start':ordered[0]['date'] if ordered else None,'coverage_end':ordered[-1]['date'] if ordered else None,'records':ordered,'notes':'Historical observations are only written when a public daily-history page provides them; missing city/month pages remain missing rather than being fabricated.'}
-    HISTORY.write_text(json.dumps(hist,indent=2,ensure_ascii=False)+'\n')
-    print('Backfilled',len(ordered),'daily records from January 2026 through',today.isoformat())
-if __name__=='__main__':main()
+                rows=await parse_month(page,y,m,today);allrows.extend(rows);print(MONTHS[m-1],y,len(rows))
+            except Exception as e: print('WARN',y,m,e)
+        await browser.close()
+    if len(allrows)<200: raise RuntimeError(f'Backfill guard: only {len(allrows)} observations collected')
+    latest=json.loads((ROOT/'data/latest.json').read_text(encoding='utf-8'))
+    lookup={(m['name'],m.get('source_type','suggested')):m for m in latest['markets']};series={}
+    for n,s,d,r in allrows: series.setdefault((n,s),{})[d]={'date':d,'rate':r}
+    for key,vals in series.items():
+        m=lookup.get(key)
+        if m:
+            m['history']=sorted(vals.values(),key=lambda x:x['date']);m['currentRate']=m['history'][-1]['rate'];m['currentDate']=m['history'][-1]['date']
+    latest['date']=today.isoformat();latest['lastSourcePublication']=max(m.get('currentDate','2026-01-01') for m in latest['markets'])
+    (ROOT/'data/latest.json').write_text(json.dumps(latest,indent=2,ensure_ascii=False),encoding='utf-8')
+    h={'source':'E2NECC','sourceUrl':URL,'rangeStart':'2026-01-01','rangeEnd':today.isoformat(),'completeHistory':True,'recordsByMarket':{m['id']:m.get('history',[]) for m in latest['markets']},'recordsByName':{m['name']:m.get('history',[]) for m in latest['markets']}}
+    (ROOT/'data/history.json').write_text(json.dumps(h,indent=2,ensure_ascii=False),encoding='utf-8');print('Backfill markets',len(series))
+if __name__=='__main__': asyncio.run(main())

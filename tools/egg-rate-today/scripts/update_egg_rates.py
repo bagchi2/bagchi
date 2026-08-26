@@ -1,76 +1,102 @@
-#!/usr/bin/env python3
-"""Fetch today's NECC suggested egg rates and append a verified daily snapshot."""
-import json, re, sys
-from datetime import datetime
+import datetime
+import calendar
+import json
+import re
 from pathlib import Path
+
 import requests
 from bs4 import BeautifulSoup
 
-ROOT=Path(__file__).resolve().parents[1]
-DATA=ROOT/'data'; LATEST=DATA/'latest.json'; HISTORY=DATA/'history.json'
-SOURCE='https://www.e2necc.com/home/eggprice'
-META=[
-('ahmedabad','Ahmedabad','Gujarat','West'),('ajmer','Ajmer','Rajasthan','North'),('allahabad','Allahabad (CC)','Uttar Pradesh','North'),('barwala','Barwala','Haryana','North'),('bengaluru','Bengaluru (CC)','Karnataka','South'),('bhopal','Bhopal','Madhya Pradesh','Central'),('brahmapur','Brahmapur (OD)','Odisha','East'),('chennai','Chennai (CC)','Tamil Nadu','South'),('chittoor','Chittoor','Andhra Pradesh','South'),('delhi','Delhi (CC)','Delhi NCR','North'),('e-godavari','E.Godavari','Andhra Pradesh','South'),('hospet','Hospet','Karnataka','South'),('hyderabad','Hyderabad','Telangana','South'),('indore','Indore (CC)','Madhya Pradesh','Central'),('jabalpur','Jabalpur','Madhya Pradesh','Central'),('kanpur','Kanpur (CC)','Uttar Pradesh','North'),('kolkata','Kolkata (WB)','West Bengal','East'),('ludhiana','Ludhiana','Punjab','North'),('luknow','Lucknow (CC)','Uttar Pradesh','North'),('mumbai','Mumbai (CC)','Maharashtra','West'),('muzaffurpur','Muzaffarpur (CC)','Bihar','East'),('mysuru','Mysuru','Karnataka','South'),('nagpur','Nagpur','Maharashtra','Central'),('namakkal','Namakkal','Tamil Nadu','South'),('patna','Patna','Bihar','East'),('pune','Pune','Maharashtra','West'),('raipur','Raipur','Chhattisgarh','Central'),('ranchi','Ranchi (CC)','Jharkhand','East'),('surat','Surat','Gujarat','West'),('varanasi','Varanasi (CC)','Uttar Pradesh','North'),('vijayawada','Vijayawada','Andhra Pradesh','South'),('vizag','Vizag','Andhra Pradesh','South'),('w-godavari','W.Godavari','Andhra Pradesh','South'),('warangal','Warangal','Telangana','South')]
-ALIASES={re.sub(r'[^a-z0-9]','',n.lower()):i for i,n,_,_ in META}
-for i,n,_,_ in META: ALIASES[re.sub(r'[^a-z0-9]','',i.lower())]=i
+SOURCE = 'https://www.e2necc.com/home/eggprice'
+ROOT = Path(__file__).resolve().parents[1]
+HEADERS = {'User-Agent': 'Mozilla/5.0 EggRateToday/2.0'}
 
-def money_num(s):
-    s=str(s).replace(',','').replace('₹','').strip()
-    try:return float(s)
-    except:return None
 
-def parse_tables(html):
-    soup=BeautifulSoup(html,'html.parser'); out={}
-    for table in soup.find_all('table'):
-        rows=[]
-        for tr in table.find_all('tr'):
-            cells=[re.sub(r'\s+',' ',c.get_text(' ',strip=True)) for c in tr.find_all(['th','td'])]
-            if cells: rows.append(cells)
-        if len(rows)<5: continue
-        for row in rows[1:]:
-            name=row[0] if row else ''
-            key=re.sub(r'[^a-z0-9]','',name.lower())
-            mid=ALIASES.get(key)
-            if not mid: continue
-            nums=[]
-            for cell in row[1:]:
-                v=money_num(cell)
-                if v is not None: nums.append(v)
-            if not nums: continue
-            # E2NECC commonly expresses the sheet in rupees per 100 eggs. Use the latest numeric daily value.
-            val=nums[-1]
-            if 100 <= val <= 2000: val=val/100.0
-            if 1 <= val <= 20: out[mid]=round(val,2)
-    return out
+def number(value):
+    value = value.strip().replace(',', '')
+    return float(value) if re.fullmatch(r'\d+(?:\.\d+)?', value) else None
 
-def fetch():
-    r=requests.get(SOURCE,headers={'User-Agent':'Mozilla/5.0 (compatible; EggRateIndia/1.0)'},timeout=40)
-    r.raise_for_status(); return parse_tables(r.text)
+
+def fetch_current():
+    response = requests.get(SOURCE, headers=HEADERS, timeout=45)
+    response.raise_for_status()
+    soup = BeautifulSoup(response.text, 'html.parser')
+    today = datetime.date.today()
+    rows = []
+    section = None
+    for tr in soup.select('table tr'):
+        cells = [re.sub(r'\s+', ' ', td.get_text(' ', strip=True)) for td in tr.find_all(['th', 'td'])]
+        if not cells:
+            continue
+        label = cells[0]
+        if label == 'NECC SUGGESTED EGG PRICES':
+            section = 'suggested'
+            continue
+        if label == 'Prevailing Prices':
+            section = 'prevailing'
+            continue
+        if section not in ('suggested', 'prevailing'):
+            continue
+        # Cells after the centre name map to day 1..31 followed by Average.
+        day_values = cells[1:]
+        if day_values:
+            day_values = day_values[:-1]
+        last_day = None
+        last_rate = None
+        for idx, raw in enumerate(day_values, start=1):
+            n = number(raw)
+            if n is not None:
+                last_day = idx
+                last_rate = round(n / 100, 4)
+        if last_rate is not None and 1 <= last_day <= 31:
+            actual_date = datetime.date(today.year, today.month, min(last_day, calendar.monthrange(today.year, today.month)[1]))
+            if actual_date > today:
+                continue
+            rows.append({'name': label, 'rate': last_rate, 'source_type': section, 'currentDate': actual_date.isoformat()})
+    if len(rows) < 30:
+        raise RuntimeError(f'E2NECC parse guard: only {len(rows)} centre rows found')
+    return rows
+
 
 def main():
-    rates=fetch()
-    if len(rates)<10: raise RuntimeError(f'Only {len(rates)} markets parsed; refusing to overwrite good data. E2NECC HTML may have changed.')
-    latest=json.loads(LATEST.read_text()) if LATEST.exists() else {'markets':[]}
-    old={m['id']:m for m in latest.get('markets',[])}
-    today=datetime.now().astimezone().strftime('%Y-%m-%d')
-    markets=[]
-    for i,n,s,z in META:
-        if i not in rates and i not in old: continue
-        cur=rates.get(i,old.get(i,{}).get('rate'))
-        prev=old.get(i,{}).get('rate',cur)
-        ch=round(cur-prev,2); pct=round((ch/prev*100),2) if prev else 0
-        markets.append({'id':i,'name':n,'state':s,'zone':z,'rate':cur,'previous_rate':prev,'change24h':ch,'change24hPct':pct,'status':'up' if ch>0 else 'down' if ch<0 else 'flat'})
-    avg=round(sum(m['rate'] for m in markets)/len(markets),2)
-    oldavg=latest.get('national_avg',avg); nav=round(avg-oldavg,2)
-    latest={'source':'E2NECC','source_url':SOURCE,'date':today,'fetched_at':datetime.now().astimezone().isoformat(),'national_avg':avg,'national_previous_rate':oldavg,'national_change':nav,'national_change_pct':round(nav/oldavg*100,2) if oldavg else 0,'national_status':'up' if nav>0 else 'down' if nav<0 else 'flat','markets':markets}
-    LATEST.write_text(json.dumps(latest,indent=2,ensure_ascii=False)+'\n')
-    hist=json.loads(HISTORY.read_text()) if HISTORY.exists() else {'records':[]}
-    rec={m['id']:m['rate'] for m in markets}
-    hist['records']=[r for r in hist.get('records',[]) if r.get('date')!=today]
-    hist['records'].append({'date':today,'markets':rec,'national_avg':avg,'source':'E2NECC'})
-    hist['records']=sorted(hist['records'],key=lambda x:x['date'])
-    hist['coverage_start']=hist['records'][0]['date'] if hist['records'] else None
-    hist['coverage_end']=hist['records'][-1]['date'] if hist['records'] else None
-    HISTORY.write_text(json.dumps(hist,indent=2,ensure_ascii=False)+'\n')
-    print(f'Updated {len(markets)} markets for {today}')
-if __name__=='__main__': main()
+    latest = json.loads((ROOT / 'data/latest.json').read_text(encoding='utf-8'))
+    rows = fetch_current()
+    by_name = {m['name']: m for m in latest.get('markets', [])}
+    latest_dates = []
+    for row in rows:
+        market = by_name.get(row['name'])
+        if not market:
+            continue
+        market['source_type'] = row['source_type']
+        market['currentRate'] = row['rate']
+        market['currentDate'] = row['currentDate']
+        latest_dates.append(row['currentDate'])
+        history = market.setdefault('history', [])
+        replaced = False
+        for point in history:
+            if point.get('date') == row['currentDate']:
+                point['rate'] = row['rate']
+                replaced = True
+                break
+        if not replaced:
+            history.append({'date': row['currentDate'], 'rate': row['rate']})
+        market['history'] = sorted(history, key=lambda x: x['date'])
+    latest['date'] = datetime.date.today().isoformat()
+    latest['lastSourcePublication'] = max(latest_dates) if latest_dates else latest.get('lastSourcePublication')
+    latest['source'] = 'E2NECC'
+    latest['sourceUrl'] = SOURCE
+    (ROOT / 'data/latest.json').write_text(json.dumps(latest, indent=2, ensure_ascii=False), encoding='utf-8')
+    hist = {
+        'source': 'E2NECC',
+        'sourceUrl': SOURCE,
+        'rangeStart': '2026-01-01',
+        'rangeEnd': latest.get('date'),
+        'completeHistory': False,
+        'recordsByMarket': {m['id']: sorted(m.get('history', []), key=lambda x: x['date']) for m in latest.get('markets', [])},
+    }
+    (ROOT / 'data/history.json').write_text(json.dumps(hist, indent=2, ensure_ascii=False), encoding='utf-8')
+    print(f'Updated {len(rows)} E2NECC rows; latest source publication {latest.get("lastSourcePublication")}')
+
+
+if __name__ == '__main__':
+    main()

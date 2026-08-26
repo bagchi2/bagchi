@@ -1,8 +1,0 @@
-{
-  "source": "E2NECC",
-  "source_url": "https://www.e2necc.com/home/eggprice",
-  "date": "2026-08-25",
-  "markets": [
-    {"name":"Ahmedabad","rate":550},{"name":"Ajmer","rate":516},{"name":"Barwala","rate":530},{"name":"Bengaluru (CC)","rate":550},{"name":"Brahmapur (OD)","rate":550},{"name":"Chennai (CC)","rate":580},{"name":"Chittoor","rate":573},{"name":"Delhi (CC)","rate":547},{"name":"E.Godavari","rate":520},{"name":"Hospet","rate":490},{"name":"Hyderabad","rate":500},{"name":"Jabalpur","rate":540},{"name":"Kolkata (WB)","rate":600},{"name":"Ludhiana","rate":525},{"name":"Mumbai (CC)","rate":550},{"name":"Mysuru","rate":555},{"name":"Namakkal","rate":520},{"name":"Pune","rate":535},{"name":"Raipur","rate":495},{"name":"Surat","rate":550},{"name":"Vijayawada","rate":535},{"name":"Vizag","rate":525},{"name":"W.Godavari","rate":525},{"name":"Warangal","rate":502},{"name":"Allahabad (CC)","rate":552},{"name":"Bhopal","rate":525},{"name":"Indore (CC)","rate":520},{"name":"Kanpur (CC)","rate":567},{"name":"Luknow (CC)","rate":573},{"name":"Muzaffurpur (CC)","rate":580},{"name":"Nagpur","rate":535},{"name":"Patna","rate":580},{"name":"Ranchi (CC)","rate":571},{"name":"Varanasi (CC)","rate":573}
-  ]
-}
