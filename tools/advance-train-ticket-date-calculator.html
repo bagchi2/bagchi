@@ -319,6 +319,522 @@
     .dark ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
     .dark ::-webkit-scrollbar-thumb:hover { background: #4972b5; }
   </style>
+
+<style>
+/* ================================================================
+   MOBILE RESPONSIVE OVERRIDES
+   Existing HTML, content, JS, schema and desktop styles unchanged.
+   ================================================================ */
+@media (max-width: 640px) {
+  html, body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  body {
+    min-width: 0;
+  }
+
+  #mobile-menu {
+    max-height: calc(100svh - 90px);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Prevent long headings/labels from forcing page width */
+  h1, h2, h3, h4, h5, h6,
+  p, span, strong, em, a, button, label, th, td {
+    overflow-wrap: anywhere;
+    word-break: normal;
+  }
+
+  /* Keep the header compact without changing its content */
+  header .max-w-7xl {
+    min-width: 0;
+  }
+
+  header .max-w-7xl > a {
+    min-width: 0;
+    flex: 1 1 auto;
+  }
+
+  header .max-w-7xl > a > div:last-child {
+    min-width: 0;
+  }
+
+  header .max-w-7xl > a span.text-sm {
+    display: block;
+    white-space: normal;
+    line-height: 1.15;
+  }
+
+  /* Hero tabs: horizontal scroll is more usable than compressed buttons */
+  #hero-tabs {
+    display: flex;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  #hero-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  #hero-tabs > * {
+    flex: 0 0 auto;
+    min-width: 112px;
+    scroll-snap-align: start;
+  }
+
+  /* Dynamically rendered tool containers */
+  #tool-container,
+  #rules-root {
+    width: 100%;
+    min-width: 0;
+  }
+
+  #tool-container > *,
+  #rules-root > * {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  #tool-container .grid,
+  #rules-root .grid {
+    min-width: 0;
+  }
+
+  #tool-container .lg\:col-span-5,
+  #tool-container .lg\:col-span-7,
+  #rules-root .lg\:col-span-5,
+  #rules-root .lg\:col-span-7 {
+    min-width: 0;
+  }
+
+  /* Dense four-column mini cards become two columns on phones */
+  #tool-container .grid.grid-cols-4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  /* Small preset/control grids get enough room to tap */
+  #tool-container .grid.grid-cols-3 {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  /* Do not let fixed-width data blocks widen the page */
+  #tool-container .overflow-x-auto,
+  #rules-root .overflow-x-auto,
+  article .overflow-x-auto {
+    max-width: 100%;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+  }
+
+  /* Tables remain intact; users can swipe them horizontally */
+  table {
+    max-width: none;
+  }
+
+  /* Coach / seat / berth visualizers remain scrollable inside their card */
+  #tool-container .overflow-x-auto .flex {
+    min-width: max-content;
+  }
+
+  /* Modal safety on small screens */
+  .fixed.inset-0 {
+    align-items: flex-start;
+    padding: 12px;
+    overflow-y: auto;
+  }
+
+  .fixed.inset-0 > .max-w-md {
+    width: 100%;
+    max-width: 100%;
+    max-height: calc(100svh - 24px);
+    margin: 0;
+  }
+
+  /* Better mobile page rhythm while retaining the existing visual design */
+  main > section {
+    min-width: 0;
+  }
+
+  article {
+    min-width: 0;
+  }
+
+  article > div {
+    min-width: 0;
+  }
+
+  /* Prevent very large blur decorations from creating horizontal overflow */
+  section.relative {
+    overflow-x: clip;
+  }
+
+  /* Inputs/buttons stay within viewport */
+  input, select, textarea, button {
+    max-width: 100%;
+  }
+
+  /* Long inline formula/content cards */
+  .font-mono {
+    overflow-wrap: anywhere;
+  }
+
+  /* Keep long action rows usable on narrow screens */
+  #tool-container .flex.flex-wrap {
+    min-width: 0;
+  }
+
+  #tool-container .whitespace-nowrap {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 380px) {
+  /* Extra-small phones */
+  header .max-w-7xl {
+    gap: 6px;
+  }
+
+  header .max-w-7xl > div:last-child {
+    gap: 4px;
+  }
+
+  header .max-w-7xl > div:last-child > button {
+    padding-left: 7px;
+    padding-right: 7px;
+  }
+
+  #tool-container .grid.grid-cols-2,
+  #tool-container .grid.grid-cols-3,
+  #tool-container .grid.grid-cols-4 {
+    gap: 6px;
+  }
+}
+</style>
+
+<style>
+/* ================================================================
+   MOBILE SAAS / APP VIEW
+   Mobile-only presentation layer. Desktop remains untouched.
+   ================================================================ */
+@media (max-width: 767px) {
+  :root { --mobile-gutter: 12px; --mobile-radius: 18px; }
+  html { scroll-behavior: smooth; }
+  body { overflow-x: hidden !important; background: #f8fafc; }
+  .dark body { background: #020617; }
+
+  /* App shell */
+  body > div.min-h-screen {
+    width: 100%;
+    min-width: 0;
+    overflow-x: hidden;
+  }
+
+  /* Compact mobile top bar */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 60;
+  }
+  header > div:first-child {
+    padding: 6px var(--mobile-gutter) !important;
+  }
+  header > div:first-child > div {
+    justify-content: center !important;
+  }
+  header > div:first-child > div > div:first-child > span:nth-child(2),
+  header > div:first-child > div > div:last-child .text-emerald-700 {
+    display: none !important;
+  }
+  header > div:first-child > div > div:first-child > span:first-child {
+    font-size: 10px !important;
+    padding: 4px 8px !important;
+  }
+  header > div:nth-child(2) {
+    height: 58px !important;
+    padding: 0 var(--mobile-gutter) !important;
+  }
+  header .max-w-7xl > a {
+    gap: 9px !important;
+    min-width: 0;
+  }
+  header .max-w-7xl > a > div:first-child {
+    width: 36px !important;
+    height: 36px !important;
+    border-radius: 11px !important;
+    flex: 0 0 36px;
+  }
+  header .max-w-7xl > a > div:first-child > div { border-radius: 9px !important; }
+  header .max-w-7xl > a span.text-sm {
+    font-size: 12px !important;
+    font-weight: 800 !important;
+    white-space: nowrap !important;
+    line-height: 1 !important;
+  }
+  header .max-w-7xl > a .hidden.sm\:inline,
+  header .max-w-7xl > a p { display: none !important; }
+  header .max-w-7xl > div:last-child { gap: 5px !important; }
+  header .max-w-7xl > div:last-child > button,
+  header .max-w-7xl > div:last-child > a,
+  header .max-w-7xl > div:last-child > * {
+    height: 36px !important;
+    min-height: 36px !important;
+  }
+  header .max-w-7xl > div:last-child > button[onclick="toggleTheme()"] { display: none !important; }
+  header .max-w-7xl > div:last-child button[onclick="openAlarmFromHeader()"] {
+    width: 36px !important;
+    padding: 0 !important;
+    border-radius: 11px !important;
+  }
+  header .max-w-7xl > div:last-child button[onclick="openAlarmFromHeader()"] span:last-child { display: none !important; }
+  header .max-w-7xl > div:last-child button[onclick="openAlarmFromHeader()"] span.sm\:hidden { display: none !important; }
+  header .max-w-7xl > div:last-child button[onclick="toggleMobileMenu()"] {
+    width: 36px !important;
+    padding: 0 !important;
+    border-radius: 11px !important;
+  }
+
+  /* Make mobile nav a real app drawer */
+  #mobile-menu {
+    position: absolute;
+    left: 0; right: 0;
+    top: 100%;
+    border-top: 1px solid rgba(148,163,184,.18);
+    padding: 12px !important;
+    border-radius: 0 0 20px 20px;
+    box-shadow: 0 20px 45px rgba(15,23,42,.16) !important;
+    max-height: calc(100svh - 66px) !important;
+  }
+  #mobile-menu .grid { grid-template-columns: repeat(2, minmax(0,1fr)) !important; }
+  #mobile-menu a { min-height: 48px !important; }
+
+  /* Hero becomes app dashboard header */
+  main { min-width: 0; }
+  section.relative.pt-6.pb-2.sm\:pt-10.sm\:pb-6 {
+    padding: 18px var(--mobile-gutter) 8px !important;
+  }
+  section.relative.pt-6.pb-2.sm\:pt-10.sm\:pb-6 > .max-w-7xl {
+    padding: 0 !important;
+  }
+  section.relative.pt-6.pb-2.sm\:pt-10.sm\:pb-6 h1 {
+    font-size: 27px !important;
+    line-height: 1.08 !important;
+    letter-spacing: -.02em !important;
+    max-width: 350px !important;
+  }
+  section.relative.pt-6.pb-2.sm\:pt-10.sm\:pb-6 p {
+    font-size: 12.5px !important;
+    line-height: 1.55 !important;
+    margin-top: 9px !important;
+    max-width: 355px !important;
+  }
+  section.relative.pt-6.pb-2.sm\:pt-10.sm\:pb-6 .inline-flex.flex-wrap {
+    gap: 6px !important;
+    margin-bottom: 10px !important;
+  }
+  section.relative.pt-6.pb-2.sm\:pt-10.sm\:pb-6 .inline-flex.flex-wrap > span {
+    padding: 5px 9px !important;
+    font-size: 10px !important;
+  }
+
+  /* Horizontal pill navigation like a SaaS mobile app */
+  #hero-tabs {
+    margin: 8px 0 0 !important;
+    padding: 6px !important;
+    border-radius: 16px !important;
+    gap: 6px !important;
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    overscroll-behavior-inline: contain;
+    scrollbar-width: none;
+  }
+  #hero-tabs::-webkit-scrollbar { display:none; }
+  #hero-tabs > * {
+    min-width: 128px !important;
+    flex: 0 0 auto !important;
+    border-radius: 11px !important;
+  }
+
+  /* Dynamic application panels */
+  #tool-container {
+    padding: 0 !important;
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+  #tool-container > div,
+  #rules-root > section,
+  #faq-root > section {
+    width: 100% !important;
+    max-width: none !important;
+    padding-left: var(--mobile-gutter) !important;
+    padding-right: var(--mobile-gutter) !important;
+    padding-top: 8px !important;
+    padding-bottom: 8px !important;
+  }
+  #tool-container > div > div,
+  #rules-root > section > div,
+  #faq-root > section > div {
+    border-radius: var(--mobile-radius) !important;
+    padding: 14px !important;
+    box-shadow: 0 5px 20px rgba(15,23,42,.06) !important;
+  }
+
+  /* No oversized desktop composition on phone */
+  #tool-container .grid,
+  #rules-root .grid,
+  #faq-root .grid {
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+  #tool-container .grid.grid-cols-1,
+  #tool-container .grid.md\:grid-cols-2,
+  #tool-container .grid.lg\:grid-cols-12,
+  #rules-root .grid,
+  #faq-root .grid {
+    grid-template-columns: minmax(0,1fr) !important;
+  }
+  #tool-container .grid.grid-cols-2 { grid-template-columns: repeat(2,minmax(0,1fr)) !important; }
+  #tool-container .grid.grid-cols-3,
+  #tool-container .grid.grid-cols-4 { grid-template-columns: repeat(2,minmax(0,1fr)) !important; }
+
+  /* App-like form controls */
+  #tool-container input,
+  #tool-container select,
+  #tool-container textarea,
+  #rules-root input,
+  #faq-root input,
+  #faq-root textarea {
+    min-height: 46px !important;
+    border-radius: 13px !important;
+    font-size: 14px !important;
+  }
+  #tool-container button,
+  #rules-root button,
+  #faq-root button {
+    min-height: 42px;
+    border-radius: 12px;
+  }
+
+  /* Stack action bars rather than cramped inline layouts */
+  #tool-container .flex.flex-wrap.items-center.justify-between,
+  #rules-root .flex.flex-wrap.items-center.justify-between,
+  #faq-root .flex.flex-wrap.items-center.justify-between {
+    align-items: stretch !important;
+  }
+  #tool-container .flex.flex-wrap.items-center.justify-between > a,
+  #tool-container .flex.flex-wrap.items-center.justify-between > button {
+    flex: 1 1 100% !important;
+    justify-content: center !important;
+  }
+
+  /* Result cards read like dashboard cards */
+  #tool-container .rounded-3xl,
+  #tool-container .rounded-2xl,
+  #tool-container .rounded-xl {
+    border-radius: 16px !important;
+  }
+  #tool-container .p-8 { padding: 14px !important; }
+  #tool-container .p-6 { padding: 14px !important; }
+  #tool-container .p-5 { padding: 13px !important; }
+  #tool-container .p-4 { padding: 12px !important; }
+  #tool-container .gap-6 { gap: 12px !important; }
+  #tool-container .gap-4 { gap: 10px !important; }
+
+  /* Time/result figures: strong mobile hierarchy */
+  #tool-container .text-5xl,
+  #tool-container .text-6xl,
+  #tool-container .text-4xl { font-size: 30px !important; line-height: 1.05 !important; }
+  #tool-container .text-3xl { font-size: 24px !important; }
+  #tool-container .text-2xl { font-size: 20px !important; }
+
+  /* Tables remain card-contained and swipeable */
+  #tool-container .overflow-x-auto,
+  #rules-root .overflow-x-auto,
+  article .overflow-x-auto {
+    width: 100% !important;
+    max-width: 100% !important;
+    border-radius: 14px !important;
+  }
+  #tool-container table,
+  #rules-root table,
+  article table {
+    min-width: 560px !important;
+  }
+
+  /* Prevent flex children from imposing desktop width */
+  #tool-container [class*="min-w-"] { min-width: 0 !important; }
+  #tool-container .whitespace-nowrap { white-space: normal !important; }
+
+  /* Bottom floating action treatment for key direct booking links */
+  #tool-container a[href*="irctc.co.in"] {
+    min-height: 44px !important;
+  }
+
+  /* SEO content: keep it application-clean rather than desktop-document dense */
+  article.max-w-5xl {
+    padding: 10px var(--mobile-gutter) 22px !important;
+  }
+  article.max-w-5xl > div {
+    padding: 16px !important;
+    border-radius: var(--mobile-radius) !important;
+    box-shadow: 0 5px 20px rgba(15,23,42,.05) !important;
+    gap: 24px !important;
+  }
+  article h2 { font-size: 21px !important; line-height: 1.15 !important; }
+  article h3 { font-size: 18px !important; line-height: 1.2 !important; }
+  article p, article li { font-size: 12px !important; line-height: 1.65 !important; }
+  article .text-xl { font-size: 18px !important; }
+
+  /* Rules + FAQ tabs */
+  #rules-root .flex.flex-wrap.items-center.justify-center,
+  #faq-root .flex.flex-wrap {
+    justify-content: flex-start !important;
+    overflow-x: auto !important;
+    flex-wrap: nowrap !important;
+    scrollbar-width: none !important;
+  }
+  #rules-root .flex.flex-wrap.items-center.justify-center::-webkit-scrollbar,
+  #faq-root .flex.flex-wrap::-webkit-scrollbar { display:none; }
+  #rules-root .flex.flex-wrap > button,
+  #faq-root .flex.flex-wrap > button { flex: 0 0 auto !important; white-space: nowrap !important; }
+
+  /* FAQ list = native-feeling list rows */
+  #faq-root .rounded-2xl { border-radius: 14px !important; }
+  #faq-root .rounded-2xl > button { padding: 13px !important; }
+  #faq-root .rounded-2xl > button .text-sm { font-size: 12.5px !important; line-height: 1.35 !important; }
+
+  /* Rating and footer spacing */
+  footer .max-w-7xl { padding-left: var(--mobile-gutter) !important; padding-right: var(--mobile-gutter) !important; }
+
+  /* Modals: full-screen mobile sheet */
+  .fixed.inset-0 {
+    padding: 8px !important;
+    align-items: flex-end !important;
+  }
+  .fixed.inset-0 > div {
+    width: 100% !important;
+    max-width: none !important;
+    max-height: 92svh !important;
+    border-radius: 22px 22px 14px 14px !important;
+    overflow-y: auto !important;
+  }
+}
+
+@media (max-width: 390px) {
+  :root { --mobile-gutter: 9px; }
+  header .max-w-7xl > a span.text-sm { font-size: 11px !important; }
+  section.relative.pt-6.pb-2.sm\:pt-10.sm\:pb-6 h1 { font-size: 24px !important; }
+  #tool-container .grid.grid-cols-2 { gap: 7px !important; }
+}
+
+</style>
 </head>
 
 <body class="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 font-sans antialiased selection:bg-sky-500 selection:text-white min-h-screen">
