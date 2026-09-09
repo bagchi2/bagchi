@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="en-IN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LIC SIP Calculator 2026 | SIP & Lumpsum Investment Calculator</title>
+<meta name="description" content="Use the LIC SIP Calculator to estimate future value, invested amount and estimated returns for SIP or lumpsum investments with an expected annual return and investment duration.">
+<meta name="keywords" content="LIC SIP Calculator, SIP Calculator, LIC Lumpsum Calculator, SIP Return Calculator, LIC Calculator 2026, mutual fund SIP calculator">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://bagchi.in/tools/lic-sip-calculator/">
+<link rel="icon" href="https://bagchi.in/assets/img/logo/favicon.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<meta property="og:type" content="website">
+<meta property="og:title" content="LIC SIP Calculator 2026 | SIP & Lumpsum Investment Calculator">
+<meta property="og:description" content="Estimate SIP or lumpsum investment growth with a simple LIC SIP Calculator.">
+<meta property="og:url" content="https://bagchi.in/tools/lic-sip-calculator/">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@graph":[
+    {"@type":"WebPage","@id":"https://bagchi.in/tools/lic-sip-calculator/#webpage","url":"https://bagchi.in/tools/lic-sip-calculator/","name":"LIC SIP Calculator 2026 | SIP & Lumpsum Investment Calculator","description":"Estimate SIP or lumpsum investment growth with an expected return rate and investment duration."},
+    {"@type":"SoftwareApplication","name":"LIC SIP & Lumpsum Calculator","applicationCategory":"FinanceApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"}},
+    {"@type":"FAQPage","mainEntity":[
+      {"@type":"Question","name":"What is an LIC SIP Calculator?","acceptedAnswer":{"@type":"Answer","text":"The LIC SIP Calculator is an online tool that helps estimate the returns from your monthly SIP investments in LIC mutual funds over a selected period, based on an expected rate of return."}},
+      {"@type":"Question","name":"How accurate is the LIC SIP Calculator?","acceptedAnswer":{"@type":"Answer","text":"The calculator provides an estimate based on fixed assumptions like expected returns and monthly investment amounts. Actual returns may vary due to market fluctuations and fund performance."}},
+      {"@type":"Question","name":"Can I change the investment duration in the LIC SIP Calculator?","acceptedAnswer":{"@type":"Answer","text":"Yes, you can enter any investment period in months or years to see how the maturity amount changes with longer or shorter durations."}},
+      {"@type":"Question","name":"What rate of return should I use in the LIC SIP Calculator?","acceptedAnswer":{"@type":"Answer","text":"You can use the expected average annual return of the LIC mutual fund you plan to invest in, usually between 8% and 15% depending on the fund type."}},
+      {"@type":"Question","name":"Is there a minimum SIP amount required by LIC mutual funds?","acceptedAnswer":{"@type":"Answer","text":"Most LIC mutual funds allow SIP investments starting as low as ₹500 per month, but it’s good to check the specific scheme details."}},
+      {"@type":"Question","name":"Can I increase my monthly SIP amount later?","acceptedAnswer":{"@type":"Answer","text":"Yes, many LIC SIP plans allow you to increase the monthly SIP amount periodically to grow your investment over time."}},
+      {"@type":"Question","name":"Does the LIC SIP Calculator consider taxes?","acceptedAnswer":{"@type":"Answer","text":"No, most online calculators estimate returns before tax deductions. You need to consider taxes separately based on your income and investment type."}}
+    ]}
+  ]
+}
+</script>
+<style>
+:root{
+  --navy:#0E1D3B;
+  --blue:#1D4E9E;
+  --yellow:#FBC707;
+  --ink:#172033;
+  --muted:#64748B;
+  --line:#E5EAF2;
+  --bg:#F5F8FC;
+  --white:#fff;
+  --shadow:0 20px 60px rgba(14,29,59,.12);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:"Plus Jakarta Sans",Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.7}
+a{color:var(--blue);text-decoration:none}
+.container{max-width:1180px;margin:0 auto;padding:0 22px}
+.topbar{background:var(--navy);color:#fff;min-height:72px;display:flex;align-items:center}
+.header-inner{display:flex;align-items:center;justify-content:space-between;gap:24px}
+.logo{display:flex;align-items:center;gap:12px}
+.logo img{width:46px;height:46px;object-fit:contain;border-radius:10px}
+.logo span{font-weight:800;letter-spacing:-.02em;font-size:18px}
+.badge{display:inline-flex;align-items:center;gap:8px;color:#fff;background:rgba(251,199,7,.13);border:1px solid rgba(251,199,7,.25);padding:8px 13px;border-radius:999px;font-size:12px;font-weight:700}
+.hero{position:relative;overflow:hidden;padding:62px 0 56px;background:
+ radial-gradient(circle at 84% 18%,rgba(29,78,158,.22),transparent 28%),
+ linear-gradient(180deg,#f9fbff 0%,#f5f8fc 100%)}
+.hero:after{content:"";position:absolute;width:380px;height:380px;border-radius:50%;background:rgba(251,199,7,.10);right:-120px;bottom:-220px;filter:blur(5px)}
+.kicker{display:inline-flex;align-items:center;padding:7px 11px;border-radius:999px;background:#EAF1FF;color:var(--blue);font-weight:800;font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+.hero h1{font-size:clamp(34px,5vw,62px);line-height:1.05;letter-spacing:-.05em;margin:16px 0 16px;max-width:860px}
+.hero p{max-width:760px;color:#5E6B7F;font-size:17px;margin:0}
+.calculator-wrap{position:relative;z-index:2;margin-top:34px}
+.calculator{display:grid;grid-template-columns:1.06fr .94fr;gap:0;overflow:hidden;border-radius:30px;background:#fff;border:1px solid rgba(20,47,93,.08);box-shadow:var(--shadow)}
+.form-panel{padding:34px;background:#fff}
+.result-panel{padding:36px;background:linear-gradient(145deg,#0E1D3B,#17376F 62%,#1D4E9E);color:#fff;position:relative;overflow:hidden}
+.result-panel:before{content:"";position:absolute;width:280px;height:280px;border-radius:50%;background:rgba(251,199,7,.10);right:-90px;top:-100px}
+.panel-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:26px}
+.panel-head h2{margin:0;font-size:21px;letter-spacing:-.03em}
+.small-pill{font-size:11px;font-weight:800;padding:7px 10px;border-radius:999px;background:#F4F7FB;color:#66758B}
+.result-panel .small-pill{background:rgba(255,255,255,.11);color:#fff}
+.tabs{display:grid;grid-template-columns:1fr 1fr;background:#F3F6FA;border:1px solid #E8EDF4;border-radius:14px;padding:4px;margin-bottom:24px}
+.tab{border:0;background:transparent;padding:12px;border-radius:10px;font:700 13px "Plus Jakarta Sans";color:#68768A;cursor:pointer;transition:.25s}
+.tab.active{background:#fff;color:var(--blue);box-shadow:0 6px 18px rgba(22,54,99,.08)}
+.field{margin-bottom:19px}
+.label-row{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:8px}
+label{font-size:13px;font-weight:800;color:#2A3548}
+.range-value{font-size:12px;font-weight:800;color:var(--blue)}
+.input-wrap{position:relative}
+.prefix{position:absolute;left:15px;top:50%;transform:translateY(-50%);font-size:15px;font-weight:800;color:#8A96A7;pointer-events:none}
+input[type=number]{width:100%;height:52px;border:1px solid #DCE3ED;border-radius:13px;background:#FBFCFE;padding:0 16px 0 38px;font:700 14px "Plus Jakarta Sans";color:var(--ink);outline:none;transition:.2s}
+input[type=number]:hover{border-color:#B9C7DD;transform:translateY(-1px);box-shadow:0 7px 18px rgba(29,78,158,.06)}
+input[type=number]:focus{border-color:var(--blue);background:#fff;box-shadow:0 0 0 4px rgba(29,78,158,.10);transform:none}
+input[type=range]{appearance:none;width:100%;height:7px;border-radius:999px;background:linear-gradient(90deg,var(--blue),#DCE6F6);outline:none;cursor:pointer}
+input[type=range]::-webkit-slider-thumb{appearance:none;width:21px;height:21px;border-radius:50%;background:var(--yellow);border:4px solid #fff;box-shadow:0 3px 12px rgba(19,39,70,.24)}
+.range-meta{display:flex;justify-content:space-between;margin-top:7px;font-size:10px;color:#93A0B2}
+.primary{width:100%;height:55px;border:0;border-radius:14px;background:linear-gradient(135deg,var(--blue),#2D67C4);color:#fff;font:800 14px "Plus Jakarta Sans";cursor:pointer;box-shadow:0 12px 28px rgba(29,78,158,.25);transition:.25s}
+.primary:hover{transform:translateY(-2px);box-shadow:0 16px 32px rgba(29,78,158,.29)}
+.result-kicker{color:#FBE47B;font-size:11px;text-transform:uppercase;font-weight:800;letter-spacing:.12em}
+.future{font-size:clamp(37px,6vw,61px);font-weight:800;line-height:1;margin:12px 0 7px;letter-spacing:-.05em}
+.future-sub{font-size:12px;color:rgba(255,255,255,.72);margin-bottom:25px}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:12px;position:relative;z-index:1}
+.stat{padding:17px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.07);border-radius:17px;backdrop-filter:blur(8px)}
+.stat span{display:block;font-size:10px;color:rgba(255,255,255,.67);font-weight:800;text-transform:uppercase;letter-spacing:.06em}
+.stat strong{display:block;font-size:19px;margin-top:6px}
+.chart-card{margin-top:20px;padding:17px;border-radius:18px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);display:flex;align-items:center;gap:16px}
+.donut{width:104px;height:104px;border-radius:50%;background:conic-gradient(#FBC707 0deg 180deg,#58A1FF 180deg 360deg);position:relative;flex:0 0 104px}
+.donut:after{content:"";position:absolute;inset:18px;border-radius:50%;background:#123064}
+.chart-copy{font-size:11px;color:rgba(255,255,255,.77)}
+.legend{display:flex;gap:14px;flex-wrap:wrap;margin-top:8px}
+.legend i{display:inline-block;width:8px;height:8px;border-radius:3px;margin-right:5px}
+.notice{margin-top:17px;font-size:10px;color:rgba(255,255,255,.63);line-height:1.5}
+.content{padding:58px 0 80px}
+.article{background:#fff;border:1px solid #E7ECF4;border-radius:24px;padding:40px;box-shadow:0 12px 34px rgba(14,29,59,.05)}
+.article h2{font-size:28px;line-height:1.2;letter-spacing:-.035em;margin:34px 0 14px;color:var(--navy)}
+.article h2:first-child{margin-top:0}
+.article h3{font-size:20px;line-height:1.3;margin:26px 0 10px}
+.article p{margin:0 0 15px;color:#4C5A6D}
+.article ul,.article ol{color:#4C5A6D;padding-left:22px}
+.article li{margin:7px 0}
+.article table{width:100%;border-collapse:collapse;margin:18px 0 8px;overflow:hidden;border-radius:14px}
+.article th,.article td{padding:13px 14px;border:1px solid #E2E7EF;text-align:left;vertical-align:top}
+.article th{background:#F5F8FC;color:#28364A}
+.formula{padding:16px 18px;margin:17px 0;border-radius:14px;background:#F6F9FD;border:1px solid #E4EAF3;font-weight:800;color:#203352;overflow:auto}
+.faq{border-top:1px solid #E7ECF2;padding:16px 0}
+.faq h3{margin:0 0 6px;font-size:16px}
+.footer{background:var(--navy);color:rgba(255,255,255,.7);padding:28px 0}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;font-size:12px}
+.hidden{display:none!important}
+@media(max-width:900px){
+ .calculator{grid-template-columns:1fr}
+ .result-panel{min-height:430px}
+ .hero{padding-top:44px}
+}
+@media(max-width:640px){
+ .container{padding:0 15px}
+ .topbar{min-height:64px}
+ .badge{display:none}
+ .logo img{width:40px;height:40px}
+ .hero h1{font-size:37px}
+ .hero p{font-size:15px}
+ .form-panel,.result-panel{padding:24px}
+ .calculator{border-radius:22px}
+ .stats{grid-template-columns:1fr}
+ .future{font-size:48px}
+ .article{padding:24px 18px;border-radius:18px}
+ .article h2{font-size:24px}
+ .footer-inner{flex-direction:column;align-items:flex-start}
+}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="container header-inner">
+    <a href="https://bagchi.in/" class="logo"><img src="https://bagchi.in/assets/img/logo/logo.png" alt="Bagchi logo"><span>Bagchi Tools</span></a>
+    <span class="badge">FREE FINANCIAL CALCULATOR</span>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="container">
+    <span class="kicker">LIC Investment Tools · 2026</span>
+    <h1>LIC SIP / Lumpsum Calculator</h1>
+    <p>Estimate your potential investment growth with SIP or lumpsum contributions, an expected annual return rate and your chosen investment duration.</p>
+
+    <div class="calculator-wrap" id="calculator">
+      <div class="calculator">
+        <section class="form-panel">
+          <div class="panel-head">
+            <h2>Plan your investment</h2>
+            <span class="small-pill">Live calculation</span>
+          </div>
+
+          <div class="tabs" role="tablist" aria-label="Investment type">
+            <button class="tab active" type="button" data-type="sip" aria-selected="true">SIP</button>
+            <button class="tab" type="button" data-type="lumpsum" aria-selected="false">Lumpsum</button>
+          </div>
+
+          <form id="calculatorForm" novalidate>
+            <div class="field" id="sipGroup">
+              <div class="label-row"><label for="monthlyInvestment">Monthly Investment</label><span class="range-value">₹500 – ₹1,00,000</span></div>
+              <div class="input-wrap"><span class="prefix">₹</span><input id="monthlyInvestment" type="number" min="500" max="100000" step="100" value="5000" inputmode="numeric"></div>
+            </div>
+
+            <div class="field hidden" id="lumpsumGroup">
+              <div class="label-row"><label for="lumpsumInvestment">Lumpsum Investment</label><span class="range-value">₹10,000 – ₹1 Cr</span></div>
+              <div class="input-wrap"><span class="prefix">₹</span><input id="lumpsumInvestment" type="number" min="10000" max="10000000" step="1000" value="100000" inputmode="numeric"></div>
+            </div>
+
+            <div class="field">
+              <div class="label-row"><label for="returnRate">Expected Return Rate</label><span class="range-value" id="returnRateValue">12%</span></div>
+              <input id="returnRate" type="range" min="1" max="25" step="0.1" value="12">
+              <div class="range-meta"><span>1%</span><span>25% p.a.</span></div>
+            </div>
+
+            <div class="field">
+              <div class="label-row"><label for="duration">Investment Duration</label><span class="range-value" id="durationValue">10 Yrs</span></div>
+              <input id="duration" type="range" min="1" max="40" step="1" value="10">
+              <div class="range-meta"><span>1 Yr</span><span>40 Yrs</span></div>
+            </div>
+
+            <button class="primary" type="submit">Calculate Investment Returns</button>
+          </form>
+        </section>
+
+        <section class="result-panel">
+          <div class="result-kicker">Estimated future value</div>
+          <div class="future" id="futureValue">₹11.61 L</div>
+          <div class="future-sub">Based on your current inputs and the selected return assumption.</div>
+          <div class="stats">
+            <div class="stat"><span>Total Invested</span><strong id="totalInvested">₹6.00 L</strong></div>
+            <div class="stat"><span>Estimated Returns</span><strong id="estimatedReturns">₹5.61 L</strong></div>
+          </div>
+          <div class="chart-card">
+            <div class="donut" id="investmentChart" aria-label="Investment versus returns chart"></div>
+            <div class="chart-copy">
+              <strong style="color:#fff;font-size:13px">Investment split</strong>
+              <div class="legend">
+                <span><i style="background:#FBC707"></i>Invested</span>
+                <span><i style="background:#58A1FF"></i>Returns</span>
+              </div>
+              <div style="margin-top:8px">The chart updates instantly as you change the inputs.</div>
+            </div>
+          </div>
+          <div class="notice">* This calculator provides approximate values for planning purposes only. Actual returns may vary based on market conditions.</div>
+        </section>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="content">
+  <div class="container">
+    <article class="article">
+<h2 class="wp-block-heading" id="what-is-a-sip-understanding-systematic-investment">What is a SIP? Understanding Systematic Investment Plan</h2>
+<p class="wp-block-paragraph">A <strong>Systematic Investment Plan (SIP)</strong> allows you to invest a fixed amount of money every month in mutual funds. By investing small amounts regularly, investors can build a significant corpus over time, benefiting from the power of compounding and rupee cost averaging. SIPs are an excellent tool to develop a habit of disciplined savings while avoiding the risk of market timing.</p>
+<p class="wp-block-paragraph">LIC, being one of India’s largest and most trusted insurance and investment companies, offers mutual funds in which you can invest via SIPs. The LIC SIP Calculator specifically helps estimate how your monthly investments in LIC mutual funds could grow over a chosen period.</p>
+<h2 class="wp-block-heading" id="what-is-an-lic-sip-calculator">What is an LIC SIP Calculator?</h2>
+<p class="wp-block-paragraph">The <strong>LIC SIP Calculator</strong> is an online financial tool that allows you to estimate expected returns on your monthly investments made through SIP in LIC mutual funds.</p>
+<p class="wp-block-paragraph">This calculator provides a projection of the maturity amount you might get at the end of your investment tenure by considering your monthly SIP amount, the period of investment, and the expected rate of return.</p>
+<h2 class="wp-block-heading">Why Use the LIC SIP Calculator?</h2>
+<ul class="wp-block-list"><li><strong>Clarity:</strong> Helps you understand how much wealth you can accumulate through regular investing.</li><li><strong>Planning:</strong> Aids in setting realistic financial goals based on your monthly savings capacity.</li><li><strong>Decision-making:</strong> Enables comparison of different investment horizons and SIP amounts to optimise returns.</li><li><strong>Convenience:</strong> Quick results without complex calculations.</li></ul>
+<h2 class="wp-block-heading" id="how-does-the-lic-sip-calculator-work">How Does the LIC SIP Calculator Work?</h2>
+<p class="wp-block-paragraph">The <strong>LIC SIP Calculator</strong> is based on a financial formula that calculates the future value of a series of monthly investments considering compound interest. The formula generally used is: <em>A</em>=<em>P</em>×(<em>i</em>(1+<em>i</em>)<em>n</em>−1)×(1+<em>i</em>)</p>
+<p class="wp-block-paragraph"><strong>Where:</strong></p>
+<ul class="wp-block-list"><li>A = Maturity amount (the future value of your investment)</li><li>P = Monthly SIP amount</li><li>i = Monthly rate of interest (annual expected return divided by 12 and expressed in decimal)</li><li>n = Total number of SIP instalments (months)</li></ul>
+<h3 class="wp-block-heading">Simplified Explanation:</h3>
+<ul class="wp-block-list"><li>You invest a fixed amount in P every month.</li><li>Each instalment earns interest at an expected rate i, compounded every month.</li><li>After n months, the total value of A depends on your monthly contributions and compounded returns.</li></ul>
+<h2 class="wp-block-heading" id="step-by-step-guide-to-using-the-lic-sip-calculator">Step-by-Step Guide to Using the LIC SIP Calculator</h2>
+<p class="wp-block-paragraph">Using the <strong>LIC SIP Calculator</strong> is simple. Here’s how to do it:</p>
+<ol class="wp-block-list"><li><strong>Enter Your Monthly SIP Amount:</strong> Decide how much you can invest every month. Even small amounts like ₹500 or ₹1000 can grow substantially over time.</li><li><strong>Set the Investment Duration:</strong> Indicate how long you plan to keep investing (in years or months). Longer durations generally result in a higher corpus due to compounding.</li><li><strong>Enter Expected Rate of Return:</strong> This is the annual return rate you anticipate from the LIC mutual fund SIP. For example, 10%, 12%, or 15%. The exact rate is based on past fund performance and current market conditions.</li><li><strong>Calculate:</strong> Click the ‘calculate’ button to get instant results showing:<ul class="wp-block-list"><li>Total amount invested</li><li>Estimated returns earned</li><li>Maturity value (investment + returns)</li></ul></li></ol>
+<h2 class="wp-block-heading" id="example-calculation-using-lic-sip-calculator">Example Calculation Using LIC SIP Calculator</h2>
+<p class="wp-block-paragraph">Let’s say you decide to invest ₹5,000 every month in an LIC SIP for 10 years (120 months), expecting an annual return of 12%.</p>
+<ul class="wp-block-list"><li>P=₹5,000P = ₹5,000P=₹5,000</li><li>Investment period = 10 years = 120 months</li><li>Expected annual return = 12%</li><li>Monthly rate of interest i= 12%12=1%<em>i</em>=1212%=1% or 0.01</li></ul>
+<p class="wp-block-paragraph">Using the formula: A = 5000 × (0.01(1 + 0.01)¹²⁰ − 1) × (1 + 0.01)</p>
+<p class="wp-block-paragraph">This yields a maturity amount of approximately ₹11,61,695. Here, you would have invested ₹6,00,000 (₹5,000 x 120), and the estimated returns earned are around ₹5,61,695.</p>
+<h2 class="wp-block-heading" id="benefits-of-using-lic-sip-calculator">Benefits of Using LIC SIP Calculator</h2>
+<p class="wp-block-paragraph">Using the LIC SIP Calculator offers several valuable benefits:</p>
+<ul class="wp-block-list"><li><strong>Accurate Projections:</strong> Gives a close estimate of how much your SIP investment could grow over time.</li><li><strong>Financial Discipline:</strong> Encourages consistent investing by showing growth potential.</li><li><strong>Goal-Orientated:</strong> Helps you set and track investment goals for milestones like buying a home, children’s education, or retirement.</li><li><strong>No Charges:</strong> Free and easy to use online tool accessible to everyone.</li><li><strong>Informed Planning:</strong> Allows you to experiment with various SIP amounts and durations to find the best plan suited for your budget and goals.</li><li><strong>Visual Growth Insight:</strong> Many calculators also provide graphs and charts showing the growth trajectory of your investments.</li></ul>
+<h2 class="wp-block-heading" id="factors-affecting-sip-returns">Factors Affecting SIP Returns</h2>
+<p class="wp-block-paragraph">While the <strong>SIP calculator g</strong>ives a reliable estimate based on assumptions, actual returns depend on several variables:</p>
+<ul class="wp-block-list"><li><strong>Market Performance:</strong> Mutual fund returns fluctuate with market conditions.</li><li><strong>Fund Manager Expertise:</strong> The performance of the LIC mutual fund scheme depends on the fund manager’s decisions.</li><li><strong>Economic Factors:</strong> Inflation, interest rates, and economic growth impact returns.</li><li><strong>Investment Duration:</strong> Longer investment tenures usually reduce short-term market volatility impacts.</li></ul>
+<p class="wp-block-paragraph">It’s essential to remember that the calculator assumes a fixed rate of return, but actual returns may vary.</p>
+<h2 class="wp-block-heading" id="lic-sip-calculator-vs-other-sip-calculators">LIC SIP Calculator vs Other SIP Calculators</h2>
+<p class="wp-block-paragraph">The <strong>LIC SIP Calculator</strong> is specially tuned for LIC mutual fund schemes and offers a user-friendly experience trusted by many Indian investors. In comparison, other SIP calculators from various financial institutions also provide similar functionalities but may differ slightly in interface or additional features like lumpsum options, step-up SIPs, or tax calculations.</p>
+<p class="wp-block-paragraph">If investing specifically in LIC mutual funds, using their proprietary or recommended SIP calculators ensures accurate and scheme-specific projections.</p>
+<h2 class="wp-block-heading" id="how-to-access-lic-sip-calculator-online">How to Access LIC SIP Calculator Online?</h2>
+<p class="wp-block-paragraph">Several trusted platforms provide the <strong>LIC SIP Calculator </strong>online:</p>
+<ul class="wp-block-list"><li>LIC Mutual Fund official website: A reliable source for scheme-specific calculators.</li><li>Financial portals like Groww, ClearTax, PolicyBazaar, and Kotak Securities.</li><li>Broking and investment apps that support LIC mutual funds.</li></ul>
+<p class="wp-block-paragraph">Always ensure to use a reputable calculator to get accurate and up-to-date estimations for your planning.</p>
+<h2 class="wp-block-heading" id="tips-to-maximize-benefits-from-lic-sip-investments">Tips to Maximize Benefits from LIC SIP Investments</h2>
+<p class="wp-block-paragraph">To make the most of your LIC SIP investments with the help of the <strong>SIP calculator</strong>:</p>
+<ul class="wp-block-list"><li><strong>Start Early:</strong> The power of compounding works best over longer durations.</li><li><strong>Invest Consistently:</strong> Even if markets fall, keep investing regularly to average your investment cost.</li><li><strong>Review Fund Performance:</strong> Periodically check how your chosen LIC fund is performing.</li><li><strong>Increase SIP Amount Gradually:</strong> As your income grows, increase monthly SIP contributions for better corpus build-up.</li><li><strong>Diversify:</strong> Don’t put all money into one fund; diversify among LIC’s various schemes for risk management.</li><li><strong>Stay Patient:</strong> SIP is a long-term investment tool; avoid panic withdrawals.</li></ul>
+<h2 class="wp-block-heading" id="comparing-lic-sip-with-other-investment-options">Comparing LIC SIP with Other Investment Options</h2>
+<p class="wp-block-paragraph">Here is a brief look at how <strong>LIC SIP</strong> stands compared to other investment avenues:</p>
+<p class="wp-block-paragraph"></p>
+<p class="wp-block-paragraph">Choosing an LIC SIP is suited for those willing to take moderate risk for potentially higher returns compared to traditional instruments like FD or PPF.</p>
+<h2 class="wp-block-heading">Frequently Asked Questions</h2>
+<h2 class="wp-block-heading" id="final-thoughts">Final Thoughts</h2>
+<p class="wp-block-paragraph">The LIC SIP Calculator is an indispensable tool for anyone planning to invest through LIC’s Systematic Investment Plans. It simplifies the complex process of financial forecasting and gives you clear insight into how your monthly savings can grow over time.</p>
+<p class="wp-block-paragraph">By using the <strong>LIC SIP Calculator</strong>, you can set achievable financial goals with confidence, invest systematically, and track your expected returns. Remember, consistency and patience are key for success in systematic investing.</p>
+      <div class="formula">Note: The SIP calculation uses monthly compounding from the expected annual return. The lumpsum calculation applies annual compounding over the selected duration. Results are estimates, not guaranteed returns.</div>
+    </article>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <span>© 2026 Bagchi Tools. Financial calculators are for estimation and planning.</span>
+    <a href="https://bagchi.in/" style="color:#fff">bagchi.in</a>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  var investmentType = "sip";
+  var form = document.getElementById("calculatorForm");
+  var monthlyInvestment = document.getElementById("monthlyInvestment");
+  var lumpsumInvestment = document.getElementById("lumpsumInvestment");
+  var returnRate = document.getElementById("returnRate");
+  var duration = document.getElementById("duration");
+  var sipGroup = document.getElementById("sipGroup");
+  var lumpsumGroup = document.getElementById("lumpsumGroup");
+  var returnRateValue = document.getElementById("returnRateValue");
+  var durationValue = document.getElementById("durationValue");
+  var totalInvested = document.getElementById("totalInvested");
+  var estimatedReturns = document.getElementById("estimatedReturns");
+  var futureValue = document.getElementById("futureValue");
+  var chart = document.getElementById("investmentChart");
+
+  function formatCurrency(amount){
+    if (!isFinite(amount) || amount < 0) amount = 0;
+    if (amount >= 10000000) return "₹" + (amount / 10000000).toFixed(2) + " Cr";
+    if (amount >= 100000) return "₹" + (amount / 100000).toFixed(2) + " L";
+    if (amount >= 1000) return "₹" + (amount / 1000).toFixed(2) + " K";
+    return "₹" + Math.round(amount).toLocaleString("en-IN");
+  }
+
+  function clamp(value,min,max){
+    return Math.min(Math.max(value,min),max);
+  }
+
+  function updateSliderLabels(){
+    returnRateValue.textContent = Number(returnRate.value).toFixed(1).replace(".0","") + "%";
+    durationValue.textContent = duration.value + " Yrs";
+  }
+
+  function setType(type){
+    investmentType = type;
+    var tabs = document.querySelectorAll(".tab");
+    tabs.forEach(function(tab){
+      var active = tab.getAttribute("data-type") === type;
+      tab.classList.toggle("active", active);
+      tab.setAttribute("aria-selected", String(active));
+    });
+    sipGroup.classList.toggle("hidden", type !== "sip");
+    lumpsumGroup.classList.toggle("hidden", type !== "lumpsum");
+    calculateInvestment();
+  }
+
+  function updateChart(invested, returns){
+    var total = invested + Math.max(returns,0);
+    var investedDeg = total > 0 ? (invested / total) * 360 : 360;
+    var returnDeg = 360 - investedDeg;
+    chart.style.background = "conic-gradient(#FBC707 0deg " + investedDeg + "deg, #58A1FF " + investedDeg + "deg " + (investedDeg + returnDeg) + "deg)";
+  }
+
+  function calculateInvestment(){
+    updateSliderLabels();
+
+    var rate = parseFloat(returnRate.value) / 100;
+    var years = parseInt(duration.value,10);
+    var invested = 0;
+    var maturity = 0;
+
+    if (investmentType === "sip"){
+      var monthly = clamp(parseFloat(monthlyInvestment.value) || 0,500,100000);
+      var monthlyRate = rate / 12;
+      var months = years * 12;
+      invested = monthly * months;
+      if (rate === 0){
+        maturity = invested;
+      }else{
+        maturity = monthly * (((Math.pow(1 + monthlyRate, months) - 1) / monthlyRate) * (1 + monthlyRate));
+      }
+    }else{
+      var lump = clamp(parseFloat(lumpsumInvestment.value) || 0,10000,10000000);
+      invested = lump;
+      maturity = lump * Math.pow(1 + rate, years);
+    }
+
+    var returns = Math.max(maturity - invested,0);
+    totalInvested.textContent = formatCurrency(invested);
+    estimatedReturns.textContent = formatCurrency(returns);
+    futureValue.textContent = formatCurrency(maturity);
+    updateChart(invested,returns);
+  }
+
+  document.querySelectorAll(".tab").forEach(function(tab){
+    tab.addEventListener("click",function(){
+      setType(tab.getAttribute("data-type"));
+    });
+  });
+
+  [monthlyInvestment,lumpsumInvestment].forEach(function(input){
+    input.addEventListener("input",calculateInvestment);
+    input.addEventListener("blur",function(){
+      var min = parseFloat(input.min);
+      var max = parseFloat(input.max);
+      var value = parseFloat(input.value) || min;
+      input.value = clamp(value,min,max);
+      calculateInvestment();
+    });
+  });
+
+  returnRate.addEventListener("input",calculateInvestment);
+  duration.addEventListener("input",calculateInvestment);
+  form.addEventListener("submit",function(event){
+    event.preventDefault();
+    calculateInvestment();
+  });
+
+  calculateInvestment();
+})();
+</script>
+</body>
+</html>
