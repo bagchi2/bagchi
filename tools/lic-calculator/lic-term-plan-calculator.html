@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LIC Term Plan Calculator – Compare Plans &amp; Save More</title>
+<meta name="description" content="Use the LIC Term Plan Calculator to estimate your premium quickly. Check benefits, coverage, and plans online before buying term insurance.">
+<meta name="robots" content="index,follow,max-snippet:-1,max-video-preview:-1,max-image-preview:large">
+<link rel="canonical" href="https://liccalculators.info/lic-term-plan-calculator/">
+<link rel="icon" href="https://bagchi.in/assets/img/logo/favicon.png">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LIC Term Plan Calculator – Compare Plans &amp; Save More">
+<meta property="og:description" content="Use the LIC Term Plan Calculator to estimate your premium quickly. Check benefits, coverage, and plans online before buying term insurance.">
+<meta property="og:url" content="https://liccalculators.info/lic-term-plan-calculator/">
+<meta property="og:site_name" content="Bagchi Tools">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="LIC Term Plan Calculator – Compare Plans &amp; Save More">
+<meta name="twitter:description" content="Use the LIC Term Plan Calculator to estimate your premium quickly. Check benefits, coverage, and plans online before buying term insurance.">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0E1D3B;--blue:#1D4E9E;--yellow:#FBC707;--ink:#10213f;--muted:#64748b;
+  --bg:#f4f7fb;--card:#fff;--line:#e4eaf2;--shadow:0 18px 50px rgba(15,35,70,.10);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:"Plus Jakarta Sans",sans-serif;background:var(--bg);color:var(--ink);line-height:1.7}
+a{color:var(--blue);text-decoration:none}
+.container{max-width:1180px;margin:auto;padding:0 20px}
+.site-header{background:var(--navy);color:#fff;position:sticky;top:0;z-index:1000;box-shadow:0 8px 24px rgba(0,0,0,.12)}
+.header-inner{height:76px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo{display:flex;align-items:center;gap:12px;color:#fff;font-weight:800;font-size:18px}
+.logo img{width:42px;height:42px;object-fit:contain}
+.nav-pill{display:inline-flex;align-items:center;padding:10px 16px;border:1px solid rgba(255,255,255,.15);border-radius:999px;color:#fff;font-size:13px}
+.hero{padding:64px 0 38px;text-align:center;background:
+radial-gradient(circle at 15% 15%,rgba(29,78,158,.14),transparent 28%),
+radial-gradient(circle at 85% 25%,rgba(251,199,7,.16),transparent 25%),var(--bg)}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;padding:8px 13px;border-radius:999px;background:#fff;border:1px solid var(--line);font-size:12px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--blue);box-shadow:0 8px 24px rgba(20,50,90,.06)}
+.hero h1{font-size:clamp(34px,5vw,54px);line-height:1.12;margin:18px auto 14px;max-width:880px;letter-spacing:-.03em}
+.hero p{max-width:780px;margin:0 auto;color:var(--muted);font-size:16px}
+.calculator-shell{padding:24px 0 65px}
+.calc-grid{display:grid;grid-template-columns:minmax(0,1.04fr) minmax(360px,.86fr);gap:22px;align-items:stretch}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:26px;box-shadow:var(--shadow);overflow:hidden}
+.input-panel{padding:30px}
+.panel-top{display:flex;align-items:flex-start;justify-content:space-between;gap:15px;margin-bottom:22px}
+.step-badge{font-size:11px;font-weight:800;color:var(--blue);background:#eef4ff;border-radius:999px;padding:7px 10px;white-space:nowrap}
+.panel h2{font-size:21px;line-height:1.25;margin:0;color:var(--navy)}
+.panel-sub{font-size:13px;color:var(--muted);margin-top:6px}
+.progress{height:5px;background:#edf1f7;border-radius:999px;overflow:hidden;margin:0 0 26px}
+.progress span{display:block;width:100%;height:100%;background:linear-gradient(90deg,var(--blue),#4e82d1)}
+.form-section{border:1px solid var(--line);background:#fbfcfe;border-radius:18px;padding:18px;margin-bottom:16px}
+.section-label{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:#61738f;margin-bottom:14px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form-group{margin-bottom:14px}
+.form-group:last-child{margin-bottom:0}
+label.field-label{display:block;font-size:13px;font-weight:700;color:#243754;margin-bottom:8px}
+.field-wrap{position:relative}
+.field-wrap .prefix{position:absolute;left:14px;top:50%;transform:translateY(-50%);font-weight:700;color:#7a8aa1;pointer-events:none}
+input,select{width:100%;border:1px solid #dce4ee;background:#fff;color:#1d3150;border-radius:13px;padding:13px 14px;font:inherit;font-size:14px;outline:none;transition:border-color .2s,box-shadow .2s,transform .2s}
+.prefix+input{padding-left:31px}
+input:hover,select:hover{border-color:#b9c8da}
+input:focus,select:focus{border-color:var(--blue);box-shadow:0 0 0 4px rgba(29,78,158,.09);transform:translateY(-1px)}
+select{appearance:auto}
+.option-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.option-card{position:relative}
+.option-card input{position:absolute;opacity:0;pointer-events:none}
+.option-card label{display:flex;align-items:center;justify-content:center;min-height:48px;text-align:center;border:1px solid #dce4ee;background:#fff;border-radius:13px;padding:10px 12px;font-size:13px;font-weight:700;color:#3c506c;cursor:pointer;transition:.2s}
+.option-card label:hover{border-color:#9fb5d2;transform:translateY(-1px)}
+.option-card input:checked+label{border-color:var(--blue);background:#eff5ff;color:var(--blue);box-shadow:0 8px 18px rgba(29,78,158,.10)}
+.help{font-size:11px;color:#77869b;margin-top:6px}
+.btn{width:100%;border:none;border-radius:14px;padding:15px 18px;background:linear-gradient(135deg,var(--blue),#123b7e);color:#fff;font:inherit;font-size:14px;font-weight:800;cursor:pointer;box-shadow:0 14px 28px rgba(29,78,158,.25);transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 18px 34px rgba(29,78,158,.30)}
+.note{margin-top:14px;padding:13px 14px;border-radius:14px;background:#fff9e4;border:1px solid #f7dfa0;color:#6d5710;font-size:12px}
+.result-panel{background:linear-gradient(155deg,#0e1d3b,#162b56);color:#fff;padding:30px;position:relative;overflow:hidden}
+.result-panel:before{content:"";position:absolute;width:260px;height:260px;border-radius:50%;background:rgba(251,199,7,.12);right:-95px;top:-90px}
+.result-panel:after{content:"";position:absolute;width:180px;height:180px;border-radius:50%;background:rgba(77,129,212,.12);left:-80px;bottom:-70px}
+.result-panel>*{position:relative;z-index:1}
+.result-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;margin-bottom:24px}
+.result-panel h2{color:#fff}
+.live{display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:800;padding:7px 10px;border-radius:999px;background:rgba(255,255,255,.08);color:#cbd8ec}
+.dot{width:7px;height:7px;background:#6ee7a0;border-radius:50%;box-shadow:0 0 0 5px rgba(110,231,160,.09)}
+.main-result{padding:18px;border:1px solid rgba(255,255,255,.10);background:rgba(255,255,255,.06);border-radius:18px;margin-bottom:14px}
+.result-label{font-size:12px;color:#b8c5d9}
+.result-value{font-size:34px;font-weight:800;line-height:1.15;margin-top:4px;color:#fff}
+.result-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.metric{padding:15px;border-radius:16px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.09)}
+.metric .result-value{font-size:19px}
+.metric .small{font-size:12px}
+.plan-box{margin-top:14px;padding:17px;border-radius:18px;background:rgba(251,199,7,.09);border:1px solid rgba(251,199,7,.25)}
+.plan-box h3{font-size:15px;margin:0 0 10px;color:#fff}
+.plan-box ul{margin:0;padding-left:18px;color:#dce5f2;font-size:12px}
+.plan-box li+li{margin-top:7px}
+.content{padding:20px 0 80px}
+.article-card{background:#fff;border:1px solid var(--line);border-radius:24px;padding:34px;box-shadow:0 14px 38px rgba(15,35,70,.06)}
+.article-card h2{font-size:27px;line-height:1.25;margin:28px 0 12px;color:var(--navy)}
+.article-card h2:first-child{margin-top:0}
+.article-card p,.article-card li{font-size:15px;color:#4f6079}
+.article-card ul,.article-card ol{padding-left:22px}
+.article-card table{width:100%;border-collapse:collapse;margin:16px 0 24px;font-size:13px;display:block;overflow:auto;white-space:nowrap}
+.article-card th,.article-card td{border:1px solid #dfe6ef;padding:10px 12px;text-align:left}
+.article-card th{background:#eef4ff;color:var(--navy);font-weight:800}
+.faq{margin-top:28px;padding:24px;border-radius:20px;background:#f8fafc;border:1px solid var(--line)}
+.faq h2{margin-top:0}
+.faq details{background:#fff;border:1px solid var(--line);border-radius:13px;padding:14px 16px;margin-top:10px}
+.faq summary{cursor:pointer;font-weight:700;color:#233a5b;font-size:14px}
+.faq p{margin:10px 0 0;font-size:13px}
+.footer{background:var(--navy);color:#dce5f2;padding:24px 0;font-size:12px}
+@media(max-width:900px){.calc-grid{grid-template-columns:1fr}}
+@media(max-width:620px){
+ .container{padding:0 14px} .header-inner{height:68px} .logo img{width:36px;height:36px}
+ .hero{padding:48px 0 25px} .hero h1{font-size:35px} .calc-grid{gap:16px}
+ .input-panel,.result-panel{padding:20px} .form-row,.result-grid{grid-template-columns:1fr}
+ .option-grid{grid-template-columns:1fr 1fr} .article-card{padding:22px 18px}
+ .article-card h2{font-size:23px}
+ .nav-pill{display:none}
+}
+</style>
+
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "WebPage", "name": "LIC Term Plan Calculator – Compare Plans & Save More", "description": "Use the LIC Term Plan Calculator to estimate your premium quickly. Check benefits, coverage, and plans online before buying term insurance.", "url": "https://liccalculators.info/lic-term-plan-calculator/"}
+</script>
+</head>
+<body>
+<header class="site-header">
+ <div class="container header-inner">
+   <a class="logo" href="https://bagchi.in/">
+     <img src="https://bagchi.in/assets/img/logo/logo.png" alt="Bagchi">
+     <span>Bagchi Tools</span>
+   </a>
+   <span class="nav-pill">LIC Financial Calculators</span>
+ </div>
+</header>
+
+<section class="hero">
+ <div class="container">
+   <span class="eyebrow">LIC Term Insurance</span>
+   <h1>LIC Term Plan Calculator</h1>
+   <p>Calculate an estimated premium for LIC term plans and compare coverage options based on your age, plan, payment term and smoking status.</p>
+ </div>
+</section>
+
+<main class="calculator-shell">
+ <div class="container">
+  <div class="calc-grid">
+   <section class="panel input-panel">
+    <div class="panel-top">
+      <div><h2>Policy Details</h2><div class="panel-sub">Enter your information to estimate the premium.</div></div>
+      <span class="step-badge">STEP 1 OF 1</span>
+    </div>
+    <div class="progress"><span></span></div>
+
+    <div class="form-section">
+      <div class="section-label">Plan selection</div>
+      <div class="form-group">
+       <label class="field-label" for="planSelect">Select LIC Term Plan</label>
+       <select id="planSelect">
+        <option value="875">Plan 875 - LIC Yuva Term</option>
+        <option value="876">Plan 876 - LIC Digi Term</option>
+        <option value="877">Plan 877 - LIC Yuva Credit Life</option>
+        <option value="878">Plan 878 - LIC Digi Credit Life</option>
+        <option value="954">Plan 954 - LIC New Tech Term</option>
+        <option value="955">Plan 955 - LIC Tech Term</option>
+        <option value="859">Plan 859 - LIC Saral Jeevan Bima</option>
+        <option value="887">Plan 887 - LIC Jeevan Amar</option>
+       </select>
+       <div class="help">Choose the plan you want to estimate.</div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <div class="section-label">Personal details</div>
+      <div class="form-row">
+       <div class="form-group">
+        <label class="field-label" for="age">Your Age (Years)</label>
+        <input id="age" type="number" min="18" max="65" value="30" placeholder="Enter age">
+       </div>
+       <div class="form-group">
+        <label class="field-label" for="gender">Gender</label>
+        <select id="gender"><option value="male">Male</option><option value="female">Female</option></select>
+       </div>
+      </div>
+      <div class="form-group">
+       <label class="field-label" for="sumAssured">Sum Assured (₹)</label>
+       <div class="field-wrap"><span class="prefix">₹</span><input id="sumAssured" type="number" min="500000" step="50000" value="5000000" placeholder="Enter sum assured"></div>
+       <div class="help">Source calculator uses plan-specific minimums and maximums.</div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <div class="section-label">Policy & payment</div>
+      <div class="form-row">
+       <div class="form-group">
+        <label class="field-label" for="policyTerm">Policy Term (Years)</label>
+        <input id="policyTerm" type="number" min="5" max="40" value="20" placeholder="Policy term">
+       </div>
+       <div class="form-group">
+        <label class="field-label" for="paymentTerm">Payment Term (Years)</label>
+        <select id="paymentTerm">
+          <option value="regular">Regular (Same as Policy Term)</option>
+          <option value="5">5 Years (Limited)</option>
+          <option value="10">10 Years (Limited)</option>
+          <option value="15">15 Years (Limited)</option>
+          <option value="single">Single Premium</option>
+        </select>
+       </div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <div class="section-label">Risk & cover options</div>
+      <div class="form-group">
+       <label class="field-label">Smoker Status</label>
+       <div class="option-grid">
+        <div class="option-card"><input id="smoker-no" name="smoker" type="radio" value="no" checked><label for="smoker-no">Non-Smoker</label></div>
+        <div class="option-card"><input id="smoker-yes" name="smoker" type="radio" value="yes"><label for="smoker-yes">Smoker</label></div>
+       </div>
+      </div>
+      <div class="form-group" style="margin-top:14px">
+       <label class="field-label">Sum Assured Option</label>
+       <div class="option-grid">
+        <div class="option-card"><input id="sa-level" name="saOption" type="radio" value="level" checked><label for="sa-level">Level Cover</label></div>
+        <div class="option-card"><input id="sa-increasing" name="saOption" type="radio" value="increasing"><label for="sa-increasing">Increasing Cover</label></div>
+       </div>
+      </div>
+    </div>
+
+    <button class="btn" type="button" onclick="calculatePremium()">Calculate Premium</button>
+    <div class="note"><strong>Note:</strong> Premium rates are approximate and based on the source calculator's stated assumptions. GST @ 18% is included in the premium calculation.</div>
+   </section>
+
+   <aside class="panel result-panel">
+    <div class="result-head">
+     <div><h2>Your Premium Details</h2><div class="panel-sub" style="color:#aebdd1">Live estimate based on your inputs.</div></div>
+     <span class="live"><span class="dot"></span> LIVE</span>
+    </div>
+    <div class="main-result">
+      <div class="result-label">Yearly Premium (Including GST)</div>
+      <div class="result-value" id="yearlyPremium">₹ 0</div>
+    </div>
+    <div class="result-grid">
+      <div class="metric"><div class="result-label">Selected Plan</div><div class="result-value" id="selectedPlan">-</div></div>
+      <div class="metric"><div class="result-label">Total Coverage</div><div class="result-value" id="coverageAmount">₹ 0</div></div>
+      <div class="metric"><div class="result-label">Total Premium Payable</div><div class="result-value" id="totalPremium">₹ 0</div></div>
+      <div class="metric"><div class="result-label">Payment Mode</div><div class="result-value" id="paymentModeDisplay">Regular</div></div>
+    </div>
+    <div class="plan-box">
+      <h3 id="planName">Plan Details</h3>
+      <ul id="planFeatures"><li>Select a plan and calculate to see details</li></ul>
+    </div>
+   </aside>
+  </div>
+ </div>
+</main>
+
+<section class="content">
+ <div class="container">
+  <article class="article-card">
+   <h2>What is a LIC term plan?</h2>
+<p class="wp-block-paragraph">An LIC term plan is a simple life insurance policy. You pay premiums for a set number of years, and if something happens to you during that time, your family gets a big sum of money called the sum assured. No money back if you outlive the term that keeps premiums low.</p>
+<p class="wp-block-paragraph">These plans focus on pure protection. They suit young earners in India who want to cover loans, kids’ education, or daily needs. LIC, as the biggest insurer, offers trusted options.</p>
+<p class="wp-block-paragraph">Use a calculator to enter your age, cover amount, and term. It shows yearly or monthly premiums right away.</p>
+<h2>Why Use a Term Plan Calculator?</h2>
+<p class="wp-block-paragraph">A calculator saves time and guesswork. Enter details like date of birth, gender, smoker status, sum assured (say Rs 50 lakh to 1 crore), and <strong>policy term</strong> (10-40 years). Get quotes for regular, limited, or single pay.</p>
+<p class="wp-block-paragraph">It compares payment modes: yearly is the cheapest, and monthly is easy on the pocket. Women often get lower rates. Tools on sites like <strong>licindia.in</strong> or <strong>policybazaar.com</strong> are free.</p>
+<p class="wp-block-paragraph">For your sites like liccalculator.info, build one with inputs for these fields. It pulls real-time rates if linked to LIC data.</p>
+<h2>Current LIC Term Plans List</h2>
+<p class="wp-block-paragraph">LIC has eight active term plans as of January 2026. Here they are with key details. Some older ones, like Tech Term 854, got replaced.</p>
+<p class="wp-block-paragraph">No withdrawal dates for these yet; check the LIC site for updates.</p>
+<h2>Plan 876: LIC’s Digi Term</h2>
+<p class="wp-block-paragraph">Digi Term is an online-only plan for quick buy. Entry age: 18-45 years (last birthday); term up to age 75. The sum assured starts at Rs 50 lakh, with no upper limit.</p>
+<p class="wp-block-paragraph">Death benefit: Full sum assured or 7x annual premium or 105% premiums paid, whichever is higher. No maturity payout. Premiums are lower for level or increasing cover.</p>
+<p class="wp-block-paragraph">Launched around 2023, still active. Buy direct on licindia.in. Good for tech-savvy users.</p>
+<h2>Plan 878: LIC’s Digi Credit Life</h2>
+<p class="wp-block-paragraph">LIC’s Digi Credit Life covers loans like home or personal ones. Non-linked, pure risk plan. The decreasing sum assured matches the loan balance, starts high, and drops yearly.</p>
+<p class="wp-block-paragraph">Entry 18-45, term 5-30 years. Online only, special woman’s rates. Death pays the outstanding principal at year-start. No survival benefit.</p>
+<p class="wp-block-paragraph">Launched 2024. Use the calculator for loan amount and interest rate to see the schedule.</p>
+<h2>Plan 877: LIC’s Yuva Credit Life</h2>
+<p class="wp-block-paragraph">Like LIC’s Yuva Credit Life but for youth. Pure decreasing term for loans. Choose a basic sum assured, a term of 5-30 years, and an interest rate for the risk schedule.</p>
+<p class="wp-block-paragraph">Launched Aug 6, 2024. Death benefit: The higher of 105% of premiums or the basic sum assured (adjusted down). Offline buying is possible. Min age 23 maturity? No, entry 18-45.</p>
+<h2>Plan 875: LIC’s Yuva Term</h2>
+<p class="wp-block-paragraph">LIC’s Yuva Term Offline youth term plan. Level or increasing sum assured. The first 5 years are fully covered, and then it grows 10% yearly up to the 15th year or so.</p>
+<p class="wp-block-paragraph">Entry 18-45, max maturity 75. Death: Higher of 7x premium, 105% paid, or absolute assurance. Launched 2024. Affordable for starters.</p>
+<h2>Plan 954: LIC’s New Tech-Term</h2>
+<p class="wp-block-paragraph">Updated online LIC’s New Tech-Term replacing 854 (withdrawn). Non-par, pure risk. Level or increasing options. Entry 18-65, term 10-40, maturity to 80.</p>
+<p class="wp-block-paragraph">Single/limited/regular pay. Surrender value for single/limited after lock-in. Free look for 30 days.</p>
+<p class="wp-block-paragraph">Launched post-2023 withdrawal of the old tech term.</p>
+<h2>Plan 955: LIC’s New Jeevan Amar</h2>
+<p class="wp-block-paragraph">Offline pure LIC’s New Jeevan Amar . Min Rs 25 lakh assured. Entry 18-65, term 10-40. Regular or limited pay (minus 5/10 years).</p>
+<p class="wp-block-paragraph">Death is higher for formulas like 7x annual or assured. Riders available. Example: A 35-year-old with a Rs 50 lakh 20-year term nominee gets full if early death. Launched 2024-25.</p>
+<h2>Plan 859: LIC’s Saral Jeevan Bima</h2>
+<p class="wp-block-paragraph">Simplest, cheapest LIC’s Saral Jeevan Bima term. Sum assured: Rs 5-25 lakh only. Entry 18-65, term 5-40 to age 70. Standard rates, no extras needed.</p>
+<p class="wp-block-paragraph">Launched Apr 16, 2021, still going strong. For low-income families. Waiting period for suicide.</p>
+<h2>Plan 887: LIC’s Bima Kavach</h2>
+<p class="wp-block-paragraph">LIC’s Bima Kavach lifetime cover to 100 years? Flexible increases at life events like marriage (50% up to Rs 2 Cr). Level sum assured base. Riders for accidents.</p>
+<p class="wp-block-paragraph">Regular/limited/single pay. Entry varies: under 40 for boosts. Launched recently in 2024-25. Great for long-term family protection.</p>
+<h2>Common Policies Across LIC Term Plans</h2>
+<p class="wp-block-paragraph">All are non-par, with no bonuses. Death benefit standard: Higher of sum assured, 7x annual premium (10x single), or 105% total premiums.</p>
+<p class="wp-block-paragraph">Premium modes: yearly, half-yearly, quarterly, and monthly (extra 2% for monthly). Grace: 30 days. Lapse revival in 5 years. Suicide: 80% premiums first year.</p>
+<p class="wp-block-paragraph">Free look: 15-30 days to cancel with refund minus charges. Nomination must be. Tax: Premiums 80C, death tax-free 10 (10D). Riders: Accident benefit up to Rs 1 Cr total.</p>
+<p class="wp-block-paragraph">No loans or surrender usually, except limited/single pay. GST 4.5% on premiums over Rs 2 lakh single.</p>
+<h2>How to Use LIC Term Plan Calculator</h2>
+<p class="wp-block-paragraph">Step 1: Pick a plan from the dropdown (e.g., 954). Step 2: Enter DOB, gender, and tobacco use. Step 3: Sum assured (Rs 50L+), term (20 years). Step 4: Pay term (full/10 less). Click calculate.</p>
+<p class="wp-block-paragraph">See premiums: Say a 30M male non-smoker, Rs 1 Cr, 30-year term: ~Rs 15-20k yearly. Adjust for accuracy. Tools on liccalculator.info great for your sites.</p>
+<h2>Comparison Table</h2>
+<h2>Frequently Asked Questions (FAQ)</h2>
+<h2>Conclusion</h2>
+<p class="wp-block-paragraph"><strong>LIC term plans</strong> offer affordable life cover for your family. Use online calculators to compare premiums for plans like 875, 954, and Saral Jeevan Bima 859. Choose based on age and needs, then buy from licindia.in.</p>
+   <div class="faq">
+    <h2>Frequently Asked Questions (FAQ)</h2>
+    <details><summary>Can I buy multiple LIC term plans?</summary><p>Yes, but total cover limits apply for riders. Stack for more protection.</p></details>
+    <details><summary>What if I miss premiums?</summary><p>Grace period of 30 days, then paid up; if 3+ years paid, reduced cover. Revive within 5 years.</p></details>
+    <details><summary>Are premiums fixed?</summary><p>Yes, guaranteed for the term. No hikes unless the smoker is undeclared.</p></details>
+    <details><summary>Women discount?</summary><p>Yes, 5-10% lower in most plans.</p></details>
+    <details><summary>Tax benefits?</summary><p>Section 80C deduction up to Rs 1.5L; death proceeds are tax-free.</p></details>
+    <details><summary>What does the calculator estimate?</summary><p>It provides an estimated premium using the plan rates and adjustment factors contained in the source calculator. Actual LIC quotations can differ.</p></details>
+    <details><summary>Does smoking status affect the estimate?</summary><p>Yes. The source calculator uses separate smoker and non-smoker rate assumptions.</p></details>
+    <details><summary>Can I select increasing cover?</summary><p>Yes. Select Increasing Cover in the calculator to apply the source calculator's increasing-cover adjustment.</p></details>
+    <details><summary>Is GST included?</summary><p>Yes. The source calculation adds 18% GST to the computed base premium.</p></details>
+    <details><summary>Can I use limited-pay options?</summary><p>Yes. The calculator includes 5-year, 10-year and 15-year limited payment options, along with regular and single premium choices.</p></details>
+    <details><summary>Does age change the premium?</summary><p>Yes. The source model applies age-based factors to the selected base rate.</p></details>
+    <details><summary>Does the calculator support female rates?</summary><p>Yes. The source data contains separate male and female rate assumptions for every listed plan.</p></details>
+    <details><summary>Which plans are included?</summary><p>The calculator includes plans 875, 876, 877, 878, 954, 955, 859 and 887, matching the source calculator.</p></details>
+    <details><summary>How often should I compare term plans?</summary><p>Compare when your income, financial liabilities, family responsibilities or desired cover changes.</p></details>
+    <details><summary>Is this an official LIC quotation?</summary><p>No. This is an estimate based on the source calculator's assumptions and should not be treated as an official LIC quotation.</p></details>
+   </div>
+  </article>
+ </div>
+</section>
+
+<footer class="footer"><div class="container">LIC Term Plan Calculator • Estimates are for planning purposes only. Premiums may vary based on underwriting, medical examination and LIC's current rates.</div></footer>
+
+<script>
+const premiumRates={875:{male:{nonSmoker:0.85,smoker:1.15},female:{nonSmoker:0.75,smoker:1.05}},876:{male:{nonSmoker:0.80,smoker:1.10},female:{nonSmoker:0.70,smoker:1.00}},877:{male:{nonSmoker:0.88,smoker:1.18},female:{nonSmoker:0.78,smoker:1.08}},878:{male:{nonSmoker:0.83,smoker:1.13},female:{nonSmoker:0.73,smoker:1.03}},954:{male:{nonSmoker:0.75,smoker:1.05},female:{nonSmoker:0.65,smoker:0.95}},955:{male:{nonSmoker:0.78,smoker:1.08},female:{nonSmoker:0.68,smoker:0.98}},859:{male:{nonSmoker:0.95,smoker:1.25},female:{nonSmoker:0.85,smoker:1.15}},887:{male:{nonSmoker:0.90,smoker:1.20},female:{nonSmoker:0.80,smoker:1.10}}};
+const planDetails={875:{name:"LIC Yuva Term (Plan 875)",features:["Designed for young individuals aged 18-40","Minimum sum assured: ₹50 lakhs","Level and Increasing cover options available","Flexible premium payment terms","Death benefit to nominee"]},876:{name:"LIC Digi Term (Plan 876)",features:["Online purchase only - digital convenience","Entry age: 18-45 years","Minimum sum assured: ₹50 lakhs","Maximum sum assured: ₹5 crores","Lower premium rates for online purchase"]},877:{name:"LIC Yuva Credit Life (Plan 877)",features:["Loan protection for young borrowers","Age range: 18-40 years","Decreasing sum assured option","Covers outstanding loan amount","Peace of mind for families"]},878:{name:"LIC Digi Credit Life (Plan 878)",features:["Digital loan protection plan","Entry age: 18-45 years","Online application process","Decreasing cover linked to loan","Affordable premium rates"]},954:{name:"LIC New Tech Term (Plan 954)",features:["Pure online term insurance","Age: 18-60 years","Increasing cover option - up to 200% by 15th year","Death benefit in instalments option","Accidental death benefit rider available"]},955:{name:"LIC Tech Term (Plan 955)",features:["Online pure protection plan","Entry age: 18-60 years","No-frills affordable coverage","Flexible policy terms up to 40 years","Simple and transparent"]},859:{name:"LIC Saral Jeevan Bima (Plan 859)",features:["Standard simplified term plan","Age: 18-65 years","Sum assured: ₹5-25 lakhs","Regular, Limited & Single premium options","Industry standard benefits"]},887:{name:"LIC Jeevan Amar (Plan 887)",features:["Traditional term insurance plan","Entry age: 18-65 years","Minimum sum assured: ₹25 lakhs","Level and Increasing cover options","Comprehensive death benefit"]}};
+
+function calculatePremium(){
+ const plan=document.getElementById('planSelect').value;
+ const age=parseInt(document.getElementById('age').value,10);
+ const gender=document.getElementById('gender').value;
+ const sumAssured=parseInt(document.getElementById('sumAssured').value,10);
+ const policyTerm=parseInt(document.getElementById('policyTerm').value,10);
+ const paymentTerm=document.getElementById('paymentTerm').value;
+ const smokerEl=document.querySelector('input[name="smoker"]:checked');
+ const saEl=document.querySelector('input[name="saOption"]:checked');
+ if(!age||!sumAssured||!policyTerm||!smokerEl||!saEl){ alert('Please fill all required fields'); return; }
+ const smoker=smokerEl.value;
+ const saOption=saEl.value;
+ const smokerStatus=smoker==='yes'?'smoker':'nonSmoker';
+ let baseRate=premiumRates[plan][gender][smokerStatus];
+ let ageFactor=1;
+ if(age<=30)ageFactor=0.95; else if(age<=40)ageFactor=1.0; else if(age<=50)ageFactor=1.25; else if(age<=60)ageFactor=1.55; else ageFactor=1.85;
+ let termFactor=1;
+ if(policyTerm<=10)termFactor=1.1; else if(policyTerm<=20)termFactor=1.0; else if(policyTerm<=30)termFactor=0.95; else termFactor=0.90;
+ let basePremium=(sumAssured/1000)*baseRate*ageFactor*termFactor;
+ let paymentFactor=1;
+ if(paymentTerm==='5')paymentFactor=2.2; else if(paymentTerm==='10')paymentFactor=1.6; else if(paymentTerm==='15')paymentFactor=1.35; else if(paymentTerm==='single')paymentFactor=8.5;
+ basePremium*=paymentFactor;
+ if(saOption==='increasing')basePremium*=1.45;
+ const premiumWithGST=basePremium*1.18;
+ let yearsOfPayment;
+ if(paymentTerm==='single')yearsOfPayment=1; else if(paymentTerm==='regular')yearsOfPayment=policyTerm; else yearsOfPayment=parseInt(paymentTerm,10);
+ const totalPremiumPayable=premiumWithGST*yearsOfPayment;
+ document.getElementById('yearlyPremium').textContent='₹ '+Math.round(premiumWithGST).toLocaleString('en-IN');
+ document.getElementById('selectedPlan').textContent=planDetails[plan].name;
+ document.getElementById('coverageAmount').textContent='₹ '+sumAssured.toLocaleString('en-IN');
+ document.getElementById('totalPremium').textContent='₹ '+Math.round(totalPremiumPayable).toLocaleString('en-IN');
+ document.getElementById('planName').textContent=planDetails[plan].name+' - Key Features';
+ document.getElementById('planFeatures').innerHTML='';
+ planDetails[plan].features.forEach(feature=>{
+   const li=document.createElement('li'); li.textContent=feature; document.getElementById('planFeatures').appendChild(li);
+ });
+ document.getElementById('paymentModeDisplay').textContent=paymentTerm==='regular'?'Regular':paymentTerm==='single'?'Single Premium':paymentTerm+' Years Limited';
+ if(window.innerWidth<=768){document.querySelector('.result-panel').scrollIntoView({behavior:'smooth',block:'nearest'});}
+}
+
+function validateInputs(){
+ const plan=document.getElementById('planSelect').value;
+ const ageInput=document.getElementById('age');
+ const age=parseInt(ageInput.value,10);
+ if(!Number.isFinite(age))return;
+ if(plan==='875'||plan==='877'){if(age>40){alert('Maximum entry age for this plan is 40 years');ageInput.value=40;}}
+ else if(plan==='876'||plan==='878'){if(age>45){alert('Maximum entry age for this plan is 45 years');ageInput.value=45;}}
+}
+document.getElementById('age').addEventListener('change',validateInputs);
+document.getElementById('sumAssured').addEventListener('change',function(){
+ const plan=document.getElementById('planSelect').value;
+ const input=this; const v=parseInt(input.value,10);
+ if(!Number.isFinite(v))return;
+ if(plan==='859'){if(v<500000){alert('Minimum sum assured for Plan 859 is ₹5,00,000');input.value=500000;}else if(v>2500000){alert('Maximum sum assured for Plan 859 is ₹25,00,000');input.value=2500000;}}
+ else if(plan==='887'){if(v<2500000){alert('Minimum sum assured for Plan 887 is ₹25,00,000');input.value=2500000;}}
+ else if(v<5000000){alert('Minimum sum assured for this plan is ₹50,00,000');input.value=5000000;}
+});
+document.getElementById('planSelect').addEventListener('change',function(){validateInputs();calculatePremium();});
+['gender','policyTerm','paymentTerm'].forEach(id=>document.getElementById(id).addEventListener('change',calculatePremium));
+document.querySelectorAll('input[name="smoker"], input[name="saOption"]').forEach(el=>el.addEventListener('change',calculatePremium));
+['age','sumAssured'].forEach(id=>document.getElementById(id).addEventListener('input',()=>{clearTimeout(window.__tm);window.__tm=setTimeout(calculatePremium,250);}));
+window.addEventListener('load',calculatePremium);
+</script>
+</body>
+</html>
