@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<sitemapindex xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
     <sitemap>
         <loc>https://bagchi.in/coupon-code.xml</loc>
@@ -20,8 +20,8 @@
         <loc>https://bagchi.in/digital-product.xml</loc>
         <lastmod>2026-08-06T00:00:00+05:30</lastmod>
     </sitemap>
-	
-	<sitemap>
+
+    <sitemap>
         <loc>https://bagchi.in/tools.xml</loc>
         <lastmod>2026-09-10T00:00:00+05:30</lastmod>
     </sitemap>
