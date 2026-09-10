@@ -6,37 +6,198 @@
     http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
     <url>
-        <loc>https://bagchi.in/</loc>
-        <lastmod>2026-07-20</lastmod>
+        <loc>https://bagchi.in/tools/lic-calculator/</loc>
+        <lastmod>2026-09-10</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
 
     <url>
-        <loc>https://bagchi.in/about.html</loc>
-        <lastmod>2026-07-20</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.9</priority>
-    </url>
-
-    <url>
-        <loc>https://bagchi.in/services.html</loc>
-        <lastmod>2026-07-20</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.9</priority>
-    </url>
-
-    <url>
-        <loc>https://bagchi.in/portfolio.html</loc>
-        <lastmod>2026-07-20</lastmod>
+        <loc>https://bagchi.in/tools/lic-calculator/lic-all-in-one-premium-calculator</loc>
+        <lastmod>2026-09-10</lastmod>
         <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
+        <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://bagchi.in/contact.html</loc>
-        <lastmod>2026-07-20</lastmod>
-        <changefreq>monthly</changefreq>
+        <loc>https://bagchi.in/tools/lic-calculator/lic-bonus-calculator</loc>
+        <lastmod>2026-09-10</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://bagchi.in/tools/lic-calculator/lic-child-plan-calculator</loc>
+        <lastmod>2026-09-10</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://bagchi.in/tools/lic-calculator/lic-endowment-plan-calculator</loc>
+        <lastmod>2026-09-10</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://bagchi.in/tools/lic-calculator/lic-fd-calculator</loc>
+        <lastmod>2026-09-10</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://bagchi.in/tools/lic-calculator/lic-group-benefits-secure-plan-calculator</loc>
+        <lastmod>2026-09-10</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://bagchi.in/tools/lic-calculator/lic-group-term-ease-plan-calculator</loc>
+        <lastmod>2026-09-10</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://bagchi.in/tools/lic-calculator/lic-home-loan-emi-calculator</loc>
+        <lastmod>2026-09-10</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://bagchi.in/tools/lic-calculator/lic-jeevan-akshay-calculator</loc>
+        <lastmod>2026-09-10</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://bagchi.in/tools/lic-calculator/lic-jeevan-anand-calculator</loc>
+        <lastmod>2026-09-10</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://bagchi.in/tools/lic-calculator/lic-jeevan-labh-calculator</loc>
+        <lastmod>2026-09-10</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://bagchi.in/tools/lic-calculator/lic-jeevan-lakshya-calculator</loc>
+        <lastmod>2026-09-10</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://bagchi.in/tools/lic-calculator/lic-jeevan-saral-calculator</loc>
+        <lastmod>2026-09-10</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://bagchi.in/tools/lic-calculator/lic-jeevan-tarun-calculator</loc>
+        <lastmod>2026-09-10</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://bagchi.in/tools/lic-calculator/lic-jeevan-umang-calculator</loc>
+        <lastmod>2026-09-10</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://bagchi.in/tools/lic-calculator/lic-jeevan-utsav-calculator</loc>
+        <lastmod>2026-09-10</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://bagchi.in/tools/lic-calculator/lic-kanyadan-policy-calculator</loc>
+        <lastmod>2026-09-10</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://bagchi.in/tools/lic-calculator/lic-maturity-calculator</loc>
+        <lastmod>2026-09-10</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://bagchi.in/tools/lic-calculator/lic-money-back-policy-calculator</loc>
+        <lastmod>2026-09-10</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://bagchi.in/tools/lic-calculator/lic-new-jeevan-shanti-calculator</loc>
+        <lastmod>2026-09-10</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://bagchi.in/tools/lic-calculator/lic-pension-calculator</loc>
+        <lastmod>2026-09-10</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://bagchi.in/tools/lic-calculator/lic-plans-calculator</loc>
+        <lastmod>2026-09-10</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://bagchi.in/tools/lic-calculator/lic-return-calculator-final</loc>
+        <lastmod>2026-09-10</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://bagchi.in/tools/lic-calculator/lic-sip-calculator-final</loc>
+        <lastmod>2026-09-10</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://bagchi.in/tools/lic-calculator/lic-surrender-value-calculator</loc>
+        <lastmod>2026-09-10</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://bagchi.in/tools/lic-calculator/lic-term-plan-calculator</loc>
+        <lastmod>2026-09-10</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://bagchi.in/tools/lic-calculator/lic-ulip-plan-calculator</loc>
+        <lastmod>2026-09-10</lastmod>
+        <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
 
