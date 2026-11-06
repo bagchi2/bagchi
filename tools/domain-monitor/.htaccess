@@ -1,0 +1,19 @@
+Options -Indexes
+DirectoryIndex index.php
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteRule ^monitor/([^/]+)/?$ index.php?route=monitor&domain=$1 [B,QSA,L]
+</IfModule>
+
+<IfModule mod_authz_core.c>
+  <FilesMatch "^(config\.php|README\.txt)$">
+    Require all denied
+  </FilesMatch>
+</IfModule>
+<IfModule !mod_authz_core.c>
+  <FilesMatch "^(config\.php|README\.txt)$">
+    Order allow,deny
+    Deny from all
+  </FilesMatch>
+</IfModule>
